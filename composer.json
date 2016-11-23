@@ -44,12 +44,5 @@
         "psr-4": {
             "Canvas\\": "src/"
         }
-    },
-    "autoload-dev": {
-        "classmap": [
-            "tests/TestCase.php",
-            "tests/InteractsWithDatabase.php",
-            "tests/CreatesUser.php"
-        ]
     }
 }
