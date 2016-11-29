@@ -1,10 +1,15 @@
-## <img src="https://github.com/austintoddj/easel/blob/master/public/assets/images/gh-brand.jpg?raw=true" width="175">
+## About Canvas
 
 > **Note:** This repository contains the core code of Canvas. If you want to create and publish a blog using Canvas, visit the [main repository](https://github.com/austintoddj/canvas).
 
-[Canvas](http://canvas.toddaustin.io) is a simple, powerful blog publishing platform that lets you to share your stories with the world. Its beautifully designed interface and completely customizable framework allows you to create and publish your own blog, giving you tools that make it easy and even fun to do.
+[Canvas](http://canvas.toddaustin.io) is a simple, powerful blog publishing platform that lets you to share your stories with the world. Its beautifully designed interface and completely customizable framework allows you to create and publish your own blog, giving you tools that make it easy and even fun to do. Canvas includes some of the most popular web packages today, such as:
 
-Features [Google Material Design](https://material.google.com), [SimpleMDE](https://simplemde.com) for Markdown publishing with syntax highlighting by [PrismJS](http://prismjs.com), full-site searching by [TNTSearch](https://github.com/teamtnt/laravel-scout-tntsearch-driver), native [Google Analytics](https://www.google.com/analytics/#?modal_active=none) integration and more, all powered by [Laravel](https://laravel.com)!
+* [Google Material Design](https://material.google.com).
+* [SimpleMDE](https://simplemde.com) for markdown publishing.
+* Syntax highlighting by [PrismJS](http://prismjs.com).
+* Full-site searching by [TNTSearch](https://github.com/teamtnt/laravel-scout-tntsearch-driver).
+* Native [Google Analytics](https://www.google.com/analytics/#?modal_active=none) integration.
+* Powered by [Laravel 5](https://laravel.com).
 
 ## Contributing
 
