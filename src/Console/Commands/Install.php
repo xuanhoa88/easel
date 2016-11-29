@@ -3,7 +3,6 @@
 namespace Canvas\Console\Commands;
 
 use Artisan;
-use File;
 use Canvas\Helpers;
 use ConfigWriter;
 use Canvas\Models\User;
@@ -49,7 +48,7 @@ class Install extends Command
         $config = new ConfigWriter('blog');
 
         // Publish assets
-        if (!$publishAssets = $this->confirm('Skip publishing of Canvas core assets and config? (NB. Assets must be published if you are installing or upgrading Canvas.)')) {
+        if (! $publishAssets = $this->confirm('Skip publishing of Canvas core assets and config? (NB. Assets must be published if you are installing or upgrading Canvas.)')) {
             if ($publishAssets = $this->confirm('Publish all Canvas core assets? (NB. If you select no you will be able to choose which types of assets to publish.)')) {
                 $exitCode = Artisan::call('vendor:publish', [
                     '--provider' => 'Canvas\CanvasServiceProvider',
@@ -100,7 +99,7 @@ class Install extends Command
                 }
             }
         } else {
-             $this->line(PHP_EOL.'<info>✔</info> Canvas assets and settings were NOT published.');
+            $this->line(PHP_EOL.'<info>✔</info> Canvas assets and settings were NOT published.');
         }
 
         // Database Setup
