@@ -1,20 +1,13 @@
 {
     "name": "austintoddj/easel",
-    "description": "Core framework for Canvas. Simple, Powerful Blog Publishing Platform",
-    "keywords": [
-        "simple",
-        "powerful",
-        "blog",
-        "publishing",
-        "platform",
-        "laravel",
-        "canvas",
-        "markdown",
-        "material",
-        "developers"
-    ],
+    "description": "Core Framework for Canvas.",
+    "keywords": ["canvas", "core"],
     "license": "MIT",
-    "type": "project",
+    "homepage": "https://canvas.toddaustin.io",
+    "support": {
+        "issues": "https://github.com/austintoddj/easel/issues",
+        "source": "https://github.com/austintoddj/easel"
+    },
     "authors": [
         {
             "name": "Todd Austin",
