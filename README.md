@@ -1,3 +1,10 @@
+<p align="center">
+    <a href="https://styleci.io/repos/74061859"><img src="https://styleci.io/repos/74061859/shield?style=flat&branch=master" alt="StyleCI"></a>
+    <a href="https://packagist.org/packages/austintoddj/easel"><img src="https://poser.pugx.org/austintoddj/easel/downloads" alt="Total Downloads"></a>
+    <a href="https://packagist.org/packages/austintoddj/easel"><img src="https://poser.pugx.org/austintoddj/easel/v/stable" alt="Latest Stable Version"></a>
+    <a href="https://packagist.org/packages/austintoddj/easel"><img src="https://poser.pugx.org/austintoddj/easel/license" alt="License"></a>
+</p>
+
 ## About Easel
 
 > **Note:** This repository contains the core code of Canvas. If you want to create and publish a blog using Canvas, visit the [main repository](https://github.com/austintoddj/canvas).
