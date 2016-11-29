@@ -47,7 +47,3 @@ Canvas follows the [PSR-2](https://github.com/php-fig/fig-standards/blob/master/
 - Integration with [TravisCI](https://travis-ci.org) is crucial. Pull requests must pass this test before being reviewed to merge into the project.
 - Don't worry if your code styling isn't perfect! [StyleCI](https://styleci.io/) will take care of any style inconsistencies after pull requests are merged. This allows us to focus on the content of the contribution and not the code style.
 - Pull requests can still be merged if the [VersionEye](https://www.versioneye.com) check fails. This just helps us keep a closer eye on staying up to date with dependencies.
-
-## Building the Easel
-
-[How to build an Easel?](https://www.buildeazy.com/newplans/easel_4_06.html)
