@@ -1,4 +1,4 @@
-## About Canvas
+## About Easel
 
 > **Note:** This repository contains the core code of Canvas. If you want to create and publish a blog using Canvas, visit the [main repository](https://github.com/austintoddj/canvas).
 
