@@ -1,8 +1,8 @@
 <p align="center">
     <a href="https://styleci.io/repos/74061859"><img src="https://styleci.io/repos/74061859/shield?style=flat&branch=master" alt="StyleCI"></a>
-    <a href="https://packagist.org/packages/austintoddj/easel"><img src="https://poser.pugx.org/austintoddj/easel/downloads" alt="Total Downloads"></a>
-    <a href="https://packagist.org/packages/austintoddj/easel"><img src="https://poser.pugx.org/austintoddj/easel/v/stable" alt="Latest Stable Version"></a>
-    <a href="https://packagist.org/packages/austintoddj/easel"><img src="https://poser.pugx.org/austintoddj/easel/license" alt="License"></a>
+    <a href="https://packagist.org/packages/cnvs/easel"><img src="https://poser.pugx.org/austintoddj/cnvs/downloads" alt="Total Downloads"></a>
+    <a href="https://packagist.org/packages/cnvs/easel"><img src="https://poser.pugx.org/austintoddj/cnvs/v/stable" alt="Latest Stable Version"></a>
+    <a href="https://github.com/cnvs/easel/blob/master/LICENSE"><img src="https://poser.pugx.org/austintoddj/easel/license" alt="License"></a>
 </p>
 
 ## About Easel
