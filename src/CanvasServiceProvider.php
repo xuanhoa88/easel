@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Canvas;
 
@@ -7,8 +7,8 @@ use Illuminate\Support\ServiceProvider;
 use Canvas\Console\Commands\Index;
 use Canvas\Console\Commands\Install;
 
-class CanvasServiceProvider extends ServiceProvider {
-
+class CanvasServiceProvider extends ServiceProvider
+{
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -18,19 +18,18 @@ class CanvasServiceProvider extends ServiceProvider {
 
     /**
      * List of commands.
-     * 
-     * @var array 
+     *
+     * @var array
      */
     protected $commands = [
         Index::class,
         Install::class,
     ];
 
-
     /**
      * Public assets.
      */
-    private function handleAssets() 
+    private function handleAssets()
     {
         $this->publishes([
             __DIR__.'/../public' => public_path('vendor/canvas'),
@@ -38,11 +37,11 @@ class CanvasServiceProvider extends ServiceProvider {
     }
 
     /**
-     * Config
+     * Config.
      */
-    private function handleConfigs() {
-
-        $configPath = __DIR__ . '/../config/canvas.php';
+    private function handleConfigs()
+    {
+        $configPath = __DIR__.'/../config/canvas.php';
 
         // allow publishing config, with tag: config
         $this->publishes([$configPath => config_path('blog.php')], 'config');
@@ -53,20 +52,20 @@ class CanvasServiceProvider extends ServiceProvider {
     }
 
     /**
-     * Translations
+     * Translations.
      */
-    private function handleTranslations() 
+    private function handleTranslations()
     {
         // load translations
         $this->loadTranslationsFrom(__DIR__.'/../lang', 'canvas');
     }
 
     /**
-     * Views
+     * Views.
      */
-    private function handleViews() 
+    private function handleViews()
     {
-        // load views 
+        // load views
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'canvas');
 
         // allow publishing views, with tag: views
@@ -81,25 +80,25 @@ class CanvasServiceProvider extends ServiceProvider {
     }
 
     /**
-     * Migrations
+     * Migrations.
      */
-    private function handleMigrations() 
+    private function handleMigrations()
     {
         // allow publishing migrations, with tag: migrations
-        $this->publishes([__DIR__ . '/../database/migrations' => base_path('database/migrations')], 'migrations');
+        $this->publishes([__DIR__.'/../database/migrations' => base_path('database/migrations')], 'migrations');
     }
 
     /**
-     * Routes
+     * Routes.
      */
-    private function handleRoutes() 
+    private function handleRoutes()
     {
         // get the routes
         require_once __DIR__.'/../routes/web.php';
     }
 
     /**
-     * Commands
+     * Commands.
      */
     private function handleCommands()
     {
@@ -125,7 +124,7 @@ class CanvasServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function boot() 
+    public function boot()
     {
         $this->handleConfigs();
         $this->handleMigrations();
@@ -141,7 +140,7 @@ class CanvasServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function register() 
+    public function register()
     {
         // Bindings...
         $this->registerEloquentFactoriesFrom(__DIR__.'/../database/factories');
@@ -152,9 +151,8 @@ class CanvasServiceProvider extends ServiceProvider {
      *
      * @return array
      */
-    public function provides() 
+    public function provides()
     {
         return [];
     }
-
 }
