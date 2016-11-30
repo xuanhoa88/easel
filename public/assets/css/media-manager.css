@@ -102,32 +102,24 @@
 }
 
 @-webkit-keyframes pulse {
-  0% {
+  0%, to {
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
   }
   50% {
     -webkit-transform: scale3d(1.05, 1.05, 1.05);
     transform: scale3d(1.05, 1.05, 1.05);
-  }
-  to {
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
   }
 }
 
 @keyframes pulse {
-  0% {
+  0%, to {
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
   }
   50% {
     -webkit-transform: scale3d(1.05, 1.05, 1.05);
     transform: scale3d(1.05, 1.05, 1.05);
-  }
-  to {
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
   }
 }
 
@@ -137,7 +129,7 @@
 }
 
 @-webkit-keyframes rubberBand {
-  0% {
+  0%, to {
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
   }
@@ -160,15 +152,11 @@
   75% {
     -webkit-transform: scale3d(1.05, 0.95, 1);
     transform: scale3d(1.05, 0.95, 1);
-  }
-  to {
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
   }
 }
 
 @keyframes rubberBand {
-  0% {
+  0%, to {
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
   }
@@ -191,10 +179,6 @@
   75% {
     -webkit-transform: scale3d(1.05, 0.95, 1);
     transform: scale3d(1.05, 0.95, 1);
-  }
-  to {
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
   }
 }
 
@@ -317,8 +301,8 @@
     transform: rotate(-5deg);
   }
   to {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
   }
 }
 
@@ -340,8 +324,8 @@
     transform: rotate(-5deg);
   }
   to {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
   }
 }
 
@@ -353,7 +337,7 @@
 }
 
 @-webkit-keyframes tada {
-  0% {
+  0%, to {
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
   }
@@ -368,15 +352,11 @@
   40%, 60%, 80% {
     -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate(-3deg);
     transform: scale3d(1.1, 1.1, 1.1) rotate(-3deg);
-  }
-  to {
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
   }
 }
 
 @keyframes tada {
-  0% {
+  0%, to {
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
   }
@@ -391,10 +371,6 @@
   40%, 60%, 80% {
     -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate(-3deg);
     transform: scale3d(1.1, 1.1, 1.1) rotate(-3deg);
-  }
-  to {
-    -webkit-transform: scaleX(1);
-    transform: scaleX(1);
   }
 }
 
@@ -404,7 +380,7 @@
 }
 
 @-webkit-keyframes wobble {
-  0% {
+  0%, to {
     -webkit-transform: none;
     transform: none;
   }
@@ -427,15 +403,11 @@
   75% {
     -webkit-transform: translate3d(-5%, 0, 0) rotate(-1deg);
     transform: translate3d(-5%, 0, 0) rotate(-1deg);
-  }
-  to {
-    -webkit-transform: none;
-    transform: none;
   }
 }
 
 @keyframes wobble {
-  0% {
+  0%, to {
     -webkit-transform: none;
     transform: none;
   }
@@ -458,10 +430,6 @@
   75% {
     -webkit-transform: translate3d(-5%, 0, 0) rotate(-1deg);
     transform: translate3d(-5%, 0, 0) rotate(-1deg);
-  }
-  to {
-    -webkit-transform: none;
-    transform: none;
   }
 }
 
@@ -1697,6 +1665,10 @@
   backface-visibility: visible !important;
   -webkit-animation-name: flipInX;
   animation-name: flipInX;
+}
+
+.flipInY, .flipOutX {
+  -webkit-backface-visibility: visible !important;
 }
 
 @-webkit-keyframes flipInY {
@@ -3090,22 +3062,20 @@
 }
 
 @font-face {
-  font-family: 'icomoon';
-  src: url("../fonts/icomoon.ttf?m63k59") format("truetype"), url("../fonts/icomoon.woff?m63k59") format("woff"), url("../fonts/icomoon.svg?m63k59#icomoon") format("svg");
-  font-weight: normal;
+  font-family: icomoon;
+  src: url(../fonts/icomoon.ttf?m63k59) format("truetype"), url(../fonts/icomoon.woff?m63k59) format("woff"), url(../fonts/icomoon.svg?m63k59#icomoon) format("svg");
+  font-weight: 400;
   font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
+[class*=" icon-"], [class^=icon-] {
+  font-family: icomoon !important;
   speak: none;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   font-variant: normal;
   text-transform: none;
   line-height: 1;
-  /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -3229,20 +3199,14 @@
   align-items: center;
 }
 
-.btn > [class*=" icon-"],
-.btn > [class^="icon-"] {
-  padding-right: 5px;
-}
-
-.label > [class*=" icon-"],
-.label > [class^="icon-"] {
+.btn > [class*=" icon-"], .btn > [class^=icon-], .label > [class*=" icon-"], .label > [class^=icon-] {
   padding-right: 5px;
 }
 
 @-webkit-keyframes anim-rotate {
   0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
   }
   100% {
     -webkit-transform: rotate(360deg);
@@ -3252,8 +3216,8 @@
 
 @keyframes anim-rotate {
   0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
   }
   100% {
     -webkit-transform: rotate(360deg);
@@ -3324,47 +3288,39 @@
   overflow-y: auto;
 }
 
-.modal-enter {
+.modal-enter, .modal-leave-active {
   opacity: 0;
 }
 
-.modal-leave-active {
-  opacity: 0;
-}
-
-.modal-enter .modal-container,
-.modal-leave-active .modal-container {
+.modal-enter .modal-container, .modal-leave-active .modal-container {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
 
-/* always present */
 .expand-transition {
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
   overflow: hidden;
 }
 
-/* .expand-enter defines the starting state for entering */
-/* .expand-leave defines the ending state for leaving */
 .expand-enter, .expand-leave {
   height: 0;
   padding: 0 10px;
   opacity: 0;
 }
 
-#canvas-file-picker .modal-footer.vertical-center .item-count {
+#easel-file-picker .modal-footer.vertical-center .item-count {
   -webkit-box-flex: 1;
   flex: 1 0 0;
   text-align: left;
 }
 
-#canvas-file-picker .modal-footer.vertical-center .buttons {
+#easel-file-picker .modal-footer.vertical-center .buttons {
   -webkit-box-flex: 4;
   flex: 4 0 0;
 }
 
-#canvas-file-picker .canvas-file-browser {
+#easel-file-picker .easel-file-browser {
   color: #5e5e5e;
   height: 100%;
   margin-bottom: 0;
@@ -3374,92 +3330,92 @@
   width: auto;
 }
 
-#canvas-file-picker .canvas-file-browser .breadcrumb {
+#easel-file-picker .easel-file-browser .breadcrumb {
   background-color: transparent;
   border-bottom: 1px solid #f0f0f0;
 }
 
-#canvas-file-picker .canvas-file-browser .breadcrumb li a {
+#easel-file-picker .easel-file-browser .breadcrumb li a {
   color: #a9a9a9;
 }
 
-#canvas-file-picker .canvas-file-browser .breadcrumb li a.active {
+#easel-file-picker .easel-file-browser .breadcrumb li a.active {
   color: #7c7c7c;
 }
 
-#canvas-file-picker .canvas-file-browser .breadcrumb li + li::before {
+#easel-file-picker .easel-file-browser .breadcrumb li + li::before {
   color: #ccc;
   content: "/ ";
   padding: 0 5px;
 }
 
-#canvas-file-picker .canvas-file-browser.modal-dialog {
+#easel-file-picker .easel-file-browser.modal-dialog {
   margin-top: 2rem;
 }
 
-#canvas-file-picker .canvas-file-browser .word-wrappable {
+#easel-file-picker .easel-file-browser .word-wrappable {
   word-wrap: break-word;
 }
 
-#canvas-file-picker .canvas-file-browser .canvas-file-picker-list {
+#easel-file-picker .easel-file-browser .easel-file-picker-list {
   height: 60vh;
   overflow-y: scroll;
 }
 
-#canvas-file-picker .canvas-file-browser .canvas-file-picker-list .table tbody tr.active td {
+#easel-file-picker .easel-file-browser .easel-file-picker-list .table tbody tr.active td {
   background-color: #0078e7;
   color: #fff;
 }
 
-#canvas-file-picker .canvas-file-browser .canvas-file-picker-list .table tbody tr.active td a {
+#easel-file-picker .easel-file-browser .easel-file-picker-list .table tbody tr.active td a {
   color: #fff;
 }
 
-#canvas-file-picker .canvas-file-browser .canvas-file-picker-list .table tbody tr:last-child td {
+#easel-file-picker .easel-file-browser .easel-file-picker-list .table tbody tr:last-child td {
   padding-bottom: 7px;
 }
 
-#canvas-file-picker .canvas-file-browser .canvas-file-picker-list .table tbody tr td {
-  -webkit-transition: background-color 0.15s ease-in-out 0.05s;
-  transition: background-color 0.15s ease-in-out 0.05s;
+#easel-file-picker .easel-file-browser .easel-file-picker-list .table tbody tr td {
+  -webkit-transition: background-color .15s ease-in-out 50ms;
+  transition: background-color .15s ease-in-out 50ms;
   padding-left: 7px;
   border-top: 1px solid #f0f0f0;
 }
 
-#canvas-file-picker .canvas-file-browser .canvas-file-picker-list .table tbody tr td a {
-  margin-left: 0.5em;
+#easel-file-picker .easel-file-browser .easel-file-picker-list .table tbody tr td a {
+  margin-left: .5em;
   cursor: pointer;
 }
 
-#canvas-file-picker .canvas-file-browser .canvas-file-picker-list .table tbody tr th:first-child {
+#easel-file-picker .easel-file-browser .easel-file-picker-list .table tbody tr th:first-child {
   padding-left: 7px;
 }
 
-#canvas-file-picker .canvas-file-browser .canvas-file-picker-sidebar {
+#easel-file-picker .easel-file-browser .easel-file-picker-sidebar {
   height: 60vh;
   overflow-y: auto;
   border-left: 1px solid #f0f0f0;
 }
 
-#canvas-file-picker .canvas-file-browser .canvas-file-picker-preview-table {
+#easel-file-picker .easel-file-browser .easel-file-picker-preview-table {
   margin-top: 1em;
 }
 
-#canvas-file-picker .canvas-file-browser .canvas-file-picker-preview-table td {
+#easel-file-picker .easel-file-browser .easel-file-picker-preview-table td {
   border-width: 0;
 }
 
-#canvas-file-picker .canvas-file-browser .canvas-file-picker-preview-table td.description {
+#easel-file-picker .easel-file-browser .easel-file-picker-preview-table td.description {
   text-transform: uppercase;
   font-weight: 500;
 }
 
-#canvas-file-picker .canvas-file-browser .canvas-file-picker-preview-table td.file-value {
+#easel-file-picker .easel-file-browser .easel-file-picker-preview-table td.file-value {
   word-break: break-all;
 }
 
 .modal-errors ul {
-  list-style: outside none none;
+  list-style: none;
   margin: 0;
   padding: 0;
 }
@@ -3486,9 +3442,9 @@
 }
 
 .alert-inverse {
-  background-color: #333333;
+  background-color: #333;
   border-color: transparent;
-  color: #ffffff;
+  color: #fff;
 }
 
 .alert-inverse hr {
@@ -3518,7 +3474,5 @@
 .growl-animated.alert-danger {
   box-shadow: 0 0 5px rgba(244, 67, 54, 0.5);
 }
-
-/*# sourceMappingURL=media-manager.css.map */
 
 /*# sourceMappingURL=media-manager.css.map */

@@ -18866,10 +18866,6 @@ html {
   -ms-overflow-style: none;
 }
 
-body, html {
-  min-height: 100vh;
-}
-
 audio, video {
   outline: 0;
 }

@@ -3,9 +3,9 @@
 @import url("https:////fonts.googleapis.com/css?family=Source+Code+Pro:400,200,300,500,600,700,900");
 @font-face {
   font-family: 'Unthrift First Personal';
-  src: url("/vendor/canvas/assets/fonts/unthriftfirstpersonal.eot");
+  src: url("/assets/fonts/unthriftfirstpersonal.eot");
   /* IE9 Compat Modes */
-  src: url("/vendor/canvas/assets/fonts/unthriftfirstpersonal.woff2") format("woff2"), url("/vendor/canvas/assets/fonts/unthriftfirstpersonal.woff") format("woff"), url("/vendor/canvas/assets/fonts/unthriftfirstpersonal.ttf") format("truetype"), url("/vendor/canvas/assets/fonts/unthriftfirstpersonal.svg") format("svg");
+  src: url("/assets/fonts/unthriftfirstpersonal.woff2") format("woff2"), url("/assets/fonts/unthriftfirstpersonal.woff") format("woff"), url("/assets/fonts/unthriftfirstpersonal.ttf") format("truetype"), url("/assets/fonts/unthriftfirstpersonal.svg") format("svg");
   /* Legacy iOS */
 }
 
@@ -7853,7 +7853,7 @@ ul.pager > li > a {
   font-size: 13px;
   text-transform: uppercase;
   font-family: 'Source Sans Pro', sans-serif !important;
-  margin-top: -10px !important;
+  margin-top: -7px !important;
 }
 
 .post-page-meta a {
