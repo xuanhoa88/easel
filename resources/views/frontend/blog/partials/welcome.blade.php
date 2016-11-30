@@ -98,11 +98,11 @@ GitHub's fenced code blocks are supported in canvas::
 ```php
 namespace App;
 
-class Blog extends Canvas
+class Canvas extends Blog
 {
 
     /**
-    * Dreaming of something more?
+    * Dreaming of a world without WordPress?
     *
     * @with Canvas
     */

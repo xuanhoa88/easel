@@ -1,4 +1,4 @@
-@extends('frontend.layout', [
+@extends('canvas::frontend.layout', [
   'title' => $post->title,
   'meta_description' => $post->meta_description ?: Settings::blogDescription(),
 ])

@@ -1,6 +1,6 @@
 <template>
     <transition name="modal">
-        <div id="canvas-file-picker">
+        <div id="easel-file-picker">
             <div class="modal-header">
                 <!-- Close button for modal windows -->
                 <button v-if="isModal" type="button" class="close" @click="close()">×</button>
@@ -56,7 +56,7 @@
                 </div>
 
                 <div v-else>
-                    <div class="canvas-file-browser">
+                    <div class="easel-file-browser">
                         <div class="row">
                             <div class="col-xs-12">
                                 <ol class="breadcrumb">
@@ -75,7 +75,7 @@
                         <div class="row">
                             <div :class="{ 'col-sm-12' : !currentFile || isFolder(currentFile), 'col-sm-9' : currentFile && ! isFolder(currentFile) }" class="col-xs-12">
 
-                                <div class="table-responsive canvas-file-picker-list">
+                                <div class="table-responsive easel-file-picker-list">
                                     <table class="table table-condensed table-vmiddle">
                                         <thead>
                                         <tr>
@@ -120,11 +120,11 @@
                                     </table>
                                 </div>
                             </div>
-                            <div v-if="currentFile && !isFolder(currentFile)" class="canvas-file-picker-sidebar hidden-xs col-sm-3">
+                            <div v-if="currentFile && !isFolder(currentFile)" class="easel-file-picker-sidebar hidden-xs col-sm-3">
 
                                 <img v-if="isImage(currentFile)"
                                      class="img-responsive center-block"
-                                     id="canvas-preview-image"
+                                     id="easel-preview-image"
                                      :src="currentFile.webPath"
                                      style="max-height: 200px"
                                 />
@@ -133,7 +133,7 @@
                                     <i class="icon-file-text2" style="font-size: 15rem"></i>
                                 </div>
 
-                                <table class="table-responsive table-condensed table-vmiddle canvas-file-picker-preview-table">
+                                <table class="table-responsive table-condensed table-vmiddle easel-file-picker-preview-table">
                                     <tbody>
                                     <tr>
                                         <td class="description">Name</td>
