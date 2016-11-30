@@ -11,7 +11,7 @@ return [
     | process.
     |
     */
-    'version' => 'v2.1.15',
+    'version' => 'v2.1.16',
 
     /*
     |--------------------------------------------------------------------------
@@ -46,18 +46,18 @@ return [
     | Canvas Configuration : Post Layout
     |--------------------------------------------------------------------------
     |
-    | The post layout is only specified in App\Jobs\PostFormFields.php.
+    | The post layout is only specified in Canvas\Jobs\PostFormFields.php.
     | If you need to update the layout, just change it there.
     |
     */
-    'post_layout' => \Canvas\Jobs\PostFormFields::$blogLayout,
+    'post_layout' => Canvas\Jobs\PostFormFields::$blogLayout,
 
     /*
     |--------------------------------------------------------------------------
     | Canvas Configuration : Tag Layout
     |--------------------------------------------------------------------------
     |
-    | The tag layout is specified here, in App\Http\Controllers\Backend\TagController.php
+    | The tag layout is specified here, in Canvas\Http\Controllers\Backend\TagController.php
     | and in Canvas\Models\Tag.php. If you need to update the layout, just change it
     | in these three locations.
     |
