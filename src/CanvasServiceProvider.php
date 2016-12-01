@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use Illuminate\Support\ServiceProvider;
 use Canvas\Console\Commands\Index;
 use Canvas\Console\Commands\Install;
+use Canvas\Console\Commands\Publish\Config;
+use Canvas\Console\Commands\Publish\Migrations;
+use Canvas\Console\Commands\Publish\Assets;
+use Canvas\Console\Commands\Publish\Views;
 
 class CanvasServiceProvider extends ServiceProvider
 {
@@ -24,6 +28,10 @@ class CanvasServiceProvider extends ServiceProvider
     protected $commands = [
         Index::class,
         Install::class,
+        Config::class,
+        Migrations::class,
+        Assets::class,
+        Views::class,
     ];
 
     /**

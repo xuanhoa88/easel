@@ -44,7 +44,7 @@ class BlogController extends Controller
             $tag = Tag::whereTag($tag)->firstOrFail();
         }
 
-        if ($post->is_draft && ! Auth::check()) {
+        if ($post->is_draft && !Auth::check()) {
             return redirect('/blog');
         }
 

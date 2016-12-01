@@ -2,9 +2,9 @@
 
 namespace Canvas\Console\Commands;
 
-use Illuminate\Console\Command;
+use Artisan;
 
-class Index extends Command
+class Index extends CanvasCommand
 {
     protected $tnt;
     /**
@@ -19,7 +19,7 @@ class Index extends Command
      *
      * @var string
      */
-    protected $description = 'Build the site index for searching';
+    protected $description = 'Build the site index for searching.';
 
     /**
      * Execute the console command.
@@ -41,18 +41,18 @@ class Index extends Command
     public function createPostsIndex()
     {
         $this->comment(PHP_EOL.'Indexing posts table and saving it to /storage/posts.index...');
-        \Artisan::call('scout:import', ['model' => 'Canvas\\Models\\Post']);
+        Artisan::call('scout:import', ['model' => 'Canvas\\Models\\Post']);
     }
 
     public function createTagsIndex()
     {
         $this->comment(PHP_EOL.'Indexing tags table and saving it to /storage/tags.index...');
-        \Artisan::call('scout:import', ['model' => 'Canvas\\Models\\Tag']);
+        Artisan::call('scout:import', ['model' => 'Canvas\\Models\\Tag']);
     }
 
     public function createUsersIndex()
     {
         $this->comment(PHP_EOL.'Indexing users table and saving it to /storage/users.index...');
-        \Artisan::call('scout:import', ['model' => 'Canvas\\Models\\User']);
+        Artisan::call('scout:import', ['model' => 'Canvas\\Models\\User']);
     }
 }

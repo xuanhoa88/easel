@@ -3,29 +3,25 @@
 namespace Canvas\Console\Commands;
 
 use Artisan;
-use Canvas\Helpers;
 use ConfigWriter;
 use Canvas\Models\User;
-use Canvas\Models\Settings;
-use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 
-class Install extends Command
+class Install extends CanvasCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'canvas:install';
+    protected $signature = 'canvas:install {--views : Also publish Canvas views.} {--f|force : Overwrite any existing files.}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Install and configure Canvas';
+    protected $description = 'Install and configure Canvas.';
 
     /**
      * Create a new command instance.
@@ -44,72 +40,36 @@ class Install extends Command
      */
     public function handle()
     {
-        $this->comment(PHP_EOL.'Welcome to Canvas! You\'ll be up and running in no time...');
         $config = new ConfigWriter('blog');
 
-        // Publish assets
-        if (! $publishAssets = $this->confirm('Skip publishing of Canvas core assets and config? (NB. Assets must be published if you are installing or upgrading Canvas.)')) {
-            if ($publishAssets = $this->confirm('Publish all Canvas core assets? (NB. If you select no you will be able to choose which types of assets to publish.)')) {
-                $exitCode = Artisan::call('vendor:publish', [
-                    '--provider' => 'Canvas\CanvasServiceProvider',
-                ]);
-                $this->progress(5);
-                $this->line(PHP_EOL.'<info>✔</info> Success! Canvas assets and settings were published.');
-            } else {
-                // tagged individual asset publishing:
+        // gather options
+        $force = $this->option('force') ?: false;
+        $withViews = $this->option('views') ?: false;
 
-                // migrations
-                if ($publishMigrations = $this->confirm('Publish Canvas core migrations?')) {
-                    $exitCode = Artisan::call('vendor:publish', [
-                        '--provider' => 'Canvas\CanvasServiceProvider',
-                        '--tag' => 'migrations',
-                    ]);
-                    $this->progress(5);
-                    $this->line(PHP_EOL.'<info>✔</info> Success! Canvas migrations published.');
-                }
+        // Welcome
+        $this->comment(PHP_EOL.'Welcome to Canvas! You\'ll be up and running in no time...');
 
-                // config
-                if ($publishConfig = $this->confirm('Publish Canvas core config?')) {
-                    $exitCode = Artisan::call('vendor:publish', [
-                        '--provider' => 'Canvas\CanvasServiceProvider',
-                        '--tag' => 'config',
-                    ]);
-                    $this->progress(5);
-                    $this->line(PHP_EOL.'<info>✔</info> Success! Canvas config published.');
-                }
-
-                // views
-                if ($publishViews = $this->confirm('Publish Canvas core views?')) {
-                    $exitCode = Artisan::call('vendor:publish', [
-                        '--provider' => 'Canvas\CanvasServiceProvider',
-                        '--tag' => 'views',
-                    ]);
-                    $this->progress(5);
-                    $this->line(PHP_EOL.'<info>✔</info> Success! Canvas views published.');
-                }
-
-                // public
-                if ($publishPublicAssets = $this->confirm('Publish Canvas core public assets?')) {
-                    $exitCode = Artisan::call('vendor:publish', [
-                        '--provider' => 'Canvas\CanvasServiceProvider',
-                        '--tag' => 'public',
-                    ]);
-                    $this->progress(5);
-                    $this->line(PHP_EOL.'<info>✔</info> Success! Canvas public assets published.');
-                }
-            }
-        } else {
-            $this->line(PHP_EOL.'<info>✔</info> Canvas assets and settings were NOT published.');
-        }
-
-        // Database Setup
-        if (! (Schema::hasTable('migrations') && Schema::hasTable('users'))) {
-            $this->comment(PHP_EOL.'Creating your database...');
-            $exitCode = Artisan::call('migrate', [
-                '--seed' => true,
+        // config
+        Artisan::call('canvas:publish:config', [
+            '--y' => true,
+            '--force' => $force,
+        ]);
+        // database
+        Artisan::call('canvas:publish:migrations', [
+            '--y' => true,
+            '--force' => $force,
+        ]);
+        // public
+        Artisan::call('canvas:publish:assets', [
+            '--y' => true,
+            '--force' => $force,
+        ]);
+        // views
+        if ($withViews) {
+            Artisan::call('canvas:publish:views', [
+                '--y' => true,
+                '--force' => $force,
             ]);
-            $this->progress(5);
-            $this->line(PHP_EOL.'<info>✔</info> Success! Your database is set up and configured.');
         }
 
         $this->comment(PHP_EOL.'Please provide the following information. Don\'t worry, you can always change these settings later.');
@@ -157,15 +117,15 @@ class Install extends Command
 
         // Search Index
         $this->comment(PHP_EOL.'Building the search index...');
-        // if (file_exists(storage_path('posts.index'))) {
-        //     unlink(storage_path('posts.index'));
-        // }
-        // if (file_exists(storage_path('users.index'))) {
-        //     unlink(storage_path('users.index'));
-        // }
-        // if (file_exists(storage_path('tags.index'))) {
-        //     unlink(storage_path('tags.index'));
-        // }
+        if (file_exists(storage_path('posts.index'))) {
+            unlink(storage_path('posts.index'));
+        }
+        if (file_exists(storage_path('users.index'))) {
+            unlink(storage_path('users.index'));
+        }
+        if (file_exists(storage_path('tags.index'))) {
+            unlink(storage_path('tags.index'));
+        }
         $exitCode = Artisan::call('canvas:index');
         $this->progress(5);
         $this->line(PHP_EOL.'<info>✔</info> Success! The application search index has been built.');
@@ -192,120 +152,5 @@ class Install extends Command
         $this->table($headers, $data);
 
         $config->save();
-    }
-
-    private function progress($tasks)
-    {
-        $bar = $this->output->createProgressBar($tasks);
-
-        for ($i = 0; $i < $tasks; $i++) {
-            time_nanosleep(0, 200000000);
-            $bar->advance();
-        }
-
-        $bar->finish();
-    }
-
-    private function title($blogTitle)
-    {
-        $settings = new Settings();
-        $settings->setting_name = 'blog_title';
-        $settings->setting_value = $blogTitle;
-        $settings->save();
-        $this->comment('Saving blog title...');
-        $this->progress(1);
-    }
-
-    private function subtitle($blogSubtitle)
-    {
-        $settings = new Settings();
-        $settings->setting_name = 'blog_subtitle';
-        $settings->setting_value = $blogSubtitle;
-        $settings->save();
-        $this->comment('Saving blog subtitle...');
-        $this->progress(1);
-    }
-
-    private function description($blogDescription)
-    {
-        $settings = new Settings();
-        $settings->setting_name = 'blog_description';
-        $settings->setting_value = $blogDescription;
-        $settings->save();
-        $this->comment('Saving blog description...');
-        $this->progress(1);
-    }
-
-    private function seo($blogSeo)
-    {
-        $settings = new Settings();
-        $settings->setting_name = 'blog_seo';
-        $settings->setting_value = $blogSeo;
-        $settings->save();
-        $this->comment('Saving blog SEO keywords...');
-        $this->progress(1);
-    }
-
-    private function postsPerPage($postsPerPage, $config)
-    {
-        $config->set('posts_per_page', intval($postsPerPage));
-        $this->comment('Saving posts per page...');
-        $this->progress(1);
-    }
-
-    private function disqus()
-    {
-        $settings = new Settings();
-        $settings->setting_name = 'disqus_name';
-        $settings->setting_value = null;
-        $settings->save();
-    }
-
-    private function googleAnalytics()
-    {
-        $settings = new Settings();
-        $settings->setting_name = 'ga_id';
-        $settings->setting_value = null;
-        $settings->save();
-    }
-
-    private function twitterCardType()
-    {
-        $settings = new Settings();
-        $settings->setting_name = 'twitter_card_type';
-        $settings->setting_value = 'none';
-        $settings->save();
-    }
-
-    private function canvasVersion()
-    {
-        $settings = new Settings();
-        $settings->setting_name = 'canvas_version';
-        $settings->setting_value = config('blog.version');
-        $settings->save();
-    }
-
-    private function createUser($email, $password, $firstName, $lastName)
-    {
-        $user = new User();
-        $user->email = $email;
-        $user->password = bcrypt($password);
-        $user->first_name = $firstName;
-        $user->last_name = $lastName;
-        $user->display_name = $firstName.' '.$lastName;
-        $user->role = Helpers::ROLE_ADMINISTRATOR;
-        $user->save();
-
-        $this->author($user->display_name);
-        $this->comment('Saving admin information...');
-        $this->progress(1);
-    }
-
-    private function author($blogAuthor)
-    {
-        $settings = new Settings();
-        $settings->setting_name = 'blog_author';
-        $settings->setting_value = $blogAuthor;
-        $settings->save();
     }
 }

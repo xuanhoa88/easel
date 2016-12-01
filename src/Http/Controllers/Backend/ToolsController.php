@@ -84,7 +84,7 @@ class ToolsController extends Controller
             \RecursiveIteratorIterator::LEAVES_ONLY
         );
         foreach ($files as $name => $file) {
-            if (! $file->isDir()) {
+            if (!$file->isDir()) {
                 $filePath = $file->getRealPath();
                 $relativePath = substr($filePath, strlen($path) + 1);
                 $zip->addFile($filePath, $relativePath);
