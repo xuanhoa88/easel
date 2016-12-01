@@ -21,7 +21,7 @@
 
 ## Contributing
 
-Thank you for your interest in contributing to the core of Canvas! The [contribution guide](https://github.com/cnvs/easel/blob/master/CONTRIBUTING.md) provides instructions on how to [submit an issue](https://github.com/cnvs/easel/issues), [create pull requests](https://github.com/cnvs/easel/pulls) and more. It also has details about joining the official [HipChat group](https://cnvs.hipchat.com) for those who want to be a part of Canvas' future development.
+Thank you for considering contributing to the the core of Canvas! The contribution guide can be found in the [Canvas documentation](https://cnvs.readme.io/docs/contributing).
 
 ## Changelog
 
