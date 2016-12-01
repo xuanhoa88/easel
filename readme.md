@@ -29,4 +29,4 @@ Detailed changes for each release are documented in the [release notes](https://
 
 ## License
 
-Easel is open-sourced software licensed under the [MIT license](https://github.com/cnvs/easel/blob/master/LICENSE).
+Easel is open-sourced software licensed under the [MIT license](https://github.com/cnvs/easel/blob/master/license).
