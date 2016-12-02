@@ -74,7 +74,7 @@ class Install extends CanvasCommand
         }
 
         // Database Setup
-        if (!(Schema::hasTable('migrations') && Schema::hasTable('users'))) {
+        if (! (Schema::hasTable('migrations') && Schema::hasTable('users'))) {
             $this->comment(PHP_EOL.'Creating your database...');
             $exitCode = Artisan::call('migrate', [
                 '--seed' => true,

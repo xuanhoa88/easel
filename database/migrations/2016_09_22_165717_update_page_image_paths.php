@@ -13,7 +13,7 @@ class UpdatePageImagePaths extends Migration
     {
         \Canvas\Models\Post::chunk(20, function (\Illuminate\Support\Collection $posts) {
             $posts->each(function (\Canvas\Models\Post $post) {
-                if (!starts_with($post->page_image, '/storage/')) {
+                if (! starts_with($post->page_image, '/storage/')) {
                     $post->page_image = '/storage/'.$post->page_image;
                     $post->save();
                 }
