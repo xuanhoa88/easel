@@ -2,14 +2,10 @@
 
 namespace Canvas\Console\Commands;
 
-use Artisan;
 use Canvas\Helpers;
-use ConfigWriter;
 use Canvas\Models\User;
 use Canvas\Models\Settings;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\Validator;
 
 class CanvasCommand extends Command
 {
