@@ -2,6 +2,7 @@
 
 namespace Canvas\Console\Commands;
 
+use Schema;
 use Artisan;
 use ConfigWriter;
 use Canvas\Models\User;
@@ -70,6 +71,16 @@ class Install extends CanvasCommand
                 '--y' => true,
                 '--force' => $force,
             ]);
+        }
+
+        // Database Setup
+        if (!(Schema::hasTable('migrations') && Schema::hasTable('users'))) {
+            $this->comment(PHP_EOL.'Creating your database...');
+            $exitCode = Artisan::call('migrate', [
+                '--seed' => true,
+            ]);
+            $this->progress(5);
+            $this->line(PHP_EOL.'<info>✔</info> Success! Your database is set up and configured.');
         }
 
         $this->comment(PHP_EOL.'Please provide the following information. Don\'t worry, you can always change these settings later.');

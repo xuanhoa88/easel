@@ -17,3 +17,4 @@ phpunit.xml
 .DS_Store
 *.map
 npm-debug.log
+*.cache
