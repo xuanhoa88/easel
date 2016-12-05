@@ -19,7 +19,7 @@ class Views extends CanvasCommand
      *
      * @var string
      */
-    protected $description = 'Publish Canvas views.';
+    protected $description = 'Publish Canvas view files';
 
     /**
      * Create a new command instance.
@@ -43,7 +43,7 @@ class Views extends CanvasCommand
         $force = $this->option('force') ?: false;
 
         if (! $publish) {
-            $publish = $this->confirm('Publish Canvas core views?');
+            $publish = $this->confirm('Publish Canvas core view files?');
         }
 
         // publish
@@ -54,7 +54,7 @@ class Views extends CanvasCommand
                 '--force' => $force,
             ]);
             $this->progress(5);
-            $this->line(PHP_EOL.'<info>✔</info> Success! Canvas views published.');
+            $this->line(PHP_EOL.'<info>✔</info> Success! Canvas core view files have been published.');
         }
     }
 }

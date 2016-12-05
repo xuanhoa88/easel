@@ -19,7 +19,7 @@ class Config extends CanvasCommand
      *
      * @var string
      */
-    protected $description = 'Publish Canvas config.';
+    protected $description = 'Publish Canvas config files';
 
     /**
      * Create a new command instance.
@@ -43,7 +43,7 @@ class Config extends CanvasCommand
         $force = $this->option('force') ?: false;
 
         if (! $publish) {
-            $publish = $this->confirm('Publish Canvas core config?');
+            $publish = $this->confirm('Publish Canvas core config files?');
         }
 
         // publish
@@ -54,7 +54,7 @@ class Config extends CanvasCommand
                 '--force' => $force,
             ]);
             $this->progress(5);
-            $this->line(PHP_EOL.'<info>✔</info> Success! Canvas config published.');
+            $this->line(PHP_EOL.'<info>✔</info> Success! Canvas core config files have been published.');
         }
     }
 }
