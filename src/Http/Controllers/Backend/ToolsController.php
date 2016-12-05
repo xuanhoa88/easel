@@ -2,19 +2,19 @@
 
 namespace Canvas\Http\Controllers\Backend;
 
-use Canvas\Helpers;
 use Excel;
 use Session;
+use Canvas\Helpers;
 use Canvas\Models\Tag;
-use Canvas\Models\User;
 use Canvas\Models\Post;
+use Canvas\Models\User;
 use Canvas\Models\PostTag;
 use Canvas\Models\Settings;
 use Canvas\Models\Migrations;
 use Canvas\Models\PasswordResets;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Artisan;
 
 class ToolsController extends Controller
 {

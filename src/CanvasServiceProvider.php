@@ -2,14 +2,14 @@
 
 namespace Canvas;
 
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
-use Illuminate\Support\ServiceProvider;
 use Canvas\Console\Commands\Index;
 use Canvas\Console\Commands\Install;
+use Illuminate\Support\ServiceProvider;
+use Canvas\Console\Commands\Publish\Views;
+use Canvas\Console\Commands\Publish\Assets;
 use Canvas\Console\Commands\Publish\Config;
 use Canvas\Console\Commands\Publish\Migrations;
-use Canvas\Console\Commands\Publish\Assets;
-use Canvas\Console\Commands\Publish\Views;
+use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 
 class CanvasServiceProvider extends ServiceProvider
 {
