@@ -2,14 +2,14 @@
 
 namespace Canvas;
 
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
-use Illuminate\Support\ServiceProvider;
 use Canvas\Console\Commands\Index;
 use Canvas\Console\Commands\Install;
+use Illuminate\Support\ServiceProvider;
+use Canvas\Console\Commands\Publish\Views;
+use Canvas\Console\Commands\Publish\Assets;
 use Canvas\Console\Commands\Publish\Config;
 use Canvas\Console\Commands\Publish\Migrations;
-use Canvas\Console\Commands\Publish\Assets;
-use Canvas\Console\Commands\Publish\Views;
+use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 
 class CanvasServiceProvider extends ServiceProvider
 {
@@ -35,7 +35,7 @@ class CanvasServiceProvider extends ServiceProvider
     ];
 
     /**
-     * Public assets.
+     * Public asset files.
      */
     private function handleAssets()
     {
@@ -45,38 +45,38 @@ class CanvasServiceProvider extends ServiceProvider
     }
 
     /**
-     * Config.
+     * Configuration files.
      */
     private function handleConfigs()
     {
         $configPath = __DIR__.'/../config/canvas.php';
 
-        // allow publishing config, with tag: config
+        // Allow publishing the config file, with tag: config
         $this->publishes([$configPath => config_path('blog.php')], 'config');
 
-        // merge config;
-        // allowing any modifications from published config file to be seemlessly merged with default config
+        // Merge config files
+        // Allows any modifications from the published config file to be seamlessly merged with default config file
         $this->mergeConfigFrom($configPath, 'canvas');
     }
 
     /**
-     * Translations.
+     * Translation files.
      */
     private function handleTranslations()
     {
-        // load translations
+        // Load translations
         $this->loadTranslationsFrom(__DIR__.'/../lang', 'canvas');
     }
 
     /**
-     * Views.
+     * View files.
      */
     private function handleViews()
     {
-        // load views
+        // Load views
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'canvas');
 
-        // allow publishing views, with tag: views
+        // Allow publishing view files, with tag: views
         $this->publishes([
             __DIR__.'/../resources/views/auth' => base_path('resources/views/vendor/canvas/auth'),
             __DIR__.'/../resources/views/backend' => base_path('resources/views/vendor/canvas/backend'),
@@ -88,36 +88,36 @@ class CanvasServiceProvider extends ServiceProvider
     }
 
     /**
-     * Migrations.
+     * Migrations files.
      */
     private function handleMigrations()
     {
-        // allow publishing migrations, with tag: migrations
+        // Allow publishing migration files, with tag: migrations
         $this->publishes([__DIR__.'/../database/migrations' => base_path('database/migrations')], 'migrations');
     }
 
     /**
-     * Routes.
+     * Route files.
      */
     private function handleRoutes()
     {
-        // get the routes
+        // Get the routes
         require_once __DIR__.'/../routes/web.php';
     }
 
     /**
-     * Commands.
+     * Command files.
      */
     private function handleCommands()
     {
-        // register commands
+        // Register the commands
         if ($this->app->runningInConsole()) {
             $this->commands($this->commands);
         }
     }
 
     /**
-     * Register factories.
+     * Register factory files.
      *
      * @param  string  $path
      * @return void
