@@ -19,7 +19,7 @@ class Assets extends CanvasCommand
      *
      * @var string
      */
-    protected $description = 'Publish Canvas public assets.';
+    protected $description = 'Publish Canvas public assets';
 
     /**
      * Create a new command instance.
@@ -54,7 +54,7 @@ class Assets extends CanvasCommand
                 '--force' => $force,
             ]);
             $this->progress(5);
-            $this->line(PHP_EOL.'<info>✔</info> Success! Canvas public assets published.');
+            $this->line(PHP_EOL.'<info>✔</info> Success! Canvas core public assets have been published.');
         }
     }
 }
