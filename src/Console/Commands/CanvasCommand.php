@@ -104,9 +104,21 @@ class CanvasCommand extends Command
 
     protected function canvasVersion()
     {
+        $opts = [
+            'http' => [
+                'method' => 'GET',
+                'header' => [
+                    'User-Agent: PHP',
+                ],
+            ],
+        ];
+        $context = stream_context_create($opts);
+        $stream = file_get_contents('https://api.github.com/repos/cnvs/canvas/releases/latest', false, $context);
+        $release = json_decode($stream);
+
         $settings = new Settings();
         $settings->setting_name = 'canvas_version';
-        $settings->setting_value = config('blog.version');
+        $settings->setting_value = $release->name;
         $settings->save();
     }
 

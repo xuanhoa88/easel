@@ -43,29 +43,29 @@ class Install extends CanvasCommand
     {
         $config = new ConfigWriter('blog');
 
-        // gather options
+        // Gather options
         $force = $this->option('force') ?: false;
         $withViews = $this->option('views') ?: false;
 
-        // Welcome
+        // Welcome message
         $this->comment(PHP_EOL.'Welcome to Canvas! You\'ll be up and running in no time...');
 
-        // config
+        // Configuration
         Artisan::call('canvas:publish:config', [
             '--y' => true,
             '--force' => $force,
         ]);
-        // database
+        // Database
         Artisan::call('canvas:publish:migrations', [
             '--y' => true,
             '--force' => $force,
         ]);
-        // public
+        // Public
         Artisan::call('canvas:publish:assets', [
             '--y' => true,
             '--force' => $force,
         ]);
-        // views
+        // Views
         if ($withViews) {
             Artisan::call('canvas:publish:views', [
                 '--y' => true,
