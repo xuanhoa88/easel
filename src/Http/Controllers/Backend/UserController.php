@@ -6,8 +6,8 @@ use Canvas\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
-use Canvas\Http\Requests\UserUpdateRequest;
 use Canvas\Http\Requests\UserCreateRequest;
+use Canvas\Http\Requests\UserUpdateRequest;
 use Canvas\Http\Requests\PasswordUpdateRequest;
 
 class UserController extends Controller

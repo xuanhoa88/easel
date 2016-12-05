@@ -3,10 +3,10 @@
 namespace Canvas\Http\Middleware;
 
 use Closure;
-use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode as Original;
-use Illuminate\Routing\Route;
 use Session;
+use Illuminate\Routing\Route;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode as Original;
 
 class CheckForMaintenanceMode extends Original
 {

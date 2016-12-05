@@ -4,10 +4,10 @@ namespace Canvas\Http\Controllers\Frontend;
 
 use Auth;
 use Canvas\Models\Tag;
-use Canvas\Models\User;
 use Canvas\Models\Post;
-use Canvas\Jobs\BlogIndexData;
+use Canvas\Models\User;
 use Illuminate\Http\Request;
+use Canvas\Jobs\BlogIndexData;
 use App\Http\Controllers\Controller;
 
 class BlogController extends Controller
