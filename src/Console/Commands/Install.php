@@ -51,7 +51,7 @@ class Install extends CanvasCommand
         // Display the welcome message
         $this->comment(PHP_EOL.'Welcome to Canvas! You\'ll be up and running in no time...');
 
-        // Attempt to link storage/app/public folder to public/storage; 
+        // Attempt to link storage/app/public folder to public/storage;
         // this won't work on an OS without symlink support (e.g. Windows)
         try {
             Artisan::call('storage:link');
@@ -150,7 +150,7 @@ class Install extends CanvasCommand
                 unlink(storage_path('tags.index'));
             }
         } catch (Exception $e) {
-            $this->line(PHP_EOL.'<error>×</error> ' . $e->getMessage());
+            $this->line(PHP_EOL.'<error>×</error> '.$e->getMessage());
         }
         // build the new indices
         $exitCode = Artisan::call('canvas:index');
