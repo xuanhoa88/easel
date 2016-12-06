@@ -42,7 +42,7 @@ class Assets extends CanvasCommand
         $publish = $this->option('y') ?: false;
         $force = $this->option('force') ?: false;
 
-        if (! $publish) {
+        if (!$publish) {
             $publish = $this->confirm('Publish Canvas core public assets?');
         }
 

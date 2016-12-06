@@ -5,8 +5,6 @@
 /tests/report
 
 Thumbs.db
-composer.lock
-yarn.lock
 Homestead.yaml
 Homestead.json
 phpunit.xml
@@ -15,6 +13,5 @@ phpunit.xml
 .idea
 .project
 .DS_Store
-*.map
 npm-debug.log
 *.cache
