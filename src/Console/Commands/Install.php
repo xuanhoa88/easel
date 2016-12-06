@@ -4,6 +4,7 @@ namespace Canvas\Console\Commands;
 
 use Schema;
 use Artisan;
+use Exception;
 use ConfigWriter;
 use Canvas\Models\User;
 use Illuminate\Support\Facades\Validator;
@@ -49,6 +50,14 @@ class Install extends CanvasCommand
 
         // Display the welcome message
         $this->comment(PHP_EOL.'Welcome to Canvas! You\'ll be up and running in no time...');
+
+        // Attempt to link storage/app/public folder to public/storage; 
+        // this won't work on an OS without symlink support (e.g. Windows)
+        try {
+            Artisan::call('storage:link');
+        } catch (Exception $e) {
+            $this->comment(PHP_EOL.'Skipped linking storage/app/public folder to public/storage...');
+        }
 
         // Publish config files
         Artisan::call('canvas:publish:config', [
@@ -128,15 +137,22 @@ class Install extends CanvasCommand
 
         // Build the search index
         $this->comment(PHP_EOL.'Building the search index...');
-        if (file_exists(storage_path('posts.index'))) {
-            unlink(storage_path('posts.index'));
+        // attempt to remove existing idex files
+        // this might throw an exception
+        try {
+            if (file_exists(storage_path('posts.index'))) {
+                unlink(storage_path('posts.index'));
+            }
+            if (file_exists(storage_path('users.index'))) {
+                unlink(storage_path('users.index'));
+            }
+            if (file_exists(storage_path('tags.index'))) {
+                unlink(storage_path('tags.index'));
+            }
+        } catch (Exception $e) {
+            $this->line(PHP_EOL.'<error>×</error> ' . $e->getMessage());
         }
-        if (file_exists(storage_path('users.index'))) {
-            unlink(storage_path('users.index'));
-        }
-        if (file_exists(storage_path('tags.index'))) {
-            unlink(storage_path('tags.index'));
-        }
+        // build the new indices
         $exitCode = Artisan::call('canvas:index');
         $this->progress(5);
         $this->line(PHP_EOL.'<info>✔</info> Success! The application search index has been built.');
