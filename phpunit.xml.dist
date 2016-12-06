@@ -3,7 +3,6 @@
          backupStaticAttributes="false"
          beStrictAboutTestsThatDoNotTestAnything="true"
          beStrictAboutOutputDuringTests="true"
-         bootstrap="bootstrap/autoload.php"
          colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
@@ -14,7 +13,7 @@
          verbose="true"
 >
     <testsuites>
-        <testsuite name="Easel (Core code for Canvas) Test Suite">
+        <testsuite name="Easel Test Suite">
             <directory suffix="Test.php">./tests/</directory>
         </testsuite>
     </testsuites>
