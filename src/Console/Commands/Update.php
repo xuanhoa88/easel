@@ -18,7 +18,7 @@ class Update extends CanvasCommand
      *
      * @var string
      */
-    protected $description = 'Update Canvas';
+    protected $description = 'Update Canvas to the latest version';
 
     /**
      * Create a new command instance.
@@ -48,7 +48,7 @@ class Update extends CanvasCommand
         $latestVersion = $this->latestVersion();
 
         // Display the welcome message
-        $this->comment(PHP_EOL.'Welcome to Canvas Update Wizard! You\'ll be back at it in no time...');
+        $this->comment(PHP_EOL.'Welcome to the Canvas Update Wizard! You\'ll be back at it in no time...');
         $this->line(PHP_EOL.'Please note that this update uses composer and will adhere to the requirements set in "composer.json".');
 
         if ($currentVersion != $latestVersion
@@ -57,10 +57,10 @@ class Update extends CanvasCommand
             $this->comment(PHP_EOL.'Composer update...');
             $updateCore = shell_exec('cd '.base_path()."; composer update $packageName --no-scripts");
             $this->progress(5);
-            $this->line(PHP_EOL.'<info>✔</info> Success! Canvas core updated.');
+            $this->line(PHP_EOL.'<info>✔</info> Success! Canvas core has been updated.');
         }
 
-        if ($this->confirm(PHP_EOL.'Update canvas assets?')) {
+        if ($this->confirm(PHP_EOL.'Update canvas core assets?')) {
             // Don't link storage - assume storage is already linked
             // Don't publish config files - assume config has been set at install and modified afterwards
 
@@ -88,14 +88,14 @@ class Update extends CanvasCommand
             $this->line(PHP_EOL.'<info>✔</info> Success! Canvas core assets have been published.');
         }
 
-        $this->rebuildSearchIndices();
+        $this->rebuildSearchIndexes();
 
         // Additional blog settings
-        $this->comment(PHP_EOL.'Finishing update...');
+        $this->comment(PHP_EOL.'Finishing the update...');
         // Grab new version
         $newVersion = $this->canvasVersion();
         $this->progress(5);
-        $this->line(PHP_EOL.'<info>✔</info> Canvas has been updated!'.PHP_EOL);
+        $this->line(PHP_EOL.'<info>✔</info> Success! Canvas has been updated.'.PHP_EOL);
 
         // Display results
         $headers = ['Previous Version', 'New Version'];

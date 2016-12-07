@@ -49,7 +49,7 @@ class Install extends CanvasCommand
         $withViews = $this->option('views') ?: false;
 
         // Display the welcome message
-        $this->comment(PHP_EOL.'Welcome to Canvas! You\'ll be up and running in no time...');
+        $this->comment(PHP_EOL.'Welcome to the Canvas Install Wizard! You\'ll be up and running in no time...');
 
         // Attempt to link storage/app/public folder to public/storage;
         // this won't work on an OS without symlink support (e.g. Windows)
@@ -136,7 +136,7 @@ class Install extends CanvasCommand
         $this->line(PHP_EOL.'<info>✔</info> Success! The number of posts per page has been saved.');
 
         // Build the search index
-        $this->rebuildSearchIndices();
+        $this->rebuildSearchIndexes();
 
         // Generate a unique application key
         $this->comment(PHP_EOL.'Creating a unique application key...');
@@ -145,7 +145,7 @@ class Install extends CanvasCommand
         $this->line(PHP_EOL.'<info>✔</info> Success! A unique application key has been generated.');
 
         // Additional blog settings
-        $this->comment(PHP_EOL.'Finishing up the installation...');
+        $this->comment(PHP_EOL.'Finishing the installation...');
         $this->disqus();
         $this->googleAnalytics();
         $this->twitterCardType();
