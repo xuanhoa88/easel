@@ -2,7 +2,6 @@
 
 namespace Canvas\Console\Commands;
 
-use Schema;
 use Artisan;
 
 class Update extends CanvasCommand
@@ -46,14 +45,14 @@ class Update extends CanvasCommand
         // Grab version info
         $packageName = $this->packageName();
         $currentVersion = $oldVersion = $this->canvasVersion();
-        $latestVersion  = $this->latestVersion();
+        $latestVersion = $this->latestVersion();
 
         // Display the welcome message
         $this->comment(PHP_EOL.'Welcome to Canvas Update Wizard! You\'ll be back at it in no time...');
         $this->line(PHP_EOL.'Please note that this update uses composer and will adhere to the requirements set in "composer.json".');
 
-        if ($currentVersion != $latestVersion 
-            && $this->confirm(PHP_EOL."You are running Canvas core: $currentVersion. The latest version available is: $latestVersion.".PHP_EOL."Update Canvas core?")) {
+        if ($currentVersion != $latestVersion
+            && $this->confirm(PHP_EOL."You are running Canvas core: $currentVersion. The latest version available is: $latestVersion.".PHP_EOL.'Update Canvas core?')) {
             // Update core (Easel) package via composer.
             $this->comment(PHP_EOL.'Composer update...');
             $updateCore = shell_exec('cd '.base_path()."; composer update $packageName --no-scripts");
@@ -61,10 +60,10 @@ class Update extends CanvasCommand
             $this->line(PHP_EOL.'<info>✔</info> Success! Canvas core updated.');
         }
 
-        if ($this->confirm(PHP_EOL."Update canvas assets?")) {
+        if ($this->confirm(PHP_EOL.'Update canvas assets?')) {
             // Don't link storage - assume storage is already linked
             // Don't publish config files - assume config has been set at install and modified afterwards
-            
+
             // Publish database files
             Artisan::call('canvas:publish:migrations', [
                 '--y' => true,
@@ -75,7 +74,7 @@ class Update extends CanvasCommand
             Artisan::call('canvas:publish:assets', [
                 '--y' => true,
                 // Always update public assets
-                '--force' => true,  
+                '--force' => true,
             ]);
             // Publish view files
             if ($withViews) {
@@ -96,7 +95,7 @@ class Update extends CanvasCommand
         // Grab new version
         $newVersion = $this->canvasVersion();
         $this->progress(5);
-        $this->line(PHP_EOL."<info>✔</info> Canvas has been updated!".PHP_EOL);
+        $this->line(PHP_EOL.'<info>✔</info> Canvas has been updated!'.PHP_EOL);
 
         // Display results
         $headers = ['Previous Version', 'New Version'];

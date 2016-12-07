@@ -33,15 +33,15 @@ class CanvasHelper
 
     /**
      * Actions to be taken when user is successfully authenticated.
-     * 
+     *
      * @param Illuminate\Http\Request $request
-     * @param Canvas\Models\User $user 
+     * @param Canvas\Models\User $user
      * @return void
      */
     public static function authenticated(Request $request, User $user)
     {
         // Get and record latest version.
-        CanvasHelper::getLatestVersion();
+        self::getLatestVersion();
 
         // Set login message.
         Session::set('_login', trans('messages.login', ['display_name' => $user->display_name]));
@@ -53,7 +53,7 @@ class CanvasHelper
      * with a 403 Forbidden. As a workaround, we just return a hardcoded
      * string if the APP_ENV is set to testing.
      *
-     * @param boolean $update If set to true, latest version in DB will be updated.
+     * @param bool $update If set to true, latest version in DB will be updated.
      * @return string
      */
     public static function getLatestVersion($update = true)
@@ -76,7 +76,7 @@ class CanvasHelper
             // Save to Canvas Settings
             if ($update) {
                 $setting = Settings::updateOrCreate(
-                    ['setting_name' => 'latest_release'], 
+                    ['setting_name' => 'latest_release'],
                     ['setting_value' => $release->name]
                 );
             }
@@ -84,6 +84,7 @@ class CanvasHelper
             return $release->name;
         }
     }
+
     public static function getLatestRelease()
     {
         return self::getLatestVersion();
@@ -92,7 +93,7 @@ class CanvasHelper
     /**
      * Get the currently installed version of Canvas.
      *
-     * @param boolean $update If set to true, latest version in DB will be updated.
+     * @param bool $update If set to true, latest version in DB will be updated.
      * @return string
      */
     public static function getCurrentVersion($update = true)
@@ -104,7 +105,7 @@ class CanvasHelper
         $info = shell_exec('cd '.base_path()."; composer show | grep $packageName");
         if ($info) {
             list($packageName, $version, $extra) = array_map('trim', preg_split("/\s+/", $info));
-            if (substr($version, 0, 4) === "dev-") {
+            if (substr($version, 0, 4) === 'dev-') {
                 $version = "$version $extra";
             }
         }
@@ -112,17 +113,19 @@ class CanvasHelper
         // Save to Canvas Settings
         if ($update) {
             $setting = Settings::updateOrCreate(
-                ['setting_name' => 'canvas_version'], 
+                ['setting_name' => 'canvas_version'],
                 ['setting_value' => $version]
             );
         }
 
         return $version;
     }
+
     public static function getInstalledVersion()
     {
         return self::getCurrentVersion();
     }
+
     public static function getCurrentRelease()
     {
         return self::getCurrentVersion();
