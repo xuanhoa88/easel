@@ -4,13 +4,13 @@ namespace Canvas\Http\Controllers\Backend;
 
 use Excel;
 use Session;
-use Canvas\Helpers;
 use Canvas\Models\Tag;
 use Canvas\Models\Post;
 use Canvas\Models\User;
 use Canvas\Models\PostTag;
 use Canvas\Models\Settings;
 use Canvas\Models\Migrations;
+use Canvas\Helpers\CanvasHelper;
 use Canvas\Models\PasswordResets;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
@@ -34,7 +34,7 @@ class ToolsController extends Controller
     {
         $data = [
             'indexModified' => file_exists(storage_path('posts.index')) ? filemtime(storage_path('posts.index')) : false,
-            'status' => App::isDownForMaintenance() ? Helpers::MAINTENANCE_MODE_ENABLED : Helpers::MAINTENANCE_MODE_DISABLED,
+            'status' => App::isDownForMaintenance() ? CanvasHelper::MAINTENANCE_MODE_ENABLED : CanvasHelper::MAINTENANCE_MODE_DISABLED,
         ];
 
         return view('canvas::backend.tools.index', compact('data'));

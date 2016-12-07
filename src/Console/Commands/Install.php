@@ -16,7 +16,7 @@ class Install extends CanvasCommand
      *
      * @var string
      */
-    protected $signature = 'canvas:install {--views : Also publish Canvas views.} {--f|force : Overwrite any existing files.}';
+    protected $signature = 'canvas:install {--views : Also publish Canvas views.} {--f|force : Overwrite existing files.}';
 
     /**
      * The console command description.
@@ -136,26 +136,7 @@ class Install extends CanvasCommand
         $this->line(PHP_EOL.'<info>✔</info> Success! The number of posts per page has been saved.');
 
         // Build the search index
-        $this->comment(PHP_EOL.'Building the search index...');
-        // attempt to remove existing idex files
-        // this might throw an exception
-        try {
-            if (file_exists(storage_path('posts.index'))) {
-                unlink(storage_path('posts.index'));
-            }
-            if (file_exists(storage_path('users.index'))) {
-                unlink(storage_path('users.index'));
-            }
-            if (file_exists(storage_path('tags.index'))) {
-                unlink(storage_path('tags.index'));
-            }
-        } catch (Exception $e) {
-            $this->line(PHP_EOL.'<error>×</error> '.$e->getMessage());
-        }
-        // build the new indices
-        $exitCode = Artisan::call('canvas:index');
-        $this->progress(5);
-        $this->line(PHP_EOL.'<info>✔</info> Success! The application search index has been built.');
+        $this->rebuildSearchIndices();
 
         // Generate a unique application key
         $this->comment(PHP_EOL.'Creating a unique application key...');

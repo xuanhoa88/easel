@@ -2,8 +2,8 @@
 
 namespace Canvas\Models;
 
-use Canvas\Helpers;
 use Laravel\Scout\Searchable;
+use Canvas\Helpers\CanvasHelper;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -58,7 +58,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public static function isAdmin($role)
     {
-        return $role === Helpers::ROLE_ADMINISTRATOR ? true : false;
+        return $role === CanvasHelper::ROLE_ADMINISTRATOR ? true : false;
     }
 
     /**

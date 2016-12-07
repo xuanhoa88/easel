@@ -3,7 +3,9 @@
 namespace Canvas;
 
 use Canvas\Console\Commands\Index;
+use Canvas\Console\Commands\Update;
 use Canvas\Console\Commands\Install;
+use Canvas\Console\Commands\Version;
 use Illuminate\Support\ServiceProvider;
 use Canvas\Console\Commands\Publish\Views;
 use Canvas\Console\Commands\Publish\Assets;
@@ -28,9 +30,11 @@ class CanvasServiceProvider extends ServiceProvider
     protected $commands = [
         Index::class,
         Install::class,
+        Update::class,
         Config::class,
         Migrations::class,
         Assets::class,
+        Version::class,
         Views::class,
     ];
 

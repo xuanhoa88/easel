@@ -12,7 +12,7 @@ class Assets extends CanvasCommand
      *
      * @var string
      */
-    protected $signature = 'canvas:publish:assets {--y|y : Skip question?} {--f|force : Overwrite any existing files.}';
+    protected $signature = 'canvas:publish:assets {--y|y : Skip question?} {--f|force : Overwrite existing files.}';
 
     /**
      * The console command description.
