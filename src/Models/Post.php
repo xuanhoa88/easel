@@ -35,7 +35,7 @@ class Post extends Model
         'meta_description',
         'is_draft',
         'layout',
-        'published_at'
+        'published_at',
     ];
 
     /**
@@ -47,7 +47,7 @@ class Post extends Model
         'title',
         'subtitle',
         'content_raw',
-        'meta_description'
+        'meta_description',
     ];
 
     /**
