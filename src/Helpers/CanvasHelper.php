@@ -40,10 +40,10 @@ class CanvasHelper
      */
     public static function authenticated(Request $request, User $user)
     {
-        // Get and record latest version.
+        // Get and record latest version
         self::getLatestVersion();
 
-        // Set login message.
+        // Set login message
         Session::set('_login', trans('messages.login', ['display_name' => $user->display_name]));
     }
 
@@ -73,7 +73,7 @@ class CanvasHelper
             $stream = file_get_contents('https://api.github.com/repos/cnvs/easel/releases/latest', false, $context);
             $release = json_decode($stream);
 
-            // Save to Canvas Settings
+            // Save to the database
             if ($update) {
                 $setting = Settings::updateOrCreate(
                     ['setting_name' => 'latest_release'],
@@ -101,7 +101,7 @@ class CanvasHelper
         $packageName = self::CORE_PACKAGE;
         $version = 'Unknown';
 
-        // Retrieve core (Easel) package info from composer.
+        // Retrieve core (Easel) package info from composer
         $info = shell_exec('cd '.base_path()."; composer show | grep $packageName");
         if ($info) {
             list($packageName, $version, $extra) = array_map('trim', preg_split("/\s+/", $info));
@@ -110,7 +110,7 @@ class CanvasHelper
             }
         }
 
-        // Save to Canvas Settings
+        // Save to the database
         if ($update) {
             $setting = Settings::updateOrCreate(
                 ['setting_name' => 'canvas_version'],

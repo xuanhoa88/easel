@@ -30,7 +30,29 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @var array
      */
-    protected $fillable = ['first_name', 'last_name', 'display_name', 'url', 'twitter', 'facebook', 'github', 'linkedin', 'resume_cv', 'address', 'city', 'country', 'bio', 'job', 'phone', 'gender', 'relationship', 'birthday', 'email', 'password', 'role'];
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'display_name',
+        'role',
+        'url',
+        'twitter',
+        'facebook',
+        'github',
+        'linkedin',
+        'resume_cv',
+        'address',
+        'city',
+        'country',
+        'bio',
+        'job',
+        'phone',
+        'gender',
+        'relationship',
+        'birthday',
+        'email',
+        'password'
+    ];
 
     /**
      * Cast attributes to specific types.
