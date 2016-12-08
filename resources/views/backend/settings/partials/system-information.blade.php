@@ -28,6 +28,16 @@ WEB_SERVER:                 {{ $data['web_server'] }}
 PHP_MEMORY_LIMIT:           {{ $data['php_memory_limit'] }}
 PHP_TIME_LIMIT:             {{ $data['php_time_limit'] }}
 
+-- PHP Extensions
+
+cURL:                       {{ $data['curl'] }}
+cURL Version:               {{ $data['curl_version'] }}
+GD:                         {{ $data['gd'] }}
+PDO:                        {{ $data['pdo'] }}
+SQLite:                     {{ $data['sqlite'] }}
+OpenSSL:                    {{ $data['openssl'] }}
+MBString:                   {{ $data['mbstring'] }}
+
 -- Canvas Configuration
 
 CANVAS_VERSION:             {{ $data['version'] }}
