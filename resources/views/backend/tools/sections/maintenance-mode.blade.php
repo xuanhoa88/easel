@@ -9,7 +9,7 @@
         </h2>
     </div>
     <div class="card-body card-padding">
-        @if($data['status'] === \Canvas\Helpers::MAINTENANCE_MODE_DISABLED)
+        @if($data['status'] === \Canvas\Helpers\CanvasHelper::MAINTENANCE_MODE_DISABLED)
             <form class="form-inline" action="{{ url('admin/tools/enable_maintenance_mode') }}" method="POST">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <button class="btn btn-primary btn-icon-text" id="maintenance_mode">
