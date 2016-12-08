@@ -95,7 +95,7 @@ class Update extends CanvasCommand
         // Grab new version
         $newVersion = $this->canvasVersion();
         $this->progress(5);
-        $this->line(PHP_EOL.'<info>✔</info> Success! Canvas has been updated.'.PHP_EOL);
+        $this->line(PHP_EOL.'<info>✔</info> Canvas has been updated.'.PHP_EOL);
 
         // Display results
         $headers = ['Previous Version', 'New Version'];

@@ -154,6 +154,7 @@ class Install extends CanvasCommand
 
         $this->line(PHP_EOL.'<info>✔</info> Canvas has been installed. Pretty easy huh?'.PHP_EOL);
 
+        // Display user login information
         $headers = ['Login Email', 'Login Password'];
         $data = User::select('email', 'password')->get()->toArray();
         $data[0]['password'] = 'Your chosen password.';

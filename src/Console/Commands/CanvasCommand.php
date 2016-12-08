@@ -113,8 +113,8 @@ class CanvasCommand extends Command
 
     protected function latestVersion()
     {
-        // Get and save installed version to settings
-        // for future reference
+        // Get and save latest release available to
+        // settings for future reference
         return CanvasHelper::getLatestVersion();
     }
 
