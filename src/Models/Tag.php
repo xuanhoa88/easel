@@ -28,7 +28,7 @@ class Tag extends Model
         'meta_description',
         'reverse_direction',
         'created_at',
-        'updated_at'
+        'updated_at',
     ];
 
     /**
@@ -40,7 +40,7 @@ class Tag extends Model
         'tag',
         'title',
         'subtitle',
-        'meta_description'
+        'meta_description',
     ];
 
     /**
