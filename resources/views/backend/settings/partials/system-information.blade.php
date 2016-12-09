@@ -23,6 +23,10 @@ PHP_VERSION:                {{ $data['php_version'] }}
 DATABASE_CONNECTION:        {{ $data['db_connection'] }}
 WEB_SERVER:                 {{ $data['web_server'] }}
 
+-- User Browser
+
+User Agent String:          {{ $data['userAgentString'] }}
+
 -- PHP Configuration
 
 PHP_MEMORY_LIMIT:           {{ $data['php_memory_limit'] }}
@@ -31,12 +35,14 @@ PHP_TIME_LIMIT:             {{ $data['php_time_limit'] }}
 -- PHP Extensions
 
 cURL:                       {{ $data['curl'] }}
-cURL Version:               {{ $data['curl_version'] }}
+cURL Version:               {{ $data['curlVersion'] }}
 GD:                         {{ $data['gd'] }}
 PDO:                        {{ $data['pdo'] }}
 SQLite:                     {{ $data['sqlite'] }}
 OpenSSL:                    {{ $data['openssl'] }}
 MBString:                   {{ $data['mbstring'] }}
+Tokenizer:                  {{ $data['tokenizer'] }}
+Zip:                        {{ $data['zip'] }}
 
 -- Canvas Configuration
 
