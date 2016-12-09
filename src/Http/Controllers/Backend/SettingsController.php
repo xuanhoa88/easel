@@ -35,6 +35,16 @@ class SettingsController extends Controller
             'web_server' => $_SERVER['SERVER_SOFTWARE'],
             'last_index' => date('Y-m-d H:i:s', file_exists(storage_path('posts.index')) ? filemtime(storage_path('posts.index')) : false),
             'version' => (! empty(Settings::canvasVersion())) ? Settings::canvasVersion() : 'Less than or equal to v2.1.7',
+            'curl' => (in_array('curl', get_loaded_extensions()) ? 'Supported' : 'Not Supported'),
+            'curlVersion' => curl_version()['libz_version'],
+            'gd' => (in_array('gd', get_loaded_extensions()) ? 'Supported' : 'Not Supported'),
+            'pdo' => (in_array('PDO', get_loaded_extensions()) ? 'Installed' : 'Not Installed'),
+            'sqlite' => (in_array('sqlite3', get_loaded_extensions()) ? 'Installed' : 'Not Installed'),
+            'openssl' => (in_array('openssl', get_loaded_extensions()) ? 'Installed' : 'Not Installed'),
+            'mbstring' => (in_array('mbstring', get_loaded_extensions()) ? 'Installed' : 'Not Installed'),
+            'tokenizer' => (in_array('tokenizer', get_loaded_extensions()) ? 'Installed' : 'Not Installed'),
+            'zip' => (in_array('zip', get_loaded_extensions()) ? 'Installed' : 'Not Installed'),
+            'userAgentString' => $_SERVER['HTTP_USER_AGENT'],
         ];
 
         return view('canvas::backend.settings.index', compact('data'));

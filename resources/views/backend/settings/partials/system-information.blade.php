@@ -11,20 +11,42 @@
 
 ## Please include this information when requesting technical support ##
 
-CANVAS_VERSION:             {{ $data['version'] }}
+-- Site Info
 
 SITE_URL:                   {{ $data['url'] }}
 SITE_IP:                    {{ $data['ip'] }}
 SITE_TIMEZONE:              {{ $data['timezone'] }}
 
+-- Webserver Configuration
+
 PHP_VERSION:                {{ $data['php_version'] }}
+DATABASE_CONNECTION:        {{ $data['db_connection'] }}
+WEB_SERVER:                 {{ $data['web_server'] }}
+
+-- User Browser
+
+User Agent String:          {{ $data['userAgentString'] }}
+
+-- PHP Configuration
+
 PHP_MEMORY_LIMIT:           {{ $data['php_memory_limit'] }}
 PHP_TIME_LIMIT:             {{ $data['php_time_limit'] }}
 
-DATABASE_CONNECTION:        {{ $data['db_connection'] }}
+-- PHP Extensions
 
-WEB_SERVER:                 {{ $data['web_server'] }}
+cURL:                       {{ $data['curl'] }}
+cURL Version:               {{ $data['curlVersion'] }}
+GD:                         {{ $data['gd'] }}
+PDO:                        {{ $data['pdo'] }}
+SQLite:                     {{ $data['sqlite'] }}
+OpenSSL:                    {{ $data['openssl'] }}
+MBString:                   {{ $data['mbstring'] }}
+Tokenizer:                  {{ $data['tokenizer'] }}
+Zip:                        {{ $data['zip'] }}
 
+-- Canvas Configuration
+
+CANVAS_VERSION:             {{ $data['version'] }}
 LAST_INDEX_RUN:             {{ $data['last_index'] }}
 
 ### End System Info ###
