@@ -49,7 +49,7 @@ class Update extends CanvasCommand
 
         // Display the welcome message
         $this->comment(PHP_EOL.'Welcome to the Canvas Update Wizard! You\'ll be back at it in no time...');
-        $this->line(PHP_EOL.'Please note that this update uses composer and will adhere to the requirements set in "composer.json".');
+        $this->comment(PHP_EOL.'Please note that this update uses composer and will adhere to the requirements set in "composer.json".');
 
         if ($currentVersion != $latestVersion
             && $this->confirm(PHP_EOL."You are running Canvas core: $currentVersion. The latest version available is: $latestVersion.".PHP_EOL.'Update Canvas core?')) {
@@ -62,6 +62,8 @@ class Update extends CanvasCommand
 
         // Update core assets
         if ($update) {
+            $this->comment(PHP_EOL.'Publishing core package assets...');
+
             // Don't link storage - assume storage is already linked
             // Don't publish config files - assume config has been set at install and modified afterwards
 
