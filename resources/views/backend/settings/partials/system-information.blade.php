@@ -19,9 +19,9 @@ SITE_TIMEZONE:              {{ $data['timezone'] }}
 
 -- Webserver Configuration
 
-PHP_VERSION:                {{ $data['php_version'] }}
-DATABASE_CONNECTION:        {{ $data['db_connection'] }}
-WEB_SERVER:                 {{ $data['web_server'] }}
+PHP_VERSION:                {{ $data['phpVersion'] }}
+DATABASE_CONNECTION:        {{ $data['dbConnection'] }}
+WEB_SERVER:                 {{ $data['webServer'] }}
 
 -- User Browser
 
@@ -29,8 +29,8 @@ User Agent String:          {{ $data['userAgentString'] }}
 
 -- PHP Configuration
 
-PHP_MEMORY_LIMIT:           {{ $data['php_memory_limit'] }}
-PHP_TIME_LIMIT:             {{ $data['php_time_limit'] }}
+PHP_MEMORY_LIMIT:           {{ $data['phpMemoryLimit'] }}
+PHP_TIME_LIMIT:             {{ $data['phpTimeLimit'] }}
 
 -- PHP Extensions
 
@@ -47,7 +47,7 @@ Zip:                        {{ $data['zip'] }}
 -- Canvas Configuration
 
 CANVAS_VERSION:             {{ $data['version'] }}
-LAST_INDEX_RUN:             {{ $data['last_index'] }}
+LAST_INDEX_RUN:             {{ $data['lastIndex'] }}
 
 ### End System Info ###
             </code>
