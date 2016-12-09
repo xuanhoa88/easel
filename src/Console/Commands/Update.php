@@ -55,12 +55,13 @@ class Update extends CanvasCommand
             && $this->confirm(PHP_EOL."You are running Canvas core: $currentVersion. The latest version available is: $latestVersion.".PHP_EOL.'Update Canvas core?')) {
             // Update core (Easel) package via composer
             $this->comment(PHP_EOL.'Composer update...');
-            $updateCore = shell_exec('cd '.base_path()."; composer update $packageName --no-scripts");
+            $updateCore = shell_exec('cd '.base_path()."; composer update $packageName --quiet");
             $this->progress(5);
             $this->line(PHP_EOL.'<info>✔</info> Success! Canvas core has been updated.');
-        }
+        }  
 
-        if ($this->confirm(PHP_EOL.'Update canvas core assets?')) {
+        // Update core assets
+        if ($update) {
             // Don't link storage - assume storage is already linked
             // Don't publish config files - assume config has been set at install and modified afterwards
 
