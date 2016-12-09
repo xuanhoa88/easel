@@ -4,12 +4,11 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Canvas Configuration : Blog Index Page
+    | Canvas Configuration : Blog Posts Per Page
     |--------------------------------------------------------------------------
     |
     | Pretty self-explanatory here. Indicate how many posts you would like
-    | to appear on each page. If you are using Disqus, specify the
-    | identifier in your .env file.
+    | to appear on each page.
     |
     */
     'posts_per_page' => 6,
@@ -23,7 +22,7 @@ return [
     | the application, we need to trim the width of them and simply
     | add an ellipses at the trim point.
     |
-    | backend_trim_width: NOT IN USE
+    | backend_trim_width: NOT CURRENTLY IN USE
     | frontend_trim_width: Used in the individual post view template
     |
     */
