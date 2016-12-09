@@ -58,7 +58,7 @@ class Update extends CanvasCommand
             $updateCore = shell_exec('cd '.base_path()."; composer update $packageName --quiet");
             $this->progress(5);
             $this->line(PHP_EOL.'<info>✔</info> Success! Canvas core has been updated.');
-        }  
+        }
 
         // Update core assets
         if ($update) {
