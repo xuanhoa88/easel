@@ -61,12 +61,7 @@ Route::group([
         ],
     ]);
 
-    Route::resource('admin/search', 'SearchController', [
-        'only' => ['index'],
-        'names' => [
-            'index' => 'admin.search.index',
-        ],
-    ]);
+    Route::get('admin/search', 'SearchController@index')->name('admin.search.index');
 
     Route::get('admin/help', 'HelpController@index');
 
