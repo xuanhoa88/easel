@@ -1,18 +1,20 @@
 <?php
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+
 class AuthenticationTest extends TestCase
 {
-    use InteractsWithDatabase, CreatesUser;
+    use InteractsWithDatabase, CreatesUser, FunctionalTestTrait;
 
     /** @test */
     public function it_validates_the_login_form()
     {
-        $this->visit('/admin')
+        $this->visit('/login')
             ->type('foo@bar.com', 'email')
             ->type('secret', 'password')
             ->press('submit')
             ->dontSeeIsAuthenticated()
-            ->seePageIs('/admin');
+            ->seePageIs('/login');
         $this->see('These credentials do not match our records.');
     }
 

@@ -8,7 +8,7 @@ use Canvas\Models\Post;
 use Canvas\Models\User;
 use Canvas\Models\Settings;
 use Illuminate\Support\Facades\App;
-use App\Http\Controllers\Controller;
+use Canvas\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {

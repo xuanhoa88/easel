@@ -14,7 +14,7 @@ trait InteractsWithDatabase
      *
      * @return void
      */
-    protected function setUp()
+    public function setUp()
     {
         parent::setUp();
 
@@ -25,7 +25,7 @@ trait InteractsWithDatabase
 
         $this->runDatabaseMigrations();
 
-        $this->seed(TestDatabaseSeeder::class);
+        #$this->seed(\Canvas\TestDatabaseSeeder::class);
     }
 
     /**

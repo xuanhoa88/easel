@@ -1,6 +1,10 @@
 <?php
 
-class TestCase extends Illuminate\Foundation\Testing\TestCase
+use Canvas\Models\Post;
+use Canvas\Models\Tag;
+use Canvas\Models\User;
+
+class TestCase extends \Orchestra\Testbench\TestCase
 {
     /**
      * The base URL to use while testing the application.
@@ -9,17 +13,51 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
      */
     protected $baseUrl = 'http://localhost';
 
-    /**
-     * Creates the application.
-     *
-     * @return \Illuminate\Foundation\Application
-     */
-    public function createApplication()
+
+    public function setUp()
     {
-        $app = require __DIR__.'/../bootstrap/app.php';
+        parent::setUp();
 
-        $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
+        // Disable search indexing to increase unit test speed...
+        Post::disableSearchSyncing();
+        Tag::disableSearchSyncing();
+        User::disableSearchSyncing();
 
-        return $app;
+        $this->loadMigrationsFrom([
+            '--database' => 'testing',
+            '--realpath' => realpath(__DIR__.'/../database/migrations'),
+        ]);
+
+        $this->setUpExtraTraits();
+
+        #$this->seed(\Canvas\TestDatabaseSeeder::class);
+    }
+
+    public function getEnvironmentSetUp($app)
+    {
+        // Set our custom user model...
+        $app['config']->set('auth.providers.users.model', User::class);
+    }
+
+
+    /**
+     * Load this packages service providers...
+     * @param \Illuminate\Foundation\Application $app
+     *
+     * @return array
+     */
+    protected function getPackageProviders($app)
+    {
+        return [\Canvas\CanvasServiceProvider::class];
+    }
+
+
+    private function setUpExtraTraits()
+    {
+        $uses = array_flip(class_uses_recursive(static::class));
+
+        if (isset($uses[FunctionalTestTrait::class])) {
+            $this->startFunctionalTestRequirements();
+        }
     }
 }

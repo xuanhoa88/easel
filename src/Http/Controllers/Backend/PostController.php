@@ -5,7 +5,7 @@ namespace Canvas\Http\Controllers\Backend;
 use Session;
 use Canvas\Models\Post;
 use Canvas\Jobs\PostFormFields;
-use App\Http\Controllers\Controller;
+use Canvas\Http\Controllers\Controller;
 use Canvas\Http\Requests\PostCreateRequest;
 use Canvas\Http\Requests\PostUpdateRequest;
 
