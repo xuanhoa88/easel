@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class AuthenticationTest extends TestCase
 {

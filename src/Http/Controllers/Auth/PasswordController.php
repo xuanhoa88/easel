@@ -8,11 +8,10 @@
 
 namespace Canvas\Http\Controllers\Auth;
 
-
-use \Auth;
-use Canvas\Http\Controllers\Controller;
-use \Session;
+use Auth;
+use Session;
 use Illuminate\Http\Request;
+use Canvas\Http\Controllers\Controller;
 
 class PasswordController extends Controller
 {

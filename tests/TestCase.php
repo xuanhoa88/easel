@@ -1,7 +1,7 @@
 <?php
 
-use Canvas\Models\Post;
 use Canvas\Models\Tag;
+use Canvas\Models\Post;
 use Canvas\Models\User;
 
 class TestCase extends \Orchestra\Testbench\TestCase
@@ -12,7 +12,6 @@ class TestCase extends \Orchestra\Testbench\TestCase
      * @var string
      */
     protected $baseUrl = 'http://localhost';
-
 
     public function setUp()
     {
@@ -30,7 +29,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
         $this->setUpExtraTraits();
 
-        #$this->seed(\Canvas\TestDatabaseSeeder::class);
+        //$this->seed(\Canvas\TestDatabaseSeeder::class);
     }
 
     public function getEnvironmentSetUp($app)
@@ -38,7 +37,6 @@ class TestCase extends \Orchestra\Testbench\TestCase
         // Set our custom user model...
         $app['config']->set('auth.providers.users.model', User::class);
     }
-
 
     /**
      * Load this packages service providers...
@@ -50,7 +48,6 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         return [\Canvas\CanvasServiceProvider::class];
     }
-
 
     private function setUpExtraTraits()
     {

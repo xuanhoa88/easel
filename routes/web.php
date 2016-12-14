@@ -105,7 +105,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::group([
         'namespace' => 'Canvas\Http\Controllers\Auth',
     ], function () {
-
         Route::get('login', 'LoginController@showLoginForm')->name('login');
 
         Route::group(['prefix' => 'auth'], function () {

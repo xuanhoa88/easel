@@ -8,14 +8,14 @@
 
 namespace Canvas\Http\Controllers\Auth;
 
-use \Session;
+use Session;
+use Validator;
 use Canvas\Helpers;
 use Canvas\Models\User;
 use Canvas\Models\Settings;
 use Illuminate\Http\Request;
 use Canvas\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Validator;
 
 class LoginController extends Controller
 {

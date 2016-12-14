@@ -8,9 +8,9 @@
 
 namespace Canvas\Http\Controllers\Auth;
 
-use Canvas\Http\Controllers\Controller;
+use Validator;
 use Canvas\Models\User;
-use \Validator;
+use Canvas\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller

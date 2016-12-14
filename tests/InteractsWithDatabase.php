@@ -25,7 +25,7 @@ trait InteractsWithDatabase
 
         $this->runDatabaseMigrations();
 
-        #$this->seed(\Canvas\TestDatabaseSeeder::class);
+        //$this->seed(\Canvas\TestDatabaseSeeder::class);
     }
 
     /**

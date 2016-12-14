@@ -169,7 +169,6 @@ class CanvasServiceProvider extends ServiceProvider
         $loader->alias('Excel', \Maatwebsite\Excel\Facades\Excel::class);
         $loader->alias('Settings', \Canvas\Models\Settings::class);
         $loader->alias('Helpers', \Canvas\Helpers::class);
-
     }
 
     /**

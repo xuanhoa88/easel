@@ -8,7 +8,6 @@
  */
 trait FunctionalTestTrait
 {
-
     /**
      * As we use laravel-elixirs "elixir" method in our views
      * PHP will squawk if the versioned files do not exist
