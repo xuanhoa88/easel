@@ -11,15 +11,18 @@
     "authors": [
         {
             "name": "Todd Austin",
-            "email": "austin.todd.j@gmail.com"
+            "email": "austin.todd.j@gmail.com",
+            "role": "Creator"
         },
         {
             "name": "Patrick Reid",
-            "email": "reliq@reliqarts.com"
+            "email": "reliq@reliqarts.com",
+            "role": "Developer"
         },
         {
             "name": "Talvinder Bansal",
-            "email": "talvbansal@hotmail.com"
+            "email": "talvbansal@hotmail.com",
+            "role": "Developer"
         }
     ],
     "require": {
