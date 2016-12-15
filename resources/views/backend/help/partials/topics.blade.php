@@ -4,6 +4,7 @@
         <ul id="help-intro">
             <li><a href="#posts">Posts</a></li>
             <li><a href="#tags">Tags</a></li>
+            <li><a href="#themes">Themes</a></li>
         </ul>
         <br>
     </div>
