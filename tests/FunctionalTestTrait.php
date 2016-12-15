@@ -21,6 +21,5 @@ trait FunctionalTestTrait
             '--y' => true,
             '--force' => true,
         ]);
-
     }
 }

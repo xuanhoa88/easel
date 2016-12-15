@@ -57,7 +57,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            \Canvas\CanvasServiceProvider::class
+            \Canvas\CanvasServiceProvider::class,
         ];
     }
 
