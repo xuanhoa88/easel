@@ -5,8 +5,8 @@ abbrev@1:
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.0.9.tgz#91b4792588a7738c25f35dd6f63752a2f8776135"
 
 accord@^0.26.3:
-  version "0.26.3"
-  resolved "https://registry.yarnpkg.com/accord/-/accord-0.26.3.tgz#7a6f07dfe204f67f0d48ee6c7b0fe40723183010"
+  version "0.26.4"
+  resolved "https://registry.yarnpkg.com/accord/-/accord-0.26.4.tgz#fc4c8d3ebab406a07cb28819b859651c44a92e80"
   dependencies:
     convert-source-map "^1.2.0"
     glob "^7.0.5"
@@ -871,8 +871,8 @@ debug-fabulous@0.0.X:
     object-assign "4.1.0"
 
 debug@^2.2.0, debug@2.X:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-2.4.1.tgz#ef2532d2753d282045c13c82ce47a09e56b91d53"
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-2.4.4.tgz#c04d17a654e9202464803f096153f70a6f31f4be"
   dependencies:
     ms "0.7.2"
 
@@ -3605,8 +3605,8 @@ sass-graph@^2.1.1:
     yargs "^4.7.1"
 
 sass-loader@^4.0.0:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-4.0.2.tgz#a616eb770366543e64f547c8630f39c4da75f15d"
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-4.1.0.tgz#fd8604c5bf90001b173bb27540e8f2f5ed64602b"
   dependencies:
     async "^2.0.1"
     loader-utils "^0.2.15"

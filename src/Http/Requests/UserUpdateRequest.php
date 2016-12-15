@@ -34,7 +34,7 @@ class UserUpdateRequest extends FormRequest
             'email' => [
                 'required',
                 'email',
-                Rule::unique('users')->ignore($email[0], 'email'),
+                Rule::unique('users')->ignore($email->first(), 'email'),
             ],
         ];
     }
