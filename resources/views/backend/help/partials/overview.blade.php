@@ -6,11 +6,11 @@
     </li>
     <li>
         <strong>Configure your website</strong> Visit the <a href="{{ url('admin/settings') }}">Settings</a> section, where you can
-                                                customize and configure all aspects of your site.
+                                                customize and configure all the options for your site.
     </li>
     <li>
         <strong>Customize your website design</strong> To change the "look and feel" of your blog, find out more information on
-        <a href="https://github.com/austintoddj/canvas#advanced-options" target="_blank">child themes</a>. You may create an entirely new theme or just stick with the default.
+        <a href="https://cnvs.readme.io/docs/advanced-options#section-themes" target="_blank">Official Themes</a>. You may create your very own theme, [grab a fresh one off the palette](https://github.com/cnvs/palette) or just stick with the default.
     </li>
     <li>
         <strong>Start posting content</strong> Finally, you can <a href="{{ url('admin/post/create') }}">add new content</a> to your blog.
