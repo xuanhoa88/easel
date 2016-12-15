@@ -106,12 +106,9 @@ Route::group(['middleware' => ['web']], function () {
         'namespace' => 'Canvas\Http\Controllers\Auth',
     ], function () {
         Route::get('login', 'LoginController@showLoginForm')->name('login');
-
-        Route::group(['prefix' => 'auth'], function () {
-            Route::post('login', 'LoginController@login')->name('auth.login.store');
-            Route::get('logout', 'LoginController@logout')->name('auth.logout');
-            Route::post('password', 'PasswordController@updatePassword');
-        });
+        Route::post('login', 'LoginController@login')->name('auth.login.store');
+        Route::get('logout', 'LoginController@logout')->name('auth.logout');
+        Route::post('password', 'PasswordController@updatePassword');
 
         Route::group(['prefix' => 'password'], function () {
             Route::get('forgot', 'ForgotPasswordController@showLinkRequestForm')->name('auth.password.forgot');

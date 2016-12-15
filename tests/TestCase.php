@@ -34,6 +34,16 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
     public function getEnvironmentSetUp($app)
     {
+        $app['path.base'] = realpath(__DIR__.'/../src');
+
+        $app['config']->set('database.default', 'test');
+        $app['config']->set('database.connections.test', [
+            'driver'   => 'sqlite',
+            'database' => ':memory:',
+            'prefix'   => '',
+            'strict'   => false,
+        ]);
+
         // Set our custom user model...
         $app['config']->set('auth.providers.users.model', User::class);
     }
@@ -46,7 +56,9 @@ class TestCase extends \Orchestra\Testbench\TestCase
      */
     protected function getPackageProviders($app)
     {
-        return [\Canvas\CanvasServiceProvider::class];
+        return [
+            \Canvas\CanvasServiceProvider::class
+        ];
     }
 
     private function setUpExtraTraits()

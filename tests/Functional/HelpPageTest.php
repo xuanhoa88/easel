@@ -2,7 +2,7 @@
 
 class HelpPageTest extends TestCase
 {
-    use InteractsWithDatabase, CreatesUser;
+    use CreatesUser, FunctionalTestTrait;
 
     /** @test */
     public function it_can_refresh_the_user_page()

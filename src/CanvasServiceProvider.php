@@ -102,7 +102,7 @@ class CanvasServiceProvider extends ServiceProvider
     private function handleRoutes()
     {
         // Get the routes
-        require_once __DIR__.'/../routes/web.php';
+        require realpath(__DIR__.'/../routes/web.php');
     }
 
     /**
@@ -154,8 +154,6 @@ class CanvasServiceProvider extends ServiceProvider
         $this->registerEloquentFactoriesFrom(__DIR__.'/../database/factories');
 
         // Register Service Providers...
-
-        // Canvas Aliases...
         $this->app->register(\Austintoddj\JsValidation\JsValidationServiceProvider::class);
         $this->app->register(\Laravel\Scout\ScoutServiceProvider::class);
         $this->app->register(\Maatwebsite\Excel\ExcelServiceProvider::class);
