@@ -55,7 +55,7 @@ class ExtensionManager
             // Load all packages installed by composer.
             $installed = json_decode($this->filesystem->get($this->app->basePath().'/vendor/composer/installed.json'), true);
             foreach ($installed as $package) {
-                if (!in_array(array_get($package, 'type'), self::TYPES) || empty(array_get($package, 'name'))) {
+                if (! in_array(array_get($package, 'type'), self::TYPES) || empty(array_get($package, 'name'))) {
                     continue;
                 }
                 // Instantiates an Extension object using the package path and composer.json file.

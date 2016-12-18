@@ -5,7 +5,6 @@ namespace Canvas\Console\Commands;
 use Schema;
 use Artisan;
 use Exception;
-use ConfigWriter;
 use Canvas\Models\User;
 use Canvas\Helpers\ConfigHelper;
 use Illuminate\Support\Facades\Validator;

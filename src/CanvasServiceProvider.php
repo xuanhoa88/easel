@@ -10,8 +10,8 @@ use Canvas\Console\Commands\Version;
 use Canvas\Console\Commands\Publish\Views;
 use Canvas\Console\Commands\Publish\Assets;
 use Canvas\Console\Commands\Publish\Config;
-use Canvas\Console\Commands\Publish\Migrations;
 use Canvas\Foundation\AbstractServiceProvider;
+use Canvas\Console\Commands\Publish\Migrations;
 use Canvas\Extensions\ExtensionsServiceProvider;
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 

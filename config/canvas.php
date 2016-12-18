@@ -61,5 +61,5 @@ return [
     | Holds a list of enabled extensions.
     |
     */
-    'extensions_enabled' => []
+    'extensions_enabled' => [],
 ];
