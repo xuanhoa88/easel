@@ -10,7 +10,7 @@ use Illuminate\Foundation\Application;
 class ExtensionManager
 {
     // Canvas Extension Types
-    const TYPES = ['canvas-core', 'canvas-extension', 'canvas-theme', 'library'];
+    const TYPES = ['canvas-core', 'canvas-extension', 'canvas-theme'];
 
     /**
      * @var Application
