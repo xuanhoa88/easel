@@ -2,18 +2,20 @@
 
 namespace Canvas;
 
+use Canvas\Helpers\ConfigHelper;
 use Canvas\Console\Commands\Index;
 use Canvas\Console\Commands\Update;
 use Canvas\Console\Commands\Install;
 use Canvas\Console\Commands\Version;
-use Illuminate\Support\ServiceProvider;
 use Canvas\Console\Commands\Publish\Views;
 use Canvas\Console\Commands\Publish\Assets;
 use Canvas\Console\Commands\Publish\Config;
 use Canvas\Console\Commands\Publish\Migrations;
+use Canvas\Foundation\AbstractServiceProvider;
+use Canvas\Extensions\ExtensionsServiceProvider;
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 
-class CanvasServiceProvider extends ServiceProvider
+class CanvasServiceProvider extends AbstractServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
@@ -56,7 +58,7 @@ class CanvasServiceProvider extends ServiceProvider
         $configPath = __DIR__.'/../config/canvas.php';
 
         // Allow publishing the config file, with tag: config
-        $this->publishes([$configPath => config_path('blog.php')], 'config');
+        $this->publishes([$configPath => config_path(ConfigHelper::FILENAME)], 'config');
 
         // Merge config files
         // Allows any modifications from the published config file to be seamlessly merged with default config file
@@ -156,6 +158,9 @@ class CanvasServiceProvider extends ServiceProvider
     {
         // Bindings...
         $this->registerEloquentFactoriesFrom(__DIR__.'/../database/factories');
+
+        // Additional service Providers
+        $this->app->register(ExtensionsServiceProvider::class);
     }
 
     /**

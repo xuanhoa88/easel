@@ -52,4 +52,14 @@ return [
     |
     */
     'tag_layout' => 'canvas::frontend.blog.index',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Canvas Configuration : Extensions
+    |--------------------------------------------------------------------------
+    |
+    | Holds a list of enabled extensions.
+    |
+    */
+    'extensions_enabled' => []
 ];

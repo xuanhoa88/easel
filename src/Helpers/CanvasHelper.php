@@ -5,6 +5,7 @@ namespace Canvas\Helpers;
 use Session;
 use Canvas\Models\User;
 use Canvas\Models\Settings;
+use Canvas\Extensions\ExtensionManager;
 use Illuminate\Http\Request;
 
 class CanvasHelper
@@ -70,7 +71,7 @@ class CanvasHelper
                 ],
             ];
             $context = stream_context_create($opts);
-            $stream = file_get_contents('https://api.github.com/repos/cnvs/easel/releases/latest', false, $context);
+            $stream  = file_get_contents('https://api.github.com/repos/cnvs/easel/releases/latest', false, $context);
             $release = json_decode($stream);
 
             // Save to Canvas Settings
@@ -98,8 +99,12 @@ class CanvasHelper
      */
     public static function getCurrentVersion($update = true)
     {
+        $extensionManager = new ExtensionManager(resolve('app'), resolve('files'));
         $packageName = self::CORE_PACKAGE;
         $version = 'Unknown';
+
+        $extensions = $extensionManager->getExtensions();
+        dd($extensions);
 
         // Retrieve core (Easel) package info from composer.
         $info = shell_exec('cd '.base_path()."; composer show | grep $packageName");

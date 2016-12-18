@@ -7,6 +7,7 @@ use Artisan;
 use Exception;
 use ConfigWriter;
 use Canvas\Models\User;
+use Canvas\Helpers\ConfigHelper;
 use Illuminate\Support\Facades\Validator;
 
 class Install extends CanvasCommand
@@ -42,7 +43,7 @@ class Install extends CanvasCommand
      */
     public function handle()
     {
-        $config = new ConfigWriter('blog');
+        $config = ConfigHelper::getWriter();
 
         // Get the options passed into the command
         $force = $this->option('force') ?: false;
