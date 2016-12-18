@@ -5,8 +5,8 @@ namespace Canvas\Helpers;
 use Session;
 use Canvas\Models\User;
 use Canvas\Models\Settings;
-use Canvas\Extensions\ExtensionManager;
 use Illuminate\Http\Request;
+use Canvas\Extensions\ExtensionManager;
 
 class CanvasHelper
 {
@@ -71,7 +71,7 @@ class CanvasHelper
                 ],
             ];
             $context = stream_context_create($opts);
-            $stream  = file_get_contents('https://api.github.com/repos/cnvs/easel/releases/latest', false, $context);
+            $stream = file_get_contents('https://api.github.com/repos/cnvs/easel/releases/latest', false, $context);
             $release = json_decode($stream);
 
             // Save to Canvas Settings
