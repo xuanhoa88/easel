@@ -6,6 +6,7 @@ use Auth;
 use Canvas\Models\Tag;
 use Canvas\Models\Post;
 use Canvas\Models\User;
+use Canvas\Models\Settings;
 use Illuminate\Http\Request;
 use Canvas\Jobs\BlogIndexData;
 use App\Http\Controllers\Controller;
@@ -23,8 +24,10 @@ class BlogController extends Controller
         $tag = $request->get('tag');
         $data = $this->dispatch(new BlogIndexData($tag));
         $layout = $tag ? Tag::layout($tag)->first() : config('blog.tag_layout');
+        $css = Settings::customCSS();
+        $js = Settings::customJS();
 
-        return view($layout, $data);
+        return view($layout, $data, compact('css', 'js'));
     }
 
     /**
@@ -40,6 +43,9 @@ class BlogController extends Controller
         $user = User::where('id', $post->user_id)->firstOrFail();
         $tag = $request->get('tag');
         $title = $post->title;
+        $css = Settings::customCSS();
+        $js = Settings::customJS();
+
         if ($tag) {
             $tag = Tag::whereTag($tag)->firstOrFail();
         }
@@ -48,6 +54,6 @@ class BlogController extends Controller
             return redirect('/blog');
         }
 
-        return view($post->layout, compact('post', 'tag', 'slug', 'title', 'user'));
+        return view($post->layout, compact('post', 'tag', 'slug', 'title', 'user', 'css', 'js'));
     }
 }
