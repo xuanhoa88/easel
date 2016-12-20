@@ -3,6 +3,7 @@
 namespace Canvas;
 
 use Canvas\Models\Settings;
+use Canvas\Console\Commands\Theme;
 use Canvas\Console\Commands\Index;
 use Canvas\Console\Commands\Update;
 use Canvas\Console\Commands\Install;
@@ -46,6 +47,7 @@ class CanvasServiceProvider extends ServiceProvider
         Assets::class,
         Version::class,
         Views::class,
+        Theme::class,
     ];
 
     /**
