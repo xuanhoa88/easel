@@ -46,6 +46,9 @@
 		"symfony/dom-crawler": "~3.0",
 		"symfony/css-selector": "~3.0"
 	},
+	"suggests": {
+		"cnvs/canvas-theme-paper-dark": "*"
+	},
 	"autoload": {
 		"classmap": [
 			"database"
@@ -60,8 +63,5 @@
 			"tests/CreatesUser.php",
 			"tests/InteractsWithDatabase.php"
 		]
-	},
-	"config": {
-        "minimum-stability": "dev"
-    }
+	}
 }
