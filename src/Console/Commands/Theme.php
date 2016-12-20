@@ -51,8 +51,8 @@ class Theme extends CanvasCommand
             }
         }
 
-         // Display results
-         $this->line('');
+        // Display results
+        $this->line('');
         $headers = ['Active Theme', 'Version'];
         $data = [[$activeTheme->getName(), $activeTheme->getVersion()]];
         $this->table($headers, $data);
