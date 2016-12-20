@@ -129,7 +129,7 @@ class Settings extends Model
     }
 
     /**
-     * Get the Twitter card type.
+     * Return the Twitter card type selected by the user.
      *
      * May be either of 'summary', 'summary_large_image' or 'none'
      *
@@ -138,5 +138,25 @@ class Settings extends Model
     public static function twitterCardType()
     {
         return $twitterCardType = self::where('setting_name', 'twitter_card_type')->pluck('setting_value')->first();
+    }
+
+    /**
+     * Return the custom CSS styles entered by the user.
+     *
+     * return @string
+     */
+    public static function customCSS()
+    {
+        return $customCSS = self::where('setting_name', 'custom_css')->pluck('setting_value')->first();
+    }
+
+    /**
+     * Return the custom JS scripts entered by the user.
+     *
+     * return @string
+     */
+    public static function customJS()
+    {
+        return $customJS = self::where('setting_name', 'custom_js')->pluck('setting_value')->first();
     }
 }

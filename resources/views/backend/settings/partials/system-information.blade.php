@@ -5,7 +5,7 @@
         </h2>
     </div>
     <div class="card-body card-padding">
-        <pre>
+        <pre id="system-info">
             <code>
 ### Begin System Info ###
 

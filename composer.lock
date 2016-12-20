@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "32d8bc9a1e93fa577219e846a127a54a",
-    "content-hash": "95356405fae51be156c1f444ec5f8fcd",
+    "hash": "60cfff2fdb9c65e2a21daaf9271c0e0e",
+    "content-hash": "2b5364779ff2dd9e258e65b777e3ebd4",
     "packages": [
         {
             "name": "austintoddj/laravel-jsvalidation",
@@ -716,16 +716,16 @@
         },
         {
             "name": "laravel/scout",
-            "version": "v1.1.12",
+            "version": "v2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/scout.git",
-                "reference": "9efc1d7b6e51216bbff6430ccef137a08b78fc13"
+                "reference": "2400432a48ec5d87eb39c08ee78dfa1bcfadefe6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/scout/zipball/9efc1d7b6e51216bbff6430ccef137a08b78fc13",
-                "reference": "9efc1d7b6e51216bbff6430ccef137a08b78fc13",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/2400432a48ec5d87eb39c08ee78dfa1bcfadefe6",
+                "reference": "2400432a48ec5d87eb39c08ee78dfa1bcfadefe6",
                 "shasum": ""
             },
             "require": {
@@ -739,7 +739,6 @@
             },
             "require-dev": {
                 "algolia/algoliasearch-client-php": "^1.10",
-                "elasticsearch/elasticsearch": "^2.2",
                 "mockery/mockery": "~0.9",
                 "phpunit/phpunit": "~5.0"
             },
@@ -750,7 +749,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "2.0-dev"
                 }
             },
             "autoload": {
@@ -775,7 +774,7 @@
                 "laravel",
                 "search"
             ],
-            "time": "2016-12-12 22:39:05"
+            "time": "2016-12-16 17:17:36"
         },
         {
             "name": "league/flysystem",
@@ -3600,16 +3599,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "4.0.3",
+            "version": "4.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "903fd6318d0a90b4770a009ff73e4a4e9c437929"
+                "reference": "c14196e64a78570034afd0b7a9f3757ba71c2a0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/903fd6318d0a90b4770a009ff73e4a4e9c437929",
-                "reference": "903fd6318d0a90b4770a009ff73e4a4e9c437929",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/c14196e64a78570034afd0b7a9f3757ba71c2a0a",
+                "reference": "c14196e64a78570034afd0b7a9f3757ba71c2a0a",
                 "shasum": ""
             },
             "require": {
@@ -3659,7 +3658,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-11-28 16:00:31"
+            "time": "2016-12-20 15:22:42"
         },
         {
             "name": "phpunit/php-file-iterator",

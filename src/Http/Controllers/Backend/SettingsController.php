@@ -25,6 +25,8 @@ class SettingsController extends Controller
             'disqus' => Settings::disqus(),
             'analytics' => Settings::gaId(),
             'twitterCardType' => Settings::twitterCardType(),
+            'custom_css' => Settings::customCSS(),
+            'custom_js' => Settings::customJS(),
             'url' => $_SERVER['HTTP_HOST'],
             'ip' => $_SERVER['REMOTE_ADDR'],
             'timezone' => env('APP_TIMEZONE'),
@@ -69,6 +71,8 @@ class SettingsController extends Controller
         Settings::updateOrCreate(['setting_name' => 'disqus_name'], ['setting_value' => $request->toArray()['disqus_name']]);
         Settings::updateOrCreate(['setting_name' => 'ga_id'], ['setting_value' => $request->toArray()['ga_id']]);
         Settings::updateOrCreate(['setting_name' => 'twitter_card_type'], ['setting_value' => $request->toArray()['twitter_card_type']]);
+        Settings::updateOrCreate(['setting_name' => 'custom_css'], ['setting_value' => $request->toArray()['custom_css']]);
+        Settings::updateOrCreate(['setting_name' => 'custom_js'], ['setting_value' => $request->toArray()['custom_js']]);
 
         Session::set('_update-settings', trans('messages.save_settings_success'));
 
