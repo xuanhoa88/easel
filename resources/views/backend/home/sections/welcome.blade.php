@@ -10,10 +10,10 @@
             <div class="col-sm-4">
                 <h5>Getting Started</h5>
                 <br>
-                <a href="https://github.com/austintoddj/canvas#advanced-options" target="_blank" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-invert-colors"></i> Create a Theme</a>
-                <br>
-                <br>
                 <a href="{{ url('admin/profile') }}" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-account"></i> Update your Profile</a>
+                <br>
+                <br>
+                <a href="{{ url('admin/settings') }}" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-settings"></i> Configure your Settings</a>
                 <br>
                 <br>
             </div>
