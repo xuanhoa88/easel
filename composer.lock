@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "60cfff2fdb9c65e2a21daaf9271c0e0e",
-    "content-hash": "2b5364779ff2dd9e258e65b777e3ebd4",
+    "hash": "897a01bafc8c74fd37cf3d539d458b46",
+    "content-hash": "9a14ce7195d0d8cb8ab333ce1fd9a7f3",
     "packages": [
         {
             "name": "austintoddj/laravel-jsvalidation",
@@ -2638,16 +2638,16 @@
         },
         {
             "name": "teamtnt/laravel-scout-tntsearch-driver",
-            "version": "v1.1.5",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/teamtnt/laravel-scout-tntsearch-driver.git",
-                "reference": "6e2f76d8db827d94097c2dc872c4fc39c2367746"
+                "reference": "e0fcd7cf53f638e4c9e01f1ab38fbb2f4ab328e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teamtnt/laravel-scout-tntsearch-driver/zipball/6e2f76d8db827d94097c2dc872c4fc39c2367746",
-                "reference": "6e2f76d8db827d94097c2dc872c4fc39c2367746",
+                "url": "https://api.github.com/repos/teamtnt/laravel-scout-tntsearch-driver/zipball/e0fcd7cf53f638e4c9e01f1ab38fbb2f4ab328e2",
+                "reference": "e0fcd7cf53f638e4c9e01f1ab38fbb2f4ab328e2",
                 "shasum": ""
             },
             "require": {
@@ -2692,7 +2692,7 @@
                 "search",
                 "tntsearch"
             ],
-            "time": "2016-10-24 10:53:08"
+            "time": "2016-12-19 17:13:11"
         },
         {
             "name": "teamtnt/tntsearch",
@@ -4603,7 +4603,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "teamtnt/laravel-scout-tntsearch-driver": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
