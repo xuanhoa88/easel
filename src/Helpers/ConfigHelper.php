@@ -14,6 +14,6 @@ class ConfigHelper extends CanvasHelper
      */
     public static function getWriter()
     {
-        return new ConfigWriter(basename(self::FILENAME), '.php');
+        return new ConfigWriter(basename(self::FILENAME, '.php'));
     }
 }

@@ -7,10 +7,15 @@ use Illuminate\Support\Collection;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Application;
 
+/**
+ * Manager for canvas extensions. Adopted from Flarum.
+ */
 class ExtensionManager
 {
-    // Canvas Extension Types
-    const TYPES = ['canvas-core', 'canvas-extension', 'canvas-theme'];
+    /**
+     * @var array Canvas Extension Types
+     */
+    const TYPES = ['canvas-extension', 'canvas-theme'];
 
     /**
      * @var Application
@@ -47,15 +52,16 @@ class ExtensionManager
     /**
      * @return Collection
      */
-    public function getExtensions()
+    public function getExtensions($types = false)
     {
+        $types = $types ?: self::TYPES;
         if (is_null($this->extensions) && $this->filesystem->exists($this->app->basePath().'/vendor/composer/installed.json')) {
             $extensions = new Collection();
 
             // Load all packages installed by composer.
             $installed = json_decode($this->filesystem->get($this->app->basePath().'/vendor/composer/installed.json'), true);
             foreach ($installed as $package) {
-                if (! in_array(array_get($package, 'type'), self::TYPES) || empty(array_get($package, 'name'))) {
+                if (! in_array(array_get($package, 'type'), $types) || empty(array_get($package, 'name'))) {
                     continue;
                 }
                 // Instantiates an Extension object using the package path and composer.json file.
@@ -69,7 +75,7 @@ class ExtensionManager
                 $extensions->put($extension->getId(), $extension);
             }
             $this->extensions = $extensions->sortBy(function ($extension, $name) {
-                return $extension->composerJsonAttribute('extra.canvas-extension.title');
+                return $extension->getExtensionProperty('title');
             });
         }
 
@@ -82,9 +88,9 @@ class ExtensionManager
      * @param string $name
      * @return Extension|null
      */
-    public function getExtension($name)
+    public function getExtension($name, $types = false)
     {
-        return $this->getExtensions()->get($name);
+        return $this->getExtensions($types)->get($name);
     }
 
     /**

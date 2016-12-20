@@ -5,24 +5,7 @@ namespace Canvas\Extensions;
 use Illuminate\Contracts\Support\Arrayable;
 
 /**
- * @property string $name
- * @property string $description
- * @property string $type
- * @property array  $keywords
- * @property string $homepage
- * @property string $time
- * @property string $license
- * @property array  $authors
- * @property array  $support
- * @property array  $require
- * @property array  $requireDev
- * @property array  $autoload
- * @property array  $autoloadDev
- * @property array  $conflict
- * @property array  $replace
- * @property array  $provide
- * @property array  $suggest
- * @property array  $extra
+ * An Extension. Adopted from Flarum.
  */
 class Extension implements Arrayable
 {
@@ -87,7 +70,7 @@ class Extension implements Arrayable
     protected function assignId()
     {
         list($vendor, $package) = explode('/', $this->name);
-        $package = str_replace(['canvas-ext-', 'canvas-'], '', $package);
+        $package = str_replace(['canvas-ext-', 'canvas-theme-', 'canvas-'], '', $package);
         $this->id = "$vendor-$package";
     }
 
@@ -155,7 +138,21 @@ class Extension implements Arrayable
      */
     public function getVersion()
     {
-        return $this->version;
+        $version = $this->version;
+        $dist = $this->__get('dist');
+        if (substr($version, 0, 4) === 'dev-') {
+            $version .= ' '.substr($dist['reference'], 0, 12);
+        }
+        return $version;
+    }
+
+    /**
+     * Get a property from canvas-extension section of extension json.
+     * @return string
+     */
+    public function getExtensionProperty($prop)
+    {
+        return $this->composerJsonAttribute("extra.canvas-extension.$prop");
     }
 
     /**
@@ -165,7 +162,7 @@ class Extension implements Arrayable
      */
     public function getIcon()
     {
-        if (($icon = $this->composerJsonAttribute('extra.canvas-theme.icon'))) {
+        if (($icon = $this->getExtensionProperty('icon'))) {
             if ($file = array_get($icon, 'image')) {
                 $file = $this->path.'/'.$file;
 
@@ -213,11 +210,33 @@ class Extension implements Arrayable
     }
 
     /**
+     * The readable name for the extension.
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->getExtensionProperty('title') ?: $this->getId();
+    }
+    public function getName()
+    {
+        return $this->getTitle();
+    }
+
+    /**
      * @return string
      */
     public function getPath()
     {
         return $this->path;
+    }
+
+    /**
+     * @return array
+     */
+    public function getComposerJson()
+    {
+        return $this->composerJson;
     }
 
     /**
@@ -247,13 +266,15 @@ class Extension implements Arrayable
      */
     public function toArray()
     {
-        return (array) array_merge([
+        return (array) array_merge($this->composerJson, [
             'id'            => $this->getId(),
+            'name'          => $this->getName(),
             'version'       => $this->getVersion(),
-            'path'          => $this->path,
+            'path'          => $this->getPath(),
+            'enabled'       => $this->isEnabled(),
             'icon'          => $this->getIcon(),
             'hasAssets'     => $this->hasAssets(),
             'hasMigrations' => $this->hasMigrations(),
-        ], $this->composerJson);
+        ]);
     }
 }

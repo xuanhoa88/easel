@@ -4,11 +4,27 @@ namespace Canvas\Http\Controllers\Backend;
 
 use Session;
 use Canvas\Models\Settings;
+use Canvas\Extensions\ThemeManager;
 use App\Http\Controllers\Controller;
 use Canvas\Http\Requests\SettingsUpdateRequest;
 
 class SettingsController extends Controller
 {
+    /**
+     * @var ThemeManager
+     */
+    protected $themeManager = null;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->themeManager = new ThemeManager(resolve('app'), resolve('files'));
+    }
+
     /**
      * Display the settings page.
      *
@@ -34,7 +50,11 @@ class SettingsController extends Controller
             'db_connection' => strtoupper(env('DB_CONNECTION')),
             'web_server' => $_SERVER['SERVER_SOFTWARE'],
             'last_index' => date('Y-m-d H:i:s', file_exists(storage_path('posts.index')) ? filemtime(storage_path('posts.index')) : false),
-            'version' => (! empty(Settings::canvasVersion())) ? Settings::canvasVersion() : 'Less than or equal to v2.1.7',
+            'version' => Settings::canvasVersion() ?: 'Less than or equal to v2.1.7',
+            'themes' => collect($this->themeManager->getThemes()->toArray())->pluck('name', 'id'),
+            'default_theme_name' => $this->themeManager->getDefaultThemeName(),
+            'active_theme' => $this->themeManager->getActiveTheme(),
+            'active_theme_theme' => $this->themeManager->getTheme($this->themeManager->getActiveTheme()),
         ];
 
         return view('canvas::backend.settings.index', compact('data'));
@@ -59,6 +79,9 @@ class SettingsController extends Controller
         Settings::updateOrCreate(['setting_name' => 'disqus_name'], ['setting_value' => $request->toArray()['disqus_name']]);
         Settings::updateOrCreate(['setting_name' => 'ga_id'], ['setting_value' => $request->toArray()['ga_id']]);
         Settings::updateOrCreate(['setting_name' => 'twitter_card_type'], ['setting_value' => $request->toArray()['twitter_card_type']]);
+
+        // Update theme
+        $this->themeManager->setActiveTheme($request->theme);
 
         Session::set('_update-settings', trans('messages.save_settings_success'));
 

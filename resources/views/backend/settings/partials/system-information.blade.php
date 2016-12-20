@@ -27,6 +27,8 @@ WEB_SERVER:                 {{ $data['web_server'] }}
 
 LAST_INDEX_RUN:             {{ $data['last_index'] }}
 
+THEME                       {{ $data['active_theme_theme']->getName().' '.$data['active_theme_theme']->getVersion() }}
+
 ### End System Info ###
             </code>
         </pre>

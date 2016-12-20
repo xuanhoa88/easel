@@ -4,23 +4,13 @@ namespace Canvas\Helpers;
 
 use Session;
 use Canvas\Models\User;
+use Canvas\Meta\Constants;
 use Canvas\Models\Settings;
 use Illuminate\Http\Request;
 use Canvas\Extensions\ExtensionManager;
 
-class CanvasHelper
+class CanvasHelper extends Constants
 {
-    // Roles
-    const ROLE_USER = 0;
-    const ROLE_ADMINISTRATOR = 1;
-
-    // Maintenance Mode
-    const MAINTENANCE_MODE_ENABLED = 0;
-    const MAINTENANCE_MODE_DISABLED = 1;
-
-    // Core Info
-    const CORE_PACKAGE = 'cnvs/easel';
-
     /**
      * Return 'checked' if true.
      *
@@ -99,20 +89,16 @@ class CanvasHelper
      */
     public static function getCurrentVersion($update = true)
     {
-        $extensionManager = new ExtensionManager(resolve('app'), resolve('files'));
+        $extMan = new ExtensionManager(resolve('app'), resolve('files'));
         $packageName = self::CORE_PACKAGE;
         $version = 'Unknown';
 
-        $extensions = $extensionManager->getExtensions();
-        dd($extensions);
-
-        // Retrieve core (Easel) package info from composer.
-        $info = shell_exec('cd '.base_path()."; composer show | grep $packageName");
-        if ($info) {
-            list($packageName, $version, $extra) = array_map('trim', preg_split("/\s+/", $info));
-            if (substr($version, 0, 4) === 'dev-') {
-                $version = "$version $extra";
-            }
+        // Retrieve core (Easel) package info.
+        $core = $extMan->getExtension(str_replace('/', '-', self::CORE_PACKAGE), ['canvas-core']);
+        $version = $core->getVersion();
+        $dist = $core->__get('dist');
+        if (substr($version, 0, 4) === 'dev-') {
+            $version .= ' '.substr($dist['reference'], 0, 12);
         }
 
         // Save to Canvas Settings

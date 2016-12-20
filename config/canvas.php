@@ -55,11 +55,11 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Canvas Configuration : Extensions
+    | Canvas Configuration : Extensions Enabled
     |--------------------------------------------------------------------------
     |
-    | Holds a list of enabled extensions.
+    | List of enabled extensions.
     |
     */
-    'extensions_enabled' => [],
+    'extensions_enabled' => '',
 ];
