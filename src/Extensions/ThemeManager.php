@@ -176,7 +176,7 @@ class ThemeManager extends ExtensionManager
         if ($themeId == 'default') {
             return $this->untheme();
         }
-        
+
         // Current Theme
         $currentTheme = $this->getTheme($currentThemeId = $this->getActive());
         // Chosen Theme

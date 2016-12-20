@@ -18,7 +18,7 @@ class Extension implements Arrayable
      * @var string
      */
     protected $id;
-    
+
     /**
      * The directory of this extension.
      *
