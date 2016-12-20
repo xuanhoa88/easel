@@ -30,7 +30,7 @@
         "illuminate/support": "5.*",
         "orchestra/testbench": "^3.3",
         "talvbansal/media-manager": "^2.0",
-        "laravel/scout": "^1.1",
+        "laravel/scout": "2.*",
         "teamtnt/laravel-scout-tntsearch-driver": "^1.1",
         "erusev/parsedown": "^1.6",
         "austintoddj/laravel-jsvalidation": "^1.0",
