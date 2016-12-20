@@ -29,7 +29,6 @@ class CanvasServiceProvider extends ServiceProvider
         Index::class,
         Install::class,
         Config::class,
-        Migrations::class,
         Assets::class,
         Views::class,
     ];
@@ -92,8 +91,8 @@ class CanvasServiceProvider extends ServiceProvider
      */
     private function handleMigrations()
     {
-        // Allow publishing migration files, with tag: migrations
-        $this->publishes([__DIR__.'/../database/migrations' => base_path('database/migrations')], 'migrations');
+        // Load migrations...
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 
     /**
