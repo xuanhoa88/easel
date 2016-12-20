@@ -26,7 +26,7 @@ class ThemeManager extends ExtensionManager
     /**
      * Publish a themes public assets. Themes MUST have public assets.
      * @param Theme $theme
-     * @return bool|boolean
+     * @return bool|bool
      */
     protected function publishThemePublic(Theme $theme)
     {
@@ -38,14 +38,14 @@ class ThemeManager extends ExtensionManager
     /**
      * Publish a themes views.
      * @param Theme $theme
-     * @param bool|boolean $clean Views directory is cleaned to ensure no interference with none theme views.
-     * @return bool|boolean
+     * @param bool|bool $clean Views directory is cleaned to ensure no interference with none theme views.
+     * @return bool|bool
      */
     protected function publishThemeViews(Theme $theme, $clean = true)
     {
         $target = base_path('resources/views/'.self::TARGET_DIR);
         // Skip the ordeal if theme doesn't have views
-        if (!$this->filesystem->exists($theme->getViewsDirectory())) {
+        if (! $this->filesystem->exists($theme->getViewsDirectory())) {
             return true;
         }
         // Clean views directory.
@@ -54,18 +54,19 @@ class ThemeManager extends ExtensionManager
         }
         // Publish theme views.
         $published = $this->filesystem->copyDirectory($theme->getViewsDirectory(), $target);
+
         return $published;
     }
 
     /**
      * Deactivate all themes. Set canvas to "unthemed" state.
-     * @return bool|boolean
+     * @return bool|bool
      */
     public function unTheme()
     {
         $publicTarget = public_path(self::TARGET_DIR);
         $publicSource = __DIR__.'/../../public';
-        $viewsTarget  = base_path('resources/views/'.self::TARGET_DIR);
+        $viewsTarget = base_path('resources/views/'.self::TARGET_DIR);
         // Clean Views
         $clean = $this->filesystem->deleteDirectory($viewsTarget) || true;
         // Clean Public assets
@@ -77,6 +78,7 @@ class ThemeManager extends ExtensionManager
             // Update DB Setting
             Settings::updateOrCreate(['setting_name' => self::ACTIVE_KEY], ['setting_value' => 'default']);
         }
+
         return $unthemed;
     }
 
@@ -91,13 +93,14 @@ class ThemeManager extends ExtensionManager
             $theme = new Theme($extension->getPath(), $extension->getComposerJson());
             $themes->put($theme->getId(), $theme);
         });
-        $themes->each(function($theme, $key) use ($activeTheme) {
+        $themes->each(function ($theme, $key) use ($activeTheme) {
             $theme->setInstalled(true);
             $theme->setVersion($theme->__get('version'));
             if ($key == $activeTheme) {
                 $theme->setEnabled(true);
             }
         });
+
         return $themes;
     }
 
@@ -111,10 +114,11 @@ class ThemeManager extends ExtensionManager
             'extra'   => [
                 'canvas-theme' => [
                     'title' => $this->getDefaultThemeName(),
-                ]
-            ]
+                ],
+            ],
         ]);
         $theme->setVersion(Constants::DEFAULT_THEME_VERSION);
+
         return $theme;
     }
 
@@ -138,6 +142,7 @@ class ThemeManager extends ExtensionManager
         if ($name == 'default') {
             return $this->getDefaultTheme();
         }
+
         return $this->getThemes()->get($name);
     }
 
@@ -150,6 +155,7 @@ class ThemeManager extends ExtensionManager
     {
         return $active = Settings::getByName(self::ACTIVE_KEY) ?: ($this->config->get(self::ACTIVE_KEY) ?: 'default');
     }
+
     public function getActiveTheme()
     {
         return $this->getActive();
@@ -159,7 +165,7 @@ class ThemeManager extends ExtensionManager
      * Assert/change active theme.
      *
      * @param array $enabled
-     * @return bool|boolean
+     * @return bool|bool
      */
     public function activateTheme($themeId)
     {
@@ -183,14 +189,18 @@ class ThemeManager extends ExtensionManager
         if (! $publicPublished && $viewsPublished) {
             // Reset to stable unthemed.
             $this->unTheme();
+
             return false;
         }
+
         return true;
     }
+
     public function setActiveTheme($id)
     {
         return $this->activateTheme($id);
     }
+
     public function theme($id)
     {
         return $this->activateTheme($id);

@@ -5,7 +5,7 @@ namespace Canvas\Meta;
 /**
  * A home for global Canvas constants.
  */
-class Constants 
+class Constants
 {
     /**
      * @constant(ROLE_USER)

@@ -75,7 +75,7 @@ class Theme extends Extension implements Arrayable
      */
     public function getSourceDirectories()
     {
-        return array_map(function($directory) {
+        return array_map(function ($directory) {
             return "{$this->getPath()}/$directory";
         }, $this->getExtensionProperty('directories') ?: self::SOURCE_DIRS);
     }

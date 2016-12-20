@@ -4,10 +4,10 @@ namespace Canvas;
 
 use Canvas\Helpers\ConfigHelper;
 use Canvas\Console\Commands\Index;
+use Canvas\Console\Commands\Theme;
 use Canvas\Console\Commands\Update;
 use Canvas\Console\Commands\Install;
 use Canvas\Console\Commands\Version;
-use Canvas\Console\Commands\Theme;
 use Canvas\Console\Commands\Publish\Views;
 use Canvas\Console\Commands\Publish\Assets;
 use Canvas\Console\Commands\Publish\Config;

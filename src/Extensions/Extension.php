@@ -143,6 +143,7 @@ class Extension implements Arrayable
         if (substr($version, 0, 4) === 'dev-') {
             $version .= ' '.substr($dist['reference'], 0, 12);
         }
+
         return $version;
     }
 
@@ -218,6 +219,7 @@ class Extension implements Arrayable
     {
         return $this->getExtensionProperty('title') ?: $this->getId();
     }
+
     public function getName()
     {
         return $this->getTitle();
