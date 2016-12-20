@@ -12,16 +12,31 @@
     "authors": [
         {
             "name": "Todd Austin",
-            "email": "austin.todd.j@gmail.com"
+            "email": "austin.todd.j@gmail.com",
+            "role": "Creator"
         },
         {
             "name": "Patrick Reid",
-            "email": "reliq@reliqarts.com"
+            "email": "reliq@reliqarts.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Talvinder Bansal",
+            "email": "talvbansal@hotmail.com",
+            "role": "Developer"
         }
     ],
     "require": {
         "php": ">=5.6.4",
-        "illuminate/support": "5.*"
+        "illuminate/support": "5.*",
+        "orchestra/testbench": "^3.3",
+        "talvbansal/media-manager": "^2.0",
+        "laravel/scout": "2.*",
+        "teamtnt/laravel-scout-tntsearch-driver": "^1.1",
+        "erusev/parsedown": "^1.6",
+        "austintoddj/laravel-jsvalidation": "^1.0",
+        "maatwebsite/excel": "^2.1",
+        "larapack/config-writer": "^1.0"
     },
     "require-dev": {
         "erikgall/eloquent-phpunit": "~1.0",
@@ -38,5 +53,12 @@
         "psr-4": {
             "Canvas\\": "src/"
         }
+    },
+    "autoload-dev": {
+      "classmap": [
+        "tests/TestCase.php",
+        "tests/CreatesUser.php",
+        "tests/InteractsWithDatabase.php"
+      ]
     }
 }

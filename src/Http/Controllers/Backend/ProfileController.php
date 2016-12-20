@@ -5,7 +5,7 @@ namespace Canvas\Http\Controllers\Backend;
 use Auth;
 use Session;
 use Canvas\Models\User;
-use App\Http\Controllers\Controller;
+use Canvas\Http\Controllers\Controller;
 use Canvas\Http\Requests\ProfileUpdateRequest;
 
 class ProfileController extends Controller

@@ -2,7 +2,7 @@
 
 namespace Canvas\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use Canvas\Http\Controllers\Controller;
 
 class UploadController extends Controller
 {

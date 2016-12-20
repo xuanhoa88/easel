@@ -113,8 +113,8 @@ class CanvasCommand extends Command
 
     protected function latestVersion()
     {
-        // Get and save installed version to settings
-        // for future reference
+        // Get and save latest release available to
+        // settings for future reference
         return CanvasHelper::getLatestVersion();
     }
 
@@ -147,12 +147,12 @@ class CanvasCommand extends Command
         $settings->save();
     }
 
-    protected function rebuildSearchIndices()
+    protected function rebuildSearchIndexes()
     {
         // Build the search index
         $this->comment(PHP_EOL.'Building the search index...');
-        // attempt to remove existing idex files
-        // this might throw an exception
+        // Attempt to remove existing index files
+        // This might throw an exception
         try {
             if (file_exists(storage_path('posts.index'))) {
                 unlink(storage_path('posts.index'));
@@ -166,7 +166,7 @@ class CanvasCommand extends Command
         } catch (Exception $e) {
             $this->line(PHP_EOL.'<error>×</error> '.$e->getMessage());
         }
-        // build the new indices
+        // Build the new indexes
         $exitCode = Artisan::call('canvas:index');
         $this->progress(5);
         $this->line(PHP_EOL.'<info>✔</info> Success! The application search index has been built.');

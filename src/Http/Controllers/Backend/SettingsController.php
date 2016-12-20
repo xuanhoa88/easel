@@ -5,7 +5,7 @@ namespace Canvas\Http\Controllers\Backend;
 use Session;
 use Canvas\Models\Settings;
 use Canvas\Extensions\ThemeManager;
-use App\Http\Controllers\Controller;
+use Canvas\Http\Controllers\Controller;
 use Canvas\Http\Requests\SettingsUpdateRequest;
 
 class SettingsController extends Controller
@@ -41,20 +41,32 @@ class SettingsController extends Controller
             'disqus' => Settings::disqus(),
             'analytics' => Settings::gaId(),
             'twitterCardType' => Settings::twitterCardType(),
-            'url' => $_SERVER['HTTP_HOST'],
-            'ip' => $_SERVER['REMOTE_ADDR'],
-            'timezone' => env('APP_TIMEZONE'),
-            'php_version' => phpversion(),
-            'php_memory_limit' => ini_get('memory_limit'),
-            'php_time_limit' => ini_get('max_execution_time'),
-            'db_connection' => strtoupper(env('DB_CONNECTION')),
-            'web_server' => $_SERVER['SERVER_SOFTWARE'],
-            'last_index' => date('Y-m-d H:i:s', file_exists(storage_path('posts.index')) ? filemtime(storage_path('posts.index')) : false),
-            'version' => Settings::canvasVersion() ?: 'Less than or equal to v2.1.7',
             'themes' => collect($this->themeManager->getThemes()->toArray())->pluck('name', 'id'),
             'default_theme_name' => $this->themeManager->getDefaultThemeName(),
             'active_theme' => $this->themeManager->getActiveTheme(),
             'active_theme_theme' => $this->themeManager->getTheme($this->themeManager->getActiveTheme()),
+            'custom_css' => Settings::customCSS(),
+            'custom_js' => Settings::customJS(),
+            'url' => $_SERVER['HTTP_HOST'],
+            'ip' => $_SERVER['REMOTE_ADDR'],
+            'timezone' => env('APP_TIMEZONE'),
+            'phpVersion' => phpversion(),
+            'phpMemoryLimit' => ini_get('memory_limit'),
+            'phpTimeLimit' => ini_get('max_execution_time'),
+            'dbConnection' => strtoupper(env('DB_CONNECTION')),
+            'webServer' => $_SERVER['SERVER_SOFTWARE'],
+            'lastIndex' => date('Y-m-d H:i:s', file_exists(storage_path('posts.index')) ? filemtime(storage_path('posts.index')) : false),
+            'version' => (! empty(Settings::canvasVersion())) ? Settings::canvasVersion() : 'Less than or equal to v2.1.7',
+            'curl' => (in_array('curl', get_loaded_extensions()) ? 'Supported' : 'Not Supported'),
+            'curlVersion' => curl_version()['libz_version'],
+            'gd' => (in_array('gd', get_loaded_extensions()) ? 'Supported' : 'Not Supported'),
+            'pdo' => (in_array('PDO', get_loaded_extensions()) ? 'Installed' : 'Not Installed'),
+            'sqlite' => (in_array('sqlite3', get_loaded_extensions()) ? 'Installed' : 'Not Installed'),
+            'openssl' => (in_array('openssl', get_loaded_extensions()) ? 'Installed' : 'Not Installed'),
+            'mbstring' => (in_array('mbstring', get_loaded_extensions()) ? 'Installed' : 'Not Installed'),
+            'tokenizer' => (in_array('tokenizer', get_loaded_extensions()) ? 'Installed' : 'Not Installed'),
+            'zip' => (in_array('zip', get_loaded_extensions()) ? 'Installed' : 'Not Installed'),
+            'userAgentString' => $_SERVER['HTTP_USER_AGENT'],
         ];
 
         return view('canvas::backend.settings.index', compact('data'));
@@ -79,11 +91,13 @@ class SettingsController extends Controller
         Settings::updateOrCreate(['setting_name' => 'disqus_name'], ['setting_value' => $request->toArray()['disqus_name']]);
         Settings::updateOrCreate(['setting_name' => 'ga_id'], ['setting_value' => $request->toArray()['ga_id']]);
         Settings::updateOrCreate(['setting_name' => 'twitter_card_type'], ['setting_value' => $request->toArray()['twitter_card_type']]);
+        Settings::updateOrCreate(['setting_name' => 'custom_css'], ['setting_value' => $request->toArray()['custom_css']]);
+        Settings::updateOrCreate(['setting_name' => 'custom_js'], ['setting_value' => $request->toArray()['custom_js']]);
+
+        Session::set('_update-settings', trans('messages.save_settings_success'));
 
         // Update theme
         $this->themeManager->setActiveTheme($request->theme);
-
-        Session::set('_update-settings', trans('messages.save_settings_success'));
 
         return redirect('admin/settings');
     }

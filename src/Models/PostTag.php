@@ -18,5 +18,10 @@ class PostTag extends Model
      *
      * @var array
      */
-    protected $fillable = ['post_id', 'tag_id', 'created_at', 'updated_at'];
+    protected $fillable = [
+        'post_id',
+        'tag_id',
+        'created_at',
+        'updated_at',
+    ];
 }
