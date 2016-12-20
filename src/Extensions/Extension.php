@@ -5,7 +5,7 @@ namespace Canvas\Extensions;
 use Illuminate\Contracts\Support\Arrayable;
 
 /**
- * An Extension. Adopted from Flarum.
+ * An Extension. Adapted from Flarum.
  */
 class Extension implements Arrayable
 {
@@ -18,6 +18,7 @@ class Extension implements Arrayable
      * @var string
      */
     protected $id;
+    
     /**
      * The directory of this extension.
      *

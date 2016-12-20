@@ -67,12 +67,14 @@ class ThemeManager extends ExtensionManager
         $publicTarget = public_path(self::TARGET_DIR);
         $publicSource = __DIR__.'/../../public';
         $viewsTarget = base_path('resources/views/'.self::TARGET_DIR);
+
         // Clean Views
         $clean = $this->filesystem->deleteDirectory($viewsTarget) || true;
         // Clean Public assets
         $clean = $clean && ($this->filesystem->cleanDirectory($publicTarget) || true);
         // Republish original/default public assets
         $unthemed = $clean && $this->filesystem->copyDirectory($publicSource, $publicTarget);
+
         // Actions to be taken after theme deactivation
         if ($unthemed) {
             // Update DB Setting
@@ -89,6 +91,7 @@ class ThemeManager extends ExtensionManager
     {
         $activeTheme = $this->getActive();
         $themes = new Collection;
+
         $themeExtensions = $this->getExtensions(self::TYPES)->each(function ($extension, $key) use ($themes) {
             $theme = new Theme($extension->getPath(), $extension->getComposerJson());
             $themes->put($theme->getId(), $theme);
@@ -173,6 +176,7 @@ class ThemeManager extends ExtensionManager
         if ($themeId == 'default') {
             return $this->untheme();
         }
+        
         // Current Theme
         $currentTheme = $this->getTheme($currentThemeId = $this->getActive());
         // Chosen Theme
@@ -181,6 +185,7 @@ class ThemeManager extends ExtensionManager
         if ($currentTheme->getId() != $themeId) {
             Settings::updateOrCreate(['setting_name' => self::ACTIVE_KEY], ['setting_value' => $themeId]);
         }
+
         // Merge assets
         $publicPublished = $this->publishThemePublic($theme);
         // Clear views and publish theme views

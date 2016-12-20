@@ -8,7 +8,7 @@ use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Application;
 
 /**
- * Manager for canvas extensions. Adopted from Flarum.
+ * Manager for canvas extensions. Adapted from Flarum.
  */
 class ExtensionManager
 {
