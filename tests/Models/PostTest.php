@@ -15,7 +15,6 @@ class PostTest extends EloquentTestCase
      */
     protected $model = 'Canvas\Models\Post';
 
-    /** @test */
     public function the_database_table_has_all_of_the_correct_columns()
     {
         $this->table->column('id')->integer()->increments();
@@ -31,7 +30,6 @@ class PostTest extends EloquentTestCase
         $this->table->hasTimestamps();
     }
 
-    /** @test */
     public function the_post_tag_table_relationship()
     {
         $this->resetTable('post_tag');
@@ -40,7 +38,6 @@ class PostTest extends EloquentTestCase
         $this->table->hasTimestamps();
     }
 
-    /** @test */
     public function it_has_the_correct_model_properties()
     {
         $this->hasFillable('title', 'subtitle', 'content_raw', 'page_image', 'meta_description', 'layout', 'is_draft', 'published_at', 'slug', 'user_id')
@@ -49,14 +46,12 @@ class PostTest extends EloquentTestCase
             ->belongsTo(User::class);
     }
 
-    /** @test */
     public function it_validates_the_post_create_form()
     {
         $this->callRouteAsUser('admin.post.store', null, ['title' => 'example'])
             ->assertSessionHasErrors();
     }
 
-    /** @test */
     public function it_can_create_a_post_and_save_it_to_the_database()
     {
         $data = [
@@ -77,7 +72,6 @@ class PostTest extends EloquentTestCase
               ->assertSessionMissing('errors');
     }
 
-    /** @test */
     public function it_can_edit_posts()
     {
         $this->callRouteAsUser('admin.post.edit', 1)
@@ -87,7 +81,6 @@ class PostTest extends EloquentTestCase
             ->seePostInDatabase();
     }
 
-    /** @test */
     public function it_can_preview_a_post()
     {
         $this->callRouteAsUser('admin.post.edit', 1)
@@ -96,7 +89,6 @@ class PostTest extends EloquentTestCase
              ->assertSessionMissing('errors');
     }
 
-    /** @test */
     public function it_can_delete_a_post_from_the_database()
     {
         $this->callRouteAsUser('admin.post.edit', 1)

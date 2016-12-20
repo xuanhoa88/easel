@@ -20,7 +20,6 @@ class UserTest extends EloquentTestCase
      */
     protected $seedDatabase = false;
 
-    /** @test */
     public function the_database_table_has_all_of_the_correct_columns()
     {
         $this->table->column('id')->integer()->increments()->index();
@@ -48,13 +47,11 @@ class UserTest extends EloquentTestCase
         $this->table->hasTimestamps();
     }
 
-    /** @test */
     public function it_has_the_correct_model_properties()
     {
         $this->hasFillable('first_name', 'last_name', 'display_name', 'url', 'twitter', 'facebook', 'github', 'linkedin', 'resume_cv', 'address', 'city', 'country', 'bio', 'job', 'phone', 'gender', 'relationship', 'birthday', 'email', 'password', 'role');
     }
 
-    /** @test */
     public function it_validates_the_user_create_form()
     {
         $this->actingAs($this->user)->post('admin/user/create', ['first_name' => 'foo']);
@@ -67,7 +64,6 @@ class UserTest extends EloquentTestCase
         $this->dontSeeInDatabase('users', ['first_name' => 'will', 'last_name' => 'notValidate']);
     }
 
-    /** @test */
     public function it_can_create_a_user_and_save_it_to_the_database()
     {
         $this->actingAs($this->user)
@@ -94,7 +90,6 @@ class UserTest extends EloquentTestCase
         $this->assertSessionMissing('errors');
     }
 
-    /** @test */
     public function it_can_edit_a_users_details()
     {
         $this->it_can_create_a_user_and_save_it_to_the_database();
@@ -108,7 +103,6 @@ class UserTest extends EloquentTestCase
             ->seeInDatabase('users', ['first_name' => 'New Name']);
     }
 
-    /** @test */
     public function it_can_delete_a_user_from_the_database()
     {
         $this->it_can_create_a_user_and_save_it_to_the_database();
@@ -122,7 +116,6 @@ class UserTest extends EloquentTestCase
             ->dontSeeInDatabase('users', ['first_name' => 'first']);
     }
 
-    /** @test */
     public function it_validates_the_user_password_update_form()
     {
         $this->it_can_create_a_user_and_save_it_to_the_database();
@@ -134,7 +127,6 @@ class UserTest extends EloquentTestCase
             ->seePageIs('admin/user/2/privacy');
     }
 
-    /** @test */
     public function it_can_update_a_users_password()
     {
         $this->it_can_create_a_user_and_save_it_to_the_database();

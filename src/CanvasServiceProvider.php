@@ -56,7 +56,7 @@ class CanvasServiceProvider extends ServiceProvider
 
         // Merge config files
         // Allows any modifications from the published config file to be seamlessly merged with default config file
-        $this->mergeConfigFrom($configPath, 'canvas');
+        $this->mergeConfigFrom($configPath, 'blog');
     }
 
     /**

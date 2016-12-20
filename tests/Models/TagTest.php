@@ -14,7 +14,6 @@ class TagTest extends EloquentTestCase
      */
     protected $model = 'Canvas\Models\Tag';
 
-    /** @test */
     public function the_database_table_has_all_of_the_correct_columns()
     {
         $this->table->column('id')->integer()->increments();
@@ -27,7 +26,6 @@ class TagTest extends EloquentTestCase
         $this->table->hasTimestamps();
     }
 
-    /** @test */
     public function it_has_the_correct_model_properties()
     {
         $this->belongsToMany(Post::class)
@@ -35,14 +33,12 @@ class TagTest extends EloquentTestCase
             ->hasFillable('tag', 'title', 'subtitle', 'meta_description', 'reverse_direction', 'created_at', 'updated_at');
     }
 
-    /** @test */
     public function it_validates_the_tag_create_form()
     {
         $this->actingAs($this->user)->post('admin/tag', ['title' => 'example']);
         $this->assertSessionHasErrors();
     }
 
-    /** @test */
     public function it_can_create_a_tag_and_save_it_to_the_database()
     {
         $this->actingAs($this->user)->post('admin/tag', [
@@ -67,7 +63,6 @@ class TagTest extends EloquentTestCase
         $this->assertRedirectedTo('admin/tag');
     }
 
-    /** @test */
     public function it_can_edit_tags()
     {
         $this->actingAs($this->user)
@@ -79,7 +74,6 @@ class TagTest extends EloquentTestCase
             ->seeInDatabase('tags', ['title' => 'Foo']);
     }
 
-    /** @test */
     public function it_can_delete_a_tag_from_the_database()
     {
         $this->actingAs($this->user)

@@ -27,9 +27,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
             '--realpath' => realpath(__DIR__.'/../database/migrations'),
         ]);
 
-        $this->setUpExtraTraits();
-
-        //$this->seed(\Canvas\TestDatabaseSeeder::class);
+        $this->seed(\Canvas\TestDatabaseSeeder::class);
     }
 
     public function getEnvironmentSetUp($app)
@@ -46,6 +44,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
         // Set our custom user model...
         $app['config']->set('auth.providers.users.model', User::class);
+
     }
 
     /**
@@ -61,12 +60,4 @@ class TestCase extends \Orchestra\Testbench\TestCase
         ];
     }
 
-    private function setUpExtraTraits()
-    {
-        $uses = array_flip(class_uses_recursive(static::class));
-
-        if (isset($uses[FunctionalTestTrait::class])) {
-            $this->startFunctionalTestRequirements();
-        }
-    }
 }
