@@ -8,13 +8,13 @@
 
 namespace Canvas\Http\Controllers\Auth;
 
-use Canvas\Helpers\CanvasHelper;
 use Session;
 use Validator;
 use Canvas\Helpers;
 use Canvas\Models\User;
 use Canvas\Models\Settings;
 use Illuminate\Http\Request;
+use Canvas\Helpers\CanvasHelper;
 use Canvas\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
