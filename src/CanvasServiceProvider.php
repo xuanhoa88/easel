@@ -3,8 +3,8 @@
 namespace Canvas;
 
 use Canvas\Models\Settings;
-use Canvas\Console\Commands\Theme;
 use Canvas\Console\Commands\Index;
+use Canvas\Console\Commands\Theme;
 use Canvas\Console\Commands\Update;
 use Canvas\Console\Commands\Install;
 use Canvas\Console\Commands\Version;
