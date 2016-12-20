@@ -8,6 +8,7 @@
 
 namespace Canvas\Http\Controllers\Auth;
 
+use Canvas\Helpers\CanvasHelper;
 use Session;
 use Validator;
 use Canvas\Helpers;
@@ -84,7 +85,7 @@ class LoginController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        return \Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
@@ -119,7 +120,7 @@ class LoginController extends Controller
     public function authenticated(Request $request, User $user)
     {
         $col = Settings::getByName('latest_release');
-        empty($col) ? Settings::firstOrCreate(['setting_name' => 'latest_release', 'setting_value' => Helpers::getLatestRelease()]) : Settings::where('setting_name', 'latest_release')->update(['setting_value' => Helpers::getLatestRelease()]);
+        empty($col) ? Settings::firstOrCreate(['setting_name' => 'latest_release', 'setting_value' => CanvasHelper::getLatestRelease()]) : Settings::where('setting_name', 'latest_release')->update(['setting_value' => Helpers::getLatestRelease()]);
         Session::set('_login', trans('messages.login', ['display_name' => $user->display_name]));
 
         return redirect()->intended($this->redirectPath());
