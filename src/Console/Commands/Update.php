@@ -49,7 +49,6 @@ class Update extends CanvasCommand
 
         // Display the welcome message
         $this->comment(PHP_EOL.'Welcome to the Canvas Update Wizard! You\'ll be back at it in no time...');
-        $this->comment(PHP_EOL.'Please note that this update uses composer and will adhere to the requirements set in "composer.json".');
 
         if ($currentVersion != $latestVersion
             && $this->confirm(PHP_EOL."You are running Canvas core: $currentVersion. The latest version available is: $latestVersion.".PHP_EOL.'Update Canvas core?')) {
