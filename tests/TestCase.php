@@ -44,7 +44,6 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
         // Set our custom user model...
         $app['config']->set('auth.providers.users.model', User::class);
-
     }
 
     /**
@@ -59,5 +58,4 @@ class TestCase extends \Orchestra\Testbench\TestCase
             \Canvas\CanvasServiceProvider::class,
         ];
     }
-
 }
