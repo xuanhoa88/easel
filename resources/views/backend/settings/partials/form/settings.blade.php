@@ -88,6 +88,21 @@
 
     <div class="form-group">
         <div class="fg-line">
+            <label class="fg-label"><i class="zmdi zmdi-brush"></i> Theme</label>
+            <select name="theme" id="theme" class="selectpicker">
+                <option @if ($data['active_theme'] == "default") selected @endif value="default">{!! $data['default_theme_name'] !!}</option>
+                @foreach($data['themes'] as $themeId => $themeName)
+                <option @if ($data['active_theme'] == $themeId) selected @endif value="{!! $themeId !!}">{{ $themeName }}</option>
+                @endforeach
+            </select>
+        </div>
+        <small>Change the appearance of your blog with Canvas themes!</small>
+    </div>
+
+    <br>
+
+    <div class="form-group">
+        <div class="fg-line">
             <label class="fg-label"><i class="zmdi zmdi-language-css3"></i> Custom CSS</label>
             <textarea class="form-control" rows="10" name="custom_css" id="custom_css" style="resize: vertical" placeholder="Define your own CSS styles for the blog here.">{{ $data['custom_css'] }}</textarea>
         </div>

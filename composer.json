@@ -2,6 +2,7 @@
     "name": "cnvs/easel",
     "description": "Core Framework for Canvas.",
     "keywords": ["canvas", "core"],
+    "type": "canvas-core",
     "license": "MIT",
     "homepage": "https://canvas.toddaustin.io",
     "support": {

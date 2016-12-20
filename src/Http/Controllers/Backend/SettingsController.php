@@ -4,11 +4,27 @@ namespace Canvas\Http\Controllers\Backend;
 
 use Session;
 use Canvas\Models\Settings;
+use Canvas\Extensions\ThemeManager;
 use Canvas\Http\Controllers\Controller;
 use Canvas\Http\Requests\SettingsUpdateRequest;
 
 class SettingsController extends Controller
 {
+    /**
+     * @var ThemeManager
+     */
+    protected $themeManager = null;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->themeManager = new ThemeManager(resolve('app'), resolve('files'));
+    }
+
     /**
      * Display the settings page.
      *
@@ -25,6 +41,10 @@ class SettingsController extends Controller
             'disqus' => Settings::disqus(),
             'analytics' => Settings::gaId(),
             'twitterCardType' => Settings::twitterCardType(),
+            'themes' => collect($this->themeManager->getThemes()->toArray())->pluck('name', 'id'),
+            'default_theme_name' => $this->themeManager->getDefaultThemeName(),
+            'active_theme' => $this->themeManager->getActiveTheme(),
+            'active_theme_theme' => $this->themeManager->getTheme($this->themeManager->getActiveTheme()) ?: $this->themeManager->getDefaultTheme(),
             'custom_css' => Settings::customCSS(),
             'custom_js' => Settings::customJS(),
             'url' => $_SERVER['HTTP_HOST'],
@@ -75,6 +95,9 @@ class SettingsController extends Controller
         Settings::updateOrCreate(['setting_name' => 'custom_js'], ['setting_value' => $request->toArray()['custom_js']]);
 
         Session::set('_update-settings', trans('messages.save_settings_success'));
+
+        // Update theme
+        $this->themeManager->setActiveTheme($request->theme);
 
         return redirect('admin/settings');
     }

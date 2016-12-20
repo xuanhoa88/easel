@@ -2,16 +2,28 @@
 
 namespace Canvas;
 
+use Canvas\Models\Settings;
 use Canvas\Console\Commands\Index;
+use Canvas\Console\Commands\Theme;
 use Canvas\Console\Commands\Update;
 use Canvas\Console\Commands\Install;
 use Canvas\Console\Commands\Version;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Scout\ScoutServiceProvider;
 use Canvas\Console\Commands\Publish\Views;
 use Canvas\Console\Commands\Publish\Assets;
 use Canvas\Console\Commands\Publish\Config;
+use Maatwebsite\Excel\ExcelServiceProvider;
 use Canvas\Console\Commands\Publish\Migrations;
+use Canvas\Extensions\ExtensionsServiceProvider;
+use TeamTNT\Scout\TNTSearchScoutServiceProvider;
+use Larapack\ConfigWriter\Repository as ConfigWriter;
+use Austintoddj\JsValidation\Facades\JsValidatorFacade;
+use Austintoddj\JsValidation\JsValidationServiceProvider;
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
+use TalvBansal\MediaManager\Providers\MediaManagerServiceProvider;
 
 class CanvasServiceProvider extends ServiceProvider
 {
@@ -35,6 +47,7 @@ class CanvasServiceProvider extends ServiceProvider
         Assets::class,
         Version::class,
         Views::class,
+        Theme::class,
     ];
 
     /**
@@ -157,19 +170,19 @@ class CanvasServiceProvider extends ServiceProvider
         $this->registerEloquentFactoriesFrom(__DIR__.'/../database/factories');
 
         // Register Service Providers...
-        $this->app->register(\Austintoddj\JsValidation\JsValidationServiceProvider::class);
-        $this->app->register(\Laravel\Scout\ScoutServiceProvider::class);
-        $this->app->register(\Maatwebsite\Excel\ExcelServiceProvider::class);
-        $this->app->register(\TalvBansal\MediaManager\Providers\MediaManagerServiceProvider::class);
-        $this->app->register(\TeamTNT\Scout\TNTSearchScoutServiceProvider::class);
+        $this->app->register(JsValidationServiceProvider::class);
+        $this->app->register(ScoutServiceProvider::class);
+        $this->app->register(ExcelServiceProvider::class);
+        $this->app->register(MediaManagerServiceProvider::class);
+        $this->app->register(TNTSearchScoutServiceProvider::class);
+        $this->app->register(ExtensionsServiceProvider::class);
 
         // Register Facades...
-        $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-        $loader->alias('JsValidator', \Austintoddj\JsValidation\Facades\JsValidatorFacade::class);
-        $loader->alias('ConfigWriter', \Larapack\ConfigWriter\Repository::class);
-        $loader->alias('Excel', \Maatwebsite\Excel\Facades\Excel::class);
-        $loader->alias('Settings', \Canvas\Models\Settings::class);
-        $loader->alias('Helpers', \Canvas\Helpers::class);
+        $loader = AliasLoader::getInstance();
+        $loader->alias('JsValidator', JsValidatorFacade::class);
+        $loader->alias('ConfigWriter', ConfigWriter::class);
+        $loader->alias('Excel', Excel::class);
+        $loader->alias('Settings', Settings::class);
     }
 
     /**
