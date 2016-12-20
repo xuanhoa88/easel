@@ -13,7 +13,7 @@ use Canvas\Models\Migrations;
 use Canvas\Helpers\CanvasHelper;
 use Canvas\Models\PasswordResets;
 use Illuminate\Support\Facades\App;
-use App\Http\Controllers\Controller;
+use Canvas\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Artisan;
 
 class ToolsController extends Controller

@@ -32,7 +32,6 @@ class CanvasServiceProvider extends ServiceProvider
         Install::class,
         Update::class,
         Config::class,
-        Migrations::class,
         Assets::class,
         Version::class,
         Views::class,
@@ -53,14 +52,14 @@ class CanvasServiceProvider extends ServiceProvider
      */
     private function handleConfigs()
     {
-        $configPath = __DIR__.'/../config/canvas.php';
+        $configPath = __DIR__.'/../config/blog.php';
 
         // Allow publishing the config file, with tag: config
         $this->publishes([$configPath => config_path('blog.php')], 'config');
 
         // Merge config files
         // Allows any modifications from the published config file to be seamlessly merged with default config file
-        $this->mergeConfigFrom($configPath, 'canvas');
+        $this->mergeConfigFrom($configPath, 'blog');
     }
 
     /**
@@ -96,8 +95,8 @@ class CanvasServiceProvider extends ServiceProvider
      */
     private function handleMigrations()
     {
-        // Allow publishing migration files, with tag: migrations
-        $this->publishes([__DIR__.'/../database/migrations' => base_path('database/migrations')], 'migrations');
+        // Load migrations...
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 
     /**
@@ -106,7 +105,7 @@ class CanvasServiceProvider extends ServiceProvider
     private function handleRoutes()
     {
         // Get the routes
-        require_once __DIR__.'/../routes/web.php';
+        require realpath(__DIR__.'/../routes/web.php');
     }
 
     /**
@@ -156,6 +155,21 @@ class CanvasServiceProvider extends ServiceProvider
     {
         // Bindings...
         $this->registerEloquentFactoriesFrom(__DIR__.'/../database/factories');
+
+        // Register Service Providers...
+        $this->app->register(\Austintoddj\JsValidation\JsValidationServiceProvider::class);
+        $this->app->register(\Laravel\Scout\ScoutServiceProvider::class);
+        $this->app->register(\Maatwebsite\Excel\ExcelServiceProvider::class);
+        $this->app->register(\TalvBansal\MediaManager\Providers\MediaManagerServiceProvider::class);
+        $this->app->register(\TeamTNT\Scout\TNTSearchScoutServiceProvider::class);
+
+        // Register Facades...
+        $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+        $loader->alias('JsValidator', \Austintoddj\JsValidation\Facades\JsValidatorFacade::class);
+        $loader->alias('ConfigWriter', \Larapack\ConfigWriter\Repository::class);
+        $loader->alias('Excel', \Maatwebsite\Excel\Facades\Excel::class);
+        $loader->alias('Settings', \Canvas\Models\Settings::class);
+        $loader->alias('Helpers', \Canvas\Helpers::class);
     }
 
     /**

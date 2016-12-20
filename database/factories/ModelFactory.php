@@ -52,6 +52,7 @@ $factory->define(Canvas\Models\Post::class, function () {
         'published_at' => Carbon\Carbon::now(),
         'meta_description' => 'Let\'s get you up and running with Canvas!',
         'is_draft' => false,
+        'layout' => config('blog.post_layout'),
     ];
 });
 

@@ -4,7 +4,7 @@ namespace Canvas\Http\Controllers\Backend;
 
 use Session;
 use Canvas\Models\Tag;
-use App\Http\Controllers\Controller;
+use Canvas\Http\Controllers\Controller;
 use Canvas\Http\Requests\TagCreateRequest;
 use Canvas\Http\Requests\TagUpdateRequest;
 

@@ -8,7 +8,7 @@ use Canvas\Models\Post;
 use Canvas\Models\User;
 use Illuminate\Http\Request;
 use Canvas\Jobs\BlogIndexData;
-use App\Http\Controllers\Controller;
+use Canvas\Http\Controllers\Controller;
 
 class BlogController extends Controller
 {

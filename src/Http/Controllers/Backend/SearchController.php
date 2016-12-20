@@ -5,7 +5,7 @@ namespace Canvas\Http\Controllers\Backend;
 use Canvas\Models\Tag;
 use Canvas\Models\Post;
 use Canvas\Models\User;
-use App\Http\Controllers\Controller;
+use Canvas\Http\Controllers\Controller;
 
 class SearchController extends Controller
 {

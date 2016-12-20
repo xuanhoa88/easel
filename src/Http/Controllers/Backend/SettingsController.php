@@ -4,7 +4,7 @@ namespace Canvas\Http\Controllers\Backend;
 
 use Session;
 use Canvas\Models\Settings;
-use App\Http\Controllers\Controller;
+use Canvas\Http\Controllers\Controller;
 use Canvas\Http\Requests\SettingsUpdateRequest;
 
 class SettingsController extends Controller

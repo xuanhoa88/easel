@@ -4,7 +4,7 @@ namespace Canvas\Http\Controllers\Backend;
 
 use Canvas\Models\User;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
+use Canvas\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 use Canvas\Http\Requests\UserCreateRequest;
 use Canvas\Http\Requests\UserUpdateRequest;
