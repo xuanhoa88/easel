@@ -4,8 +4,8 @@
         @include('canvas::shared.meta-tags')
         @yield('title')
         <meta name="description" content="{{ $meta_description }}">
-        @include('canvas::frontend.partials.custom-css')
         @include('canvas::frontend.partials.css')
+        @include('canvas::frontend.partials.custom-css')
     </head>
     <body>
         @include('canvas::frontend.partials.header')
