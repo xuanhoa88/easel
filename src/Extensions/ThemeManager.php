@@ -172,9 +172,12 @@ class ThemeManager extends ExtensionManager
      */
     public function activateTheme($themeId)
     {
-        // If default theme is set, remove theme.
+        // Reset to stable base.
+        $this->untheme();
+
+        // If default theme is set, we're done.
         if ($themeId == 'default') {
-            return $this->untheme();
+            return true;
         }
 
         // Current Theme
