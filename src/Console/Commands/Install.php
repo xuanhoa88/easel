@@ -4,6 +4,7 @@ namespace Canvas\Console\Commands;
 
 use Schema;
 use Artisan;
+use Exception;
 use ConfigWriter;
 use Canvas\Models\User;
 use Illuminate\Support\Facades\Validator;
@@ -15,7 +16,7 @@ class Install extends CanvasCommand
      *
      * @var string
      */
-    protected $signature = 'canvas:install {--views : Also publish Canvas views.} {--f|force : Overwrite any existing files.}';
+    protected $signature = 'canvas:install {--views : Also publish Canvas views.} {--f|force : Overwrite existing files.}';
 
     /**
      * The console command description.
@@ -48,7 +49,15 @@ class Install extends CanvasCommand
         $withViews = $this->option('views') ?: false;
 
         // Display the welcome message
-        $this->comment(PHP_EOL.'Welcome to Canvas! You\'ll be up and running in no time...');
+        $this->comment(PHP_EOL.'Welcome to the Canvas Install Wizard! You\'ll be up and running in no time...');
+
+        // Attempt to link storage/app/public folder to public/storage;
+        // this won't work on an OS without symlink support (e.g. Windows)
+        try {
+            Artisan::call('storage:link');
+        } catch (Exception $e) {
+            $this->comment(PHP_EOL.'Skipped linking storage/app/public folder to public/storage...');
+        }
 
         // Publish config files
         Artisan::call('canvas:publish:config', [
@@ -127,19 +136,7 @@ class Install extends CanvasCommand
         $this->line(PHP_EOL.'<info>✔</info> Success! The number of posts per page has been saved.');
 
         // Build the search index
-        $this->comment(PHP_EOL.'Building the search index...');
-        if (file_exists(storage_path('posts.index'))) {
-            unlink(storage_path('posts.index'));
-        }
-        if (file_exists(storage_path('users.index'))) {
-            unlink(storage_path('users.index'));
-        }
-        if (file_exists(storage_path('tags.index'))) {
-            unlink(storage_path('tags.index'));
-        }
-        $exitCode = Artisan::call('canvas:index');
-        $this->progress(5);
-        $this->line(PHP_EOL.'<info>✔</info> Success! The application search index has been built.');
+        $this->rebuildSearchIndexes();
 
         // Generate a unique application key
         $this->comment(PHP_EOL.'Creating a unique application key...');
@@ -148,7 +145,7 @@ class Install extends CanvasCommand
         $this->line(PHP_EOL.'<info>✔</info> Success! A unique application key has been generated.');
 
         // Additional blog settings
-        $this->comment(PHP_EOL.'Finishing up the installation...');
+        $this->comment(PHP_EOL.'Finishing the installation...');
         $this->disqus();
         $this->googleAnalytics();
         $this->twitterCardType();
@@ -157,6 +154,7 @@ class Install extends CanvasCommand
 
         $this->line(PHP_EOL.'<info>✔</info> Canvas has been installed. Pretty easy huh?'.PHP_EOL);
 
+        // Display user login information
         $headers = ['Login Email', 'Login Password'];
         $data = User::select('email', 'password')->get()->toArray();
         $data[0]['password'] = 'Your chosen password.';

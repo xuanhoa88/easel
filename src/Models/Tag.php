@@ -22,8 +22,13 @@ class Tag extends Model
      * @var array
      */
     protected $fillable = [
-        'tag', 'title', 'subtitle', 'meta_description',
-        'reverse_direction', 'created_at', 'updated_at',
+        'tag',
+        'title',
+        'subtitle',
+        'meta_description',
+        'reverse_direction',
+        'created_at',
+        'updated_at',
     ];
 
     /**
@@ -31,7 +36,12 @@ class Tag extends Model
      *
      * @var array
      */
-    public $searchable = ['tag', 'title', 'subtitle', 'meta_description'];
+    public $searchable = [
+        'tag',
+        'title',
+        'subtitle',
+        'meta_description',
+    ];
 
     /**
      * Get the posts relationship.

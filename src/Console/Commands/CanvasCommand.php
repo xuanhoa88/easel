@@ -2,10 +2,12 @@
 
 namespace Canvas\Console\Commands;
 
-use Canvas\Helpers;
+use Artisan;
+use Exception;
 use Canvas\Models\User;
 use Canvas\Models\Settings;
 use Illuminate\Console\Command;
+use Canvas\Helpers\CanvasHelper;
 
 class CanvasCommand extends Command
 {
@@ -104,22 +106,21 @@ class CanvasCommand extends Command
 
     protected function canvasVersion()
     {
-        $opts = [
-            'http' => [
-                'method' => 'GET',
-                'header' => [
-                    'User-Agent: PHP',
-                ],
-            ],
-        ];
-        $context = stream_context_create($opts);
-        $stream = file_get_contents('https://api.github.com/repos/cnvs/canvas/releases/latest', false, $context);
-        $release = json_decode($stream);
+        // Get and save installed version to settings
+        // for future reference
+        return CanvasHelper::getCurrentVersion();
+    }
 
-        $settings = new Settings();
-        $settings->setting_name = 'canvas_version';
-        $settings->setting_value = $release->name;
-        $settings->save();
+    protected function latestVersion()
+    {
+        // Get and save latest release available to
+        // settings for future reference
+        return CanvasHelper::getLatestVersion();
+    }
+
+    protected function packageName()
+    {
+        return CanvasHelper::CORE_PACKAGE;
     }
 
     protected function createUser($email, $password, $firstName, $lastName)
@@ -130,7 +131,7 @@ class CanvasCommand extends Command
         $user->first_name = $firstName;
         $user->last_name = $lastName;
         $user->display_name = $firstName.' '.$lastName;
-        $user->role = Helpers::ROLE_ADMINISTRATOR;
+        $user->role = CanvasHelper::ROLE_ADMINISTRATOR;
         $user->save();
 
         $this->author($user->display_name);
@@ -144,5 +145,30 @@ class CanvasCommand extends Command
         $settings->setting_name = 'blog_author';
         $settings->setting_value = $blogAuthor;
         $settings->save();
+    }
+
+    protected function rebuildSearchIndexes()
+    {
+        // Build the search index
+        $this->comment(PHP_EOL.'Building the search index...');
+        // Attempt to remove existing index files
+        // This might throw an exception
+        try {
+            if (file_exists(storage_path('posts.index'))) {
+                unlink(storage_path('posts.index'));
+            }
+            if (file_exists(storage_path('users.index'))) {
+                unlink(storage_path('users.index'));
+            }
+            if (file_exists(storage_path('tags.index'))) {
+                unlink(storage_path('tags.index'));
+            }
+        } catch (Exception $e) {
+            $this->line(PHP_EOL.'<error>×</error> '.$e->getMessage());
+        }
+        // Build the new indexes
+        $exitCode = Artisan::call('canvas:index');
+        $this->progress(5);
+        $this->line(PHP_EOL.'<info>✔</info> Success! The application search index has been built.');
     }
 }

@@ -2,11 +2,11 @@
 
 namespace Canvas\Http\Controllers\Backend;
 
-use Canvas\Helpers;
 use Canvas\Models\Tag;
 use Canvas\Models\Post;
 use Canvas\Models\User;
 use Canvas\Models\Settings;
+use Canvas\Helpers\CanvasHelper;
 use Illuminate\Support\Facades\App;
 use Canvas\Http\Controllers\Controller;
 
@@ -26,7 +26,7 @@ class HomeController extends Controller
             'users' => User::all(),
             'disqus' => Settings::disqus(),
             'analytics' => Settings::gaId(),
-            'status' => App::isDownForMaintenance() ? Helpers::MAINTENANCE_MODE_ENABLED : Helpers::MAINTENANCE_MODE_DISABLED,
+            'status' => App::isDownForMaintenance() ? CanvasHelper::MAINTENANCE_MODE_ENABLED : CanvasHelper::MAINTENANCE_MODE_DISABLED,
             'canvasVersion' => Settings::canvasVersion(),
             'latestRelease' => Settings::latestRelease(),
         ];

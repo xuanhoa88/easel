@@ -5,21 +5,21 @@ namespace Canvas\Console\Commands\Publish;
 use Artisan;
 use Canvas\Console\Commands\CanvasCommand;
 
-class Assets extends CanvasCommand
+class Migrations extends CanvasCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'canvas:publish:assets {--y|y : Skip question?} {--f|force : Overwrite existing files.}';
+    protected $signature = 'canvas:publish:migrations {--y|y : Skip question?} {--f|force : Overwrite existing files.}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Publish Canvas public assets';
+    protected $description = 'Publish Canvas migration files';
 
     /**
      * Create a new command instance.
@@ -43,18 +43,18 @@ class Assets extends CanvasCommand
         $force = $this->option('force') ?: false;
 
         if (! $publish) {
-            $publish = $this->confirm('Publish Canvas core public assets?');
+            $publish = $this->confirm('Publish Canvas core migration files?');
         }
 
         // publish
         if ($publish) {
             $exitCode = Artisan::call('vendor:publish', [
                 '--provider' => 'Canvas\CanvasServiceProvider',
-                '--tag' => 'public',
+                '--tag' => 'migrations',
                 '--force' => $force,
             ]);
             $this->progress(5);
-            $this->line(PHP_EOL.'<info>✔</info> Success! Canvas core public assets have been published.');
+            $this->line(PHP_EOL.'<info>✔</info> Success! Canvas core migration files have been published.');
         }
     }
 }

@@ -15,7 +15,7 @@
                 <i class="zmdi zmdi-accounts-alt"></i> <a href="{{ url('admin/user') }}">{{ count($data['users']) }}{{ str_plural(' User', count($data['users'])) }}</a>
             </li>
             <li>
-                @if($data['status'] === \Canvas\Helpers::MAINTENANCE_MODE_DISABLED)
+                @if($data['status'] === Canvas\Helpers\CanvasHelper::MAINTENANCE_MODE_DISABLED)
                     <i class="zmdi zmdi-globe-alt"></i> <a href="{{ url('admin/tools') }}"><span class="label label-success">Status: {{ strtoupper('Active') }}</span></a>
                 @else
                     <i class="zmdi zmdi-globe-alt"></i> <a href="{{ url('admin/tools') }}"><span class="label label-warning">Status: {{ strtoupper('Maintenance Mode') }}</span></a>
