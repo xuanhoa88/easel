@@ -64,11 +64,6 @@ class Install extends CanvasCommand
             '--y' => true,
             '--force' => $force,
         ]);
-        // Publish database files
-        Artisan::call('canvas:publish:migrations', [
-            '--y' => true,
-            '--force' => $force,
-        ]);
         // Publish public assets
         Artisan::call('canvas:publish:assets', [
             '--y' => true,

@@ -67,12 +67,6 @@ class Update extends CanvasCommand
             // Don't link storage - assume storage is already linked
             // Don't publish config files - assume config has been set at install and modified afterwards
 
-            // Publish database files
-            Artisan::call('canvas:publish:migrations', [
-                '--y' => true,
-                // Don't overwrite - assume user may have changed things
-                '--force' => false,
-            ]);
             // Publish public assets
             Artisan::call('canvas:publish:assets', [
                 '--y' => true,
