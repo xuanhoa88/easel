@@ -44,7 +44,7 @@ class SettingsController extends Controller
             'themes' => collect($this->themeManager->getThemes()->toArray())->pluck('name', 'id'),
             'default_theme_name' => $this->themeManager->getDefaultThemeName(),
             'active_theme' => $this->themeManager->getActiveTheme(),
-            'active_theme_theme' => $this->themeManager->getTheme($this->themeManager->getActiveTheme()),
+            'active_theme_theme' => $this->themeManager->getTheme($this->themeManager->getActiveTheme()) ?: $this->themeManager->getDefaultTheme(),
             'custom_css' => Settings::customCSS(),
             'custom_js' => Settings::customJS(),
             'url' => $_SERVER['HTTP_HOST'],
