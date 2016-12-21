@@ -3,6 +3,7 @@
 namespace Canvas\Console\Commands;
 
 use Artisan;
+use Exception;
 
 class Index extends CanvasCommand
 {
@@ -28,14 +29,18 @@ class Index extends CanvasCommand
      */
     public function handle()
     {
-        $this->createPostsIndex();
-        $this->line('<info>✔</info> Success! The posts index has been created.');
+        try {
+            $this->createPostsIndex();
+            $this->line('<info>✔</info> Success! The posts index has been created.');
 
-        $this->createTagsIndex();
-        $this->line('<info>✔</info> Success! The tags index has been created.');
+            $this->createTagsIndex();
+            $this->line('<info>✔</info> Success! The tags index has been created.');
 
-        $this->createUsersIndex();
-        $this->line('<info>✔</info> Success! The users index has been created.');
+            $this->createUsersIndex();
+            $this->line('<info>✔</info> Success! The users index has been created.');
+        } catch (Exception $e) {
+            $this->line(PHP_EOL.'<error>×</error> '.$e->getMessage());
+        }
     }
 
     public function createPostsIndex()

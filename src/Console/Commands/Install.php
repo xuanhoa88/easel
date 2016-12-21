@@ -62,12 +62,12 @@ class Install extends CanvasCommand
         // Publish config files
         Artisan::call('canvas:publish:config', [
             '--y' => true,
-            '--force' => $force,
+            '--force' => true,
         ]);
         // Publish public assets
         Artisan::call('canvas:publish:assets', [
             '--y' => true,
-            '--force' => $force,
+            '--force' => true,
         ]);
         // Publish view files
         if ($withViews) {
