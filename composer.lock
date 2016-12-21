@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "897a01bafc8c74fd37cf3d539d458b46",
-    "content-hash": "9a14ce7195d0d8cb8ab333ce1fd9a7f3",
+    "hash": "521ed15c4310e317d9a6911f562a546c",
+    "content-hash": "95356405fae51be156c1f444ec5f8fcd",
     "packages": [
         {
             "name": "austintoddj/laravel-jsvalidation",
@@ -716,16 +716,16 @@
         },
         {
             "name": "laravel/scout",
-            "version": "v2.0.2",
+            "version": "v1.1.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/scout.git",
-                "reference": "2400432a48ec5d87eb39c08ee78dfa1bcfadefe6"
+                "reference": "9efc1d7b6e51216bbff6430ccef137a08b78fc13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/scout/zipball/2400432a48ec5d87eb39c08ee78dfa1bcfadefe6",
-                "reference": "2400432a48ec5d87eb39c08ee78dfa1bcfadefe6",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/9efc1d7b6e51216bbff6430ccef137a08b78fc13",
+                "reference": "9efc1d7b6e51216bbff6430ccef137a08b78fc13",
                 "shasum": ""
             },
             "require": {
@@ -739,6 +739,7 @@
             },
             "require-dev": {
                 "algolia/algoliasearch-client-php": "^1.10",
+                "elasticsearch/elasticsearch": "^2.2",
                 "mockery/mockery": "~0.9",
                 "phpunit/phpunit": "~5.0"
             },
@@ -749,7 +750,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0-dev"
+                    "dev-master": "1.0-dev"
                 }
             },
             "autoload": {
@@ -774,7 +775,7 @@
                 "laravel",
                 "search"
             ],
-            "time": "2016-12-16 17:17:36"
+            "time": "2016-12-12 22:39:05"
         },
         {
             "name": "league/flysystem",
@@ -2638,7 +2639,7 @@
         },
         {
             "name": "teamtnt/laravel-scout-tntsearch-driver",
-            "version": "dev-master",
+            "version": "v1.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/teamtnt/laravel-scout-tntsearch-driver.git",
@@ -4603,9 +4604,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "teamtnt/laravel-scout-tntsearch-driver": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
