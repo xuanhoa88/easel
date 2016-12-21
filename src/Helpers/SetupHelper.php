@@ -22,7 +22,7 @@ class SetupHelper extends CanvasHelper
 
     /**
      * Whether canvas is properly set up/installed.
-     * @return bool|bool
+     * @return bool
      */
     public static function isSetUp()
     {
@@ -31,7 +31,7 @@ class SetupHelper extends CanvasHelper
 
     /**
      * Whether canvas is properly installed.
-     * @return bool|bool
+     * @return bool
      */
     public static function isInstalled()
     {

@@ -26,7 +26,7 @@ class ThemeManager extends ExtensionManager
     /**
      * Publish a themes public assets. Themes MUST have public assets.
      * @param Theme $theme
-     * @return bool|bool
+     * @return bool
      */
     protected function publishThemePublic(Theme $theme)
     {
@@ -38,8 +38,8 @@ class ThemeManager extends ExtensionManager
     /**
      * Publish a themes views.
      * @param Theme $theme
-     * @param bool|bool $clean Views directory is cleaned to ensure no interference with none theme views.
-     * @return bool|bool
+     * @param bool $clean Views directory is cleaned to ensure no interference with none theme views.
+     * @return bool
      */
     protected function publishThemeViews(Theme $theme, $clean = true)
     {
@@ -60,7 +60,7 @@ class ThemeManager extends ExtensionManager
 
     /**
      * Deactivate all themes. Set canvas to "unthemed" state.
-     * @return bool|bool
+     * @return bool
      */
     public function unTheme()
     {
@@ -168,7 +168,7 @@ class ThemeManager extends ExtensionManager
      * Assert/change active theme.
      *
      * @param array $enabled
-     * @return bool|bool
+     * @return bool
      */
     public function activateTheme($themeId)
     {
