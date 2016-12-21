@@ -2,12 +2,13 @@
 
 namespace Canvas\Extensions;
 
+use Canvas\Contracts\Annex;
 use Illuminate\Contracts\Support\Arrayable;
 
 /**
  * An Extension. Adopted from Flarum.
  */
-class Theme extends Extension implements Arrayable
+class Theme extends Extension implements Arrayable, Annex
 {
     /**
      * @constant(SOURCE_DIRS)

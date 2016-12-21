@@ -18,7 +18,7 @@ class Theme extends CanvasCommand
      *
      * @var string
      */
-    protected $description = 'Canvas theme information';
+    protected $description = 'Activate theme and/or view theme information.';
 
     /**
      * Create a new command instance.

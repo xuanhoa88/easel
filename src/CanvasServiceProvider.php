@@ -12,13 +12,17 @@ use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Scout\ScoutServiceProvider;
+use Canvas\Http\Middleware\CheckIfAdmin;
 use Canvas\Console\Commands\Publish\Views;
 use Canvas\Console\Commands\Publish\Assets;
 use Canvas\Console\Commands\Publish\Config;
 use Maatwebsite\Excel\ExcelServiceProvider;
+use Canvas\Http\Middleware\EnsureInstalled;
+use Canvas\Http\Middleware\EnsureNotInstalled;
 use Canvas\Console\Commands\Publish\Migrations;
 use Canvas\Extensions\ExtensionsServiceProvider;
 use TeamTNT\Scout\TNTSearchScoutServiceProvider;
+use Canvas\Http\Middleware\CheckForMaintenanceMode;
 use Larapack\ConfigWriter\Repository as ConfigWriter;
 use Austintoddj\JsValidation\Facades\JsValidatorFacade;
 use Austintoddj\JsValidation\JsValidationServiceProvider;
@@ -166,7 +170,10 @@ class CanvasServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Bindings...
+        $loader = AliasLoader::getInstance();
+        $router = $this->app['router'];
+
+        // Register Factories...
         $this->registerEloquentFactoriesFrom(__DIR__.'/../database/factories');
 
         // Register Service Providers...
@@ -178,11 +185,16 @@ class CanvasServiceProvider extends ServiceProvider
         $this->app->register(ExtensionsServiceProvider::class);
 
         // Register Facades...
-        $loader = AliasLoader::getInstance();
         $loader->alias('JsValidator', JsValidatorFacade::class);
         $loader->alias('ConfigWriter', ConfigWriter::class);
         $loader->alias('Excel', Excel::class);
         $loader->alias('Settings', Settings::class);
+
+        // Register Middleware...
+        $router->middleware('checkIfAdmin', CheckIfAdmin::class);
+        $router->middleware('canvasInstalled', EnsureInstalled::class);
+        $router->middleware('canvasNotInstalled', EnsureNotInstalled::class);
+        $router->middleware('checkForMaintenanceMode', CheckForMaintenanceMode::class);
     }
 
     /**

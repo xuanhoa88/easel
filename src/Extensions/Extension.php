@@ -2,12 +2,13 @@
 
 namespace Canvas\Extensions;
 
+use Canvas\Contracts\Annex;
 use Illuminate\Contracts\Support\Arrayable;
 
 /**
  * An Extension. Adapted from Flarum.
  */
-class Extension implements Arrayable
+class Extension implements Arrayable, Annex
 {
     /**
      * Unique Id of the extension.
