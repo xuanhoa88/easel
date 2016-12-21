@@ -15,7 +15,7 @@ Route::group([
 
     /*
     |--------------------------------------------------------------------------
-    | Canvas Application Routes : Full Installed and Configured
+    | Canvas Application Routes : Fully Installed and Configured
     |--------------------------------------------------------------------------
     */
     Route::group([
