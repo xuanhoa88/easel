@@ -8,9 +8,9 @@ use Canvas\Helpers\RouteHelper;
 |--------------------------------------------------------------------------
 */
 Route::group([
-    'middlewareGroups' => RouteHelper::getGeneralMiddlewareGroups(), 
+    'middlewareGroups' => RouteHelper::getGeneralMiddlewareGroups(),
     'middleware' => RouteHelper::getGeneralMiddleware(),
-    'prefix' => RouteHelper::getBlogMain()
+    'prefix' => RouteHelper::getBlogMain(),
 ], function () {
 
     /*
@@ -19,8 +19,8 @@ Route::group([
     |--------------------------------------------------------------------------
     */
     Route::group([
-        'middleware' => RouteHelper::getInstalledMiddleware()
-    ], function() {
+        'middleware' => RouteHelper::getInstalledMiddleware(),
+    ], function () {
         Route::get('/', 'Canvas\Http\Controllers\Frontend\BlogController@index')->name('home');
 
         Route::group(['prefix' => 'blog'], function () {
@@ -133,6 +133,6 @@ Route::group([
             });
         });
     });
-    
+
     Route::get('install', 'Canvas\Http\Controllers\Setup\InstallController@index')->name('canvas.install');
 });

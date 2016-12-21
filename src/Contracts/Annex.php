@@ -72,7 +72,7 @@ interface Annex
     public function setEnabled($enabled);
 
     /**
-     * @param bool|boolean $installed
+     * @param bool|bool $installed
      */
     public function setInstalled($installed);
 

@@ -14,7 +14,7 @@ class InstallController extends Controller
     public function __construct()
     {
         $this->middleware('canvasNotInstalled', [
-            'except' => []
+            'except' => [],
         ]);
     }
 

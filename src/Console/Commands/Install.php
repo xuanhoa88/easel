@@ -2,7 +2,6 @@
 
 namespace Canvas\Console\Commands;
 
-use Schema;
 use Artisan;
 use Exception;
 use Canvas\Models\User;
@@ -159,7 +158,7 @@ class Install extends CanvasCommand
             $this->table($headers, $data);
 
             $config->save();
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             // Reset migrations
             Artisan::call('migrate:reset');
             // Display message

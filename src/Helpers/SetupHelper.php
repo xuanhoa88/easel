@@ -7,21 +7,22 @@ use Schema;
 class SetupHelper extends CanvasHelper
 {
     /**
-     * Ensure all required tables exist;
+     * Ensure all required tables exist;.
      */
     public static function requiredTablesExists()
     {
-        foreach(self::REQUIRED_TABLES as $table) {
-            if (!Schema::hasTable($table)) {
+        foreach (self::REQUIRED_TABLES as $table) {
+            if (! Schema::hasTable($table)) {
                 return false;
             }
         }
+
         return true;
     }
 
     /**
      * Whether canvas is properly set up/installed.
-     * @return bool|boolean
+     * @return bool|bool
      */
     public static function isSetUp()
     {
@@ -30,7 +31,7 @@ class SetupHelper extends CanvasHelper
 
     /**
      * Whether canvas is properly installed.
-     * @return bool|boolean
+     * @return bool|bool
      */
     public static function isInstalled()
     {

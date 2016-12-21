@@ -2,8 +2,6 @@
 
 namespace Canvas\Helpers;
 
-use Schema;
-
 class RouteHelper extends CanvasHelper
 {
     /**
@@ -36,6 +34,7 @@ class RouteHelper extends CanvasHelper
     public static function getBlogMain()
     {
         $config = ConfigHelper::getWriter();
+
         return $config->get('blog_path') ?: self::ROUTE_DEFAULT_BLOG_MAIN;
     }
 }

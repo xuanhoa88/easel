@@ -2,7 +2,6 @@
 
 namespace Canvas\Http\Middleware;
 
-use Auth;
 use Closure;
 use Canvas\Helpers\SetupHelper;
 
