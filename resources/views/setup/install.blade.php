@@ -59,6 +59,11 @@
             text-transform: uppercase;
         }
 
+        .install {
+            text-transform: lowercase;
+            font-size: 14px;
+        }
+
         .m-b-md {
             margin-bottom: 30px;
         }
@@ -73,8 +78,9 @@
         </div>
 
         <div class="instructions">
-            <p>Please run the following command from a terminal to complete the installation:</p>
-            <p><pre><code>php artisan canvas:install</code></pre></p>
+            <p>Run the following command from a terminal to complete the installation:</p>
+            <br>
+            <p><pre><code class="install">>_ php artisan canvas:install</code></pre></p>
         </div>
     </div>
 </div>
