@@ -96,7 +96,7 @@
                 @endforeach
             </select>
         </div>
-        <small>Change the appearance of your blog with Official Canvas themes.</small>
+        <small>Change the appearance of your blog with Canvas themes.</small>
     </div>
 
     <br>
