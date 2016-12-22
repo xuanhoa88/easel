@@ -88,7 +88,7 @@
 
     <div class="form-group">
         <div class="fg-line">
-            <label class="fg-label"><i class="zmdi zmdi-brush"></i> Theme</label>
+            <label class="fg-label"><i class="zmdi zmdi-invert-colors"></i> Theme</label>
             <select name="theme" id="theme" class="selectpicker">
                 <option @if ($data['active_theme'] == "default") selected @endif value="default">{!! $data['default_theme_name'] !!}</option>
                 @foreach($data['themes'] as $themeId => $themeName)
@@ -96,7 +96,7 @@
                 @endforeach
             </select>
         </div>
-        <small>Change the appearance of your blog with Canvas themes!</small>
+        <small>Change the appearance of your blog with Official Canvas themes.</small>
     </div>
 
     <br>
