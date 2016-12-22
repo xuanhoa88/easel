@@ -39,7 +39,7 @@ class Index extends CanvasCommand
             $this->createUsersIndex();
             $this->line('<info>✔</info> Success! The users index has been created.');
         } catch (Exception $e) {
-            $this->line(PHP_EOL.'<error>×</error> '.$e->getMessage());
+            $this->line(PHP_EOL.'<error>✘</error> '.$e->getMessage());
         }
     }
 

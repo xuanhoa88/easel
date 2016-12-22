@@ -57,7 +57,7 @@ class Install extends CanvasCommand
             Artisan::call('storage:link');
         } catch (Exception $e) {
             $this->line(PHP_EOL.'Could not link <info>storage/app/public</info> folder to <info>public/storage</info>:');
-            $this->line("<error>×</error> {$e->getMessage()}");
+            $this->line("<error>✘</error> {$e->getMessage()}");
         }
 
         try {
@@ -163,7 +163,7 @@ class Install extends CanvasCommand
             Artisan::call('migrate:reset');
             // Display message
             $this->line(PHP_EOL.'<error>An unexpected error occured. Installation could not continue.</error>');
-            $this->line("<error>×</error> {$e->getMessage()}");
+            $this->line("<error>✘</error> {$e->getMessage()}");
             $this->comment(PHP_EOL.'Migrations were reset. Please run the installer again.');
             $this->line(PHP_EOL.'If this error persists please consult https://github.com/cnvs/easel/issues.'.PHP_EOL);
         }

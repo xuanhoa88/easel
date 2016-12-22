@@ -164,7 +164,7 @@ class CanvasCommand extends Command
                 unlink(storage_path('tags.index'));
             }
         } catch (Exception $e) {
-            $this->line(PHP_EOL.'<error>×</error> '.$e->getMessage());
+            $this->line(PHP_EOL.'<error>✘</error> '.$e->getMessage());
         }
         // Build the new indexes
         $exitCode = Artisan::call('canvas:index');

@@ -47,7 +47,7 @@ class Theme extends CanvasCommand
                 $activeTheme = $newTheme;
                 $this->comment(PHP_EOL."<info>✔</info> Successfully activated theme {$newTheme->getName()}!");
             } else {
-                $this->line(PHP_EOL."<error>×</error> Could not activate theme ($newThemeId). Theme not found!");
+                $this->line(PHP_EOL."<error>✘</error> Could not activate theme ($newThemeId). Theme not found!");
             }
         }
 
