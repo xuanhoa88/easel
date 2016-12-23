@@ -32,7 +32,7 @@
         "doctrine/dbal": "^2.5",
 		"talvbansal/media-manager": "^2.0",
 		"laravel/scout": "^1.1",
-		"teamtnt/laravel-scout-tntsearch-driver": "^1.1",
+		"teamtnt/laravel-scout-tntsearch-driver": "2.*",
 		"erusev/parsedown": "^1.6",
 		"austintoddj/laravel-jsvalidation": "^1.0",
 		"maatwebsite/excel": "^2.1",
