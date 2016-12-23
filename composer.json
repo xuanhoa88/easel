@@ -31,7 +31,7 @@
 		"illuminate/support": "5.*",
         "doctrine/dbal": "^2.5",
 		"talvbansal/media-manager": "^2.0",
-		"laravel/scout": "^1.1",
+		"laravel/scout": "2.*",
 		"teamtnt/laravel-scout-tntsearch-driver": "2.*",
 		"erusev/parsedown": "^1.6",
 		"austintoddj/laravel-jsvalidation": "^1.0",
