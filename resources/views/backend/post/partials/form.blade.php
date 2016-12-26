@@ -1,12 +1,12 @@
-@if(Request::is('admin/post/create'))
-    <form class="keyboard-save" role="form" method="POST" id="postCreate" action="{{ route('admin.post.store') }}">
-    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+@if(Route::is('admin.post.create'))
+    <form class="keyboard-save" role="form" method="POST" id="postCreate" action="{!! route('admin.post.store') !!}">
+    <input type="hidden" name="user_id" value="{!! Auth::user()->id !!}">
 @else
-    <form class="keyboard-save" role="form" method="POST" id="postUpdate" action="{{ route('admin.post.update', $id) }}">
+    <form class="keyboard-save" role="form" method="POST" id="postUpdate" action="{!! route('admin.post.update', $id) !!}">
     <input type="hidden" name="_method" value="PUT">
-    <input type="hidden" name="user_id" value="{{ $user_id }}">
+    <input type="hidden" name="user_id" value="{!! $user_id !!}">
 @endif
-    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <input type="hidden" name="_token" value="{!! csrf_token() !!}">
     <div class="row">
         <div class="col-md-8">
             <div class="card">
@@ -15,22 +15,22 @@
                     @include('canvas::shared.errors')
                     @include('canvas::shared.success')
 
-                    @if(Request::is('admin/post/create'))
+                    @if(Route::is('admin.post.create'))
                         <ol class="breadcrumb">
-                            <li><a href="{{ url('admin') }}">Home</a></li>
-                            <li><a href="{{ url('admin/post') }}">Posts</a></li>
+                            <li><a href="{!! route('admin') !!}">Home</a></li>
+                            <li><a href="{!! route('admin.post.index') !!}">Posts</a></li>
                             <li class="active">New Post</li>
                         </ol>
                         <h2>Create a New Post</h2>
                     @else
                         <ol class="breadcrumb">
-                            <li><a href="{{ url('admin') }}">Home</a></li>
-                            <li><a href="{{ url('admin/post') }}">Posts</a></li>
+                            <li><a href="{!! route('admin') !!}">Home</a></li>
+                            <li><a href="{!! route('admin.post.index') !!}">Posts</a></li>
                             <li class="active">Edit Post</li>
                         </ol>
                         <h2>
-                            Edit <em>{{ $title }}</em>
-                            <small>Last edited on {{ $updated_at->format('M d, Y') }} at {{ $updated_at->format('g:i A') }}</small>
+                            Edit <em>{!! $title !!}</em>
+                            <small>Last edited on {!! $updated_at->format('M d, Y') !!} at {!! $updated_at->format('g:i A') !!}</small>
                         </h2>
                     @endif
                 </div>
@@ -38,25 +38,25 @@
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
-                            <input type="text" class="form-control" name="title" id="title" value="{{ $title }}" placeholder="Title">
+                            <input type="text" class="form-control" name="title" id="title" value="{!! $title !!}" placeholder="Title">
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
-                            <input type="text" class="form-control" name="slug" id="slug" value="{{ $slug }}" placeholder="URL Slug">
+                            <input type="text" class="form-control" name="slug" id="slug" value="{!! $slug !!}" placeholder="route Slug">
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
-                            <input type="text" class="form-control" name="subtitle" id="subtitle" value="{{ $subtitle }}" placeholder="Subtitle">
+                            <input type="text" class="form-control" name="subtitle" id="subtitle" value="{!! $subtitle !!}" placeholder="Subtitle">
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
-                            <textarea id="editor" name="content" placeholder="Content">{{ $content }}</textarea>
+                            <textarea id="editor" name="content" placeholder="Content">{!! $content !!}</textarea>
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                     <div class="form-group">
                         <div class="toggle-switch toggle-switch-demo" data-ts-color="blue">
                             <label for="is_draft" class="ts-label">Draft?</label>
-                            <input {{ \Canvas\Helpers\CanvasHelper::checked($is_draft) }} type="checkbox" name="is_draft">
+                            <input {!! \Canvas\Helpers\CanvasHelper::checked($is_draft) !!} type="checkbox" name="is_draft">
                             <label for="is_draft" class="ts-helper"></label>
                         </div>
                     </div>
@@ -80,31 +80,31 @@
                     <div class="form-group">
                         <div class="fg-line">
                             <label><i class="zmdi zmdi-calendar"></i>&nbsp;&nbsp;Published at</label>
-                            <input class="form-control datetime-picker" name="published_at" id="published_at" type="text" value="{{ $published_at }}" placeholder="YYYY/MM/DD HH:MM:SS" data-mask="0000/00/00 00:00:00">
+                            <input class="form-control datetime-picker" name="published_at" id="published_at" type="text" value="{!! $published_at !!}" placeholder="YYYY/MM/DD HH:MM:SS" data-mask="0000/00/00 00:00:00">
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
                             <label class="fg-label"><i class="zmdi zmdi-view-web"></i>&nbsp;&nbsp;Layout</label>
-                            <input type="text" class="form-control" name="layout" id="layout" value="{{ $layout }}" placeholder="Layout" disabled>
+                            <input type="text" class="form-control" name="layout" id="layout" value="{!! $layout !!}" placeholder="Layout" disabled>
                         </div>
                     </div>
                     <br>
-                    @if(!Request::is('admin/post/create'))
+                    @if(!Route::is('admin.post.create'))
                         <div class="form-group">
                             <div class="fg-line">
                                 <label class="fg-label"><i class="zmdi zmdi-link"></i>&nbsp;&nbsp;Permalink</label><br>
-                                <a href="{{ url('blog/' . $slug) }}" target="_blank" name="permalink">{{ url('blog/' . $slug) }}</a>
+                                <a href="{!! route('blog.post.show', $slug) !!}" target="_blank" name="permalink">{!! route('blog.post.show', $slug) !!}</a>
                             </div>
                         </div>
                         <br>
                     @endif
                     <div class="form-group">
-                        @if(Request::is('admin/post/create'))
+                        @if(Route::is('admin.post.create'))
                             <button type="submit" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-floppy"></i> Publish</button>
                             &nbsp;
-                            <a href="{{ url('admin/post') }}"><button type="button" class="btn btn-link">Cancel</button></a>
+                            <a href="{!! route('admin.post.index') !!}"><button type="button" class="btn btn-link">Cancel</button></a>
                         @else
                             <button type="submit" class="btn btn-primary btn-icon-text" name="action" value="continue">
                                 <i class="zmdi zmdi-floppy"></i> Update
@@ -152,7 +152,7 @@
                         <div class="fg-line">
                             <select name="tags[]" id="tags" class="selectpicker" multiple>
                                 @foreach ($allTags as $tag)
-                                    <option @if (in_array($tag, $tags)) selected @endif value="{{ $tag }}">{{ $tag }}</option>
+                                    <option @if (in_array($tag, $tags)) selected @endif value="{!! $tag !!}">{!! $tag !!}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -168,7 +168,7 @@
                 <div class="card-body card-padding">
                     <div class="form-group">
                         <div class="fg-line">
-                            <textarea class="form-control auto-size" name="meta_description" id="meta_description" style="resize: vertical" placeholder="Meta Description">{{ $meta_description }}</textarea>
+                            <textarea class="form-control auto-size" name="meta_description" id="meta_description" style="resize: vertical" placeholder="Meta Description">{!! $meta_description !!}</textarea>
                         </div>
                     </div>
                 </div>

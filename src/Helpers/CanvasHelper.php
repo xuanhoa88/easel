@@ -3,6 +3,7 @@
 namespace Canvas\Helpers;
 
 use Session;
+use ErrorException;
 use Canvas\Models\User;
 use Canvas\Meta\Constants;
 use Canvas\Models\Settings;
@@ -60,9 +61,15 @@ class CanvasHelper extends Constants
                     ],
                 ],
             ];
-            $context = stream_context_create($opts);
-            $stream = file_get_contents('https://api.github.com/repos/cnvs/easel/releases/latest', false, $context);
-            $release = json_decode($stream);
+
+            // Error Exception may be thrown if there is a problem fetching data from the Github API.
+            try {
+                $context = stream_context_create($opts);
+                $stream = file_get_contents('https://api.github.com/repos/cnvs/easel/releases/latest', false, $context);
+                $release = json_decode($stream);
+            } catch(ErrorException $e) {
+                $release = (object) ['name' => 'Unknown'];
+            }
 
             // Save to Canvas Settings
             if ($update) {

@@ -56,7 +56,7 @@ class ToolsController extends Controller
             Session::set('_cache-clear', trans('messages.cache_clear_error'));
         }
 
-        return redirect(url('admin/tools'));
+        return redirect()->route('admin.tools');
     }
 
     /**
@@ -221,7 +221,7 @@ class ToolsController extends Controller
             Session::set('_enable-maintenance-mode', trans('messages.enable_maintenance_mode_error'));
         }
 
-        return redirect(url('admin/tools'));
+        return redirect()->route('admin.tools');
     }
 
     /**
@@ -238,6 +238,6 @@ class ToolsController extends Controller
             Session::set('_disable-maintenance-mode', trans('messages.disable_maintenance_mode_error'));
         }
 
-        return redirect(url('admin/tools'));
+        return redirect()->route('admin.tools');
     }
 }

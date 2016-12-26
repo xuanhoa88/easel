@@ -99,6 +99,6 @@ class SettingsController extends Controller
         // Update theme
         $this->themeManager->setActiveTheme($request->theme);
 
-        return redirect('admin/settings');
+        return redirect()->route('admin.settings');
     }
 }

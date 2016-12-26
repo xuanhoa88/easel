@@ -17,7 +17,7 @@ class EnsureNotInstalled
     public function handle($request, Closure $next)
     {
         if (SetupHelper::isInstalled()) {
-            return redirect('/');
+            return redirect()->route('home');
         }
 
         return $next($request);

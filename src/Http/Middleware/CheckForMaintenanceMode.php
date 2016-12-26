@@ -12,12 +12,15 @@ class CheckForMaintenanceMode extends Original
 {
     protected $excludedNames = [];
 
-    protected $except = ['admin', 'admin/*', 'auth/*'];
+    protected $except = [];
 
     protected $excludedIPs = [];
 
     protected function shouldPassThrough($request)
     {
+        $admin = preg_replace("/https?:\/\/{$request->server->get('SERVER_NAME')}\//", null, route('admin'));
+        $this->except = [$admin, "$admin/*", 'auth/*'];
+
         foreach ($this->except as $except) {
             if ($except !== '/') {
                 $except = trim($except, '/');

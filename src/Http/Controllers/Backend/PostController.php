@@ -83,7 +83,7 @@ class PostController extends Controller
 
         Session::set('_update-post', trans('messages.update_success', ['entity' => 'Post']));
 
-        return redirect("/admin/post/$id/edit");
+        return redirect()->route('admin.post.edit', $id);
     }
 
     /**

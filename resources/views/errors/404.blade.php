@@ -10,11 +10,11 @@
         <p class="text-muted text-center">Sorry, but nothing exists here.</p>
         @if(Auth::check())
             <div style="text-align: center">
-                <a href="{{ url('/admin') }}" class="btn btn-link m-t-10">Back to Dashboard</a>
+                <a href="{!! route('admin') !!}" class="btn btn-link m-t-10">Back to Dashboard</a>
             </div>
         @else
             <div style="text-align: center">
-                <a href="{{ url('/') }}" class="btn btn-link m-t-10">Back to Blog</a>
+                <a href="{!! route('blog.post.index') !!}" class="btn btn-link m-t-10">Back to Blog</a>
             </div>
         @endif
     </div>

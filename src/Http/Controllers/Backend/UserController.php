@@ -50,7 +50,7 @@ class UserController extends Controller
 
         Session::set('_new-user', trans('messages.create_success', ['entity' => 'user']));
 
-        return redirect('/admin/user');
+        return redirect()->route('admin.user.index');
     }
 
     /**
@@ -114,7 +114,7 @@ class UserController extends Controller
 
         Session::set('_updatePassword', trans('messages.update_success', ['entity' => 'Password']));
 
-        return redirect('/admin/user/'.$id.'/edit');
+        return redirect()->route('admin.user.edit', $id);
     }
 
     /**
@@ -138,6 +138,6 @@ class UserController extends Controller
 
         Session::set('_delete-user', trans('messages.delete_success', ['entity' => 'User']));
 
-        return redirect('/admin/user');
+        return redirect()->route('admin.user.index');
     }
 }

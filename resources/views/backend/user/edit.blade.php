@@ -18,7 +18,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a href="{{ url('admin/user/' . $data['id'] . '/edit') }}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh User</a>
+                                    <a href="{!! route('admin.user.edit', $data['id']) !!}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh User</a>
                                 </li>
                             </ul>
                         </li>
@@ -29,10 +29,10 @@
                     <div class="pm-body clearfix">
                         <ul class="tab-nav tn-justified">
                             <li class="{{ Route::is('admin.user.edit') ? 'active' : '' }}">
-                                <a href="{{ url('admin/user/' . $data['id'] . '/edit') }}">Profile</a>
+                                <a href="{{ route('admin.user.edit', $data['id']) }}">Profile</a>
                             </li>
                             <li class="{{ Route::is('admin.user.privacy') ? 'active' : '' }}">
-                                <a href="{{ url('/admin/user/' . $data['id'] . '/privacy') }}">Privacy</a>
+                                <a href="{!! route('admin.user.privacy', $data['id']) !!}">Privacy</a>
                             </li>
                         </ul>
                         @if(Session::has('errors') || Session::has('success'))

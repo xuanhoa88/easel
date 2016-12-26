@@ -3,6 +3,10 @@
 namespace Canvas;
 
 use Canvas\Models\Settings;
+use Canvas\Helpers\SetupHelper;
+use Canvas\Helpers\RouteHelper;
+use Canvas\Helpers\ConfigHelper;
+use Canvas\Helpers\CanvasHelper;
 use Canvas\Console\Commands\Index;
 use Canvas\Console\Commands\Theme;
 use Canvas\Console\Commands\Update;
@@ -189,6 +193,10 @@ class CanvasServiceProvider extends ServiceProvider
         $loader->alias('ConfigWriter', ConfigWriter::class);
         $loader->alias('Excel', Excel::class);
         $loader->alias('Settings', Settings::class);
+        $loader->alias('CanvasHelper', CanvasHelper::class);
+        $loader->alias('CanvasConfig', ConfigHelper::class);
+        $loader->alias('CanvasRoute', RouteHelper::class);
+        $loader->alias('CanvasSetup', SetupHelper::class);
 
         // Register Middleware...
         $router->middleware('checkIfAdmin', CheckIfAdmin::class);

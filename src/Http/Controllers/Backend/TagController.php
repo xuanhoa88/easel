@@ -64,7 +64,7 @@ class TagController extends Controller
 
         Session::set('_new-tag', trans('messages.create_success', ['entity' => 'tag']));
 
-        return redirect('/admin/tag');
+        return redirect()->route('admin.tag.index');
     }
 
     /**
@@ -101,7 +101,7 @@ class TagController extends Controller
 
         Session::set('_update-tag', trans('messages.update_success', ['entity' => 'Tag']));
 
-        return redirect("/admin/tag/$id/edit");
+        return redirect()->route('admin.tag.edit', $id);
     }
 
     /**
@@ -118,6 +118,6 @@ class TagController extends Controller
 
         Session::set('_delete-tag', trans('messages.delete_success', ['entity' => 'Tag']));
 
-        return redirect('/admin/tag');
+        return redirect()->route('admin.tag.index');
     }
 }

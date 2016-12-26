@@ -18,7 +18,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a href="{{ url('admin/profile') }}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh Profile</a>
+                                    <a href="{!! route('admin.profile.index') !!}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh Profile</a>
                                 </li>
                             </ul>
                         </li>
@@ -30,10 +30,10 @@
                         @section('profile-content')
                             <ul class="tab-nav tn-justified">
                                 <li class="{{ Route::is('admin.profile.index') ? 'active' : '' }}">
-                                    <a href="{{ url('admin/profile') }}">Profile</a>
+                                    <a href="{!! route('admin.profile.index') !!}">Profile</a>
                                 </li>
                                 <li class="{{ Route::is('admin.profile.privacy') ? 'active' : '' }}">
-                                    <a href="{{ url('admin/profile/privacy') }}">Privacy</a>
+                                    <a href="{!! route('admin.profile.privacy') !!}">Privacy</a>
                                 </li>
                             </ul>
                             @if(Session::has('errors') || Session::has('success'))

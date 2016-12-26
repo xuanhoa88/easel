@@ -36,7 +36,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    protected $redirectTo;
 
     /**
      * Create a new controller instance.
@@ -72,7 +72,7 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect('/admin');
+        return redirect()->route('admin');
     }
 
     /**
@@ -117,6 +117,8 @@ class LoginController extends Controller
      */
     public function authenticated(Request $request, User $user)
     {
+        $this->redirectTo = route('admin');
+        
         // Let Canvas know the user has been authenticated.
         CanvasHelper::authenticated($request, $user);
 

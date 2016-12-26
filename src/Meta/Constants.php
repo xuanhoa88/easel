@@ -58,6 +58,11 @@ class Constants
     const ROUTE_MIDDLEWARE_INSTALLED = ['canvasInstalled'];
 
     /**
+     * @constant(ROUTE_MIDDLEWARE_ADMIN)
+     */
+    const ROUTE_MIDDLEWARE_ADMIN = ['checkForMaintenanceMode', 'canvasInstalled', 'auth'];
+
+    /**
      * @constant(ROUTE_MIDDLEWARE_GROUPS_GENERAL)
      */
     const ROUTE_MIDDLEWARE_GROUPS_GENERAL = ['web'];
@@ -66,4 +71,19 @@ class Constants
      * @constant(ROUTE_DEFAULT_BLOG_MAIN)
      */
     const ROUTE_DEFAULT_BLOG_MAIN = '/';
+
+    /**
+     * @constant(ROUTE_DEFAULT_BLOG_PREFIX)
+     */
+    const ROUTE_DEFAULT_BLOG_PREFIX = 'blog';
+
+    /**
+     * @constant(ROUTE_DEFAULT_ADMIN_PREFIX)
+     */
+    const ROUTE_DEFAULT_ADMIN_PREFIX = 'admin';
+
+    /**
+     * @constant(ROUTE_DEFAULT_AUTH_PREFIX)
+     */
+    const ROUTE_DEFAULT_AUTH_PREFIX = 'auth';
 }
