@@ -2,22 +2,14 @@
 
 use Canvas\Helpers\RouteHelper;
 
-/*
-|--------------------------------------------------------------------------
-| Canvas Application Routes : Frontend
-|--------------------------------------------------------------------------
-*/
+// Canvas Application Routes : Frontend
 Route::group([
     'middlewareGroups' => RouteHelper::getGeneralMiddlewareGroups(),
     'middleware' => RouteHelper::getGeneralMiddleware(),
     'prefix' => RouteHelper::getBlogMain(),
 ], function () {
 
-    /*
-    |--------------------------------------------------------------------------
-    | Canvas Application Routes : Fully Installed and Configured
-    |--------------------------------------------------------------------------
-    */
+    //  Canvas Application Routes : Fully Installed and Configured
     Route::group([
         'middleware' => RouteHelper::getInstalledMiddleware(),
     ], function () {
@@ -28,11 +20,7 @@ Route::group([
             Route::get('{slug}', 'Canvas\Http\Controllers\Frontend\BlogController@showPost')->name('blog.post.show');
         });
 
-        /*
-        |--------------------------------------------------------------------------
-        | Canvas Application Routes : Backend
-        |--------------------------------------------------------------------------
-        */
+        //  Canvas Application Routes : Backend
         Route::group([
             'namespace' => 'Canvas\Http\Controllers\Backend',
             'middleware' => 'auth',
@@ -112,11 +100,7 @@ Route::group([
             });
         });
 
-        /*
-        |--------------------------------------------------------------------------
-        | Canvas Application Routes : Authentication
-        |--------------------------------------------------------------------------
-        */
+        //  Canvas Application Routes : Authentication
         Route::group([
             'namespace' => 'Canvas\Http\Controllers\Auth',
         ], function () {
