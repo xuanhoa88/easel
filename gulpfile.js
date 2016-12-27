@@ -30,7 +30,6 @@ elixir(function (mix) {
         'chosen.jquery.min.js',
         'jquery.bootgrid.min.js',
         'lightgallery.min.js',
-        'sweet-alert.min.js',
         'waves.js',
         'jsvalidation.js',
         'jquery.mCustomScrollbar.concat.min.js',

@@ -49,13 +49,13 @@ class CanvasServiceProvider extends ServiceProvider
      */
     protected $commands = [
         Index::class,
-        Install::class,
+        Views::class,
+        Theme::class,
         Update::class,
         Config::class,
         Assets::class,
+        Install::class,
         Version::class,
-        Views::class,
-        Theme::class,
     ];
 
     /**
@@ -112,7 +112,7 @@ class CanvasServiceProvider extends ServiceProvider
     }
 
     /**
-     * Migrations files.
+     * Migration files.
      */
     private function handleMigrations()
     {
