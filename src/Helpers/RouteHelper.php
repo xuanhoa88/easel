@@ -84,6 +84,7 @@ class RouteHelper extends CanvasHelper
     public static function routePath($routeName)
     {
         $request = resolve('request');
+
         return preg_replace("/https?:\/\/{$request->server->get('SERVER_NAME')}\//", null, route($routeName));
     }
 }

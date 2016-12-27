@@ -3,10 +3,10 @@
 namespace Canvas;
 
 use Canvas\Models\Settings;
-use Canvas\Helpers\SetupHelper;
 use Canvas\Helpers\RouteHelper;
-use Canvas\Helpers\ConfigHelper;
+use Canvas\Helpers\SetupHelper;
 use Canvas\Helpers\CanvasHelper;
+use Canvas\Helpers\ConfigHelper;
 use Canvas\Console\Commands\Index;
 use Canvas\Console\Commands\Theme;
 use Canvas\Console\Commands\Update;

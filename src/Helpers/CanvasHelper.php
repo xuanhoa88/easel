@@ -67,7 +67,7 @@ class CanvasHelper extends Constants
                 $context = stream_context_create($opts);
                 $stream = file_get_contents('https://api.github.com/repos/cnvs/easel/releases/latest', false, $context);
                 $release = json_decode($stream);
-            } catch(ErrorException $e) {
+            } catch (ErrorException $e) {
                 $release = (object) ['name' => 'Unknown'];
             }
 
