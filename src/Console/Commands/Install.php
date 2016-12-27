@@ -162,7 +162,7 @@ class Install extends CanvasCommand
             // Reset migrations
             Artisan::call('migrate:reset');
             // Display message
-            $this->line(PHP_EOL.'<error>An unexpected error occured. Installation could not continue.</error>');
+            $this->line(PHP_EOL.'<error>An unexpected error occurred. Installation could not continue.</error>');
             $this->line("<error>✘</error> {$e->getMessage()}");
             $this->comment(PHP_EOL.'Migrations were reset. Please run the installer again.');
             $this->line(PHP_EOL.'If this error persists please consult https://github.com/cnvs/easel/issues.'.PHP_EOL);
