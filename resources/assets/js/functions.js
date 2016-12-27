@@ -242,7 +242,7 @@ $(document).ready(function(){
     }
 
     /*
-     * Auto Hight Textarea
+     * Auto Height Textarea
      */
     if ($('.auto-size')[0]) {
 	   autosize($('.auto-size'));
@@ -282,7 +282,7 @@ $(document).ready(function(){
         });
     }
 
-    //Add blue border for pre-valued fg-flot text feilds
+    //Add blue border for pre-valued fg-flot text fields
     if($('.fg-float')[0]) {
         $('.fg-float .form-control').each(function(){
             var i = $(this).val();
@@ -453,7 +453,7 @@ $(document).ready(function(){
     });
 
     /*
-     * Collaspe Fix
+     * Collapse Fix
      */
     if ($('.collapse')[0]) {
 
