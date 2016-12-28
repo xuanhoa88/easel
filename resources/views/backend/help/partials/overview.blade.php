@@ -6,7 +6,7 @@
     </li>
     <li>
         <strong>Configure your website</strong> Visit the <a href="{!! route('admin.settings') !!}">Settings</a> page where you can
-                                                customize and configure all the options for your site, even changing the theme from the default <em>Paper</em> to <em>Dark Paper</em>!
+                                                customize and configure all the options for your site, even changing the theme from the default <strong>Paper</strong> to <strong>Dark Paper</strong>!
     </li>
     <li>
         <strong>Start posting content</strong> Finally, you can <a href="{!! route('admin.post.create') !!}">add new content</a> to your blog.
