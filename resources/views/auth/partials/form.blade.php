@@ -19,6 +19,6 @@
     <button type="submit" name="submit" class="btn btn-block btn-primary m-t-10">Sign in</button>
     <br><br>
     <div style="text-align: center">
-        <a href="{!! route('auth.password.forgot') !!}" class="btn btn-link m-t-10">Forgot password</a><a href="{!! route('blog.post.index') !!}" class="btn btn-link m-t-10">Back to Blog</a>
+        <a href="{!! route('auth.password.forgot') !!}" class="btn btn-link m-t-10">Forgot password</a><a href="{!! route('home') !!}" class="btn btn-link m-t-10">Back to Blog</a>
     </div>
 </form>

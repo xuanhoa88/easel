@@ -7,7 +7,7 @@
     sure that the post is not visible on your blog yet.
 </p>
 <p>
-    The fastest and easiest way to write in Canvas is to utilize Markdown. The split-screen editor allows you full-screen flexibility and live formatting to make your writing experience smooth and effortless. For a beginners' primer or to just brush up on your skills, take a look at the <a href="{!! route('blog.post.show', 'hello-world') !!}">Hello World</a> post.
+    The fastest and easiest way to write in Canvas is to utilize Markdown. The split-screen editor allows you full-screen flexibility and live formatting to make your writing experience smooth and effortless. For a beginners' primer or to just brush up on your skills, take a look at the <a href="{!! route('blog.post.show', 'hello-world') !!}" target="_blank">Hello World</a> post.
 </p>
 <p>
     From the <a href="{!! route('admin.post.index') !!}">Posts</a> overview page, you can click the <span class="zmdi zmdi-edit text-primary"></span> icon next to each
