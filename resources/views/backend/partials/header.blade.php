@@ -23,7 +23,7 @@
                             <a href="{!! route('admin.profile.index') !!}"><i class="zmdi zmdi-account"></i> Your Profile</a>
                         </li>
                         <li class="hidden-xs">
-                            <a target="_blank" href="{!! route('blog.post.index') !!}"><i class="zmdi zmdi-view-web"></i> View Site</a>
+                            <a target="_blank" href="{!! route('home') !!}"><i class="zmdi zmdi-view-web"></i> View Site</a>
                         </li>
                         <li class="hidden-xs">
                             <a data-action="fullscreen" href=""><i class="zmdi zmdi-fullscreen"></i> Toggle Fullscreen</a>

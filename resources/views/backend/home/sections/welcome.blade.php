@@ -22,7 +22,7 @@
                 <ul class="getting-started">
                     <li><i class="zmdi zmdi-comment-edit"></i> <a href="{!! route('admin.post.create') !!}">Write your first blog post</a></li>
                     <li><i class="zmdi zmdi-plus-circle"></i> <a href="{!! route('admin.tag.create') !!}">Create a new tag</a></li>
-                    <li><i class="zmdi zmdi-view-web"></i> <a href="{!! route('blog.post.index') !!}" target="_blank">View your site</a></li>
+                    <li><i class="zmdi zmdi-view-web"></i> <a href="{!! route('home') !!}" target="_blank">View your site</a></li>
                 </ul>
                 <br>
             </div>
