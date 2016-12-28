@@ -2,11 +2,7 @@
 
 use Canvas\Helpers\RouteHelper;
 
-/*
-|--------------------------------------------------------------------------
-| Canvas Application Routes : Frontend
-|--------------------------------------------------------------------------
-*/
+// Canvas Application Routes : Frontend
 Route::group([
     'middlewareGroups' => RouteHelper::getGeneralMiddlewareGroups(),
     'middleware' => RouteHelper::getGeneralMiddleware(),
@@ -14,11 +10,7 @@ Route::group([
 ], function () {
     Route::get('install', 'Canvas\Http\Controllers\Setup\InstallController@index')->name('canvas.install');
 
-    /*
-    |--------------------------------------------------------------------------
-    | Canvas Application Routes : Fully Installed and Configured
-    |--------------------------------------------------------------------------
-    */
+    // Canvas Application Routes : Fully Installed and Configured
     Route::group([
         'middleware' => RouteHelper::getInstalledMiddleware(),
     ], function () {
@@ -29,11 +21,7 @@ Route::group([
             Route::get('post/{slug}', 'Canvas\Http\Controllers\Frontend\BlogController@showPost')->name('blog.post.show');
         });
 
-        /*
-        |--------------------------------------------------------------------------
-        | Canvas Application Routes : Authentication
-        |--------------------------------------------------------------------------
-        */
+        // Canvas Application Routes : Authentication
         Route::group([
             'namespace' => 'Canvas\Http\Controllers\Auth',
             'prefix' => RouteHelper::getAuthPrefix(),
@@ -53,11 +41,7 @@ Route::group([
     });
 });
 
-/*
-|--------------------------------------------------------------------------
-| Canvas Application Routes : Backend
-|--------------------------------------------------------------------------
-*/
+// Canvas Application Routes : Backend
 Route::group([
     'middlewareGroups' => RouteHelper::getGeneralMiddlewareGroups(),
     'middleware' => RouteHelper::getAdminMiddleware(),
@@ -111,7 +95,7 @@ Route::group([
 
     Route::get(RouteHelper::getAdminPrefix().'/help', 'HelpController@index')->name('admin.help');
 
-    // Routes only accessible if the user is an Administrator.
+    // Routes only accessible if the user is an Administrator
     Route::group(['middleware' => 'checkIfAdmin'], function () {
         Route::resource(RouteHelper::getAdminPrefix().'/user', 'UserController', [
             'except' => 'show',
