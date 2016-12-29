@@ -72,10 +72,12 @@ class Install extends CanvasCommand
                 '--force' => true,
             ]);
             // Publish view files
-            Artisan::call('canvas:publish:views', [
-                '--y' => true,
-                '--force' => $force,
-            ]);
+            if ($withViews) {
+                Artisan::call('canvas:publish:views', [
+                    '--y' => true,
+                    '--force' => $force,
+                ]);
+            }
 
             // Set up the database
             if (! (SetupHelper::requiredTablesExists())) {
