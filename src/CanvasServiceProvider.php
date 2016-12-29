@@ -28,8 +28,8 @@ use Canvas\Extensions\ExtensionsServiceProvider;
 use TeamTNT\Scout\TNTSearchScoutServiceProvider;
 use Canvas\Http\Middleware\CheckForMaintenanceMode;
 use Larapack\ConfigWriter\Repository as ConfigWriter;
-use Austintoddj\JsValidation\Facades\JsValidatorFacade;
-use Austintoddj\JsValidation\JsValidationServiceProvider;
+use Proengsoft\JsValidation\Facades\JsValidatorFacade;
+use Proengsoft\JsValidation\JsValidationServiceProvider;
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use TalvBansal\MediaManager\Providers\MediaManagerServiceProvider;
 
