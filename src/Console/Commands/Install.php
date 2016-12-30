@@ -46,7 +46,7 @@ class Install extends CanvasCommand
 
         // Get the options passed into the command
         $force = $this->option('force') ?: false;
-        $withViews = $this->option('views') ?: false;
+        $withViews = true;
 
         // Display the welcome message
         $this->comment(PHP_EOL.'Welcome to the Canvas Install Wizard! You\'ll be up and running in no time...');
