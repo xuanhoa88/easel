@@ -2825,16 +2825,16 @@
         },
         {
             "name": "teamtnt/laravel-scout-tntsearch-driver",
-            "version": "v2.0.0",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/teamtnt/laravel-scout-tntsearch-driver.git",
-                "reference": "f09864154d4441576fabd4c7a0c440a6ffa3dfcd"
+                "reference": "a56aba86173693201c8b52b4b5e985fe204c8fe3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teamtnt/laravel-scout-tntsearch-driver/zipball/f09864154d4441576fabd4c7a0c440a6ffa3dfcd",
-                "reference": "f09864154d4441576fabd4c7a0c440a6ffa3dfcd",
+                "url": "https://api.github.com/repos/teamtnt/laravel-scout-tntsearch-driver/zipball/a56aba86173693201c8b52b4b5e985fe204c8fe3",
+                "reference": "a56aba86173693201c8b52b4b5e985fe204c8fe3",
                 "shasum": ""
             },
             "require": {
@@ -2879,7 +2879,7 @@
                 "search",
                 "tntsearch"
             ],
-            "time": "2016-12-22 21:08:38"
+            "time": "2016-12-29 16:38:37"
         },
         {
             "name": "teamtnt/tntsearch",

@@ -149,6 +149,11 @@ class Install extends CanvasCommand
             $this->canvasVersion();
             $this->progress(5);
 
+            // Clear all the caches
+            Artisan::call('cache:clear');
+            Artisan::call('view:clear');
+            Artisan::call('route:clear');
+
             $this->line(PHP_EOL.'<info>✔</info> Canvas has been installed. Pretty easy huh?'.PHP_EOL);
 
             // Display user login information
