@@ -44,7 +44,7 @@
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
-                            <input type="text" class="form-control" name="slug" id="slug" value="{!! $slug !!}" placeholder="route Slug">
+                            <input type="text" class="form-control" name="slug" id="slug" value="{!! $slug !!}" placeholder="Slug">
                         </div>
                     </div>
                     <br>

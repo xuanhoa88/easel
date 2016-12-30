@@ -5,12 +5,8 @@
         also <a href="{!! route('admin.profile.privacy') !!}">update your password</a> to keep your blog as secure as possible.
     </li>
     <li>
-        <strong>Configure your website</strong> Visit the <a href="{!! route('admin.settings') !!}">Settings</a> section, where you can
-                                                customize and configure all the options for your site.
-    </li>
-    <li>
-        <strong>Customize your website design</strong> To change the "look and feel" of your blog, find out more information on
-        <a href="https://cnvs.readme.io/docs/advanced-options#section-themes" target="_blank">Official Themes</a>. You may create your very own theme, [grab a fresh one off the palette](https://github.com/cnvs/palette) or just stick with the default.
+        <strong>Configure your website</strong> Visit the <a href="{!! route('admin.settings') !!}">Settings</a> page where you can
+                                                customize and configure all the options for your site, even changing the theme from the default <strong>Paper</strong> to <strong>Dark Paper</strong>!
     </li>
     <li>
         <strong>Start posting content</strong> Finally, you can <a href="{!! route('admin.post.create') !!}">add new content</a> to your blog.

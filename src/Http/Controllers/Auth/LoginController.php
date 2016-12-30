@@ -118,7 +118,7 @@ class LoginController extends Controller
     public function authenticated(Request $request, User $user)
     {
         $this->redirectTo = route('admin');
-        
+
         // Let Canvas know the user has been authenticated.
         CanvasHelper::authenticated($request, $user);
 

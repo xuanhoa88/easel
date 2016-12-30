@@ -1,7 +1,7 @@
 <h2 class="help-topic-header" id="tags">Tags</h2>
 <p>
     Tags provide grouping and organization to your blog posts. You can create a new tag by visiting the <span class="zmdi zmdi-labels"></span> Tags
-    menu item in the sidebar, and then clicking <a href="{!! route('admin.tag.index') !!}">Add New</a>.
+    menu item in the sidebar, and then clicking <a href="{!! route('admin.tag.create') !!}">Add New</a>.
     Once you specify a name, title and subtitle, click <span class="label label-primary"><span class="zmdi zmdi-floppy"></span> SAVE</span> to
     store your new tag in the database.
 </p>
