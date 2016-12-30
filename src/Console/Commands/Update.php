@@ -88,6 +88,12 @@ class Update extends CanvasCommand
 
         // Additional blog settings
         $this->comment(PHP_EOL.'Finishing the update...');
+
+        // Clear all the caches
+        Artisan::call('cache:clear');
+        Artisan::call('view:clear');
+        Artisan::call('route:clear');
+
         // Grab new version
         $newVersion = $this->canvasVersion();
         $this->progress(5);
