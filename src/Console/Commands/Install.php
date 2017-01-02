@@ -46,7 +46,7 @@ class Install extends CanvasCommand
 
         // Get the options passed into the command
         $force = $this->option('force') ?: false;
-        $withViews = true;
+        $withViews = $this->option('views') ?: false;
 
         // Display the welcome message
         $this->comment(PHP_EOL.'Welcome to the Canvas Install Wizard! You\'ll be up and running in no time...');
@@ -148,6 +148,9 @@ class Install extends CanvasCommand
             $this->twitterCardType();
             $this->canvasVersion();
             $this->progress(5);
+
+            // Publish the Laravel JSValidation views
+            Artisan::call('vendor:publish --provider="Proengsoft\JsValidation\JsValidationServiceProvider"');
 
             // Clear all the caches
             Artisan::call('cache:clear');
