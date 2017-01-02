@@ -12,10 +12,10 @@ class SetupHelper extends CanvasHelper
     public static function requiredTablesExists()
     {
         $requiredTables = array_merge(self::REQUIRED_TABLES, [
-            self::TABLES['users'], 
-            self::TABLES['settings']
+            self::TABLES['users'],
+            self::TABLES['settings'],
         ]);
-        
+
         foreach ($requiredTables as $table) {
             if (! Schema::hasTable($table)) {
                 return false;
