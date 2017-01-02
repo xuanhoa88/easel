@@ -11,7 +11,7 @@ class Settings extends Model
      *
      * @var string
      */
-    protected $table = 'settings';
+    protected $table = 'canvas_settings';
 
     /**
      * The attributes that are mass assignable.

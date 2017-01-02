@@ -4,6 +4,7 @@ namespace Canvas\Models;
 
 use Carbon\Carbon;
 use Laravel\Scout\Searchable;
+use Canvas\Helpers\CanvasHelper;
 use Canvas\Services\Parsedowner;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -12,6 +13,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Post extends Model
 {
     use Searchable;
+
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'canvas_posts';
 
     /**
      * The attributes that should be mutated to dates.
@@ -57,7 +65,7 @@ class Post extends Model
      */
     public function tags()
     {
-        return $this->belongsToMany(Tag::class)->withTimestamps();
+        return $this->belongsToMany(Tag::class, CanvasHelper::TABLES['post_tag'])->withTimestamps();
     }
 
     /**

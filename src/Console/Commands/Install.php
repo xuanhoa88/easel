@@ -94,7 +94,7 @@ class Install extends CanvasCommand
             // Create the admin user
             $this->comment(PHP_EOL.'Step 1/6: Creating the admin user');
             $email = $this->ask('Admin email address');
-            $rules = ['email' => 'unique:users,email'];
+            $rules = ['email' => 'unique:'.ConfigHelper::TABLES['users'].',email'];
             $validator = Validator::make(['email' => $email], $rules);
             if ($validator->fails()) {
                 $this->error('Sorry! That email already exists in the system.');

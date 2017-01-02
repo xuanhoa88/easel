@@ -23,7 +23,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @var string
      */
-    protected $table = 'users';
+    protected $table = 'canvas_users';
 
     /**
      * The attributes that are mass assignable.

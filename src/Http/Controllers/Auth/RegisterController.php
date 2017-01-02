@@ -10,6 +10,7 @@ namespace Canvas\Http\Controllers\Auth;
 
 use Validator;
 use Canvas\Models\User;
+use Canvas\Helpers\CanvasHelper;
 use Canvas\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -55,7 +56,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'email' => 'required|email|max:255|unique:'.CanvasHelper::TABLES['users'],
             'password' => 'required|min:6|confirmed',
         ]);
     }

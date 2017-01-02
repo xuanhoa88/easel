@@ -3,6 +3,7 @@
 namespace Canvas\Http\Requests;
 
 use Illuminate\Validation\Rule;
+use Canvas\Helpers\CanvasHelper;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -34,7 +35,7 @@ class ProfileUpdateRequest extends FormRequest
             'email' => [
                 'required',
                 'email',
-                Rule::unique('users')->ignore($email, 'email'),
+                Rule::unique(CanvasHelper::TABLES['users'])->ignore($email, 'email'),
             ],
         ];
     }

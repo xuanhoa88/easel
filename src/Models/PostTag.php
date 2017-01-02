@@ -11,7 +11,7 @@ class PostTag extends Model
      *
      * @var string
      */
-    protected $table = 'post_tag';
+    protected $table = 'canvas_post_tag';
 
     /**
      * The attributes that are mass assignable.

@@ -12,7 +12,7 @@ class CreateTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tags', function (Blueprint $table) {
+        Schema::create(CanvasHelper::TABLES['tags'], function (Blueprint $table) {
             $table->increments('id');
             $table->string('tag')->unique();
             $table->string('title');
@@ -31,6 +31,6 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('tags');
+        Schema::dropIfExists(CanvasHelper::TABLES['tags']);
     }
 }

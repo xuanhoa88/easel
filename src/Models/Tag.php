@@ -3,11 +3,19 @@
 namespace Canvas\Models;
 
 use Laravel\Scout\Searchable;
+use Canvas\Helpers\CanvasHelper;
 use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
 {
     use Searchable;
+
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'canvas_tags';
 
     /**
      * The attributes that should be cast to native types.
@@ -50,7 +58,7 @@ class Tag extends Model
      */
     public function posts()
     {
-        return $this->belongsToMany(Post::class)->withTimestamps();
+        return $this->belongsToMany(Post::class, CanvasHelper::TABLES['post_tag'])->withTimestamps();
     }
 
     /**

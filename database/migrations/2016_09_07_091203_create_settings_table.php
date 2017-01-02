@@ -13,7 +13,7 @@ class CreateSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('settings', function (Blueprint $table) {
+        Schema::create(CanvasHelper::TABLES['settings'], function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('setting_name')->index();
             $table->string('setting_value')->nullable();
@@ -27,6 +27,6 @@ class CreateSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('settings');
+        Schema::drop(CanvasHelper::TABLES['settings']);
     }
 }

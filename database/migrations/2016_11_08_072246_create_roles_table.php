@@ -13,7 +13,7 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create(CanvasHelper::TABLES['roles'], function (Blueprint $table) {
             $table->integer('id')->index();
             $table->string('description');
         });
@@ -26,6 +26,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('roles');
+        Schema::drop(CanvasHelper::TABLES['roles']);
     }
 }

@@ -11,7 +11,7 @@ class UpdateSettingValueType extends Migration
      */
     public function up()
     {
-        Schema::table('settings', function ($table) {
+        Schema::table(CanvasHelper::TABLES['settings'], function ($table) {
             $table->text('setting_value')->change();
         });
     }
@@ -23,7 +23,7 @@ class UpdateSettingValueType extends Migration
      */
     public function down()
     {
-        Schema::table('settings', function ($table) {
+        Schema::table(CanvasHelper::TABLES['settings'], function ($table) {
             $table->string('setting_value')->change();
         });
     }

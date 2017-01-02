@@ -2,6 +2,7 @@
 
 namespace Canvas\Http\Requests;
 
+use Canvas\Helpers\CanvasHelper;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserCreateRequest extends FormRequest
@@ -27,7 +28,7 @@ class UserCreateRequest extends FormRequest
             'first_name' => 'required',
             'last_name' => 'required',
             'display_name' => 'required',
-            'email' => 'required|unique:users|email',
+            'email' => 'required|unique:'.CanvasHelper::TABLES['users'].'|email',
             'password' => 'required',
             'role' => 'required',
         ];

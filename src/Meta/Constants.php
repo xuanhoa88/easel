@@ -45,7 +45,7 @@ class Constants
     /**
      * @constant(REQUIRED_TABLES)
      */
-    const REQUIRED_TABLES = ['migrations', 'users', 'settings'];
+    const REQUIRED_TABLES = ['migrations'];
 
     /**
      * @constant(ROUTE_MIDDLEWARE_GENERAL)
@@ -86,4 +86,16 @@ class Constants
      * @constant(ROUTE_DEFAULT_AUTH_PREFIX)
      */
     const ROUTE_DEFAULT_AUTH_PREFIX = 'auth';
+
+    /**
+     * @constant(TABLES)
+     */
+    const TABLES = [
+        'users' => 'canvas_users',
+        'posts' => 'canvas_posts',
+        'roles' => 'canvas_roles',
+        'tags' => 'canvas_tags',
+        'post_tag' => 'canvas_post_tag',
+        'settings' => 'canvas_settings',
+    ];
 }
