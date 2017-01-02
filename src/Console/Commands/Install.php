@@ -148,7 +148,7 @@ class Install extends CanvasCommand
             $this->twitterCardType();
             $this->canvasVersion();
             $this->progress(5);
-            
+
             // Clear all the caches
             Artisan::call('cache:clear');
             Artisan::call('view:clear');
