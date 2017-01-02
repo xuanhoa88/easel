@@ -149,12 +149,6 @@ class Install extends CanvasCommand
             $this->canvasVersion();
             $this->progress(5);
 
-            // Publish the Laravel JSValidation views
-            Artisan::call('vendor:publish', [
-                '--provider' => 'Proengsoft\JsValidation\JsValidationServiceProvider',
-                '--tag' => 'views'
-            ]);
-
             // Clear all the caches
             Artisan::call('cache:clear');
             Artisan::call('view:clear');
