@@ -78,6 +78,12 @@ class Install extends CanvasCommand
                     '--force' => $force,
                 ]);
             }
+            // PublishProengsoft\JsValidation Views
+            Artisan::call('vendor:publish', [
+                '--provider' => 'Proengsoft\JsValidation\JsValidationServiceProvider',
+                '--tag' => 'views',
+                '--force' => $force,
+            ]);
 
             // Set up the database
             if (! (SetupHelper::requiredTablesExists())) {
