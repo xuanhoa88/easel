@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 <p>To upgrade your installation of Canvas to the latest available, just run the following command from a terminal:</p>
-                <p><code>>_ php artisan canvas:update</code></p>
+                <p><code>php artisan canvas:update</code></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
