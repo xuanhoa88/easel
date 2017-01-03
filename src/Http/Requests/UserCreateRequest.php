@@ -28,7 +28,7 @@ class UserCreateRequest extends FormRequest
             'first_name' => 'required',
             'last_name' => 'required',
             'display_name' => 'required',
-            'email' => 'required|unique:'.CanvasHelper::TABLES['canvas_users'].'|email',
+            'email' => 'required|unique:'.CanvasHelper::TABLES['users'].'|email',
             'password' => 'required',
             'role' => 'required',
         ];

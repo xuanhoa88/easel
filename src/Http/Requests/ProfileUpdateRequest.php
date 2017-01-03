@@ -35,7 +35,7 @@ class ProfileUpdateRequest extends FormRequest
             'email' => [
                 'required',
                 'email',
-                Rule::unique(CanvasHelper::TABLES['canvas_users'])->ignore($email, 'email'),
+                Rule::unique(CanvasHelper::TABLES['users'])->ignore($email, 'email'),
             ],
         ];
     }
