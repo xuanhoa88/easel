@@ -31,6 +31,7 @@
             </div>
         </section>
     </section>
+    @include('canvas::backend.home.partials.modals.update')
 @stop
 
 @section('unique-js')

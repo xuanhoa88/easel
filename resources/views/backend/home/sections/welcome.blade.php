@@ -40,7 +40,7 @@
         @if($data['canvasVersion'] !== $data['latestRelease'])
             <hr>
             <p class="small" style="margin-bottom: 0;">
-                <a href="{!! url('http://github.com/cnvs/canvas/releases/tag/') . $data['latestRelease'] !!}" target="_blank"><i class="zmdi zmdi-alert-circle"></i>&nbsp;<strong>Canvas {!! $data['latestRelease'] !!}</strong></a> is available! <a href="https://cnvs.readme.io/docs/upgrade-guide" target="_blank"><strong>Please update now.</strong></a>
+                <a href="{!! url('http://github.com/cnvs/canvas/releases/tag/') . $data['latestRelease'] !!}" target="_blank"><i class="zmdi zmdi-alert-circle"></i>&nbsp;<strong>Canvas {!! $data['latestRelease'] !!}</strong></a> is available! <a href="#" data-toggle="modal" data-target="#update"><strong>Please update now.</strong></a>
             </p>
         @endif
 
