@@ -30,7 +30,7 @@ class PostUpdateRequest extends FormRequest
             'title' => 'required',
             'slug' => [
                 'required',
-                Rule::unique(CanvasHelper::TABLES['posts'])->ignore($slug->first(), 'slug'),
+                Rule::unique(CanvasHelper::TABLES['canvas_posts'])->ignore($slug->first(), 'slug'),
             ],
             'subtitle' => 'required',
             'published_at' => 'required',

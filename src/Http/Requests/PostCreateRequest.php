@@ -23,7 +23,7 @@ class PostCreateRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'slug' => 'required|unique:posts',
+            'slug' => 'required|unique:canvas_posts',
             'subtitle' => 'required',
             'published_at' => 'required',
         ];
