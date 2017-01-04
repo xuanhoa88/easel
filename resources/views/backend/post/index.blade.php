@@ -12,7 +12,7 @@
                 <div class="card">
                     <div class="card-header">
                         <ol class="breadcrumb">
-                            <li><a href="{{ url('admin') }}">Home</a></li>
+                            <li><a href="{!! route('admin') !!}">Home</a></li>
                             <li class="active">Posts</li>
                         </ol>
                         <ul class="actions">
@@ -22,7 +22,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li>
-                                        <a href="{{ url('admin/post') }}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh Posts</a>
+                                        <a href="{!! route('admin.post.index') !!}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh Posts</a>
                                     </li>
                                 </ul>
                             </li>
@@ -30,7 +30,7 @@
                         @include('canvas::shared.errors')
                         @include('canvas::shared.success')
                         <h2>Posts&nbsp;
-                            <a href="{{ url('admin/post/create') }}"><i class="zmdi zmdi-plus-circle" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Create a new post"></i></a>
+                            <a href="{!! route('admin.post.create') !!}"><i class="zmdi zmdi-plus-circle" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Create a new post"></i></a>
 
                             <small>This page provides a comprehensive overview of all your blog posts. Click the <span class="zmdi zmdi-edit text-primary"></span> icon next to each post to update its contents or the <span class="zmdi zmdi-search text-primary"></span> icon to see what it looks like to your readers.</small>
                         </h2>
@@ -46,6 +46,8 @@
                                     <th data-column-id="published">Status</th>
                                     <th data-column-id="slug">Slug</th>
                                     <th data-column-id="date" data-type="date" data-formatter="humandate">Date</th>
+                                    <th data-column-id="edit_url" data-sortable="false" data-visible="false">Edit URL</th>
+                                    <th data-column-id="view_url" data-sortable="false" data-visible="false">View URL</th>
                                     <th data-column-id="commands" data-formatter="commands" data-sortable="false">Actions</th>
                                 </tr>
                             </thead>
@@ -62,6 +64,8 @@
                                         @else
                                             <td>{{ $post->created_at->format('Y/m/d') . "<br/>" }} Published</td>
                                         @endif
+                                        <td>{!! route('admin.post.edit', $post->id) !!}</td>
+                                        <td>{!! route('blog.post.show', $post->slug) !!}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

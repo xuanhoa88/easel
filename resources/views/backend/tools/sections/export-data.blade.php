@@ -11,7 +11,7 @@
         </h2>
     </div>
     <div class="card-body card-padding">
-        <form class="form-inline" action="{{ url('admin/tools/download_archive') }}" method="POST">
+        <form class="form-inline" action="{!! route('admin.tools.download_archive') !!}" method="POST">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <button class="btn btn-primary btn-icon-text" id="download_archive">
                 <i class="zmdi zmdi-archive"></i> Download Archive

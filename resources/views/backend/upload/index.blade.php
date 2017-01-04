@@ -12,7 +12,7 @@
                 <div class="card">
                     <div class="card-header">
                         <ol class="breadcrumb">
-                            <li><a href="{{ url('admin') }}">Home</a></li>
+                            <li><a href="{!! route('admin') !!}">Home</a></li>
                             <li class="active">Media</li>
                         </ol>
                         <ul class="actions">
@@ -22,7 +22,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li>
-                                        <a href="{{ url('admin/upload') }}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh Media</a>
+                                        <a href="{!! route('admin.upload') !!}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh Media</a>
                                     </li>
                                 </ul>
                             </li>

@@ -1,4 +1,4 @@
-<form class="keyboard-save" role="form" method="POST" id="settings" action="{{ url('admin/settings') }}">
+<form class="keyboard-save" role="form" method="POST" id="settings" action="{!! route('admin.settings') !!}">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
     <br>
@@ -82,6 +82,39 @@
             </select>
         </div>
         <small>Configure the way Twitter <a href="https://cards-dev.twitter.com/validator" target="_blank">displays links to your blog</a> or <a href="https://dev.twitter.com/cards/overview" target="_blank">learn more about this option</a>.</small>
+    </div>
+
+    <br>
+
+    <div class="form-group">
+        <div class="fg-line">
+            <label class="fg-label"><i class="zmdi zmdi-invert-colors"></i> Theme</label>
+            <select name="theme" id="theme" class="selectpicker">
+                <option @if ($data['active_theme'] == "default") selected @endif value="default">{!! $data['default_theme_name'] !!}</option>
+                @foreach($data['themes'] as $themeId => $themeName)
+                <option @if ($data['active_theme'] == $themeId) selected @endif value="{!! $themeId !!}">{{ $themeName }}</option>
+                @endforeach
+            </select>
+        </div>
+        <small>Change the appearance of your blog with Canvas themes.</small>
+    </div>
+
+    <br>
+
+    <div class="form-group">
+        <div class="fg-line">
+            <label class="fg-label"><i class="zmdi zmdi-language-css3"></i> Custom CSS</label>
+            <textarea class="form-control" rows="10" name="custom_css" id="custom_css" style="resize: vertical" placeholder="Define your own CSS styles for the blog here.">{{ $data['custom_css'] }}</textarea>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="form-group">
+        <div class="fg-line">
+            <label class="fg-label"><i class="zmdi zmdi-language-javascript"></i> Custom JS</label>
+            <textarea class="form-control" rows="10" name="custom_js" id="custom_js" style="resize: vertical" placeholder="Define your own JS scripts for the blog here.">{{ $data['custom_js'] }}</textarea>
+        </div>
     </div>
 
     <br>

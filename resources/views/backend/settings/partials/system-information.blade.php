@@ -5,27 +5,50 @@
         </h2>
     </div>
     <div class="card-body card-padding">
-        <pre>
+        <pre id="system-info">
             <code>
 ### Begin System Info ###
 
 ## Please include this information when requesting technical support ##
 
-CANVAS_VERSION:             {{ $data['version'] }}
+-- Site Info
 
 SITE_URL:                   {{ $data['url'] }}
 SITE_IP:                    {{ $data['ip'] }}
 SITE_TIMEZONE:              {{ $data['timezone'] }}
 
-PHP_VERSION:                {{ $data['php_version'] }}
-PHP_MEMORY_LIMIT:           {{ $data['php_memory_limit'] }}
-PHP_TIME_LIMIT:             {{ $data['php_time_limit'] }}
+-- Webserver Configuration
 
-DATABASE_CONNECTION:        {{ $data['db_connection'] }}
+PHP_VERSION:                {{ $data['phpVersion'] }}
+DATABASE_CONNECTION:        {{ $data['dbConnection'] }}
+WEB_SERVER:                 {{ $data['webServer'] }}
 
-WEB_SERVER:                 {{ $data['web_server'] }}
+-- User Browser
 
-LAST_INDEX_RUN:             {{ $data['last_index'] }}
+User Agent String:          {{ $data['userAgentString'] }}
+
+-- PHP Configuration
+
+PHP_MEMORY_LIMIT:           {{ $data['phpMemoryLimit'] }}
+PHP_TIME_LIMIT:             {{ $data['phpTimeLimit'] }}
+
+-- PHP Extensions
+
+cURL:                       {{ $data['curl'] }}
+cURL Version:               {{ $data['curlVersion'] }}
+GD:                         {{ $data['gd'] }}
+PDO:                        {{ $data['pdo'] }}
+SQLite:                     {{ $data['sqlite'] }}
+OpenSSL:                    {{ $data['openssl'] }}
+MBString:                   {{ $data['mbstring'] }}
+Tokenizer:                  {{ $data['tokenizer'] }}
+Zip:                        {{ $data['zip'] }}
+
+-- Canvas Configuration
+
+CANVAS_VERSION:             {{ $data['version'] }}
+LAST_INDEX_RUN:             {{ $data['lastIndex'] }}
+THEME:                      {{ $data['active_theme_theme']->getName().' '.$data['active_theme_theme']->getVersion() }}
 
 ### End System Info ###
             </code>

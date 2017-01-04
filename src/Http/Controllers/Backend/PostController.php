@@ -5,7 +5,7 @@ namespace Canvas\Http\Controllers\Backend;
 use Session;
 use Canvas\Models\Post;
 use Canvas\Jobs\PostFormFields;
-use App\Http\Controllers\Controller;
+use Canvas\Http\Controllers\Controller;
 use Canvas\Http\Requests\PostCreateRequest;
 use Canvas\Http\Requests\PostUpdateRequest;
 
@@ -83,11 +83,7 @@ class PostController extends Controller
 
         Session::set('_update-post', trans('messages.update_success', ['entity' => 'Post']));
 
-        if ($request->action === 'continue') {
-            return redirect("/admin/post/$id/edit");
-        } else {
-            return redirect('/admin/post');
-        }
+        return redirect()->route('admin.post.edit', $id);
     }
 
     /**

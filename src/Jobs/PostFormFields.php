@@ -2,9 +2,9 @@
 
 namespace Canvas\Jobs;
 
-use Canvas\Models\Post;
-use Canvas\Models\Tag;
 use Carbon\Carbon;
+use Canvas\Models\Tag;
+use Canvas\Models\Post;
 use Illuminate\Queue\SerializesModels;
 
 /**

@@ -47,13 +47,15 @@
             </div>
             <div class="form-group m-l-30">
                 <button type="submit" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-floppy"></i> Save</button>
-                <a href="{{ url('/admin/user') }}" class="btn btn-link btn-default">Cancel</a>
+                <a href="{!! route('admin.user.index') !!}" class="btn btn-link btn-default">Cancel</a>
             </div>
         </div>
     </form>
 @stop
 
 @section('unique-js')
+    @include('canvas::backend.profile.partials.editor')
+
     {!! JsValidator::formRequest('Canvas\Http\Requests\ProfileUpdateRequest', '#profileUpdate') !!}
     @include('canvas::backend.shared.components.profile-datetime-picker', ['format' => 'YYYY-MM-DD'])
 

@@ -13,8 +13,8 @@
             },
             formatters: {
                 "commands": function(column, row) {
-                    return "<a href='{{ url('admin/post') }}/" + row.id + "/edit'><button type='button' class='btn btn-icon command-edit waves-effect waves-circle'><span class='zmdi zmdi-edit'></span></button></a> " +
-                            " <a href='{{ url('blog') }}/" + row.slug + "' target='_blank'><button type='button' class='btn btn-icon command-delete waves-effect waves-circle'><span class='zmdi zmdi-search'></span></button></a>";
+                    return "<a href='" + row.edit_url + "'><button type='button' class='btn btn-icon command-edit waves-effect waves-circle'><span class='zmdi zmdi-edit'></span></button></a> " +
+                            " <a href='" + row.view_url + "' target='_blank'><button type='button' class='btn btn-icon command-delete waves-effect waves-circle'><span class='zmdi zmdi-search'></span></button></a>";
                 }
             }
         });

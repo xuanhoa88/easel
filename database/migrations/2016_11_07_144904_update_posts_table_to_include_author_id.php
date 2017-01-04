@@ -12,7 +12,7 @@ class UpdatePostsTableToIncludeAuthorId extends Migration
      */
     public function up()
     {
-        Schema::table('posts', function ($table) {
+        Schema::table(CanvasHelper::TABLES['posts'], function ($table) {
             $table->integer('user_id')->after('id')->unsigned()->index()->default(1);
         });
     }
@@ -24,7 +24,7 @@ class UpdatePostsTableToIncludeAuthorId extends Migration
      */
     public function down()
     {
-        Schema::table('posts', function ($table) {
+        Schema::table(CanvasHelper::TABLES['posts'], function ($table) {
             $table->dropColumn('user_id');
         });
     }

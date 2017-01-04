@@ -3,11 +3,12 @@
 namespace Canvas\Http\Controllers\Backend;
 
 use Canvas\Models\User;
+use Canvas\Helpers\CanvasHelper;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
+use Canvas\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
-use Canvas\Http\Requests\UserUpdateRequest;
 use Canvas\Http\Requests\UserCreateRequest;
+use Canvas\Http\Requests\UserUpdateRequest;
 use Canvas\Http\Requests\PasswordUpdateRequest;
 
 class UserController extends Controller
@@ -50,7 +51,7 @@ class UserController extends Controller
 
         Session::set('_new-user', trans('messages.create_success', ['entity' => 'user']));
 
-        return redirect('/admin/user');
+        return redirect()->route('admin.user.index');
     }
 
     /**
@@ -114,7 +115,7 @@ class UserController extends Controller
 
         Session::set('_updatePassword', trans('messages.update_success', ['entity' => 'Password']));
 
-        return redirect('/admin/user/'.$id.'/edit');
+        return redirect()->route('admin.user.edit', $id);
     }
 
     /**
@@ -128,7 +129,7 @@ class UserController extends Controller
     {
         // First, assign all the posts authored by this user to another existing user in the system.
         $existingUser = User::where('id', '!=', $id)->first();
-        DB::table('posts')
+        DB::table(CanvasHelper::TABLES['posts'])
             ->where('user_id', $id)
             ->update(['user_id' => $existingUser->id]);
 
@@ -138,6 +139,6 @@ class UserController extends Controller
 
         Session::set('_delete-user', trans('messages.delete_success', ['entity' => 'User']));
 
-        return redirect('/admin/user');
+        return redirect()->route('admin.user.index');
     }
 }

@@ -1,12 +1,11 @@
-<p align="center">
-    <a href="https://styleci.io/repos/74061859"><img src="https://styleci.io/repos/74061859/shield?style=flat&branch=master" alt="StyleCI"></a>
-    <a href='https://www.versioneye.com/user/projects/583f0b674d07fe00160eab24'><img src='https://www.versioneye.com/user/projects/583f0b674d07fe00160eab24/badge.svg?style=flat' alt="Dependency Status" /></a>
-    <a href="https://packagist.org/packages/cnvs/easel"><img src="https://poser.pugx.org/cnvs/easel/downloads" alt="Total Downloads"></a>
-    <a href="https://packagist.org/packages/cnvs/easel"><img src="https://poser.pugx.org/cnvs/easel/v/stable" alt="Latest Stable Version"></a>
-    <a href="https://github.com/cnvs/easel/blob/master/LICENSE"><img src="https://poser.pugx.org/austintoddj/easel/license" alt="License"></a>
-</p>
-
 ## About Easel
+
+<a href="https://travis-ci.org/cnvs/easel"><img src="https://travis-ci.org/cnvs/easel.svg?branch=master"></a>
+<a href="https://styleci.io/repos/74061859"><img src="https://styleci.io/repos/74061859/shield?style=flat&branch=master" alt="StyleCI"></a>
+<a href='https://www.versioneye.com/user/projects/585ca42d126ede000efde658'><img src='https://www.versioneye.com/user/projects/585ca42d126ede000efde658/badge.svg?style=flat' alt="Dependency Status" /></a>
+<a href="https://packagist.org/packages/cnvs/easel"><img src="https://poser.pugx.org/cnvs/easel/downloads" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/cnvs/easel"><img src="https://poser.pugx.org/cnvs/easel/v/stable" alt="Latest Stable Version"></a>
+<a href="https://github.com/cnvs/easel/blob/master/license"><img src="https://poser.pugx.org/austintoddj/easel/license" alt="License"></a>
 
 > **Note:** This repository contains the core code of Canvas. If you want to create and publish a blog using Canvas, visit the [main repository](https://github.com/cnvs/canvas).
 

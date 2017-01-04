@@ -1,19 +1,15 @@
 <p>Follow these steps to set up and start using your blog:</p>
 <ol id="help-intro">
     <li>
-        <strong>Update your profile</strong> Once logged in, head to the <a href="{{ url('admin/profile') }}">Edit Profile</a> page and update your information. You should
-        also <a href="{{ url('admin/profile/privacy') }}">update your password</a> to keep your blog as secure as possible.
+        <strong>Update your profile</strong> Once logged in, head to the <a href="{!! route('admin.profile.index') !!}">Edit Profile</a> page and update your information. You should
+        also <a href="{!! route('admin.profile.privacy') !!}">update your password</a> to keep your blog as secure as possible.
     </li>
     <li>
-        <strong>Configure your website</strong> Visit the <a href="{{ url('admin/settings') }}">Settings</a> section, where you can
-                                                customize and configure all aspects of your site.
+        <strong>Configure your website</strong> Visit the <a href="{!! route('admin.settings') !!}">Settings</a> page where you can
+                                                customize and configure all the options for your site, even changing the theme from the default <strong>Paper</strong> to <strong>Dark Paper</strong>!
     </li>
     <li>
-        <strong>Customize your website design</strong> To change the "look and feel" of your blog, find out more information on
-        <a href="https://github.com/austintoddj/canvas#advanced-options" target="_blank">child themes</a>. You may create an entirely new theme or just stick with the default.
-    </li>
-    <li>
-        <strong>Start posting content</strong> Finally, you can <a href="{{ url('admin/post/create') }}">add new content</a> to your blog.
+        <strong>Start posting content</strong> Finally, you can <a href="{!! route('admin.post.create') !!}">add new content</a> to your blog.
     </li>
 </ol>
 

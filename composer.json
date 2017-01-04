@@ -1,41 +1,65 @@
 {
-    "name": "cnvs/easel",
-    "description": "Core Framework for Canvas.",
-    "keywords": ["canvas", "core"],
-    "license": "MIT",
-    "homepage": "https://canvas.toddaustin.io",
-    "support": {
-        "issues": "https://github.com/cnvs/easel/issues",
-        "source": "https://github.com/cnvs/easel"
-    },
-    "authors": [
-        {
-            "name": "Todd Austin",
-            "email": "austin.todd.j@gmail.com"
-        },
-        {
-            "name": "Patrick Reid",
-            "email": "reliq@reliqarts.com"
-        }
-    ],
-    "require": {
-        "php": ">=5.6.4",
-        "illuminate/support": "5.*"
-    },
-    "require-dev": {
-        "erikgall/eloquent-phpunit": "~1.0",
-        "fzaninotto/faker": "~1.4",
-        "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.0",
-        "symfony/dom-crawler": "~3.0",
-        "symfony/css-selector": "~3.0"
-    },
-    "autoload": {
-        "classmap": [
-            "database"
-        ],
-        "psr-4": {
-            "Canvas\\": "src/"
-        }
-    }
+	"name": "cnvs/easel",
+	"description": "Core Framework for Canvas.",
+	"keywords": ["canvas", "core"],
+	"type": "canvas-core",
+	"license": "MIT",
+	"homepage": "https://canvas.toddaustin.io",
+	"support": {
+		"issues": "https://github.com/cnvs/easel/issues",
+		"source": "https://github.com/cnvs/easel"
+	},
+	"authors": [
+		{
+			"name": "Todd Austin",
+			"email": "austin.todd.j@gmail.com"
+		},
+		{
+			"name": "Patrick Reid",
+			"email": "reliq@reliqarts.com"
+		},
+		{
+			"name": "Talvinder Bansal",
+			"email": "talvbansal@hotmail.com"
+		}
+	],
+	"require": {
+		"php": ">=5.6.4",
+		"illuminate/support": "5.*",
+        "doctrine/dbal": "^2.5",
+		"talvbansal/media-manager": "^2.0",
+		"laravel/scout": "2.*",
+		"teamtnt/laravel-scout-tntsearch-driver": "2.*",
+		"erusev/parsedown": "^1.6",
+		"proengsoft/laravel-jsvalidation": "1.4.*",
+		"maatwebsite/excel": "^2.1",
+		"larapack/config-writer": "^1.0"
+	},
+	"require-dev": {
+		"erikgall/eloquent-phpunit": "~1.0",
+		"orchestra/testbench": "^3.3",
+		"fzaninotto/faker": "~1.4",
+		"mockery/mockery": "0.9.*",
+		"phpunit/phpunit": "~5.0",
+		"symfony/dom-crawler": "~3.0",
+		"symfony/css-selector": "~3.0"
+	},
+	"suggest": {
+		"cnvs/canvas-theme-paper-dark": "Official dark theme for Canvas."
+	},
+	"autoload": {
+		"classmap": [
+			"database"
+		],
+		"psr-4": {
+			"Canvas\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"classmap": [
+			"tests/TestCase.php",
+			"tests/CreatesUser.php",
+			"tests/InteractsWithDatabase.php"
+		]
+	}
 }

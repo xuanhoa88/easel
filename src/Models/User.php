@@ -2,8 +2,8 @@
 
 namespace Canvas\Models;
 
-use Canvas\Helpers;
 use Laravel\Scout\Searchable;
+use Canvas\Helpers\CanvasHelper;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -23,14 +23,36 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * @var string
      */
-    protected $table = 'users';
+    protected $table = 'canvas_users';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['first_name', 'last_name', 'display_name', 'url', 'twitter', 'facebook', 'github', 'linkedin', 'resume_cv', 'address', 'city', 'country', 'bio', 'job', 'phone', 'gender', 'relationship', 'birthday', 'email', 'password', 'role'];
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'display_name',
+        'role',
+        'url',
+        'twitter',
+        'facebook',
+        'github',
+        'linkedin',
+        'resume_cv',
+        'address',
+        'city',
+        'country',
+        'bio',
+        'job',
+        'phone',
+        'gender',
+        'relationship',
+        'birthday',
+        'email',
+        'password',
+    ];
 
     /**
      * Cast attributes to specific types.
@@ -58,7 +80,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public static function isAdmin($role)
     {
-        return $role === Helpers::ROLE_ADMINISTRATOR ? true : false;
+        return $role === CanvasHelper::ROLE_ADMINISTRATOR ? true : false;
     }
 
     /**

@@ -1,4 +1,4 @@
-.help-block-error {display: none !important;}
+.help-block-error, [class*="error"].help-block, .error-help-block {display: none !important;}
 
 .breadcrumb {padding-left: 0px !important;}
 

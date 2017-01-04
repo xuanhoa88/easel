@@ -11,7 +11,7 @@ class AddCvColumnToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function ($table) {
+        Schema::table(CanvasHelper::TABLES['users'], function ($table) {
             $table->string('resume_cv')->after('linkedin')->nullable();
         });
     }
@@ -23,7 +23,7 @@ class AddCvColumnToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function ($table) {
+        Schema::table(CanvasHelper::TABLES['users'], function ($table) {
             $table->dropColumn('resume_cv');
         });
     }

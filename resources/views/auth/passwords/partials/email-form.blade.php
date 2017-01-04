@@ -12,6 +12,6 @@
     </div>
     <button type="submit" name="submit" class="btn btn-primary btn-block m-t-10">Send Reset Link</button>
     <div style="text-align: center">
-        <a href="{{ url('admin') }}" class="btn btn-link m-t-10">Sign In</a><a href="{{ url('/') }}" class="btn btn-link m-t-10">Back to Blog</a>
+        <a href="{!! route('admin') !!}" class="btn btn-link m-t-10">Sign In</a><a href="{!! route('home') !!}" class="btn btn-link m-t-10">Back to Blog</a>
     </div>
 </form>

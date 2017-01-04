@@ -55,7 +55,7 @@ class BlogIndexData
 
         $posts = Post::where('published_at', '<=', Carbon::now())
             ->whereHas('tags', function ($q) use ($tag) {
-                $q->where('tag', '=', $tag->tag);
+                $q->where('id', '=', $tag->id);
             })
             ->where('is_draft', 0)
             ->orderBy('published_at', $reverse_direction ? 'asc' : 'desc')

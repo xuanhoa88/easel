@@ -18,7 +18,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a href="{{ url('admin/settings') }}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh Settings</a>
+                                    <a href="{!! route('admin.settings') !!}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh Settings</a>
                                 </li>
                             </ul>
                         </li>

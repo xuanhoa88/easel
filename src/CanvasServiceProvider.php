@@ -2,10 +2,36 @@
 
 namespace Canvas;
 
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
-use Illuminate\Support\ServiceProvider;
+use Canvas\Models\Settings;
+use Canvas\Helpers\RouteHelper;
+use Canvas\Helpers\SetupHelper;
+use Canvas\Helpers\CanvasHelper;
+use Canvas\Helpers\ConfigHelper;
 use Canvas\Console\Commands\Index;
+use Canvas\Console\Commands\Theme;
+use Canvas\Console\Commands\Update;
 use Canvas\Console\Commands\Install;
+use Canvas\Console\Commands\Version;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Foundation\AliasLoader;
+use Illuminate\Support\ServiceProvider;
+use Laravel\Scout\ScoutServiceProvider;
+use Canvas\Http\Middleware\CheckIfAdmin;
+use Canvas\Console\Commands\Publish\Views;
+use Canvas\Console\Commands\Publish\Assets;
+use Canvas\Console\Commands\Publish\Config;
+use Canvas\Http\Middleware\EnsureInstalled;
+use Maatwebsite\Excel\ExcelServiceProvider;
+use Canvas\Http\Middleware\EnsureNotInstalled;
+use Canvas\Console\Commands\Publish\Migrations;
+use Canvas\Extensions\ExtensionsServiceProvider;
+use TeamTNT\Scout\TNTSearchScoutServiceProvider;
+use Canvas\Http\Middleware\CheckForMaintenanceMode;
+use Larapack\ConfigWriter\Repository as ConfigWriter;
+use Proengsoft\JsValidation\Facades\JsValidatorFacade;
+use Proengsoft\JsValidation\JsValidationServiceProvider;
+use Illuminate\Database\Eloquent\Factory as EloquentFactory;
+use TalvBansal\MediaManager\Providers\MediaManagerServiceProvider;
 
 class CanvasServiceProvider extends ServiceProvider
 {
@@ -23,11 +49,17 @@ class CanvasServiceProvider extends ServiceProvider
      */
     protected $commands = [
         Index::class,
+        Views::class,
+        Theme::class,
+        Update::class,
+        Config::class,
+        Assets::class,
         Install::class,
+        Version::class,
     ];
 
     /**
-     * Public assets.
+     * Public asset files.
      */
     private function handleAssets()
     {
@@ -37,38 +69,38 @@ class CanvasServiceProvider extends ServiceProvider
     }
 
     /**
-     * Config.
+     * Configuration files.
      */
     private function handleConfigs()
     {
-        $configPath = __DIR__.'/../config/canvas.php';
+        $configPath = __DIR__.'/../config/blog.php';
 
-        // allow publishing config, with tag: config
+        // Allow publishing the config file, with tag: config
         $this->publishes([$configPath => config_path('blog.php')], 'config');
 
-        // merge config;
-        // allowing any modifications from published config file to be seemlessly merged with default config
-        $this->mergeConfigFrom($configPath, 'canvas');
+        // Merge config files
+        // Allows any modifications from the published config file to be seamlessly merged with default config file
+        $this->mergeConfigFrom($configPath, 'blog');
     }
 
     /**
-     * Translations.
+     * Translation files.
      */
     private function handleTranslations()
     {
-        // load translations
+        // Load translations
         $this->loadTranslationsFrom(__DIR__.'/../lang', 'canvas');
     }
 
     /**
-     * Views.
+     * View files.
      */
     private function handleViews()
     {
-        // load views
+        // Load views
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'canvas');
 
-        // allow publishing views, with tag: views
+        // Allow publishing view files, with tag: views
         $this->publishes([
             __DIR__.'/../resources/views/auth' => base_path('resources/views/vendor/canvas/auth'),
             __DIR__.'/../resources/views/backend' => base_path('resources/views/vendor/canvas/backend'),
@@ -80,36 +112,36 @@ class CanvasServiceProvider extends ServiceProvider
     }
 
     /**
-     * Migrations.
+     * Migration files.
      */
     private function handleMigrations()
     {
-        // allow publishing migrations, with tag: migrations
-        $this->publishes([__DIR__.'/../database/migrations' => base_path('database/migrations')], 'migrations');
+        // Load migrations...
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 
     /**
-     * Routes.
+     * Route files.
      */
     private function handleRoutes()
     {
-        // get the routes
-        require_once __DIR__.'/../routes/web.php';
+        // Get the routes
+        require realpath(__DIR__.'/../routes/web.php');
     }
 
     /**
-     * Commands.
+     * Command files.
      */
     private function handleCommands()
     {
-        // register commands
+        // Register the commands
         if ($this->app->runningInConsole()) {
             $this->commands($this->commands);
         }
     }
 
     /**
-     * Register factories.
+     * Register factory files.
      *
      * @param  string  $path
      * @return void
@@ -142,8 +174,35 @@ class CanvasServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Bindings...
+        $loader = AliasLoader::getInstance();
+        $router = $this->app['router'];
+
+        // Register Factories...
         $this->registerEloquentFactoriesFrom(__DIR__.'/../database/factories');
+
+        // Register Service Providers...
+        $this->app->register(JsValidationServiceProvider::class);
+        $this->app->register(ScoutServiceProvider::class);
+        $this->app->register(ExcelServiceProvider::class);
+        $this->app->register(MediaManagerServiceProvider::class);
+        $this->app->register(TNTSearchScoutServiceProvider::class);
+        $this->app->register(ExtensionsServiceProvider::class);
+
+        // Register Facades...
+        $loader->alias('JsValidator', JsValidatorFacade::class);
+        $loader->alias('ConfigWriter', ConfigWriter::class);
+        $loader->alias('Excel', Excel::class);
+        $loader->alias('Settings', Settings::class);
+        $loader->alias('CanvasHelper', CanvasHelper::class);
+        $loader->alias('CanvasConfig', ConfigHelper::class);
+        $loader->alias('CanvasRoute', RouteHelper::class);
+        $loader->alias('CanvasSetup', SetupHelper::class);
+
+        // Register Middleware...
+        $router->middleware('checkIfAdmin', CheckIfAdmin::class);
+        $router->middleware('canvasInstalled', EnsureInstalled::class);
+        $router->middleware('canvasNotInstalled', EnsureNotInstalled::class);
+        $router->middleware('checkForMaintenanceMode', CheckForMaintenanceMode::class);
     }
 
     /**

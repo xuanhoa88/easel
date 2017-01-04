@@ -2,6 +2,7 @@
 
 namespace Canvas\Http\Requests;
 
+use Canvas\Helpers\CanvasHelper;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PostCreateRequest extends FormRequest
@@ -23,7 +24,7 @@ class PostCreateRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'slug' => 'required',
+            'slug' => 'required|unique:'.CanvasHelper::TABLES['posts'],
             'subtitle' => 'required',
             'published_at' => 'required',
         ];

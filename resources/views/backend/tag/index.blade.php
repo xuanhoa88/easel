@@ -12,7 +12,7 @@
                 <div class="card">
                     <div class="card-header">
                         <ol class="breadcrumb">
-                            <li><a href="{{ url('admin') }}">Home</a></li>
+                            <li><a href="{!! route('admin') !!}">Home</a></li>
                             <li class="active">Tags</li>
                         </ol>
                         <ul class="actions">
@@ -22,7 +22,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li>
-                                        <a href="{{ url('admin/tag') }}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh Tags</a>
+                                        <a href="{!! route('admin.tag.index') !!}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh Tags</a>
                                     </li>
                                 </ul>
                             </li>
@@ -30,7 +30,7 @@
                         @include('canvas::shared.errors')
                         @include('canvas::shared.success')
                         <h2>Tags&nbsp;
-                            <a href="{{ url('admin/tag/create') }}"><i class="zmdi zmdi-plus-circle" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Create a new tag"></i></a>
+                            <a href="{!! route('admin.tag.create') !!}"><i class="zmdi zmdi-plus-circle" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Create a new tag"></i></a>
                             <small>This page provides a comprehensive overview of all your blog tags. Click the <span class="zmdi zmdi-edit text-primary"></span> icon next to each tag to update its contents.</small>
                         </h2>
                     </div>
@@ -51,9 +51,9 @@
                             <tbody>
                                 @foreach ($data as $tag)
                                     <tr>
-                                        <td>{{ $tag->id }}</td>
-                                        <td>{{ $tag->title }}</td>
-                                        <td class="hidden-sm">{{ str_limit($tag->subtitle, config('blog.backend_trim_width')) }}</td>
+                                        <td>{!! $tag->id !!}</td>
+                                        <td>{!! $tag->title !!}</td>
+                                        <td class="hidden-sm">{!! str_limit($tag->subtitle, config('blog.backend_trim_width')) !!}</td>
                                         <td class="hidden-md">{{ $tag->layout }}</td>
                                         <td class="hidden-sm">
                                             @if ($tag->reverse_direction)
@@ -62,7 +62,7 @@
                                                 Normal
                                             @endif
                                         </td>
-                                        <td>{{ $tag->created_at->format('M d, Y') }}</td>
+                                        <td>{!! $tag->created_at->format('M d, Y') !!}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -79,11 +79,11 @@
 
     @if(Session::get('_new-tag'))
         @include('canvas::backend.partials.notify', ['section' => '_new-tag'])
-        {{ \Session::forget('_new-tag') }}
+        {!! \Session::forget('_new-tag') !!}
     @endif
 
     @if(Session::get('_delete-tag'))
         @include('canvas::backend.partials.notify', ['section' => '_delete-tag'])
-        {{ \Session::forget('_delete-tag') }}
+        {!! \Session::forget('_delete-tag') !!}
     @endif
 @stop

@@ -3,21 +3,24 @@
 namespace Canvas\Http\Middleware;
 
 use Closure;
-use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode as Original;
-use Illuminate\Routing\Route;
 use Session;
+use Illuminate\Routing\Route;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode as Original;
 
 class CheckForMaintenanceMode extends Original
 {
     protected $excludedNames = [];
 
-    protected $except = ['admin', 'admin/*', 'auth/*'];
+    protected $except = [];
 
     protected $excludedIPs = [];
 
     protected function shouldPassThrough($request)
     {
+        $admin = preg_replace("/https?:\/\/{$request->server->get('SERVER_NAME')}\//", null, route('admin'));
+        $this->except = [$admin, "$admin/*", 'auth/*'];
+
         foreach ($this->except as $except) {
             if ($except !== '/') {
                 $except = trim($except, '/');
@@ -36,9 +39,8 @@ class CheckForMaintenanceMode extends Original
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
-     * @return mixed
-     *
      * @throws \Symfony\Component\HttpKernel\Exception\HttpException
+     * @return mixed
      */
     public function handle($request, Closure $next)
     {

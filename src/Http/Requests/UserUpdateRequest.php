@@ -4,6 +4,7 @@ namespace Canvas\Http\Requests;
 
 use Canvas\Models\User;
 use Illuminate\Validation\Rule;
+use Canvas\Helpers\CanvasHelper;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserUpdateRequest extends FormRequest
@@ -34,7 +35,7 @@ class UserUpdateRequest extends FormRequest
             'email' => [
                 'required',
                 'email',
-                Rule::unique('users')->ignore($email[0], 'email'),
+                Rule::unique(CanvasHelper::TABLES['users'])->ignore($email->first(), 'email'),
             ],
         ];
     }

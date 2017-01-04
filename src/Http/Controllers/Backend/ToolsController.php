@@ -2,19 +2,19 @@
 
 namespace Canvas\Http\Controllers\Backend;
 
-use Canvas\Helpers;
 use Excel;
 use Session;
 use Canvas\Models\Tag;
-use Canvas\Models\User;
 use Canvas\Models\Post;
+use Canvas\Models\User;
 use Canvas\Models\PostTag;
 use Canvas\Models\Settings;
 use Canvas\Models\Migrations;
+use Canvas\Helpers\CanvasHelper;
 use Canvas\Models\PasswordResets;
 use Illuminate\Support\Facades\App;
+use Canvas\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Artisan;
-use App\Http\Controllers\Controller;
 
 class ToolsController extends Controller
 {
@@ -34,7 +34,7 @@ class ToolsController extends Controller
     {
         $data = [
             'indexModified' => file_exists(storage_path('posts.index')) ? filemtime(storage_path('posts.index')) : false,
-            'status' => App::isDownForMaintenance() ? Helpers::MAINTENANCE_MODE_ENABLED : Helpers::MAINTENANCE_MODE_DISABLED,
+            'status' => App::isDownForMaintenance() ? CanvasHelper::MAINTENANCE_MODE_ENABLED : CanvasHelper::MAINTENANCE_MODE_DISABLED,
         ];
 
         return view('canvas::backend.tools.index', compact('data'));
@@ -56,7 +56,7 @@ class ToolsController extends Controller
             Session::set('_cache-clear', trans('messages.cache_clear_error'));
         }
 
-        return redirect(url('admin/tools'));
+        return redirect()->route('admin.tools');
     }
 
     /**
@@ -221,7 +221,7 @@ class ToolsController extends Controller
             Session::set('_enable-maintenance-mode', trans('messages.enable_maintenance_mode_error'));
         }
 
-        return redirect(url('admin/tools'));
+        return redirect()->route('admin.tools');
     }
 
     /**
@@ -238,6 +238,6 @@ class ToolsController extends Controller
             Session::set('_disable-maintenance-mode', trans('messages.disable_maintenance_mode_error'));
         }
 
-        return redirect(url('admin/tools'));
+        return redirect()->route('admin.tools');
     }
 }

@@ -11,12 +11,17 @@ class PostTag extends Model
      *
      * @var string
      */
-    protected $table = 'post_tag';
+    protected $table = 'canvas_post_tag';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['post_id', 'tag_id', 'created_at', 'updated_at'];
+    protected $fillable = [
+        'post_id',
+        'tag_id',
+        'created_at',
+        'updated_at',
+    ];
 }

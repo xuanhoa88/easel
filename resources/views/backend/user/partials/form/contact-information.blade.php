@@ -42,5 +42,3 @@
         <input type="text" class="form-control" name="country" id="country" value="{{ $data['country'] }}" placeholder="Country">
     </div>
 </div>
-
-@include('canvas::backend.profile.partials.modals.resume-help')

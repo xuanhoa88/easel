@@ -9,7 +9,7 @@
                 <p>This will clear the current application cache as well as optimize the site for speed and performance.</p>
             </div>
             <div class="modal-footer">
-                <form class="form-inline" action="{{ url('admin/tools/cache_clear') }}" method="POST">
+                <form class="form-inline" action="{{ route('admin.tools.cache_clear') }}" method="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
                     <button class="btn btn-link btn-icon-text">
