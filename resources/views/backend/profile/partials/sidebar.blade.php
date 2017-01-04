@@ -62,7 +62,7 @@
                     <li><i class="zmdi zmdi-linkedin-box"></i> <a href="http://linkedin.com/in/{{ $data['linkedin'] }}" target="_blank">{{ $data['linkedin'] }}</a></li>
                 @endif
                 @if(isset($data['resume_cv']) && strlen($data['resume_cv']))
-                    <li><i class="zmdi zmdi-collection-pdf"></i> <a href="{{ url('uploads', $data['resume_cv']) }}" target="_blank">{{ $data['resume_cv'] }}</a></li>
+                    <li><i class="zmdi zmdi-collection-pdf"></i> <a href="{{ url('storage', $data['resume_cv']) }}" target="_blank">{{ $data['resume_cv'] }}</a></li>
                 @endif
                 @if(isset($data['url']) && strlen($data['url']))
                     <li><i class="zmdi zmdi-globe"></i> <a href="http://www.{{ $data['url'] }}" target="_blank">{{ $data['url'] }}</a></li>
