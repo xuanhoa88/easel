@@ -54,6 +54,8 @@
 @stop
 
 @section('unique-js')
+    @include('canvas::backend.profile.partials.editor')
+
     {!! JsValidator::formRequest('Canvas\Http\Requests\ProfileUpdateRequest', '#profileUpdate') !!}
     @include('canvas::backend.shared.components.profile-datetime-picker', ['format' => 'YYYY-MM-DD'])
 
