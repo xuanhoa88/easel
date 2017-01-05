@@ -58,7 +58,7 @@ class SettingsController extends Controller
             'lastIndex' => date('Y-m-d H:i:s', file_exists(storage_path('posts.index')) ? filemtime(storage_path('posts.index')) : false),
             'version' => (! empty(Settings::canvasVersion())) ? Settings::canvasVersion() : 'Less than or equal to v2.1.7',
             'curl' => (in_array('curl', get_loaded_extensions()) ? 'Supported' : 'Not Supported'),
-            'curlVersion' => curl_version()['libz_version'],
+            'curlVersion' => (in_array('curl', get_loaded_extensions()) ? curl_version()['libz_version'] : 'Not Supported'),
             'gd' => (in_array('gd', get_loaded_extensions()) ? 'Supported' : 'Not Supported'),
             'pdo' => (in_array('PDO', get_loaded_extensions()) ? 'Installed' : 'Not Installed'),
             'sqlite' => (in_array('sqlite3', get_loaded_extensions()) ? 'Installed' : 'Not Installed'),
