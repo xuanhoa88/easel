@@ -53,7 +53,7 @@
 <div class="form-group">
     <div class="fg-line">
         <label class="fg-label">Website</label>
-        <input type="text" class="form-control" name="url" id="url" placeholder="john-doe.io">
+        <input type="text" class="form-control" name="url" id="url"  value="{{ $data['url'] }}" placeholder="john-doe.io">
     </div>
 </div>
 
