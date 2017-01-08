@@ -35,7 +35,7 @@ class Constants
     /**
      * @constant(DEFAULT_THEME_NAME)
      */
-    const DEFAULT_THEME_NAME = 'Paper (Default)';
+    const DEFAULT_THEME_NAME = 'Paper';
 
     /**
      * @constant(DEFAULT_THEME_VERSION)
