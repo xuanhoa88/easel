@@ -45,7 +45,7 @@
 		"symfony/css-selector": "~3.0"
 	},
 	"suggest": {
-		"cnvs/canvas-theme-paper-dark": "Official dark theme for Canvas."
+		"cnvs/paper-dark": "Official dark theme for Canvas."
 	},
 	"autoload": {
 		"classmap": [
