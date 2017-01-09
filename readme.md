@@ -1,4 +1,4 @@
-## About Easel
+## About Canvas
 
 <a href="https://travis-ci.org/cnvs/easel"><img src="https://travis-ci.org/cnvs/easel.svg?branch=master"></a>
 <a href="https://styleci.io/repos/74061859"><img src="https://styleci.io/repos/74061859/shield?style=flat&branch=master" alt="StyleCI"></a>
@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/cnvs/easel"><img src="https://poser.pugx.org/cnvs/easel/v/stable" alt="Latest Stable Version"></a>
 <a href="https://github.com/cnvs/easel/blob/master/license"><img src="https://poser.pugx.org/austintoddj/easel/license" alt="License"></a>
 
-> **Note:** This repository contains the core code of Canvas. If you want to create and publish a blog using Canvas, visit the [main repository](https://github.com/cnvs/canvas).
+> **Note:** This repository contains the core code of the blog publishing platform Canvas. If you want to create your own blog using Canvas, visit the [main repository](https://github.com/cnvs/canvas).
 
 [Canvas](http://canvas.toddaustin.io) is a simple, powerful blog publishing platform that lets you to share your stories with the world. Its beautifully designed interface and completely customizable framework allows you to create and publish your own blog, giving you tools that make it easy and even fun to do. Canvas includes some of the most popular web packages today, such as:
 
@@ -20,7 +20,7 @@
 
 ## Contributing
 
-Thank you for considering contributing to the the core of Canvas! The contribution guide can be found in the [Canvas documentation](https://cnvs.readme.io/docs/contributing).
+Thank you for considering contributing to the the core framework of Canvas! The contribution guide can be found in the [Canvas documentation](https://cnvs.readme.io/docs/contributing).
 
 ## Changelog
 
@@ -28,4 +28,4 @@ Detailed changes for each release are documented in the [release notes](https://
 
 ## License
 
-Easel is open-sourced software licensed under the [MIT license](https://github.com/cnvs/easel/blob/master/license).
+Canvas is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

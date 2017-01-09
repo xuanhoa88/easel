@@ -1617,16 +1617,16 @@
         },
         {
             "name": "proengsoft/laravel-jsvalidation",
-            "version": "v1.4.2",
+            "version": "v1.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/proengsoft/laravel-jsvalidation.git",
-                "reference": "47995a7c57edc19f3b23853da67acfb1d7b77bfe"
+                "reference": "59b76a137968c41246afca7eb6f5ac14ee707d9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/proengsoft/laravel-jsvalidation/zipball/47995a7c57edc19f3b23853da67acfb1d7b77bfe",
-                "reference": "47995a7c57edc19f3b23853da67acfb1d7b77bfe",
+                "url": "https://api.github.com/repos/proengsoft/laravel-jsvalidation/zipball/59b76a137968c41246afca7eb6f5ac14ee707d9b",
+                "reference": "59b76a137968c41246afca7eb6f5ac14ee707d9b",
                 "shasum": ""
             },
             "require": {
@@ -1658,8 +1658,7 @@
                 {
                     "name": "Albert Moreno",
                     "email": "albert@memorylimit.net",
-                    "homepage": "http://memorylimit.net",
-                    "role": "DevOps"
+                    "homepage": "https://github.com/torrentalle"
                 }
             ],
             "description": "Validate forms transparently with Javascript reusing your Laravel Validation Rules, Messages, and FormRequest",
@@ -1673,7 +1672,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2016-12-29 00:13:12"
+            "time": "2017-01-07 17:45:34"
         },
         {
             "name": "psr/log",
@@ -2825,16 +2824,16 @@
         },
         {
             "name": "teamtnt/laravel-scout-tntsearch-driver",
-            "version": "v2.0.1",
+            "version": "v2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/teamtnt/laravel-scout-tntsearch-driver.git",
-                "reference": "a56aba86173693201c8b52b4b5e985fe204c8fe3"
+                "reference": "e4229c5241112680cd04d057299ee47555e0773b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teamtnt/laravel-scout-tntsearch-driver/zipball/a56aba86173693201c8b52b4b5e985fe204c8fe3",
-                "reference": "a56aba86173693201c8b52b4b5e985fe204c8fe3",
+                "url": "https://api.github.com/repos/teamtnt/laravel-scout-tntsearch-driver/zipball/e4229c5241112680cd04d057299ee47555e0773b",
+                "reference": "e4229c5241112680cd04d057299ee47555e0773b",
                 "shasum": ""
             },
             "require": {
@@ -2842,7 +2841,7 @@
                 "illuminate/database": "~5.3",
                 "illuminate/support": "~5.3",
                 "laravel/scout": "*",
-                "teamtnt/tntsearch": "0.8.*"
+                "teamtnt/tntsearch": "0.9.*"
             },
             "require-dev": {
                 "mockery/mockery": "~0.9",
@@ -2879,20 +2878,20 @@
                 "search",
                 "tntsearch"
             ],
-            "time": "2016-12-29 16:38:37"
+            "time": "2017-01-07 12:21:29"
         },
         {
             "name": "teamtnt/tntsearch",
-            "version": "v0.8.9",
+            "version": "v0.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/teamtnt/tntsearch.git",
-                "reference": "fa9eb606ade29b119254c4903346db2cf994cd68"
+                "reference": "0718aa20a899a14c10ea925553b2fc8692347069"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/teamtnt/tntsearch/zipball/fa9eb606ade29b119254c4903346db2cf994cd68",
-                "reference": "fa9eb606ade29b119254c4903346db2cf994cd68",
+                "url": "https://api.github.com/repos/teamtnt/tntsearch/zipball/0718aa20a899a14c10ea925553b2fc8692347069",
+                "reference": "0718aa20a899a14c10ea925553b2fc8692347069",
                 "shasum": ""
             },
             "require": {
@@ -2928,10 +2927,12 @@
             "description": "A fully featured full text search engine written in PHP",
             "homepage": "https://github.com/teamtnt/tntsearch",
             "keywords": [
+                "fulltext",
+                "search",
                 "teamtnt",
                 "tntsearch"
             ],
-            "time": "2016-10-24 10:44:58"
+            "time": "2016-11-09 19:13:06"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
