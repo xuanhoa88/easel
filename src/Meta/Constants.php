@@ -35,10 +35,10 @@ class Constants
     /**
      * @constant(DEFAULT_THEME_NAME)
      */
-    const DEFAULT_THEME_NAME = 'Unthemed (Paper)';
+    const DEFAULT_THEME_NAME = 'Paper';
 
     /**
-     * @constant(DEFAULT_THEME_NAME)
+     * @constant(DEFAULT_THEME_VERSION)
      */
     const DEFAULT_THEME_VERSION = '1.0';
 
