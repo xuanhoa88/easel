@@ -42,7 +42,6 @@ Route::group([
                 Route::post('reset', 'ResetPasswordController@reset')->name('auth.password.reset.store');
             });
         });
-
     });
 });
 
