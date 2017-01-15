@@ -34,7 +34,7 @@ Route::group([
             Route::group(['prefix' => 'password'], function () {
                 Route::get('forgot', 'ForgotPasswordController@showLinkRequestForm')->name('auth.password.forgot');
                 Route::post('forgot', 'ForgotPasswordController@sendResetLinkEmail')->name('auth.password.forgot.store');
-                Route::get('reset/{token}', 'ResetPasswordController@showResetForm')->name('auth.password.reset');
+                Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('auth.password.reset');
                 Route::post('reset', 'ResetPasswordController@reset')->name('auth.password.reset.store');
             });
         });
