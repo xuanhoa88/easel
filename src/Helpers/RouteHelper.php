@@ -77,6 +77,16 @@ class RouteHelper extends CanvasHelper
     }
 
     /**
+     * Get password prefix.
+     */
+    public static function getPasswordPrefix()
+    {
+        $config = ConfigHelper::getWriter();
+
+        return $config->get('password_prefix') ?: self::ROUTE_DEFAULT_PASSWORD_PREFIX;
+    }
+
+    /**
      * Retrieve a route path. Route without server name etc.
      * @param string $routeName
      * @return string Path
