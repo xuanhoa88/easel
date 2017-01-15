@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class AddLinkedinColumnToUsersTable extends Migration
+class AddCvColumnToCanvasUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class AddLinkedinColumnToUsersTable extends Migration
     public function up()
     {
         Schema::table(CanvasHelper::TABLES['users'], function ($table) {
-            $table->string('linkedin')->after('github')->nullable();
+            $table->string('resume_cv')->after('linkedin')->nullable();
         });
     }
 
@@ -24,7 +24,7 @@ class AddLinkedinColumnToUsersTable extends Migration
     public function down()
     {
         Schema::table(CanvasHelper::TABLES['users'], function ($table) {
-            $table->dropColumn('linkedin');
+            $table->dropColumn('resume_cv');
         });
     }
 }

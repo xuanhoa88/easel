@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostTagPivot extends Migration
+class CreateCanvasPostTagPivot extends Migration
 {
     /**
      * Run the migrations.

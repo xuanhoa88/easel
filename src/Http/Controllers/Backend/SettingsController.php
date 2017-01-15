@@ -53,7 +53,7 @@ class SettingsController extends Controller
             'phpVersion' => phpversion(),
             'phpMemoryLimit' => ini_get('memory_limit'),
             'phpTimeLimit' => ini_get('max_execution_time'),
-            'dbConnection' => strtoupper(env('DB_CONNECTION')),
+            'dbConnection' => strtoupper(env('DB_CONNECTION', 'mysql')),
             'webServer' => $_SERVER['SERVER_SOFTWARE'],
             'lastIndex' => date('Y-m-d H:i:s', file_exists(storage_path('posts.index')) ? filemtime(storage_path('posts.index')) : false),
             'version' => (! empty(Settings::canvasVersion())) ? Settings::canvasVersion() : 'Less than or equal to v2.1.7',

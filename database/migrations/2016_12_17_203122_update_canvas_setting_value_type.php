@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateSettingValueType extends Migration
+class UpdateCanvasSettingValueType extends Migration
 {
     /**
      * Run the migrations.

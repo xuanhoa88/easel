@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Migrations\Migration;
 
-class AddRolesColumnToUsersTable extends Migration
+class AddRolesColumnToCanvasUsersTable extends Migration
 {
     /**
      * Run the migrations.

@@ -164,12 +164,12 @@ class Install extends CanvasCommand
 
             $config->save();
         } catch (Exception $e) {
-            // Reset migrations
-            Artisan::call('migrate:reset');
+            // Rollback migrations
+            // Artisan::call('migrate:rollback');
             // Display message
             $this->line(PHP_EOL.'<error>An unexpected error occurred. Installation could not continue.</error>');
             $this->line("<error>✘</error> {$e->getMessage()}");
-            $this->comment(PHP_EOL.'Migrations were reset. Please run the installer again.');
+            $this->comment(PHP_EOL.'Migrations were rolled back. Please run the installer again.');
             $this->line(PHP_EOL.'If this error persists please consult https://github.com/cnvs/easel/issues.'.PHP_EOL);
         }
     }
