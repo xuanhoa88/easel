@@ -101,7 +101,7 @@ class Install extends CanvasCommand
                 $this->comment('Please run the installer again.');
                 die();
             }
-            $password = $this->ask('Admin password');
+            $password = $this->secret('Admin password');
             $firstName = $this->ask('Admin first name');
             $lastName = $this->ask('Admin last name');
             $this->createUser($email, $password, $firstName, $lastName);
