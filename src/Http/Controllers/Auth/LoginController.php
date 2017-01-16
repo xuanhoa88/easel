@@ -72,7 +72,7 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route('admin');
+        return redirect()->route('canvas.admin');
     }
 
     /**
@@ -117,7 +117,7 @@ class LoginController extends Controller
      */
     public function authenticated(Request $request, User $user)
     {
-        $this->redirectTo = route('admin');
+        $this->redirectTo = route('canvas.admin');
 
         // Let Canvas know the user has been authenticated.
         CanvasHelper::authenticated($request, $user);

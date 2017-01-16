@@ -18,7 +18,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a href="{!! route('admin.profile.index') !!}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh Profile</a>
+                                    <a href="{!! route('canvas.admin.profile.index') !!}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh Profile</a>
                                 </li>
                             </ul>
                         </li>
@@ -29,11 +29,11 @@
                     <div class="pm-body clearfix">
                         @section('profile-content')
                             <ul class="tab-nav tn-justified">
-                                <li class="{{ Route::is('admin.profile.index') ? 'active' : '' }}">
-                                    <a href="{!! route('admin.profile.index') !!}">Profile</a>
+                                <li class="{{ Route::is('canvas.admin.profile.index') ? 'active' : '' }}">
+                                    <a href="{!! route('canvas.admin.profile.index') !!}">Profile</a>
                                 </li>
-                                <li class="{{ Route::is('admin.profile.privacy') ? 'active' : '' }}">
-                                    <a href="{!! route('admin.profile.privacy') !!}">Privacy</a>
+                                <li class="{{ Route::is('canvas.admin.profile.privacy') ? 'active' : '' }}">
+                                    <a href="{!! route('canvas.admin.profile.privacy') !!}">Privacy</a>
                                 </li>
                             </ul>
                             @if(Session::has('errors') || Session::has('success'))

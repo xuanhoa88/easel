@@ -12,8 +12,8 @@
                 <div class="card">
                     <div class="card-header">
                         <ol class="breadcrumb">
-                            <li><a href="{!! route('admin') !!}">Home</a></li>
-                            <li><a href="{!! route('admin.tag.index') !!}">Tags</a></li>
+                            <li><a href="{!! route('canvas.admin') !!}">Home</a></li>
+                            <li><a href="{!! route('canvas.admin.tag.index') !!}">Tags</a></li>
                             <li class="active">Edit Tag</li>
                         </ol>
                         @include('canvas::shared.errors')
@@ -31,7 +31,7 @@
 
                     </div>
                     <div class="card-body card-padding">
-                        <form class="keyboard-save" role="form" method="POST" id="tagUpdate" action="{!! route('admin.tag.update', $data['id']) !!}">
+                        <form class="keyboard-save" role="form" method="POST" id="tagUpdate" action="{!! route('canvas.admin.tag.update', $data['id']) !!}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="_method" value="PUT">
                             <input type="hidden" name="id" value="{{ $data['id'] }}">

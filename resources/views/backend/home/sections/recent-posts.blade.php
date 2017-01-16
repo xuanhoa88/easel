@@ -7,7 +7,7 @@
         <br>
 
         @foreach ($data['recentPosts'] as $post)
-            <a href="{!! route('admin.post.edit', $post->id) !!}">{{ $post->title }}</a> <small>{{ $post->created_at->format('M d, Y') }} at {{ $post->created_at->format('g:i A') }}</small>
+            <a href="{!! route('canvas.admin.post.edit', $post->id) !!}">{{ $post->title }}</a> <small>{{ $post->created_at->format('M d, Y') }} at {{ $post->created_at->format('g:i A') }}</small>
             <hr>
         @endforeach
     </div>

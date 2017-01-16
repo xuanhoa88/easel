@@ -9,7 +9,7 @@
                 <p>Are you sure you want to delete this post?</p>
             </div>
             <div class="modal-footer">
-                <form method="POST" action="{{ route('admin.post.destroy', $id) }}">
+                <form method="POST" action="{{ route('canvas.admin.post.destroy', $id) }}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>

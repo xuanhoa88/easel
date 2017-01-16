@@ -10,14 +10,14 @@
     </div>
     <div class="card-body card-padding">
         @if($data['status'] === \Canvas\Helpers\CanvasHelper::MAINTENANCE_MODE_DISABLED)
-            <form class="form-inline" action="{!! route('admin.tools.enable_maintenance_mode') !!}" method="POST">
+            <form class="form-inline" action="{!! route('canvas.admin.tools.enable_maintenance_mode') !!}" method="POST">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <button class="btn btn-primary btn-icon-text" id="maintenance_mode">
                     <i class="zmdi zmdi-alert-octagon"></i> Enable Maintenance Mode
                 </button>
             </form>
         @else
-            <form class="form-inline" action="{!! route('admin.tools.disable_maintenance_mode') !!}" method="POST">
+            <form class="form-inline" action="{!! route('canvas.admin.tools.disable_maintenance_mode') !!}" method="POST">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <button class="btn btn-warning btn-icon-text" id="maintenance_mode">
                     <i class="zmdi zmdi-alert-octagon"></i> Disable Maintenance Mode

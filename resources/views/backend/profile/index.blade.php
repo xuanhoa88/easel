@@ -7,7 +7,7 @@
 @section('profile-content')
     @parent
 
-    <form class="keyboard-save" role="form" method="POST" id="profileUpdate" action="{{ route('admin.profile.update', Auth::user()->id) }}">
+    <form class="keyboard-save" role="form" method="POST" id="profileUpdate" action="{{ route('canvas.admin.profile.update', Auth::user()->id) }}">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <input type="hidden" name="_method" value="PUT">
 
@@ -47,7 +47,7 @@
             </div>
             <div class="form-group m-l-30">
                 <button type="submit" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-floppy"></i> Save</button>
-                <a href="{!! route('admin.user.index') !!}" class="btn btn-link btn-default">Cancel</a>
+                <a href="{!! route('canvas.admin.user.index') !!}" class="btn btn-link btn-default">Cancel</a>
             </div>
         </div>
     </form>

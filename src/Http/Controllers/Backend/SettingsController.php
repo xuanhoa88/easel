@@ -94,11 +94,11 @@ class SettingsController extends Controller
         Settings::updateOrCreate(['setting_name' => 'custom_css'], ['setting_value' => $request->toArray()['custom_css']]);
         Settings::updateOrCreate(['setting_name' => 'custom_js'], ['setting_value' => $request->toArray()['custom_js']]);
 
-        Session::set('_update-settings', trans('messages.save_settings_success'));
+        Session::set('_update-settings', trans('canvas::messages.save_settings_success'));
 
         // Update theme
         $this->themeManager->setActiveTheme($request->theme);
 
-        return redirect()->route('admin.settings');
+        return redirect()->route('canvas.admin.settings');
     }
 }

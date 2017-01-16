@@ -89,7 +89,7 @@ class CanvasServiceProvider extends ServiceProvider
     private function handleTranslations()
     {
         // Load translations
-        $this->loadTranslationsFrom(__DIR__.'/../lang', 'canvas');
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'canvas');
     }
 
     /**

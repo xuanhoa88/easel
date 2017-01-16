@@ -1,4 +1,4 @@
-<form class="keyboard-save" role="form" method="POST" id="settings" action="{!! route('admin.settings') !!}">
+<form class="keyboard-save" role="form" method="POST" id="settings" action="{!! route('canvas.admin.settings') !!}">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
     <br>

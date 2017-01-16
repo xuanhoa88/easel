@@ -18,7 +18,7 @@ class CheckIfAdmin
     public function handle($request, Closure $next)
     {
         if (! User::isAdmin(Auth::user()->role)) {
-            return redirect()->route('admin');
+            return redirect()->route('canvas.admin');
         }
 
         return $next($request);

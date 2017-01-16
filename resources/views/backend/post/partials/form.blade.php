@@ -1,8 +1,8 @@
-@if(Route::is('admin.post.create'))
-    <form class="keyboard-save" role="form" method="POST" id="postCreate" action="{!! route('admin.post.store') !!}">
+@if(Route::is('canvas.admin.post.create'))
+    <form class="keyboard-save" role="form" method="POST" id="postCreate" action="{!! route('canvas.admin.post.store') !!}">
     <input type="hidden" name="user_id" value="{!! Auth::user()->id !!}">
 @else
-    <form class="keyboard-save" role="form" method="POST" id="postUpdate" action="{!! route('admin.post.update', $id) !!}">
+    <form class="keyboard-save" role="form" method="POST" id="postUpdate" action="{!! route('canvas.admin.post.update', $id) !!}">
     <input type="hidden" name="_method" value="PUT">
     <input type="hidden" name="user_id" value="{!! $user_id !!}">
 @endif
@@ -15,17 +15,17 @@
                     @include('canvas::shared.errors')
                     @include('canvas::shared.success')
 
-                    @if(Route::is('admin.post.create'))
+                    @if(Route::is('canvas.admin.post.create'))
                         <ol class="breadcrumb">
-                            <li><a href="{!! route('admin') !!}">Home</a></li>
-                            <li><a href="{!! route('admin.post.index') !!}">Posts</a></li>
+                            <li><a href="{!! route('canvas.admin') !!}">Home</a></li>
+                            <li><a href="{!! route('canvas.admin.post.index') !!}">Posts</a></li>
                             <li class="active">New Post</li>
                         </ol>
                         <h2>Create a New Post</h2>
                     @else
                         <ol class="breadcrumb">
-                            <li><a href="{!! route('admin') !!}">Home</a></li>
-                            <li><a href="{!! route('admin.post.index') !!}">Posts</a></li>
+                            <li><a href="{!! route('canvas.admin') !!}">Home</a></li>
+                            <li><a href="{!! route('canvas.admin.post.index') !!}">Posts</a></li>
                             <li class="active">Edit Post</li>
                         </ol>
                         <h2>
@@ -91,20 +91,20 @@
                         </div>
                     </div>
                     <br>
-                    @if(!Route::is('admin.post.create'))
+                    @if(!Route::is('canvas.admin.post.create'))
                         <div class="form-group">
                             <div class="fg-line">
                                 <label class="fg-label"><i class="zmdi zmdi-link"></i>&nbsp;&nbsp;Permalink</label><br>
-                                <a href="{!! route('blog.post.show', $slug) !!}" target="_blank" name="permalink">{!! route('blog.post.show', $slug) !!}</a>
+                                <a href="{!! route('canvas.blog.post.show', $slug) !!}" target="_blank" name="permalink">{!! route('canvas.blog.post.show', $slug) !!}</a>
                             </div>
                         </div>
                         <br>
                     @endif
                     <div class="form-group">
-                        @if(Route::is('admin.post.create'))
+                        @if(Route::is('canvas.admin.post.create'))
                             <button type="submit" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-floppy"></i> Publish</button>
                             &nbsp;
-                            <a href="{!! route('admin.post.index') !!}"><button type="button" class="btn btn-link">Cancel</button></a>
+                            <a href="{!! route('canvas.admin.post.index') !!}"><button type="button" class="btn btn-link">Cancel</button></a>
                         @else
                             <button type="submit" class="btn btn-primary btn-icon-text" name="action" value="continue">
                                 <i class="zmdi zmdi-floppy"></i> Update

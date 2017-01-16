@@ -1,4 +1,4 @@
-<form role="form" id="forgot-password" method="POST" action="{!! route('auth.password.reset.store') !!}">
+<form role="form" id="forgot-password" method="POST" action="{!! route('canvas.auth.password.reset.store') !!}">
     {!! csrf_field() !!}
 
     @if(session()->has('status'))

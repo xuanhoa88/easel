@@ -91,4 +91,34 @@ return [
     |
     */
     'auth_prefix' => 'auth',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Canvas Configuration : General Middleware
+    |--------------------------------------------------------------------------
+    |
+    | Middleware to apply to every route.
+    |
+    */
+    'route_middleware_general' => ['checkForMaintenanceMode'],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Canvas Configuration : General Middleware Groups
+    |--------------------------------------------------------------------------
+    |
+    | Middleware groups to apply to every route.
+    |
+    */
+    'route_middleware_groups_general' => ['web'],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Canvas Configuration : Admin Middleware
+    |--------------------------------------------------------------------------
+    |
+    | Middleware to apply to admin routes.
+    |
+    */
+    'route_middleware_admin' => ['checkForMaintenanceMode', 'canvasInstalled', 'auth'],
 ];
