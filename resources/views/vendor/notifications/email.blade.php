@@ -56,7 +56,7 @@ $style = [
 
     'button--green' => 'background-color: #22BC66;',
     'button--red' => 'background-color: #dc4d2f;',
-    'button--blue' => 'background-color: #3869D4;',
+    'button--blue' => 'background-color: #0072C6;',
 ];
 ?>
 
@@ -82,8 +82,8 @@ $style = [
                                                 @if ($level == 'error')
                                                     Whoops!
                                                 @else
-                                                    <img src="{{ asset('assets/images/favicon.png') }}" width="50" style="float: left; margin-right: 20px;">
-                                                    <h3 style="font-size: 26px; color: rgb(32,151,244); font-weight: 200; margin-top: 0">Canvas</h3>
+                                                    <img src="{{ asset('vendor/canvas/assets/images/favicon.png') }}" width="50" style="float: left; margin-right: 20px;">
+                                                    <h3 style="font-size: 26px; color: #0072C6; font-weight: 200; margin-top: 0">Canvas</h3>
                                                     <div style="border-bottom: 1px solid #EDEFF2"></div><br>
                                                     <span style="color: #74787E; font-size: 16px; line-height: 1.5em">Hello,</span>
                                                 @endif

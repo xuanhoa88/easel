@@ -1,6 +1,6 @@
 <style type="text/css">
     a.show-password {
-        color: #2196f3;
+        color: #0072C6;
         font-size: 0.9em;
         margin-top: 10px;
         position: absolute;
