@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: talv
- * Date: 13/12/16
- * Time: 16:24.
- */
 
 namespace Canvas\Http\Controllers\Auth;
 
