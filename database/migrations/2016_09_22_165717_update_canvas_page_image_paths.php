@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class UpdatePageImagePaths extends Migration
+class UpdateCanvasPageImagePaths extends Migration
 {
     /**
      * Run the migrations.

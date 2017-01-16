@@ -51,12 +51,12 @@ class ToolsController extends Controller
         $exitCode = Artisan::call('route:clear');
         $exitCode = Artisan::call('optimize');
         if ($exitCode === 0) {
-            Session::set('_cache-clear', trans('messages.cache_clear_success'));
+            Session::set('_cache-clear', trans('canvas::messages.cache_clear_success'));
         } else {
-            Session::set('_cache-clear', trans('messages.cache_clear_error'));
+            Session::set('_cache-clear', trans('canvas::messages.cache_clear_error'));
         }
 
-        return redirect()->route('admin.tools');
+        return redirect()->route('canvas.admin.tools');
     }
 
     /**
@@ -216,12 +216,12 @@ class ToolsController extends Controller
         $exitCode = Artisan::call('down');
         if ($exitCode === 0) {
             Session::set('admin_ip', request()->ip());
-            Session::set('_enable-maintenance-mode', trans('messages.enable_maintenance_mode_success'));
+            Session::set('_enable-maintenance-mode', trans('canvas::messages.enable_maintenance_mode_success'));
         } else {
-            Session::set('_enable-maintenance-mode', trans('messages.enable_maintenance_mode_error'));
+            Session::set('_enable-maintenance-mode', trans('canvas::messages.enable_maintenance_mode_error'));
         }
 
-        return redirect()->route('admin.tools');
+        return redirect()->route('canvas.admin.tools');
     }
 
     /**
@@ -233,11 +233,11 @@ class ToolsController extends Controller
     {
         $exitCode = Artisan::call('up');
         if ($exitCode === 0) {
-            Session::set('_disable-maintenance-mode', trans('messages.disable_maintenance_mode_success'));
+            Session::set('_disable-maintenance-mode', trans('canvas::messages.disable_maintenance_mode_success'));
         } else {
-            Session::set('_disable-maintenance-mode', trans('messages.disable_maintenance_mode_error'));
+            Session::set('_disable-maintenance-mode', trans('canvas::messages.disable_maintenance_mode_error'));
         }
 
-        return redirect()->route('admin.tools');
+        return redirect()->route('canvas.admin.tools');
     }
 }

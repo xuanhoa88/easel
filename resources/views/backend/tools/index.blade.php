@@ -18,7 +18,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a href="{!! route('admin.tools') !!}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh Tools</a>
+                                    <a href="{!! route('canvas.admin.tools') !!}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh Tools</a>
                                 </li>
                             </ul>
                         </li>

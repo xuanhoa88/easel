@@ -53,7 +53,7 @@ class SettingsController extends Controller
             'phpVersion' => phpversion(),
             'phpMemoryLimit' => ini_get('memory_limit'),
             'phpTimeLimit' => ini_get('max_execution_time'),
-            'dbConnection' => strtoupper(env('DB_CONNECTION')),
+            'dbConnection' => strtoupper(env('DB_CONNECTION', 'mysql')),
             'webServer' => $_SERVER['SERVER_SOFTWARE'],
             'lastIndex' => date('Y-m-d H:i:s', file_exists(storage_path('posts.index')) ? filemtime(storage_path('posts.index')) : false),
             'version' => (! empty(Settings::canvasVersion())) ? Settings::canvasVersion() : 'Less than or equal to v2.1.7',
@@ -94,11 +94,11 @@ class SettingsController extends Controller
         Settings::updateOrCreate(['setting_name' => 'custom_css'], ['setting_value' => $request->toArray()['custom_css']]);
         Settings::updateOrCreate(['setting_name' => 'custom_js'], ['setting_value' => $request->toArray()['custom_js']]);
 
-        Session::set('_update-settings', trans('messages.save_settings_success'));
+        Session::set('_update-settings', trans('canvas::messages.save_settings_success'));
 
         // Update theme
         $this->themeManager->setActiveTheme($request->theme);
 
-        return redirect()->route('admin.settings');
+        return redirect()->route('canvas.admin.settings');
     }
 }

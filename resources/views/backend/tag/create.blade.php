@@ -12,8 +12,8 @@
                 <div class="card">
                     <div class="card-header">
                         <ol class="breadcrumb">
-                            <li><a href="{!! route('admin') !!}">Home</a></li>
-                            <li><a href="{!! route('admin.tag.index') !!}">Tags</a></li>
+                            <li><a href="{!! route('canvas.admin') !!}">Home</a></li>
+                            <li><a href="{!! route('canvas.admin.tag.index') !!}">Tags</a></li>
                             <li class="active">New Tag</li>
                         </ol>
                         @include('canvas::shared.errors')
@@ -21,7 +21,7 @@
                         <h2>Create a New Tag</h2>
                     </div>
                     <div class="card-body card-padding">
-                        <form class="keyboard-save" role="form" method="POST" id="tagUpdate" action="{!! route('admin.tag.index') !!}">
+                        <form class="keyboard-save" role="form" method="POST" id="tagUpdate" action="{!! route('canvas.admin.tag.index') !!}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             @include('canvas::backend.tag.partials.form')
@@ -29,7 +29,7 @@
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-floppy"></i> Save</button>
                                 &nbsp;
-                                <a href="{!! route('admin.tag.index') !!}"><button type="button" class="btn btn-link">Cancel</button></a>
+                                <a href="{!! route('canvas.admin.tag.index') !!}"><button type="button" class="btn btn-link">Cancel</button></a>
                             </div>
                         </form>
                     </div>

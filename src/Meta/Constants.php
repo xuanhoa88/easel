@@ -88,6 +88,11 @@ class Constants
     const ROUTE_DEFAULT_AUTH_PREFIX = 'auth';
 
     /**
+     * @constant(ROUTE_DEFAULT_PASSWORD_PREFIX)
+     */
+    const ROUTE_DEFAULT_PASSWORD_PREFIX = 'password';
+
+    /**
      * @constant(TABLES)
      */
     const TABLES = [

@@ -1,4 +1,4 @@
-<form role="form" id="forgot-password" method="POST" action="{{ route('auth.password.forgot.store') }}">
+<form role="form" id="forgot-password" method="POST" action="{{ route('canvas.auth.password.forgot.store') }}">
     {!! csrf_field() !!}
 
     @if(session()->has('status'))
@@ -12,6 +12,6 @@
     </div>
     <button type="submit" name="submit" class="btn btn-primary btn-block m-t-10">Send Reset Link</button>
     <div style="text-align: center">
-        <a href="{!! route('admin') !!}" class="btn btn-link m-t-10">Sign In</a><a href="{!! route('home') !!}" class="btn btn-link m-t-10">Back to Blog</a>
+        <a href="{!! route('canvas.admin') !!}" class="btn btn-link m-t-10">Sign In</a><a href="{!! route('canvas.home') !!}" class="btn btn-link m-t-10">Back to Blog</a>
     </div>
 </form>

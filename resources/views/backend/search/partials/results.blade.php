@@ -18,7 +18,7 @@
         @foreach ($posts as $post)
             <tr>
                 <td><i class="zmdi zmdi-book"></i>&nbsp;&nbsp;Post</td>
-                <td><a href="{!! route('admin.post.edit', $post->id) !!}">{{ $post->title }}</a></td>
+                <td><a href="{!! route('canvas.admin.post.edit', $post->id) !!}">{{ $post->title }}</a></td>
                 <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $post->created_at)->format('M d, Y') }}</td>
                 <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $post->updated_at)->format('M d, Y') }}</td>
             </tr>
@@ -27,7 +27,7 @@
         @foreach ($tags as $tag)
             <tr>
                 <td><i class="zmdi zmdi-label"></i>&nbsp;&nbsp;Tag</td>
-                <td><a href="{!! route('admin.tag.edit', $tag->id) !!}">{{ $tag->title }}</a></td>
+                <td><a href="{!! route('canvas.admin.tag.edit', $tag->id) !!}">{{ $tag->title }}</a></td>
                 <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $tag->created_at)->format('M d, Y') }}</td>
                 <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $tag->updated_at)->format('M d, Y') }}</td>
             </tr>
@@ -36,7 +36,7 @@
         @foreach ($users as $user)
             <tr>
                 <td><i class="zmdi zmdi-account"></i>&nbsp;&nbsp;User</td>
-                <td><a @if (Auth::user()->id === $user->id) href="{!! route('admin.profile.index') !!}" @else href="{!! route('admin.user.edit', $user->id) !!}" @endif>{{ $user->display_name }}</a></td>
+                <td><a @if (Auth::user()->id === $user->id) href="{!! route('canvas.admin.profile.index') !!}" @else href="{!! route('canvas.admin.user.edit', $user->id) !!}" @endif>{{ $user->display_name }}</a></td>
                 <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $user->created_at)->format('M d, Y') }}</td>
                 <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $user->updated_at)->format('M d, Y') }}</td>
             </tr>

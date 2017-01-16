@@ -10,7 +10,7 @@
 
         @include('canvas::shared.success')
 
-        <form class="keyboard-save" role="form" method="POST" id="postCreate" action="{{ route('admin.post.store') }}">
+        <form class="keyboard-save" role="form" method="POST" id="postCreate" action="{{ route('canvas.admin.post.store') }}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
             @include('canvas::backend.home.partials.form')

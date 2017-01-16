@@ -39,14 +39,14 @@ class PasswordController extends Controller
         $guard = Auth::guard();
 
         if (! $guard->validate($request->only('password'))) {
-            return back()->withErrors(trans('auth.failed'));
+            return back()->withErrors(trans('canvas::auth.failed'));
         }
 
         $user = $guard->user();
         $user->password = bcrypt($request->input('new_password'));
         $user->save();
 
-        Session::set('_passwordUpdate', trans('messages.update_success', ['entity' => 'Your password']));
+        Session::set('_passwordUpdate', trans('canvas::messages.update_success', ['entity' => 'Your password']));
 
         return back();
     }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class DropRolesTable extends Migration
+class CreateCanvasRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,10 @@ class DropRolesTable extends Migration
      */
     public function up()
     {
-        Schema::drop(CanvasHelper::TABLES['roles']);
+        Schema::create(CanvasHelper::TABLES['roles'], function (Blueprint $table) {
+            $table->integer('id')->index();
+            $table->string('description');
+        });
     }
 
     /**
@@ -23,9 +26,6 @@ class DropRolesTable extends Migration
      */
     public function down()
     {
-        Schema::create(CanvasHelper::TABLES['roles'], function (Blueprint $table) {
-            $table->integer('id')->index();
-            $table->string('description');
-        });
+        Schema::drop(CanvasHelper::TABLES['roles']);
     }
 }

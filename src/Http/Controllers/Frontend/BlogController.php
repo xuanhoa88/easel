@@ -51,7 +51,7 @@ class BlogController extends Controller
         }
 
         if ($post->is_draft && ! Auth::check()) {
-            return redirect()->route('blog.post.index');
+            return redirect()->route('canvas.blog.post.index');
         }
 
         return view($post->layout, compact('post', 'tag', 'slug', 'title', 'user', 'css', 'js'));

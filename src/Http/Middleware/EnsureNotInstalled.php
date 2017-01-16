@@ -17,7 +17,7 @@ class EnsureNotInstalled
     public function handle($request, Closure $next)
     {
         if (SetupHelper::isInstalled()) {
-            return redirect()->route('home');
+            return redirect()->route('canvas.home');
         }
 
         return $next($request);
