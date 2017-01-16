@@ -30,7 +30,7 @@ class RouteHelper extends CanvasHelper
     public static function getAdminMiddleware()
     {
         $config = ConfigHelper::getWriter();
-        
+
         return $config->get('route_middleware_admin') ?? self::ROUTE_MIDDLEWARE_ADMIN;
     }
 
