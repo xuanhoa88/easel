@@ -3,6 +3,7 @@
 namespace Canvas\Helpers;
 
 use Schema;
+use Canvas\Models\Settings;
 
 class SetupHelper extends CanvasHelper
 {
@@ -31,7 +32,7 @@ class SetupHelper extends CanvasHelper
      */
     public static function isSetUp()
     {
-        return self::requiredTablesExists();
+        return Settings::installed() && self::requiredTablesExists();
     }
 
     /**

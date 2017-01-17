@@ -87,6 +87,16 @@ class Settings extends Model
          return self::getByName('canvas_version');
      }
 
+     /**
+     * Get the value of installed.
+     *
+     * return @string
+     */
+    public static function installed()
+    {
+        return self::getByName('installed');
+    }
+
     /**
      * Get the latest release of Canvas.
      *

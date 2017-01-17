@@ -147,6 +147,7 @@ class Install extends CanvasCommand
             $this->googleAnalytics();
             $this->twitterCardType();
             $this->canvasVersion();
+            $this->installed();
             $this->progress(5);
 
             // Clear all the caches

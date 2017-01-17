@@ -36,7 +36,7 @@
         @foreach ($users as $user)
             <tr>
                 <td><i class="zmdi zmdi-account"></i>&nbsp;&nbsp;User</td>
-                <td><a @if (Auth::user()->id === $user->id) href="{!! route('canvas.admin.profile.index') !!}" @else href="{!! route('canvas.admin.user.edit', $user->id) !!}" @endif>{{ $user->display_name }}</a></td>
+                <td><a @if (Auth::guard('canvas')->user()->id === $user->id) href="{!! route('canvas.admin.profile.index') !!}" @else href="{!! route('canvas.admin.user.edit', $user->id) !!}" @endif>{{ $user->display_name }}</a></td>
                 <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $user->created_at)->format('M d, Y') }}</td>
                 <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $user->updated_at)->format('M d, Y') }}</td>
             </tr>

@@ -8,7 +8,7 @@ Route::group([
     'middleware' => RouteHelper::getGeneralMiddleware(),
     'prefix' => RouteHelper::getBlogMain(),
 ], function () {
-    Route::get('install', 'Canvas\Http\Controllers\Setup\InstallController@index')->name('canvas.install');
+    Route::get('canvas.install', 'Canvas\Http\Controllers\Setup\InstallController@index')->name('canvas.install');
 
     // Canvas Application Routes : Fully Installed and Configured
     Route::group([

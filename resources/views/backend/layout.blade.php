@@ -5,8 +5,8 @@
         @yield('title')
         @include('canvas::backend.partials.backend-css')
     </head>
-    <body @if(Auth::check()) class="toggled sw-toggled" @endif>
-        @if (Auth::guest())
+    <body @if(Auth::guard('canvas')->check()) class="toggled sw-toggled" @endif>
+        @if (Auth::guard('canvas')->guest())
             @yield('login')
         @else
             @include('canvas::backend.partials.header')
