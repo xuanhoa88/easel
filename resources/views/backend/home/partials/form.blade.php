@@ -1,4 +1,4 @@
-<input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+<input type="hidden" name="user_id" value="{{ Auth::guard('canvas')->user()->id }}">
 
 <div class="form-group">
     <div class="fg-line">

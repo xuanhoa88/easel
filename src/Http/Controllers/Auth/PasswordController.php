@@ -30,7 +30,7 @@ class PasswordController extends Controller
             'new_password' => 'required|confirmed|min:6',
         ]);
 
-        $guard = Auth::guard();
+        $guard = Auth::guard('canvas');
 
         if (! $guard->validate($request->only('password'))) {
             return back()->withErrors(trans('canvas::auth.failed'));

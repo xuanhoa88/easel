@@ -60,7 +60,7 @@ class Constants
     /**
      * @constant(ROUTE_MIDDLEWARE_ADMIN)
      */
-    const ROUTE_MIDDLEWARE_ADMIN = ['checkForMaintenanceMode', 'canvasInstalled', 'auth'];
+    const ROUTE_MIDDLEWARE_ADMIN = ['checkForMaintenanceMode', 'canvasInstalled', 'auth:canvas'];
 
     /**
      * @constant(ROUTE_MIDDLEWARE_GROUPS_GENERAL)
