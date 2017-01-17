@@ -10,7 +10,7 @@ use Canvas\Http\Controllers\Controller;
 class PasswordController extends Controller
 {
     /**
-     * Guard
+     * Guard.
      */
     protected $guard = 'canvas';
 
@@ -18,7 +18,7 @@ class PasswordController extends Controller
      * Config for resetting passwords.
      */
     protected $broker = 'canvas_users';
-    
+
     /**
      * Create a new password controller instance.
      *

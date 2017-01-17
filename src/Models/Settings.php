@@ -87,7 +87,7 @@ class Settings extends Model
          return self::getByName('canvas_version');
      }
 
-     /**
+    /**
      * Get the value of installed.
      *
      * return @string
