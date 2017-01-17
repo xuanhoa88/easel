@@ -18,6 +18,10 @@
 * Native [Google Analytics](https://www.google.com/analytics/#?modal_active=none) integration.
 * Powered by [Laravel 5](https://laravel.com).
 
+## Supporting
+
+Canvas is an MIT-licensed open source project. Its ongoing development is made possible thanks to the support by these awesome [backers](https://github.com/cnvs/canvas/blob/develop/backers.md). If you'd like to join them, check out [Canvas' Patreon campaign](https://www.patreon.com/canvas).
+
 ## Contributing
 
 Thank you for considering contributing to the the core framework of Canvas! The contribution guide can be found in the [Canvas documentation](https://cnvs.readme.io/docs/contributing).
