@@ -59,6 +59,4 @@ elixir(function (mix) {
             assetsPath + 'js/app.js'
         ]);
 
-    // Run unit tests and generate reports each time Gulp is run
-    // mix.phpUnit();
 });
