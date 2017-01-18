@@ -30,7 +30,7 @@
                         @include('canvas::shared.errors')
                         @include('canvas::shared.success')
                         <h2>Tags&nbsp;
-                            <a href="{!! route('canvas.admin.tag.create') !!}"><i class="zmdi zmdi-plus-circle" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Create a new tag"></i></a>
+                            <a href="{!! route('canvas.admin.tag.create') !!}" id="create-tag"><i class="zmdi zmdi-plus-circle" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Create a new tag"></i></a>
                             <small>This page provides a comprehensive overview of all your blog tags. Click the <span class="zmdi zmdi-edit text-primary"></span> icon next to each tag to update its contents.</small>
                         </h2>
                     </div>

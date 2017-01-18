@@ -26,7 +26,7 @@ class UserUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        $email = User::where('id', $this->route('canvas.user'))->pluck('email');
+        $email = User::where('id', $this->route()->user)->pluck('email');
 
         return [
             'first_name' => 'required',
