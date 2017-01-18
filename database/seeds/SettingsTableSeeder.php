@@ -57,7 +57,7 @@ class SettingsTableSeeder extends Seeder
 
         $settings = new Settings();
         $settings->setting_name = 'twitter_card_type';
-        $settings->setting_value = 'summary_large_image';
+        $settings->setting_value = 'none';
         $settings->save();
 
         $settings = new Settings();
@@ -66,13 +66,8 @@ class SettingsTableSeeder extends Seeder
         $settings->save();
 
         $settings = new Settings();
-        $settings->setting_name = 'latest_release';
-        $settings->setting_value = 'v0.0.0';
-        $settings->save();
-
-        $settings = new Settings();
-        $settings->setting_name = 'active_theme';
-        $settings->setting_value = 'default';
+        $settings->setting_name = 'installed';
+        $settings->setting_value = '1484744531';
         $settings->save();
     }
 }
