@@ -6,6 +6,7 @@ use Session;
 use Canvas\Models\Settings;
 use Canvas\Extensions\ThemeManager;
 use Canvas\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Canvas\Http\Requests\SettingsUpdateRequest;
 
 class SettingsController extends Controller
@@ -32,12 +33,6 @@ class SettingsController extends Controller
      */
     public function index()
     {
-        if (env('APP_ENV') === 'testing') {
-            $lastIndexTime = 00000000;
-        } else {
-            $lastIndexTime = file_exists(storage_path('posts.index')) ? filemtime(storage_path('posts.index')) : false;
-        }
-
         $data = [
             'blogTitle' => Settings::blogTitle(),
             'blogSubtitle' => Settings::blogSubTitle(),
@@ -61,7 +56,7 @@ class SettingsController extends Controller
             'phpTimeLimit' => ini_get('max_execution_time'),
             'dbConnection' => strtoupper(env('DB_CONNECTION', 'mysql')),
             'webServer' => $_SERVER['SERVER_SOFTWARE'],
-            'lastIndex' => date('Y-m-d H:i:s', $lastIndexTime),
+            'lastIndex' => date('Y-m-d H:i:s', file_exists(storage_path('posts.index')) ? Storage::lastModified(storage_path('posts.index')) : false),
             'version' => (! empty(Settings::canvasVersion())) ? Settings::canvasVersion() : 'Less than or equal to v2.1.7',
             'curl' => (in_array('curl', get_loaded_extensions()) ? 'Supported' : 'Not Supported'),
             'curlVersion' => (in_array('curl', get_loaded_extensions()) ? curl_version()['libz_version'] : 'Not Supported'),
