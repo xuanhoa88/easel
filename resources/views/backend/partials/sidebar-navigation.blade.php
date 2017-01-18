@@ -2,10 +2,10 @@
     <div class="profile-menu">
         <a href="">
             <div class="profile-pic">
-                <img src="//www.gravatar.com/avatar/{!! md5(Auth::user()->email) !!}?d=identicon">
+                <img src="//www.gravatar.com/avatar/{!! md5(Auth::guard('canvas')->user()->email) !!}?d=identicon">
             </div>
             <div class="profile-info">
-                {{ Auth::user()->display_name }}
+                {{ Auth::guard('canvas')->user()->display_name }}
                 <i class="zmdi zmdi-caret-down"></i>
             </div>
         </a>
@@ -31,7 +31,7 @@
             </ul>
         </li>
         <li @if (Request::is('admin/upload')) class="active" @endif><a href="{!! route('canvas.admin.upload') !!}"><i class="zmdi zmdi-collection-folder-image"></i> Media</a></li>
-        @if(\Canvas\Models\User::isAdmin(Auth::user()->role))
+        @if(\Canvas\Models\User::isAdmin(Auth::guard('canvas')->user()->role))
             <li class="sub-menu @if (Route::is('canvas.admin.user.index') || Route::is('canvas.admin.user.create') || Route::is('canvas.admin.user.edit'))active toggled @endif">
                 <a href="" data-ma-action="submenu-toggle"><i class="zmdi zmdi-accounts-alt"></i> Users</a>
                 <ul>

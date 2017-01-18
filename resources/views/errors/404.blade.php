@@ -8,7 +8,7 @@
     <div class="login-container">
         <p class="f-20 f-300 text-center">404 - Page Not Found</p>
         <p class="text-muted text-center">Sorry, but nothing exists here.</p>
-        @if(Auth::check())
+        @if(Auth::guard('canvas')->check())
             <div style="text-align: center">
                 <a href="{!! route('canvas.admin') !!}" class="btn btn-link m-t-10">Back to Dashboard</a>
             </div>

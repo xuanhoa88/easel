@@ -7,7 +7,7 @@
 @section('profile-content')
     @parent
 
-    <form class="keyboard-save" role="form" method="POST" id="profileUpdate" action="{{ route('canvas.admin.profile.update', Auth::user()->id) }}">
+    <form class="keyboard-save" role="form" method="POST" id="profileUpdate" action="{{ route('canvas.admin.profile.update', Auth::guard('canvas')->user()->id) }}">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <input type="hidden" name="_method" value="PUT">
 

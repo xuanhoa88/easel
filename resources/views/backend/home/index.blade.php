@@ -9,11 +9,11 @@
         @include('canvas::backend.partials.sidebar-navigation')
         <section id="content">
             <div class="container">
-                @if(\Canvas\Models\User::isAdmin(Auth::user()->role))
+                @if(\Canvas\Models\User::isAdmin(Auth::guard('canvas')->user()->role))
                     @include('canvas::backend.home.sections.welcome')
                 @endif
                 <div class="row">
-                    @if(\Canvas\Models\User::isAdmin(Auth::user()->role))
+                    @if(\Canvas\Models\User::isAdmin(Auth::guard('canvas')->user()->role))
                         <div class="col-sm-6 col-md-6">
                             @include('canvas::backend.home.sections.at-a-glance')
                         </div>

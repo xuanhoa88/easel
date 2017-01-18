@@ -1,4 +1,4 @@
-<div id="authUserId" data-field-message="{{ Auth::user()->id }}"></div>
+<div id="authUserId" data-field-message="{{ Auth::guard('canvas')->user()->id }}"></div>
 <script type="text/javascript">
     $(document).ready(function(){
         $("#users").bootgrid({

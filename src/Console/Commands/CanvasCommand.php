@@ -104,6 +104,14 @@ class CanvasCommand extends Command
         $settings->save();
     }
 
+    protected function installed()
+    {
+        $settings = new Settings();
+        $settings->setting_name = 'installed';
+        $settings->setting_value = time();
+        $settings->save();
+    }
+
     protected function canvasVersion()
     {
         // Get and save installed version to settings
