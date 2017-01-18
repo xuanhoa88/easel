@@ -32,7 +32,7 @@ class SettingsController extends Controller
      */
     public function index()
     {
-        if(env('APP_ENV') === 'testing') {
+        if (env('APP_ENV') === 'testing') {
             $lastIndexTime = 00000000;
         } else {
             $lastIndexTime = file_exists(storage_path('posts.index')) ? filemtime(storage_path('posts.index')) : false;
