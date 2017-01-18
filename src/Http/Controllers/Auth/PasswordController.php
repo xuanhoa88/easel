@@ -10,11 +10,6 @@ use Canvas\Http\Controllers\Controller;
 class PasswordController extends Controller
 {
     /**
-     * Guard.
-     */
-    protected $guard = 'canvas';
-
-    /**
      * Config for resetting passwords.
      */
     protected $broker = 'canvas_users';
@@ -43,7 +38,7 @@ class PasswordController extends Controller
         $guard = Auth::guard('canvas');
 
         if (! $guard->validate($request->only('password'))) {
-            return back()->withErrors(trans('canvas::auth.failed'));
+            return back()->withErrors(trans('auth.failed'));
         }
 
         $user = $guard->user();
