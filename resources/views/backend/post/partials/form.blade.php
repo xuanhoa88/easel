@@ -38,25 +38,25 @@
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
-                            <input type="text" class="form-control" name="title" id="title" value="{!! $title !!}" placeholder="Title">
+                            <input type="text" class="form-control" name="title" id="title" value="{{ $title }}" placeholder="Title">
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
-                            <input type="text" class="form-control" name="slug" id="slug" value="{!! $slug !!}" placeholder="Slug">
+                            <input type="text" class="form-control" name="slug" id="slug" value="{{ $slug }}" placeholder="Slug">
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
-                            <input type="text" class="form-control" name="subtitle" id="subtitle" value="{!! $subtitle !!}" placeholder="Subtitle">
+                            <input type="text" class="form-control" name="subtitle" id="subtitle" value="{{ $subtitle }}" placeholder="Subtitle">
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
-                            <textarea id="editor" name="content" placeholder="Content">{!! $content !!}</textarea>
+                            <textarea id="editor" name="content" placeholder="Content">{{ $content }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                     <div class="form-group">
                         <div class="toggle-switch toggle-switch-demo" data-ts-color="blue">
                             <label for="is_draft" class="ts-label">Draft?</label>
-                            <input {!! \Canvas\Helpers\CanvasHelper::checked($is_draft) !!} type="checkbox" name="is_draft">
+                            <input {{ \Canvas\Helpers\CanvasHelper::checked($is_draft) }} type="checkbox" name="is_draft">
                             <label for="is_draft" class="ts-helper"></label>
                         </div>
                     </div>
@@ -80,14 +80,14 @@
                     <div class="form-group">
                         <div class="fg-line">
                             <label><i class="zmdi zmdi-calendar"></i>&nbsp;&nbsp;Published at</label>
-                            <input class="form-control datetime-picker" name="published_at" id="published_at" type="text" value="{!! $published_at !!}" placeholder="YYYY/MM/DD HH:MM:SS" data-mask="0000/00/00 00:00:00">
+                            <input class="form-control datetime-picker" name="published_at" id="published_at" type="text" value="{{ $published_at }}" placeholder="YYYY/MM/DD HH:MM:SS" data-mask="0000/00/00 00:00:00">
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
                             <label class="fg-label"><i class="zmdi zmdi-view-web"></i>&nbsp;&nbsp;Layout</label>
-                            <input type="text" class="form-control" name="layout" id="layout" value="{!! $layout !!}" placeholder="Layout" disabled>
+                            <input type="text" class="form-control" name="layout" id="layout" value="{{ $layout }}" placeholder="Layout" disabled>
                         </div>
                     </div>
                     <br>
