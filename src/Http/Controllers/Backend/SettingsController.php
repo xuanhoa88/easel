@@ -6,7 +6,6 @@ use Session;
 use Canvas\Models\Settings;
 use Canvas\Extensions\ThemeManager;
 use Canvas\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
 use Canvas\Http\Requests\SettingsUpdateRequest;
 
 class SettingsController extends Controller
