@@ -47,7 +47,6 @@ Zip:                        {{ $data['zip'] }}
 -- Canvas Configuration
 
 CANVAS_VERSION:             {{ $data['version'] }}
-LAST_INDEX_RUN:             {{ $data['lastIndex'] }}
 THEME:                      {{ $data['active_theme_theme']->getName().' '.$data['active_theme_theme']->getVersion() }}
 
 ### End System Info ###
