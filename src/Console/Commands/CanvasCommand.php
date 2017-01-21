@@ -2,6 +2,7 @@
 
 namespace Canvas\Console\Commands;
 
+use File;
 use Artisan;
 use Exception;
 use Canvas\Models\User;
@@ -110,7 +111,10 @@ class CanvasCommand extends Command
         $settings->setting_name = 'installed';
         $settings->setting_value = time();
         $settings->save();
-    }
+
+        // Write installed lock file.
+        File::put(storage_path(CanvasHelper::INSTALLED_FILE), $settings->setting_value);
+    } 
 
     protected function canvasVersion()
     {

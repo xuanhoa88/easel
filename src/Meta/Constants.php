@@ -48,6 +48,11 @@ class Constants
     const REQUIRED_TABLES = ['migrations'];
 
     /**
+     * @constant(INSTALLED_FILE)
+     */
+    const INSTALLED_FILE = 'canvas_installed.lock';
+
+    /**
      * @constant(ROUTE_MIDDLEWARE_GENERAL)
      */
     const ROUTE_MIDDLEWARE_GENERAL = ['checkForMaintenanceMode'];
