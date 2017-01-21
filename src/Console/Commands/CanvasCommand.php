@@ -114,7 +114,7 @@ class CanvasCommand extends Command
 
         // Write installed lock file.
         File::put(storage_path(CanvasHelper::INSTALLED_FILE), $settings->setting_value);
-    } 
+    }
 
     protected function canvasVersion()
     {
