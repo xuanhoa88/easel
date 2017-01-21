@@ -6,7 +6,6 @@
     <div class="form-group fg-line">
         <input type="password" id="password" name="password" class="form-control" placeholder="Password">
     </div>
-
     <div class="form-group fg-line">
         <div class="checkbox">
             <label>

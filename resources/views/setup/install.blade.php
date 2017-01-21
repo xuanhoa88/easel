@@ -9,7 +9,6 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Styles -->
     <style>
@@ -68,6 +67,13 @@
         .m-b-md {
             margin-bottom: 30px;
         }
+
+        .prompt {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
     </style>
 </head>
 <body>
@@ -81,7 +87,7 @@
         <div class="instructions">
             <p>Run the following command from a terminal to complete the installation:</p>
             <br>
-            <p><pre><code class="install"><i class="fa fa-terminal" aria-hidden="true"></i> php artisan canvas:install</code></pre></p>
+            <p><pre><code class="install"><span class="prompt">>_ </span>php artisan canvas:install</code></pre></p>
         </div>
     </div>
 </div>

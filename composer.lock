@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dcdf73b70d98aca41a58a236eb63472e",
-    "content-hash": "17d2c27e386feb99bc2c7b0eeacd5f44",
+    "hash": "fa1d1288295bdee9962d1ddb7b5ab8f5",
+    "content-hash": "d00a44594d135337cf7bb65bb031fcde",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -428,16 +428,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "v2.5.7",
+            "version": "v2.5.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "3a351369582dade60c750e2cef540eb7b568e6b3"
+                "reference": "0d2f8187d4b4c7b72d8e2acba359e25c36feaf5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/3a351369582dade60c750e2cef540eb7b568e6b3",
-                "reference": "3a351369582dade60c750e2cef540eb7b568e6b3",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/0d2f8187d4b4c7b72d8e2acba359e25c36feaf5e",
+                "reference": "0d2f8187d4b4c7b72d8e2acba359e25c36feaf5e",
                 "shasum": ""
             },
             "require": {
@@ -495,7 +495,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2017-01-14 21:05:28"
+            "time": "2017-01-19 13:27:33"
         },
         {
             "name": "doctrine/inflector",
@@ -1160,16 +1160,16 @@
         },
         {
             "name": "maatwebsite/excel",
-            "version": "2.1.8",
+            "version": "2.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maatwebsite/Laravel-Excel.git",
-                "reference": "d9c398f7eba0ac9caf9c104dd0d55bd6a5ff231e"
+                "reference": "b004c99b1d64c207b95a41f20392b3c0eabb8b04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Excel/zipball/d9c398f7eba0ac9caf9c104dd0d55bd6a5ff231e",
-                "reference": "d9c398f7eba0ac9caf9c104dd0d55bd6a5ff231e",
+                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Excel/zipball/b004c99b1d64c207b95a41f20392b3c0eabb8b04",
+                "reference": "b004c99b1d64c207b95a41f20392b3c0eabb8b04",
                 "shasum": ""
             },
             "require": {
@@ -1223,7 +1223,7 @@
                 "import",
                 "laravel"
             ],
-            "time": "2016-12-09 19:11:09"
+            "time": "2017-01-17 12:07:20"
         },
         {
             "name": "mockery/mockery",
@@ -3092,51 +3092,6 @@
                 "instantiate"
             ],
             "time": "2015-06-14 21:17:01"
-        },
-        {
-            "name": "erikgall/eloquent-phpunit",
-            "version": "v1.0.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/erikgall/eloquent-phpunit.git",
-                "reference": "d0e92465680602ad4d35faa0fc00054e177ad290"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/erikgall/eloquent-phpunit/zipball/d0e92465680602ad4d35faa0fc00054e177ad290",
-                "reference": "d0e92465680602ad4d35faa0fc00054e177ad290",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/dbal": "^2.5",
-                "laravel/framework": "^5.2|^5.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "EGALL\\EloquentPHPUnit\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Erik Galloway",
-                    "email": "erik@fliplearning.com"
-                }
-            ],
-            "description": "Test Eloquent models, database schemas & tables, relationships/foreign keys using PHPUnit.",
-            "keywords": [
-                "database-testing",
-                "eloquent",
-                "eloquent-test",
-                "laravel",
-                "model",
-                "phpunit"
-            ],
-            "time": "2016-11-08 21:58:58"
         },
         {
             "name": "fzaninotto/faker",
