@@ -36,7 +36,6 @@
 		"larapack/config-writer": "^1.0"
 	},
 	"require-dev": {
-		"erikgall/eloquent-phpunit": "~1.0",
 		"orchestra/testbench": "^3.3",
 		"fzaninotto/faker": "~1.4",
 		"mockery/mockery": "0.9.*",
@@ -54,12 +53,5 @@
 		"psr-4": {
 			"Canvas\\": "src/"
 		}
-	},
-	"autoload-dev": {
-		"classmap": [
-			"tests/TestCase.php",
-			"tests/CreatesUser.php",
-			"tests/InteractsWithDatabase.php"
-		]
 	}
 }

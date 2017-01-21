@@ -33,7 +33,6 @@ class ToolsController extends Controller
     public function index()
     {
         $data = [
-            'indexModified' => file_exists(storage_path('posts.index')) ? filemtime(storage_path('posts.index')) : false,
             'status' => App::isDownForMaintenance() ? CanvasHelper::MAINTENANCE_MODE_ENABLED : CanvasHelper::MAINTENANCE_MODE_DISABLED,
         ];
 

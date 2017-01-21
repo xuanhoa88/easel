@@ -22,8 +22,8 @@ return [
     | the application, we need to trim the width of them and simply
     | add an ellipses at the trim point.
     |
-    | backend_trim_width: NOT CURRENTLY IN USE
-    | frontend_trim_width: Used in the individual post view template
+    | backend_trim_width: Used in resource/views/backend/tag/index.blade.php
+    | frontend_trim_width: Used in resource/views/frontend/blog/partials/posts.blade.php
     |
     */
     'backend_trim_width' => 40,
@@ -34,7 +34,7 @@ return [
     | Canvas Configuration : Post Layout
     |--------------------------------------------------------------------------
     |
-    | The post layout is only specified in Canvas\Jobs\PostFormFields.php.
+    | The post layout is only specified in src\Jobs\PostFormFields.php.
     | If you need to update the layout, just change it there.
     |
     */
@@ -45,9 +45,11 @@ return [
     | Canvas Configuration : Tag Layout
     |--------------------------------------------------------------------------
     |
-    | The tag layout is specified here, in Canvas\Http\Controllers\Backend\TagController.php
-    | and in Canvas\Models\Tag.php. If you need to update the layout, just change it
-    | in these three locations.
+    | Changing the Tag Layout requires an update in the following locations:
+    |
+    | config/blog.php
+    | src/Http/Controllers/Backend/TagController.php
+    | src/Models/Tag.php
     |
     */
     'tag_layout' => 'canvas::frontend.blog.index',

@@ -2,6 +2,8 @@
 
 namespace Canvas\Models;
 
+use Schema;
+use Canvas\Helpers\CanvasHelper;
 use Illuminate\Database\Eloquent\Model;
 
 class Settings extends Model
@@ -77,24 +79,33 @@ class Settings extends Model
         return self::getByName('blog_author');
     }
 
-     /**
-      * Get the current Canvas application version.
-      *
-      * return @string
-      */
-     public static function canvasVersion()
-     {
-         return self::getByName('canvas_version');
-     }
+    /**
+     * Get the current Canvas application version.
+     *
+     * return @string
+     */
+    public static function canvasVersion()
+    {
+        return self::getByName('canvas_version');
+    }
 
     /**
      * Get the value of installed.
+     *
+     * With a fresh install of Canvas, the Settings table won't be
+     * created yet and we can't query it for its installed status.
+     * A quick check here allows the user to see the Welcome
+     * screen to finish up the installation.
      *
      * return @string
      */
     public static function installed()
     {
-        return self::getByName('installed');
+        if (! Schema::hasTable(CanvasHelper::TABLES['settings'])) {
+            return false;
+        } else {
+            return self::getByName('installed');
+        }
     }
 
     /**

@@ -1,6 +1,6 @@
 ## About Canvas
 
-<a href="https://travis-ci.org/cnvs/easel"><img src="https://travis-ci.org/cnvs/easel.svg?branch=master"></a>
+<a href="https://travis-ci.org/cnvs/canvas"><img src="https://travis-ci.org/cnvs/canvas.svg?branch=master" alt="Build Status"></a>
 <a href="https://styleci.io/repos/74061859"><img src="https://styleci.io/repos/74061859/shield?style=flat&branch=master" alt="StyleCI"></a>
 <a href='https://www.versioneye.com/user/projects/5877e8a43c803900390c0b7b'><img src='https://www.versioneye.com/user/projects/5877e8a43c803900390c0b7b/badge.svg?style=flat' alt="Dependency Status" /></a>
 <a href="https://packagist.org/packages/cnvs/easel"><img src="https://poser.pugx.org/cnvs/easel/downloads" alt="Total Downloads"></a>

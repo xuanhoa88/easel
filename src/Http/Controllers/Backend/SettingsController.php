@@ -55,7 +55,7 @@ class SettingsController extends Controller
             'phpTimeLimit' => ini_get('max_execution_time'),
             'dbConnection' => strtoupper(env('DB_CONNECTION', 'mysql')),
             'webServer' => $_SERVER['SERVER_SOFTWARE'],
-            'lastIndex' => date('Y-m-d H:i:s', file_exists(storage_path('posts.index')) ? filemtime(storage_path('posts.index')) : false),
+            'lastIndex' => date('Y-m-d H:i:s', file_exists(storage_path('canvas_posts.index')) ? filemtime(storage_path('canvas_posts.index')) : false),
             'version' => (! empty(Settings::canvasVersion())) ? Settings::canvasVersion() : 'Less than or equal to v2.1.7',
             'curl' => (in_array('curl', get_loaded_extensions()) ? 'Supported' : 'Not Supported'),
             'curlVersion' => (in_array('curl', get_loaded_extensions()) ? curl_version()['libz_version'] : 'Not Supported'),
