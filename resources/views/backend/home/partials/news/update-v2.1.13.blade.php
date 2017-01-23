@@ -12,7 +12,7 @@
     <div class="panel-body">
         Due to popular demand, Canvas now supports <strong>user management</strong>! You can now create or edit users and assign them specific roles to be either a basic user
         or a site administrator. Lots of new unit tests were added to cover that portion of the application. Check out the
-        <a href="https://github.com/austintoddj/canvas/releases/tag/v2.1.13" target="_blank">release notes</a> for a more thorough look at what we
+        <a href="https://github.com/cnvs/canvas/releases/tag/v2.1.13" target="_blank">release notes</a> for a more thorough look at what we
         improved upon in this update.
     </div>
 </div>
