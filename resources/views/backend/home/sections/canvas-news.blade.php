@@ -6,16 +6,16 @@
         <br>
         <div class="panel-group" role="tablist" aria-multiselectable="true">
             <div class="panel panel-collapse">
-                @include('canvas::backend.home.partials.news-stories.story-one')
+                @include('canvas::backend.home.partials.news.story-one')
             </div>
             <div class="panel panel-collapse">
-                @include('canvas::backend.home.partials.news-stories.story-two')
+                @include('canvas::backend.home.partials.news.story-two')
             </div>
             <div class="panel panel-collapse">
-                @include('canvas::backend.home.partials.news-stories.story-three')
+                @include('canvas::backend.home.partials.news.story-three')
             </div>
             <div class="panel panel-collapse">
-                @include('canvas::backend.home.partials.news-stories.story-four')
+                @include('canvas::backend.home.partials.news.story-four')
             </div>
         </div>
     </div>
