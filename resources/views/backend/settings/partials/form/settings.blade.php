@@ -52,31 +52,17 @@
 
     <br>
 
-
-
-
-
-
-
-
     <div class="form-group">
         <div class="fg-line">
             <label class="fg-label">Social Header Icons</label>
-            <select name="social_header_icons" id="social_header_icons" class="selectpicker">
-                <option @if ($data['active_theme'] == "default") selected @endif value="default">{!! $data['default_theme_name'] !!}</option>
-                @foreach($data['users'] as $themeId => $themeName)
-                    <option @if ($data['active_theme'] == $themeId) selected @endif value="{!! $themeId !!}">{{ $themeName }}</option>
+            <select name="social_header_icons_user_id" id="social_header_icons_user_id" class="selectpicker">
+                @foreach (\Canvas\Models\User::all() as $user)
+                    <option @if ($user->id == $data['socialHeaderIconsUserId']) selected @endif value="{!! $user->id !!}">{!! $user->display_name !!}</option>
                 @endforeach
             </select>
         </div>
         <small>Select the user whose social icons you would like to appear in the header of the blog.</small>
     </div>
-
-
-
-
-
-
 
     <br>
 
@@ -120,7 +106,7 @@
             <select name="theme" id="theme" class="selectpicker">
                 <option @if ($data['active_theme'] == "default") selected @endif value="default">{!! $data['default_theme_name'] !!}</option>
                 @foreach($data['themes'] as $themeId => $themeName)
-                <option @if ($data['active_theme'] == $themeId) selected @endif value="{!! $themeId !!}">{{ $themeName }}</option>
+                    <option @if ($data['active_theme'] == $themeId) selected @endif value="{!! $themeId !!}">{{ $themeName }}</option>
                 @endforeach
             </select>
         </div>

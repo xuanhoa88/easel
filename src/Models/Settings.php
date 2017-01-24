@@ -180,4 +180,15 @@ class Settings extends Model
     {
         return $customJS = self::where('setting_name', 'custom_js')->pluck('setting_value')->first();
     }
+
+    /**
+     * Return the user ID of the user whose social icons
+     * will be used in the header of the blog.
+     *
+     * return @int
+     */
+    public static function socialHeaderIconsUserId()
+    {
+        return $socialHeaderIconsUserId = self::where('setting_name', 'social_header_icons_user_id')->pluck('setting_value')->first();
+    }
 }

@@ -34,7 +34,6 @@ class SettingsController extends Controller
     public function index()
     {
         $data = [
-            'users' => User::all(),
             'blogTitle' => Settings::blogTitle(),
             'blogSubtitle' => Settings::blogSubTitle(),
             'blogDescription' => Settings::blogDescription(),
@@ -69,6 +68,7 @@ class SettingsController extends Controller
             'tokenizer' => (in_array('tokenizer', get_loaded_extensions()) ? 'Installed' : 'Not Installed'),
             'zip' => (in_array('zip', get_loaded_extensions()) ? 'Installed' : 'Not Installed'),
             'userAgentString' => $_SERVER['HTTP_USER_AGENT'],
+            'socialHeaderIconsUserId' => Settings::socialHeaderIconsUserId(),
         ];
 
         return view('canvas::backend.settings.index', compact('data'));
@@ -95,6 +95,7 @@ class SettingsController extends Controller
         Settings::updateOrCreate(['setting_name' => 'twitter_card_type'], ['setting_value' => $request->toArray()['twitter_card_type']]);
         Settings::updateOrCreate(['setting_name' => 'custom_css'], ['setting_value' => $request->toArray()['custom_css']]);
         Settings::updateOrCreate(['setting_name' => 'custom_js'], ['setting_value' => $request->toArray()['custom_js']]);
+        Settings::updateOrCreate(['setting_name' => 'social_header_icons_user_id'], ['setting_value' => $request->toArray()['social_header_icons_user_id']]);
 
         Session::set('_update-settings', trans('canvas::messages.save_settings_success'));
 
