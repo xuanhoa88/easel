@@ -2,6 +2,7 @@
 
 namespace Canvas\Http\Controllers\Backend;
 
+use Canvas\Models\User;
 use Session;
 use Canvas\Models\Settings;
 use Canvas\Extensions\ThemeManager;
@@ -33,6 +34,7 @@ class SettingsController extends Controller
     public function index()
     {
         $data = [
+            'users' => User::all(),
             'blogTitle' => Settings::blogTitle(),
             'blogSubtitle' => Settings::blogSubTitle(),
             'blogDescription' => Settings::blogDescription(),
