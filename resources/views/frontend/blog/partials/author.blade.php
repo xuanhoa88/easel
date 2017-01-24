@@ -1,4 +1,4 @@
-<img style="float: left; width: 60px" class="img-responsive img-circle author-img" src="//www.gravatar.com/avatar/{{ md5($user->email) }}?d=identicon&s=150" title="{{ $user->first_name .  ' ' . $user->last_name }}">
+<img style="float: left; width: 60px" class="img-responsive img-circle author-img" src="http://www.gravatar.com/avatar/{{ md5($user->email) }}?d=identicon&s=150" title="{{ $user->first_name .  ' ' . $user->last_name }}">
 <div style="overflow: hidden">
     <h4 id="auth-name"><strong>{{ $user->first_name .  ' ' . $user->last_name }}</strong></h4>
     <span class="small" style="margin-top: 0">

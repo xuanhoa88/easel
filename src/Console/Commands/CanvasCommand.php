@@ -183,4 +183,12 @@ class CanvasCommand extends Command
         $this->progress(5);
         $this->line(PHP_EOL.'<info>✔</info> Success! The application search index has been built.');
     }
+
+    protected function socialHeaderIcons()
+    {
+        $settings = new Settings();
+        $settings->setting_name = 'social_header_icons_user_id';
+        $settings->setting_value = 1;
+        $settings->save();
+    }
 }

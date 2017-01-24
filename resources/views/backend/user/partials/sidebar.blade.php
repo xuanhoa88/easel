@@ -2,7 +2,7 @@
     <div class="pmo-pic">
         <div class="p-relative">
             <a href="http://gravatar.com" target="_blank">
-                <img class="img-responsive" src="//www.gravatar.com/avatar/{{ md5($data['email']) }}?d=identicon&s=500">
+                <img class="img-responsive" src="http://www.gravatar.com/avatar/{{ md5($data['email']) }}?d=identicon&s=500">
             </a>
             <div class="dropdown pmop-message">
                 <a href="mailto:{{ $data['email'] }}" target="_blank" class="btn bgm-white btn-float z-depth-1">
