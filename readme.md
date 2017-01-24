@@ -5,7 +5,7 @@
 <a href='https://www.versioneye.com/user/projects/5877e8a43c803900390c0b7b'><img src='https://www.versioneye.com/user/projects/5877e8a43c803900390c0b7b/badge.svg?style=flat' alt="Dependency Status" /></a>
 <a href="https://packagist.org/packages/cnvs/easel"><img src="https://poser.pugx.org/cnvs/easel/downloads" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/cnvs/easel"><img src="https://poser.pugx.org/cnvs/easel/v/stable" alt="Latest Stable Version"></a>
-<a href="https://github.com/cnvs/easel/blob/master/license"><img src="https://poser.pugx.org/austintoddj/easel/license" alt="License"></a>
+<a href="https://github.com/cnvs/easel/blob/master/license"><img src="https://poser.pugx.org/cnvs/easel/license" alt="License"></a>
 
 > **Note:** This repository contains the core code of the blog publishing platform Canvas. If you want to create your own blog using Canvas, visit the [main repository](https://github.com/cnvs/canvas).
 
