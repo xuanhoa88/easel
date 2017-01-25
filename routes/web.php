@@ -113,7 +113,7 @@ Route::group([
             ],
         ]);
         Route::get(RouteHelper::getAdminPrefix().'/user/{id}/privacy', 'UserController@privacy')->name('canvas.admin.user.privacy');
-        Route::post(RouteHelper::getAdminPrefix().'/user/{id}/privacy', 'UserController@updatePassword');
+        Route::post(RouteHelper::getAdminPrefix().'/user/{id}/privacy', 'UserController@updatePassword')->name('canvas.admin.user.privacy');
 
         Route::get(RouteHelper::getAdminPrefix().'/tools', 'ToolsController@index')->name('canvas.admin.tools');
         Route::post(RouteHelper::getAdminPrefix().'/tools/reset_index', 'ToolsController@resetIndex')->name('canvas.admin.tools.reset_index');

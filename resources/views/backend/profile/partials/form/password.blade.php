@@ -1,4 +1,4 @@
-<form class="keyboard-save" action="{{ url('auth/password') }}" method="POST" role="form" autocomplete="false" id="passwordUpdate">
+<form class="keyboard-save" action="{!! route('canvas.auth.password.reset.store') !!}" method="POST" role="form" autocomplete="false" id="passwordUpdate">
   <input type="hidden" name="_token" value="{{ csrf_token() }}">
   <input type="hidden" name="_method" value="POST">
 
