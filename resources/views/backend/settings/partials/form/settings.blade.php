@@ -54,10 +54,24 @@
 
     <div class="form-group">
         <div class="fg-line">
+            <label class="fg-label">Social Header Icons</label>
+            <select name="social_header_icons_user_id" id="social_header_icons_user_id" class="selectpicker">
+                @foreach (\Canvas\Models\User::all() as $user)
+                    <option @if ($user->id == $data['socialHeaderIconsUserId']) selected @endif value="{!! $user->id !!}">{!! $user->display_name !!}</option>
+                @endforeach
+            </select>
+        </div>
+        <small>Select the user whose social icons you would like to appear in the header of the blog.</small>
+    </div>
+
+    <br>
+
+    <div class="form-group">
+        <div class="fg-line">
             <label class="fg-label"><i class="zmdi zmdi-disqus"></i> Disqus</label>
             <input type="text" class="form-control" name="disqus_name" id="disqus_name" value="{{ $data['disqus'] }}" placeholder="Disqus Shortname">
         </div>
-        <small>Enter your Disqus shortname to enable comments in your blog posts or <a href="https://github.com/austintoddj/canvas#advanced-options" target="_blank">learn more about this option</a>.</small>
+        <small>Enter your Disqus shortname to enable comments in your blog posts or <a href="https://cnvs.readme.io/docs/advanced-options#section-disqus-integration" target="_blank">learn more about this option</a>.</small>
     </div>
 
     <br>
@@ -67,7 +81,7 @@
             <label class="fg-label"><i class="zmdi zmdi-trending-up"></i> Google Analytics</label>
             <input type="text" class="form-control" name="ga_id" id="ga_id" value="{{ $data['analytics'] }}" placeholder="Google Analytics Tracking ID">
         </div>
-        <small>Enter your Google Analytics Tracking ID or <a href="https://github.com/austintoddj/canvas#advanced-options" target="_blank">learn more about this option</a>.</small>
+        <small>Enter your Google Analytics Tracking ID or <a href="https://cnvs.readme.io/docs/advanced-options#section-google-analytics" target="_blank">learn more about this option</a>.</small>
     </div>
 
     <br>
@@ -92,7 +106,7 @@
             <select name="theme" id="theme" class="selectpicker">
                 <option @if ($data['active_theme'] == "default") selected @endif value="default">{!! $data['default_theme_name'] !!}</option>
                 @foreach($data['themes'] as $themeId => $themeName)
-                <option @if ($data['active_theme'] == $themeId) selected @endif value="{!! $themeId !!}">{{ $themeName }}</option>
+                    <option @if ($data['active_theme'] == $themeId) selected @endif value="{!! $themeId !!}">{{ $themeName }}</option>
                 @endforeach
             </select>
         </div>

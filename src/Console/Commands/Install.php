@@ -148,6 +148,7 @@ class Install extends CanvasCommand
             $this->twitterCardType();
             $this->canvasVersion();
             $this->installed();
+            $this->socialHeaderIcons();
             $this->progress(5);
 
             // Clear all the caches
