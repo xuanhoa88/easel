@@ -69,6 +69,7 @@
 
 @section('unique-js')
     @include('canvas::backend.user.partials.datatable')
+    @include('canvas::backend.user.partials.editor')
 
     @if(Session::get('_new-user'))
         @include('canvas::backend.partials.notify', ['section' => '_new-user'])
