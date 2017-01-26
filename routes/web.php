@@ -35,7 +35,7 @@ Route::group([
 
             // Canvas Application Routes : Password
             Route::group(['prefix' => RouteHelper::getPasswordPrefix()], function () {
-                Route::post('/', 'PasswordController@updatePassword');
+                Route::post('/', 'PasswordController@updatePassword')->name('canvas.auth.password.update');
                 Route::get('forgot', 'ForgotPasswordController@showLinkRequestForm')->name('canvas.auth.password.forgot');
                 Route::post('forgot', 'ForgotPasswordController@sendResetLinkEmail')->name('canvas.auth.password.forgot.store');
                 Route::get('reset/{token}', 'ResetPasswordController@showResetForm')->name('canvas.auth.password.reset');
