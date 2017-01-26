@@ -12,7 +12,6 @@
 @endsection
 
 @section('unique-js')
-    {{--TODO: Make a Password ResetRequest instead of using the LoginRequest--}}
-    {!! JsValidator::formRequest('Canvas\Http\Requests\LoginRequest', '#login') !!}
+    {!! JsValidator::formRequest('Canvas\Http\Requests\PasswordResetRequest', '#forgot-password') !!}
     @include('canvas::backend.shared.components.show-password', ['inputs' => 'input[name="password"]'])
 @stop
