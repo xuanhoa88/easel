@@ -1,4 +1,4 @@
-<form class="keyboard-save" action="{{ url('admin/user/' . $data['id'] . '/privacy') }}" method="POST" role="form" autocomplete="false" id="passwordUpdate">
+<form class="keyboard-save" action="{!! route('canvas.admin.user.privacy', $data['id']) !!}" method="POST" role="form" autocomplete="false" id="passwordUpdate">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <input type="hidden" name="_method" value="POST">
 
@@ -22,7 +22,7 @@
 
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-floppy"></i> Save</button>
-        &nbsp;
+        {{--TODO: Replace url below with named route--}}
         <a href="{{ url('admin/user/' . $data['id'] . '/edit') }}"><button type="button" class="btn btn-link">Cancel</button></a>
     </div>
 </form>
