@@ -13,14 +13,14 @@ use Canvas\Extensions\ExtensionManager;
 class CanvasHelper extends Constants
 {
     /**
-     * Return 'checked' if true.
+     * Return 'checked' if false.
      *
      * @param $value
      * @return string
      */
     public static function checked($value)
     {
-        return $value ? 'checked' : '';
+        return $value ? '' : 'checked';
     }
 
     /**
