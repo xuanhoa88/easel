@@ -3,7 +3,6 @@
 namespace Canvas\Http\Middleware;
 
 use Closure;
-use Canvas\Helpers\SetupHelper;
 
 class EnsureInstalled
 {
