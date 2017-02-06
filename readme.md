@@ -2,7 +2,7 @@
 
 <a href="https://travis-ci.org/cnvs/canvas"><img src="https://travis-ci.org/cnvs/canvas.svg?branch=master" alt="Build Status"></a>
 <a href="https://styleci.io/repos/74061859"><img src="https://styleci.io/repos/74061859/shield?style=flat&branch=master" alt="StyleCI"></a>
-<a href="https://packagist.org/packages/cnvs/easel"><img src="https://poser.pugx.org/cnvs/easel/downloads" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/austintoddj/canvas"><img src="https://poser.pugx.org/austintoddj/canvas/downloads" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/cnvs/easel"><img src="https://poser.pugx.org/cnvs/easel/v/stable" alt="Latest Stable Version"></a>
 <a href="https://github.com/cnvs/easel/blob/master/license"><img src="https://poser.pugx.org/cnvs/easel/license" alt="License"></a>
 
