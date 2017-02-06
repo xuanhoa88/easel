@@ -1,10 +1,15 @@
-## About Canvas
+<p align="center">
+    <img src="https://raw.githubusercontent.com/cnvs/assets/master/logo-text.png" width="240">
+</p>
+<p align="center">
+    <a href="https://travis-ci.org/cnvs/canvas"><img src="https://travis-ci.org/cnvs/canvas.svg?branch=master" alt="Build Status"></a>
+    <a href="https://styleci.io/repos/52815899"><img src="https://styleci.io/repos/52815899/shield?style=flat&branch=master" alt="StyleCI"></a>
+    <a href="https://packagist.org/packages/austintoddj/canvas"><img src="https://poser.pugx.org/austintoddj/canvas/downloads" alt="Total Downloads"></a>
+    <a href="https://packagist.org/packages/cnvs/easel"><img src="https://poser.pugx.org/cnvs/easel/v/stable" alt="Latest Stable Version"></a>
+    <a href="https://github.com/cnvs/canvas/blob/master/license"><img src="https://poser.pugx.org/cnvs/canvas/license" alt="License"></a>
+</p>
 
-<a href="https://travis-ci.org/cnvs/canvas"><img src="https://travis-ci.org/cnvs/canvas.svg?branch=master" alt="Build Status"></a>
-<a href="https://styleci.io/repos/74061859"><img src="https://styleci.io/repos/74061859/shield?style=flat&branch=master" alt="StyleCI"></a>
-<a href="https://packagist.org/packages/austintoddj/canvas"><img src="https://poser.pugx.org/austintoddj/canvas/downloads" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/cnvs/easel"><img src="https://poser.pugx.org/cnvs/easel/v/stable" alt="Latest Stable Version"></a>
-<a href="https://github.com/cnvs/easel/blob/master/license"><img src="https://poser.pugx.org/cnvs/easel/license" alt="License"></a>
+## About Canvas
 
 > **Note:** This repository contains the core code of the blog publishing platform Canvas. If you want to create your own blog using Canvas, visit the [main repository](https://github.com/cnvs/canvas).
 
