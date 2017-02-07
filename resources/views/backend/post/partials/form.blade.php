@@ -3,15 +3,14 @@
     <input type="hidden" name="user_id" value="{!! Auth::guard('canvas')->user()->id !!}">
 @else
     <form class="keyboard-save" role="form" method="POST" id="postUpdate" action="{!! route('canvas.admin.post.update', $id) !!}">
-    <input type="hidden" name="_method" value="PUT">
-    <input type="hidden" name="user_id" value="{!! $user_id !!}">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="hidden" name="user_id" value="{!! $user_id !!}">
 @endif
     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
     <div class="row">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-
                     @include('canvas::shared.errors')
                     @include('canvas::shared.success')
 
@@ -69,11 +68,13 @@
                     <hr>
                 </div>
                 <div class="card-body card-padding">
-                    <div class="form-group">
+                    <label><i class="zmdi zmdi-eye"></i>&nbsp;&nbsp;Status</label>
+                    <div class="form-group" style="padding-top: 10px">
                         <div class="toggle-switch toggle-switch-demo" data-ts-color="blue">
-                            <label for="is_draft" class="ts-label">Publish?</label>
+                            <label for="is_draft" class="ts-label"><span class="label label-success">Published</span></label>
                             <input {{ \Canvas\Helpers\CanvasHelper::checked($is_draft) }} type="checkbox" name="is_draft">
                             <label for="is_draft" class="ts-helper"></label>
+                            <label for="is_draft" class="ts-label" style="margin-left: 20px; margin-right: 0"><span class="label label-primary">Draft</span></label>
                         </div>
                     </div>
                     <br>
@@ -102,9 +103,13 @@
                     @endif
                     <div class="form-group">
                         @if(Route::is('canvas.admin.post.create'))
-                            <button type="submit" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-floppy"></i> Publish</button>
+                            <button type="submit" class="btn btn-primary btn-icon-text">
+                                <i class="zmdi zmdi-floppy"></i> Publish
+                            </button>
                             &nbsp;
-                            <a href="{!! route('canvas.admin.post.index') !!}"><button type="button" class="btn btn-link">Cancel</button></a>
+                            <a href="{!! route('canvas.admin.post.index') !!}">
+                                <button type="button" class="btn btn-link">Cancel</button>
+                            </a>
                         @else
                             <button type="submit" class="btn btn-primary btn-icon-text" name="action" value="continue">
                                 <i class="zmdi zmdi-floppy"></i> Update
@@ -117,7 +122,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="card">
                 <div class="card-header">
                     <h2>Featured Image</h2>
@@ -129,8 +133,8 @@
                             <div class="input-group">
                                 <input type="text" class="form-control" name="page_image" id="page_image" alt="Image thumbnail" placeholder="Page Image" v-model="pageImage">
                                 <span class="input-group-btn" style="margin-bottom: 11px">
-                                    <button style="margin-bottom: -5px" type="button" class="btn btn-primary waves-effect" @click="openFromPageImage()">Select Image</button>
-                                </span>
+                        <button style="margin-bottom: -5px" type="button" class="btn btn-primary waves-effect" @click="openFromPageImage()">Select Image</button>
+                    </span>
                             </div>
                         </div>
                     </div>
@@ -141,7 +145,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="card">
                 <div class="card-header">
                     <h2>Tags</h2>
@@ -159,7 +162,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="card">
                 <div class="card-header">
                     <h2>SEO Description</h2>
@@ -178,9 +180,9 @@
 </form>
 
 <media-modal v-if="showMediaManager" @close="showMediaManager = false">
-    <media-manager
-            :is-modal="true"
-            :selected-event-name="selectedEventName"
-            @close="showMediaManager = false"
-    >
+<media-manager
+        :is-modal="true"
+        :selected-event-name="selectedEventName"
+@close="showMediaManager = false"
+                                           >
 </media-manager>
