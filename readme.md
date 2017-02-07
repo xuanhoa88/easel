@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/cnvs/assets/master/logo-text.png" width="240">
+    <img src="https://raw.githubusercontent.com/cnvs/assets/master/logo.png" width="240">
 </p>
 <p align="center">
     <a href="https://travis-ci.org/cnvs/canvas"><img src="https://travis-ci.org/cnvs/canvas.svg?branch=master" alt="Build Status"></a>
