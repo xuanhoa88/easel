@@ -1,4 +1,4 @@
-<form class="keyboard-save" role="form" method="POST" id="userUpdate" action="{{ route('admin.user.update', $data['id']) }}">
+<form class="keyboard-save" role="form" method="POST" id="userUpdate" action="{{ route('canvas.admin.user.update', $data['id']) }}">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
     <input type="hidden" name="_method" value="PUT">
 

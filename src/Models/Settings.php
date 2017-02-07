@@ -2,6 +2,8 @@
 
 namespace Canvas\Models;
 
+use Schema;
+use Canvas\Helpers\CanvasHelper;
 use Illuminate\Database\Eloquent\Model;
 
 class Settings extends Model
@@ -77,15 +79,34 @@ class Settings extends Model
         return self::getByName('blog_author');
     }
 
-     /**
-      * Get the current Canvas application version.
-      *
-      * return @string
-      */
-     public static function canvasVersion()
-     {
-         return self::getByName('canvas_version');
-     }
+    /**
+     * Get the current Canvas application version.
+     *
+     * return @string
+     */
+    public static function canvasVersion()
+    {
+        return self::getByName('canvas_version');
+    }
+
+    /**
+     * Get the value of installed.
+     *
+     * With a fresh install of Canvas, the Settings table won't be
+     * created yet and we can't query it for its installed status.
+     * A quick check here allows the user to see the Welcome
+     * screen to finish up the installation.
+     *
+     * return @string
+     */
+    public static function installed()
+    {
+        if (! Schema::hasTable(CanvasHelper::TABLES['settings'])) {
+            return false;
+        } else {
+            return self::getByName('installed');
+        }
+    }
 
     /**
      * Get the latest release of Canvas.
@@ -158,5 +179,16 @@ class Settings extends Model
     public static function customJS()
     {
         return $customJS = self::where('setting_name', 'custom_js')->pluck('setting_value')->first();
+    }
+
+    /**
+     * Return the user ID of the user whose social icons
+     * will be used in the header of the blog.
+     *
+     * return @int
+     */
+    public static function socialHeaderIconsUserId()
+    {
+        return $socialHeaderIconsUserId = self::where('setting_name', 'social_header_icons_user_id')->pluck('setting_value')->first();
     }
 }

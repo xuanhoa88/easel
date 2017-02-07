@@ -2,7 +2,9 @@
 
 namespace Canvas\Helpers;
 
+use File;
 use Schema;
+use Canvas\Models\Settings;
 
 class SetupHelper extends CanvasHelper
 {
@@ -31,7 +33,7 @@ class SetupHelper extends CanvasHelper
      */
     public static function isSetUp()
     {
-        return self::requiredTablesExists();
+        return Settings::installed() && self::requiredTablesExists();
     }
 
     /**
@@ -40,6 +42,6 @@ class SetupHelper extends CanvasHelper
      */
     public static function isInstalled()
     {
-        return self::isSetUp();
+        return File::exists(storage_path(CanvasHelper::INSTALLED_FILE));
     }
 }

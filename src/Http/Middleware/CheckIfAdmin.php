@@ -15,10 +15,10 @@ class CheckIfAdmin
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $guard = 'canvas')
     {
-        if (! User::isAdmin(Auth::user()->role)) {
-            return redirect()->route('admin');
+        if (! User::isAdmin(Auth::guard($guard)->user()->role)) {
+            return redirect()->route('canvas.admin');
         }
 
         return $next($request);

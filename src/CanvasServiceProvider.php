@@ -89,7 +89,7 @@ class CanvasServiceProvider extends ServiceProvider
     private function handleTranslations()
     {
         // Load translations
-        $this->loadTranslationsFrom(__DIR__.'/../lang', 'canvas');
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'canvas');
     }
 
     /**
@@ -107,7 +107,6 @@ class CanvasServiceProvider extends ServiceProvider
             __DIR__.'/../resources/views/errors' => base_path('resources/views/vendor/canvas/errors'),
             __DIR__.'/../resources/views/frontend' => base_path('resources/views/vendor/canvas/frontend'),
             __DIR__.'/../resources/views/shared' => base_path('resources/views/vendor/canvas/shared'),
-            __DIR__.'/../resources/views/vendor' => base_path('resources/views/vendor'),
         ], 'views');
     }
 

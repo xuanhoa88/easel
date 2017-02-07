@@ -10,7 +10,7 @@
 
         @include('canvas::shared.success')
 
-        <form class="keyboard-save" role="form" method="POST" id="postCreate" action="{{ route('admin.post.store') }}">
+        <form class="keyboard-save" role="form" method="POST" id="postCreate" action="{{ route('canvas.admin.post.store') }}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
             @include('canvas::backend.home.partials.form')
@@ -18,7 +18,7 @@
             <br>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-floppy"></i> Save</button>
+                <button type="submit" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-floppy"></i> Save Draft</button>
             </div>
         </form>
     </div>

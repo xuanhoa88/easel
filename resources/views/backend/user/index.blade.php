@@ -12,7 +12,7 @@
                 <div class="card">
                     <div class="card-header">
                         <ol class="breadcrumb">
-                            <li><a href="{!! route('admin') !!}">Home</a></li>
+                            <li><a href="{!! route('canvas.admin') !!}">Home</a></li>
                             <li class="active">Users</li>
                         </ol>
                         <ul class="actions">
@@ -22,7 +22,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li>
-                                        <a href="{!! route('admin.user.index') !!}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh Users</a>
+                                        <a href="{!! route('canvas.admin.user.index') !!}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh Users</a>
                                     </li>
                                 </ul>
                             </li>
@@ -30,7 +30,7 @@
                         @include('canvas::shared.errors')
                         @include('canvas::shared.success')
                         <h2>Users&nbsp;
-                            <a href="{!! route('admin.user.create') !!}"><i class="zmdi zmdi-plus-circle" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Create a new user"></i></a>
+                            <a href="{!! route('canvas.admin.user.create') !!}" id="create-user"><i class="zmdi zmdi-plus-circle" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Create a new user"></i></a>
 
                             <small>This page provides a comprehensive overview of all the current users. Click the <span class="zmdi zmdi-edit text-primary"></span> icon next to each user to update their site access or remove them from the system.</small>
                         </h2>

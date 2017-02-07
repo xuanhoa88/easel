@@ -9,7 +9,10 @@ class RouteHelper extends CanvasHelper
      */
     public static function getGeneralMiddleware()
     {
-        return self::ROUTE_MIDDLEWARE_GENERAL;
+        $config = ConfigHelper::getWriter();
+        $val = $config->get('route_middleware_general');
+
+        return is_null($val) ? self::ROUTE_MIDDLEWARE_GROUPS_GENERAL : $val;
     }
 
     /**
@@ -17,7 +20,10 @@ class RouteHelper extends CanvasHelper
      */
     public static function getInstalledMiddleware()
     {
-        return self::ROUTE_MIDDLEWARE_INSTALLED;
+        $config = ConfigHelper::getWriter();
+        $val = $config->get('route_middleware_installed');
+
+        return is_null($val) ? self::ROUTE_MIDDLEWARE_INSTALLED : $val;
     }
 
     /**
@@ -25,7 +31,10 @@ class RouteHelper extends CanvasHelper
      */
     public static function getAdminMiddleware()
     {
-        return self::ROUTE_MIDDLEWARE_ADMIN;
+        $config = ConfigHelper::getWriter();
+        $val = $config->get('route_middleware_admin');
+
+        return is_null($val) ? self::ROUTE_MIDDLEWARE_ADMIN : $val;
     }
 
     /**
@@ -33,7 +42,10 @@ class RouteHelper extends CanvasHelper
      */
     public static function getGeneralMiddlewareGroups()
     {
-        return self::ROUTE_MIDDLEWARE_GROUPS_GENERAL;
+        $config = ConfigHelper::getWriter();
+        $val = $config->get('route_middleware_groups_general');
+
+        return is_null($val) ? self::ROUTE_MIDDLEWARE_GROUPS_GENERAL : $val;
     }
 
     /**
@@ -42,8 +54,9 @@ class RouteHelper extends CanvasHelper
     public static function getBlogMain()
     {
         $config = ConfigHelper::getWriter();
+        $val = $config->get('blog_path');
 
-        return $config->get('blog_path') ?: self::ROUTE_DEFAULT_BLOG_MAIN;
+        return is_null($val) ? self::ROUTE_DEFAULT_BLOG_MAIN : $val;
     }
 
     /**
@@ -52,8 +65,9 @@ class RouteHelper extends CanvasHelper
     public static function getBlogPrefix()
     {
         $config = ConfigHelper::getWriter();
+        $val = $config->get('blog_prefix');
 
-        return $config->get('blog_prefix') ?: self::ROUTE_DEFAULT_BLOG_PREFIX;
+        return is_null($val) ? self::ROUTE_DEFAULT_BLOG_PREFIX : $val;
     }
 
     /**
@@ -62,8 +76,9 @@ class RouteHelper extends CanvasHelper
     public static function getAdminPrefix()
     {
         $config = ConfigHelper::getWriter();
+        $val = $config->get('admin_prefix');
 
-        return $config->get('admin_prefix') ?: self::ROUTE_DEFAULT_ADMIN_PREFIX;
+        return is_null($val) ? self::ROUTE_DEFAULT_ADMIN_PREFIX : $val;
     }
 
     /**
@@ -72,8 +87,20 @@ class RouteHelper extends CanvasHelper
     public static function getAuthPrefix()
     {
         $config = ConfigHelper::getWriter();
+        $val = $config->get('auth_prefix');
 
-        return $config->get('auth_prefix') ?: self::ROUTE_DEFAULT_AUTH_PREFIX;
+        return is_null($val) ? self::ROUTE_DEFAULT_AUTH_PREFIX : $val;
+    }
+
+    /**
+     * Get password prefix.
+     */
+    public static function getPasswordPrefix()
+    {
+        $config = ConfigHelper::getWriter();
+        $val = $config->get('password_prefix');
+
+        return is_null($val) ? self::ROUTE_DEFAULT_PASSWORD_PREFIX : $val;
     }
 
     /**

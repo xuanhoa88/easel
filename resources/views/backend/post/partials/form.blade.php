@@ -1,31 +1,30 @@
-@if(Route::is('admin.post.create'))
-    <form class="keyboard-save" role="form" method="POST" id="postCreate" action="{!! route('admin.post.store') !!}">
-    <input type="hidden" name="user_id" value="{!! Auth::user()->id !!}">
+@if(Route::is('canvas.admin.post.create'))
+    <form class="keyboard-save" role="form" method="POST" id="postCreate" action="{!! route('canvas.admin.post.store') !!}">
+    <input type="hidden" name="user_id" value="{!! Auth::guard('canvas')->user()->id !!}">
 @else
-    <form class="keyboard-save" role="form" method="POST" id="postUpdate" action="{!! route('admin.post.update', $id) !!}">
-    <input type="hidden" name="_method" value="PUT">
-    <input type="hidden" name="user_id" value="{!! $user_id !!}">
+    <form class="keyboard-save" role="form" method="POST" id="postUpdate" action="{!! route('canvas.admin.post.update', $id) !!}">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="hidden" name="user_id" value="{!! $user_id !!}">
 @endif
     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
     <div class="row">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-
                     @include('canvas::shared.errors')
                     @include('canvas::shared.success')
 
-                    @if(Route::is('admin.post.create'))
+                    @if(Route::is('canvas.admin.post.create'))
                         <ol class="breadcrumb">
-                            <li><a href="{!! route('admin') !!}">Home</a></li>
-                            <li><a href="{!! route('admin.post.index') !!}">Posts</a></li>
+                            <li><a href="{!! route('canvas.admin') !!}">Home</a></li>
+                            <li><a href="{!! route('canvas.admin.post.index') !!}">Posts</a></li>
                             <li class="active">New Post</li>
                         </ol>
                         <h2>Create a New Post</h2>
                     @else
                         <ol class="breadcrumb">
-                            <li><a href="{!! route('admin') !!}">Home</a></li>
-                            <li><a href="{!! route('admin.post.index') !!}">Posts</a></li>
+                            <li><a href="{!! route('canvas.admin') !!}">Home</a></li>
+                            <li><a href="{!! route('canvas.admin.post.index') !!}">Posts</a></li>
                             <li class="active">Edit Post</li>
                         </ol>
                         <h2>
@@ -38,25 +37,25 @@
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
-                            <input type="text" class="form-control" name="title" id="title" value="{!! $title !!}" placeholder="Title">
+                            <input type="text" class="form-control" name="title" id="title" value="{{ $title }}" placeholder="Title">
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
-                            <input type="text" class="form-control" name="slug" id="slug" value="{!! $slug !!}" placeholder="Slug">
+                            <input type="text" class="form-control" name="slug" id="slug" value="{{ $slug }}" placeholder="Slug">
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
-                            <input type="text" class="form-control" name="subtitle" id="subtitle" value="{!! $subtitle !!}" placeholder="Subtitle">
+                            <input type="text" class="form-control" name="subtitle" id="subtitle" value="{{ $subtitle }}" placeholder="Subtitle">
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
-                            <textarea id="editor" name="content" placeholder="Content">{!! $content !!}</textarea>
+                            <textarea id="editor" name="content" placeholder="Content">{{ $content }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -69,42 +68,48 @@
                     <hr>
                 </div>
                 <div class="card-body card-padding">
-                    <div class="form-group">
+                    <label><i class="zmdi zmdi-eye"></i>&nbsp;&nbsp;Status</label>
+                    <div class="form-group" style="padding-top: 10px">
                         <div class="toggle-switch toggle-switch-demo" data-ts-color="blue">
-                            <label for="is_draft" class="ts-label">Draft?</label>
-                            <input {!! \Canvas\Helpers\CanvasHelper::checked($is_draft) !!} type="checkbox" name="is_draft">
+                            <label for="is_draft" class="ts-label"><span class="label label-success">Published</span></label>
+                            <input {{ \Canvas\Helpers\CanvasHelper::checked($is_draft) }} type="checkbox" name="is_draft">
                             <label for="is_draft" class="ts-helper"></label>
+                            <label for="is_draft" class="ts-label" style="margin-left: 20px; margin-right: 0"><span class="label label-primary">Draft</span></label>
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
                             <label><i class="zmdi zmdi-calendar"></i>&nbsp;&nbsp;Published at</label>
-                            <input class="form-control datetime-picker" name="published_at" id="published_at" type="text" value="{!! $published_at !!}" placeholder="YYYY/MM/DD HH:MM:SS" data-mask="0000/00/00 00:00:00">
+                            <input class="form-control datetime-picker" name="published_at" id="published_at" type="text" value="{{ $published_at }}" placeholder="YYYY/MM/DD HH:MM:SS" data-mask="0000/00/00 00:00:00">
                         </div>
                     </div>
                     <br>
                     <div class="form-group">
                         <div class="fg-line">
                             <label class="fg-label"><i class="zmdi zmdi-view-web"></i>&nbsp;&nbsp;Layout</label>
-                            <input type="text" class="form-control" name="layout" id="layout" value="{!! $layout !!}" placeholder="Layout" disabled>
+                            <input type="text" class="form-control" name="layout" id="layout" value="{{ $layout }}" placeholder="Layout" disabled>
                         </div>
                     </div>
                     <br>
-                    @if(!Route::is('admin.post.create'))
+                    @if(!Route::is('canvas.admin.post.create'))
                         <div class="form-group">
                             <div class="fg-line">
                                 <label class="fg-label"><i class="zmdi zmdi-link"></i>&nbsp;&nbsp;Permalink</label><br>
-                                <a href="{!! route('blog.post.show', $slug) !!}" target="_blank" name="permalink">{!! route('blog.post.show', $slug) !!}</a>
+                                <a href="{!! route('canvas.blog.post.show', $slug) !!}" target="_blank" name="permalink">{!! route('canvas.blog.post.show', $slug) !!}</a>
                             </div>
                         </div>
                         <br>
                     @endif
                     <div class="form-group">
-                        @if(Route::is('admin.post.create'))
-                            <button type="submit" class="btn btn-primary btn-icon-text"><i class="zmdi zmdi-floppy"></i> Publish</button>
+                        @if(Route::is('canvas.admin.post.create'))
+                            <button type="submit" class="btn btn-primary btn-icon-text">
+                                <i class="zmdi zmdi-floppy"></i> Publish
+                            </button>
                             &nbsp;
-                            <a href="{!! route('admin.post.index') !!}"><button type="button" class="btn btn-link">Cancel</button></a>
+                            <a href="{!! route('canvas.admin.post.index') !!}">
+                                <button type="button" class="btn btn-link">Cancel</button>
+                            </a>
                         @else
                             <button type="submit" class="btn btn-primary btn-icon-text" name="action" value="continue">
                                 <i class="zmdi zmdi-floppy"></i> Update
@@ -117,7 +122,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="card">
                 <div class="card-header">
                     <h2>Featured Image</h2>
@@ -129,8 +133,8 @@
                             <div class="input-group">
                                 <input type="text" class="form-control" name="page_image" id="page_image" alt="Image thumbnail" placeholder="Page Image" v-model="pageImage">
                                 <span class="input-group-btn" style="margin-bottom: 11px">
-                                    <button style="margin-bottom: -5px" type="button" class="btn btn-primary waves-effect" @click="openFromPageImage()">Select Image</button>
-                                </span>
+                        <button style="margin-bottom: -5px" type="button" class="btn btn-primary waves-effect" @click="openFromPageImage()">Select Image</button>
+                    </span>
                             </div>
                         </div>
                     </div>
@@ -141,7 +145,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="card">
                 <div class="card-header">
                     <h2>Tags</h2>
@@ -159,7 +162,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="card">
                 <div class="card-header">
                     <h2>SEO Description</h2>
@@ -178,9 +180,9 @@
 </form>
 
 <media-modal v-if="showMediaManager" @close="showMediaManager = false">
-    <media-manager
-            :is-modal="true"
-            :selected-event-name="selectedEventName"
-            @close="showMediaManager = false"
-    >
+<media-manager
+        :is-modal="true"
+        :selected-event-name="selectedEventName"
+@close="showMediaManager = false"
+                                           >
 </media-manager>

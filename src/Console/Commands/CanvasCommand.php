@@ -2,6 +2,7 @@
 
 namespace Canvas\Console\Commands;
 
+use File;
 use Artisan;
 use Exception;
 use Canvas\Models\User;
@@ -104,6 +105,17 @@ class CanvasCommand extends Command
         $settings->save();
     }
 
+    protected function installed()
+    {
+        $settings = new Settings();
+        $settings->setting_name = 'installed';
+        $settings->setting_value = time();
+        $settings->save();
+
+        // Write installed lock file.
+        File::put(storage_path(CanvasHelper::INSTALLED_FILE), $settings->setting_value);
+    }
+
     protected function canvasVersion()
     {
         // Get and save installed version to settings
@@ -170,5 +182,13 @@ class CanvasCommand extends Command
         $exitCode = Artisan::call('canvas:index');
         $this->progress(5);
         $this->line(PHP_EOL.'<info>✔</info> Success! The application search index has been built.');
+    }
+
+    protected function socialHeaderIcons()
+    {
+        $settings = new Settings();
+        $settings->setting_name = 'social_header_icons_user_id';
+        $settings->setting_value = 1;
+        $settings->save();
     }
 }

@@ -40,12 +40,17 @@ class Constants
     /**
      * @constant(DEFAULT_THEME_VERSION)
      */
-    const DEFAULT_THEME_VERSION = '1.0';
+    const DEFAULT_THEME_VERSION = '1.0.3';
 
     /**
      * @constant(REQUIRED_TABLES)
      */
     const REQUIRED_TABLES = ['migrations'];
+
+    /**
+     * @constant(INSTALLED_FILE)
+     */
+    const INSTALLED_FILE = 'canvas_installed.lock';
 
     /**
      * @constant(ROUTE_MIDDLEWARE_GENERAL)
@@ -60,7 +65,7 @@ class Constants
     /**
      * @constant(ROUTE_MIDDLEWARE_ADMIN)
      */
-    const ROUTE_MIDDLEWARE_ADMIN = ['checkForMaintenanceMode', 'canvasInstalled', 'auth'];
+    const ROUTE_MIDDLEWARE_ADMIN = ['checkForMaintenanceMode', 'canvasInstalled', 'auth:canvas'];
 
     /**
      * @constant(ROUTE_MIDDLEWARE_GROUPS_GENERAL)
@@ -86,6 +91,11 @@ class Constants
      * @constant(ROUTE_DEFAULT_AUTH_PREFIX)
      */
     const ROUTE_DEFAULT_AUTH_PREFIX = 'auth';
+
+    /**
+     * @constant(ROUTE_DEFAULT_PASSWORD_PREFIX)
+     */
+    const ROUTE_DEFAULT_PASSWORD_PREFIX = 'password';
 
     /**
      * @constant(TABLES)

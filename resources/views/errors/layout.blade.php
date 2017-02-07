@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        @include('canvas::shared.meta-tags')
+        @include('canvas::shared.meta')
         @yield('title')
-        @include('canvas::backend.partials.backend-css')
+        @include('canvas::backend.partials.css')
     </head>
     <body>
         @yield('content')

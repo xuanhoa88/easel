@@ -2,7 +2,7 @@
     <div class="pmo-pic">
         <div class="p-relative">
             <a href="http://gravatar.com" target="_blank">
-                <img class="img-responsive" src="//www.gravatar.com/avatar/{{ md5($data['email']) }}?d=identicon&s=500">
+                <img class="img-responsive" src="http://www.gravatar.com/avatar/{{ md5($data['email']) }}?d=identicon&s=500">
             </a>
             <div class="dropdown pmop-message">
                 <a href="mailto:{{ $data['email'] }}" target="_blank" class="btn bgm-white btn-float z-depth-1">
@@ -62,7 +62,7 @@
                     <li><i class="zmdi zmdi-linkedin-box"></i> <a href="http://linkedin.com/in/{{ $data['linkedin'] }}" target="_blank">{{ $data['linkedin'] }}</a></li>
                 @endif
                 @if(isset($data['resume_cv']) && strlen($data['resume_cv']))
-                    <li><i class="zmdi zmdi-collection-pdf"></i> <a href="{{ url('uploads', $data['resume_cv']) }}" target="_blank">{{ $data['resume_cv'] }}</a></li>
+                    <li><i class="zmdi zmdi-collection-pdf"></i> <a href="{{ url($data['resume_cv']) }}" target="_blank">{{ basename(urldecode($data['resume_cv'])) }}</a></li>
                 @endif
                 @if(isset($data['url']) && strlen($data['url']))
                     <li><i class="zmdi zmdi-globe"></i> <a href="http://www.{{ $data['url'] }}" target="_blank">{{ $data['url'] }}</a></li>

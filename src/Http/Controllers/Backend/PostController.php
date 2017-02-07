@@ -47,9 +47,9 @@ class PostController extends Controller
         $post = Post::create($request->postFillData());
         $post->syncTags($request->get('tags', []));
 
-        Session::set('_new-post', trans('messages.create_success', ['entity' => 'post']));
+        Session::set('_new-post', trans('canvas::messages.create_success', ['entity' => 'post']));
 
-        return redirect()->route('admin.post.edit', $post->id);
+        return redirect()->route('canvas.admin.post.edit', $post->id);
     }
 
     /**
@@ -81,9 +81,9 @@ class PostController extends Controller
         $post->save();
         $post->syncTags($request->get('tags', []));
 
-        Session::set('_update-post', trans('messages.update_success', ['entity' => 'Post']));
+        Session::set('_update-post', trans('canvas::messages.update_success', ['entity' => 'Post']));
 
-        return redirect()->route('admin.post.edit', $id);
+        return redirect()->route('canvas.admin.post.edit', $id);
     }
 
     /**
@@ -99,8 +99,8 @@ class PostController extends Controller
         $post->tags()->detach();
         $post->delete();
 
-        Session::set('_delete-post', trans('messages.delete_success', ['entity' => 'Post']));
+        Session::set('_delete-post', trans('canvas::messages.delete_success', ['entity' => 'Post']));
 
-        return redirect()->route('admin.post.index');
+        return redirect()->route('canvas.admin.post.index');
     }
 }

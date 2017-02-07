@@ -1,13 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: talv
- * Date: 13/12/16
- * Time: 16:18.
- */
 
 namespace Canvas\Http\Controllers\Auth;
 
+use Auth;
 use Session;
 use Validator;
 use Canvas\Models\User;
@@ -45,7 +40,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'logout']);
+        $this->middleware('guest:canvas', ['except' => 'logout']);
     }
 
     /**
@@ -72,7 +67,7 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route('admin');
+        return redirect()->route('canvas.admin');
     }
 
     /**
@@ -106,6 +101,16 @@ class LoginController extends Controller
     }
 
     /**
+     * Get the guard to be used.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard()
+    {
+        return Auth::guard('canvas');
+    }
+
+    /**
      * During the login process, call the GitHub API and grab the latest
      * version of Canvas available and store it in the database. The
      * functionality is kept here so that the API Rate Limit will
@@ -117,7 +122,7 @@ class LoginController extends Controller
      */
     public function authenticated(Request $request, User $user)
     {
-        $this->redirectTo = route('admin');
+        $this->redirectTo = route('canvas.admin');
 
         // Let Canvas know the user has been authenticated.
         CanvasHelper::authenticated($request, $user);

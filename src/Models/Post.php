@@ -132,7 +132,7 @@ class Post extends Model
         $params['slug'] = $this->slug;
         $params['tag'] = $tag ? $tag->tag : null;
 
-        return route('blog.post.show', array_filter($params));
+        return route('canvas.blog.post.show', array_filter($params));
     }
 
     /**
@@ -145,7 +145,7 @@ class Post extends Model
         $tags = $this->tags()->pluck('tag');
         $return = [];
         foreach ($tags as $tag) {
-            $url = route('blog.post.index', ['tag' => $tag]);
+            $url = route('canvas.blog.post.index', ['tag' => $tag]);
             $return[] = '<a href="'.url($url).'">#'.e($tag).'</a>&nbsp;';
         }
 

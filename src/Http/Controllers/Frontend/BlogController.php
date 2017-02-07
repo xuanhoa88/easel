@@ -24,10 +24,11 @@ class BlogController extends Controller
         $tag = $request->get('tag');
         $data = $this->dispatch(new BlogIndexData($tag));
         $layout = $tag ? Tag::layout($tag)->first() : config('blog.tag_layout');
+        $socialHeaderIconsUser = User::where('id', Settings::socialHeaderIconsUserId())->first();
         $css = Settings::customCSS();
         $js = Settings::customJS();
 
-        return view($layout, $data, compact('css', 'js'));
+        return view($layout, $data, compact('css', 'js', 'socialHeaderIconsUser'));
     }
 
     /**
@@ -40,6 +41,7 @@ class BlogController extends Controller
     public function showPost($slug, Request $request)
     {
         $post = Post::with('tags')->whereSlug($slug)->firstOrFail();
+        $socialHeaderIconsUser = User::where('id', Settings::socialHeaderIconsUserId())->first();
         $user = User::where('id', $post->user_id)->firstOrFail();
         $tag = $request->get('tag');
         $title = $post->title;
@@ -51,9 +53,9 @@ class BlogController extends Controller
         }
 
         if ($post->is_draft && ! Auth::check()) {
-            return redirect()->route('blog.post.index');
+            return redirect()->route('canvas.blog.post.index');
         }
 
-        return view($post->layout, compact('post', 'tag', 'slug', 'title', 'user', 'css', 'js'));
+        return view($post->layout, compact('post', 'tag', 'slug', 'title', 'user', 'css', 'js', 'socialHeaderIconsUser'));
     }
 }

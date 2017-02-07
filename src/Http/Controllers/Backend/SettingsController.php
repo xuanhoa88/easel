@@ -53,9 +53,9 @@ class SettingsController extends Controller
             'phpVersion' => phpversion(),
             'phpMemoryLimit' => ini_get('memory_limit'),
             'phpTimeLimit' => ini_get('max_execution_time'),
-            'dbConnection' => strtoupper(env('DB_CONNECTION')),
+            'dbConnection' => strtoupper(env('DB_CONNECTION', 'mysql')),
             'webServer' => $_SERVER['SERVER_SOFTWARE'],
-            'lastIndex' => date('Y-m-d H:i:s', file_exists(storage_path('posts.index')) ? filemtime(storage_path('posts.index')) : false),
+            'lastIndex' => date('Y-m-d H:i:s', file_exists(storage_path('canvas_posts.index')) ? filemtime(storage_path('canvas_posts.index')) : false),
             'version' => (! empty(Settings::canvasVersion())) ? Settings::canvasVersion() : 'Less than or equal to v2.1.7',
             'curl' => (in_array('curl', get_loaded_extensions()) ? 'Supported' : 'Not Supported'),
             'curlVersion' => (in_array('curl', get_loaded_extensions()) ? curl_version()['libz_version'] : 'Not Supported'),
@@ -67,6 +67,7 @@ class SettingsController extends Controller
             'tokenizer' => (in_array('tokenizer', get_loaded_extensions()) ? 'Installed' : 'Not Installed'),
             'zip' => (in_array('zip', get_loaded_extensions()) ? 'Installed' : 'Not Installed'),
             'userAgentString' => $_SERVER['HTTP_USER_AGENT'],
+            'socialHeaderIconsUserId' => Settings::socialHeaderIconsUserId(),
         ];
 
         return view('canvas::backend.settings.index', compact('data'));
@@ -93,12 +94,13 @@ class SettingsController extends Controller
         Settings::updateOrCreate(['setting_name' => 'twitter_card_type'], ['setting_value' => $request->toArray()['twitter_card_type']]);
         Settings::updateOrCreate(['setting_name' => 'custom_css'], ['setting_value' => $request->toArray()['custom_css']]);
         Settings::updateOrCreate(['setting_name' => 'custom_js'], ['setting_value' => $request->toArray()['custom_js']]);
+        Settings::updateOrCreate(['setting_name' => 'social_header_icons_user_id'], ['setting_value' => $request->toArray()['social_header_icons_user_id']]);
 
-        Session::set('_update-settings', trans('messages.save_settings_success'));
+        Session::set('_update-settings', trans('canvas::messages.save_settings_success'));
 
         // Update theme
         $this->themeManager->setActiveTheme($request->theme);
 
-        return redirect()->route('admin.settings');
+        return redirect()->route('canvas.admin.settings');
     }
 }

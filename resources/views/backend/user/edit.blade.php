@@ -18,7 +18,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li>
-                                    <a href="{!! route('admin.user.edit', $data['id']) !!}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh User</a>
+                                    <a href="{!! route('canvas.admin.user.edit', $data['id']) !!}"><i class="zmdi zmdi-refresh-alt pd-r-5"></i> Refresh User</a>
                                 </li>
                             </ul>
                         </li>
@@ -28,11 +28,11 @@
                     @include('canvas::backend.user.partials.sidebar')
                     <div class="pm-body clearfix">
                         <ul class="tab-nav tn-justified">
-                            <li class="{{ Route::is('admin.user.edit') ? 'active' : '' }}">
-                                <a href="{{ route('admin.user.edit', $data['id']) }}">Profile</a>
+                            <li class="{{ Route::is('canvas.admin.user.edit') ? 'active' : '' }}">
+                                <a href="{{ route('canvas.admin.user.edit', $data['id']) }}">Profile</a>
                             </li>
-                            <li class="{{ Route::is('admin.user.privacy') ? 'active' : '' }}">
-                                <a href="{!! route('admin.user.privacy', $data['id']) !!}">Privacy</a>
+                            <li class="{{ Route::is('canvas.admin.user.privacy') ? 'active' : '' }}">
+                                <a href="{!! route('canvas.admin.user.privacy', $data['id']) !!}">Privacy</a>
                             </li>
                         </ul>
                         @if(Session::has('errors') || Session::has('success'))
@@ -53,6 +53,8 @@
 @stop
 
 @section('unique-js')
+    @include('canvas::backend.user.partials.editor')
+
     {!! JsValidator::formRequest('Canvas\Http\Requests\UserUpdateRequest', '#userUpdate') !!}
     @include('canvas::backend.shared.components.profile-datetime-picker', ['format' => 'YYYY-MM-DD'])
 

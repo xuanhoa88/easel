@@ -8,34 +8,38 @@ Route::group([
     'middleware' => RouteHelper::getGeneralMiddleware(),
     'prefix' => RouteHelper::getBlogMain(),
 ], function () {
-    Route::get('install', 'Canvas\Http\Controllers\Setup\InstallController@index')->name('canvas.install');
+    Route::get('canvas.install', 'Canvas\Http\Controllers\Setup\InstallController@index')->name('canvas.install');
 
     // Canvas Application Routes : Fully Installed and Configured
     Route::group([
         'middleware' => RouteHelper::getInstalledMiddleware(),
     ], function () {
-        Route::get('/', 'Canvas\Http\Controllers\Frontend\BlogController@index')->name('home');
+        Route::get('/', 'Canvas\Http\Controllers\Frontend\BlogController@index')->name('canvas.home');
 
         Route::group(['prefix' => RouteHelper::getBlogPrefix()], function () {
-            Route::get('/', 'Canvas\Http\Controllers\Frontend\BlogController@index')->name('blog.post.index');
-            Route::get('post/{slug}', 'Canvas\Http\Controllers\Frontend\BlogController@showPost')->name('blog.post.show');
+            Route::get('/', 'Canvas\Http\Controllers\Frontend\BlogController@index')->name('canvas.blog.post.index');
+            Route::get('post/{slug}', 'Canvas\Http\Controllers\Frontend\BlogController@showPost')->name('canvas.blog.post.show');
         });
 
         // Canvas Application Routes : Authentication
         Route::group([
             'namespace' => 'Canvas\Http\Controllers\Auth',
-            'prefix' => RouteHelper::getAuthPrefix(),
         ], function () {
-            Route::get('login', 'LoginController@showLoginForm')->name('login');
-            Route::post('login', 'LoginController@login')->name('auth.login.store');
-            Route::get('logout', 'LoginController@logout')->name('auth.logout');
-            Route::post('password', 'PasswordController@updatePassword');
+            Route::group([
+                'prefix' => RouteHelper::getAuthPrefix(),
+            ], function () {
+                Route::get('login', 'LoginController@showLoginForm')->name('canvas.login');
+                Route::post('login', 'LoginController@login')->name('canvas.auth.login.store');
+                Route::get('logout', 'LoginController@logout')->name('canvas.auth.logout');
+            });
 
-            Route::group(['prefix' => 'password'], function () {
-                Route::get('forgot', 'ForgotPasswordController@showLinkRequestForm')->name('auth.password.forgot');
-                Route::post('forgot', 'ForgotPasswordController@sendResetLinkEmail')->name('auth.password.forgot.store');
-                Route::get('reset/{token}', 'ResetPasswordController@showResetForm')->name('auth.password.reset');
-                Route::post('reset', 'ResetPasswordController@reset')->name('auth.password.reset.store');
+            // Canvas Application Routes : Password
+            Route::group(['prefix' => RouteHelper::getPasswordPrefix()], function () {
+                Route::post('/', 'PasswordController@updatePassword')->name('canvas.auth.password.update');
+                Route::get('forgot', 'ForgotPasswordController@showLinkRequestForm')->name('canvas.auth.password.forgot');
+                Route::post('forgot', 'ForgotPasswordController@sendResetLinkEmail')->name('canvas.auth.password.forgot.store');
+                Route::get('reset/{token}', 'ResetPasswordController@showResetForm')->name('canvas.auth.password.reset');
+                Route::post('reset', 'ResetPasswordController@reset')->name('canvas.auth.password.reset.store');
             });
         });
     });
@@ -47,77 +51,77 @@ Route::group([
     'middleware' => RouteHelper::getAdminMiddleware(),
     'namespace' => 'Canvas\Http\Controllers\Backend',
 ], function () {
-    Route::get(RouteHelper::getAdminPrefix(), 'HomeController@index')->name('admin');
+    Route::get(RouteHelper::getAdminPrefix(), 'HomeController@index')->name('canvas.admin');
 
     Route::resource(RouteHelper::getAdminPrefix().'/post', 'PostController', [
         'except' => 'show',
         'names' => [
-            'index' => 'admin.post.index',
-            'create' => 'admin.post.create',
-            'store' => 'admin.post.store',
-            'edit' => 'admin.post.edit',
-            'update' => 'admin.post.update',
-            'destroy' => 'admin.post.destroy',
+            'index' => 'canvas.admin.post.index',
+            'create' => 'canvas.admin.post.create',
+            'store' => 'canvas.admin.post.store',
+            'edit' => 'canvas.admin.post.edit',
+            'update' => 'canvas.admin.post.update',
+            'destroy' => 'canvas.admin.post.destroy',
         ],
     ]);
 
     Route::resource(RouteHelper::getAdminPrefix().'/tag', 'TagController', [
         'except' => 'show',
         'names' => [
-            'index' => 'admin.tag.index',
-            'create' => 'admin.tag.create',
-            'store' => 'admin.tag.store',
-            'edit' => 'admin.tag.edit',
-            'update' => 'admin.tag.update',
-            'destroy' => 'admin.tag.destroy',
+            'index' => 'canvas.admin.tag.index',
+            'create' => 'canvas.admin.tag.create',
+            'store' => 'canvas.admin.tag.store',
+            'edit' => 'canvas.admin.tag.edit',
+            'update' => 'canvas.admin.tag.update',
+            'destroy' => 'canvas.admin.tag.destroy',
         ],
     ]);
 
-    Route::get(RouteHelper::getAdminPrefix().'/upload', 'UploadController@index')->name('admin.upload');
+    Route::get(RouteHelper::getAdminPrefix().'/upload', 'UploadController@index')->name('canvas.admin.upload');
 
     \TalvBansal\MediaManager\Routes\MediaRoutes::get();
 
-    Route::get(RouteHelper::getAdminPrefix().'/profile/privacy', 'ProfileController@editPrivacy')->name('admin.profile.privacy');
+    Route::get(RouteHelper::getAdminPrefix().'/profile/privacy', 'ProfileController@editPrivacy')->name('canvas.admin.profile.privacy');
     Route::resource('admin/profile', 'ProfileController', [
         'only' => ['index', 'update'],
         'names' => [
-            'index' => 'admin.profile.index',
-            'update' => 'admin.profile.update',
+            'index' => 'canvas.admin.profile.index',
+            'update' => 'canvas.admin.profile.update',
         ],
     ]);
 
     Route::resource(RouteHelper::getAdminPrefix().'/search', 'SearchController', [
         'only' => ['index'],
         'names' => [
-            'index' => 'admin.search.index',
+            'index' => 'canvas.admin.search.index',
         ],
     ]);
 
-    Route::get(RouteHelper::getAdminPrefix().'/help', 'HelpController@index')->name('admin.help');
+    Route::get(RouteHelper::getAdminPrefix().'/help', 'HelpController@index')->name('canvas.admin.help');
 
     // Routes only accessible if the user is an Administrator
     Route::group(['middleware' => 'checkIfAdmin'], function () {
         Route::resource(RouteHelper::getAdminPrefix().'/user', 'UserController', [
             'except' => 'show',
             'names' => [
-                'index' => 'admin.user.index',
-                'create' => 'admin.user.create',
-                'store' => 'admin.user.store',
-                'edit' => 'admin.user.edit',
-                'update' => 'admin.user.update',
-                'destroy' => 'admin.user.destroy',
+                'index' => 'canvas.admin.user.index',
+                'create' => 'canvas.admin.user.create',
+                'store' => 'canvas.admin.user.store',
+                'edit' => 'canvas.admin.user.edit',
+                'update' => 'canvas.admin.user.update',
+                'destroy' => 'canvas.admin.user.destroy',
             ],
         ]);
-        Route::get(RouteHelper::getAdminPrefix().'/user/{id}/privacy', 'UserController@privacy')->name('admin.user.privacy');
-        Route::post(RouteHelper::getAdminPrefix().'/user/{id}/privacy', 'UserController@updatePassword');
+        Route::get(RouteHelper::getAdminPrefix().'/user/{id}/privacy', 'UserController@privacy')->name('canvas.admin.user.privacy');
+        Route::post(RouteHelper::getAdminPrefix().'/user/{id}/privacy', 'UserController@updatePassword')->name('canvas.admin.user.privacy');
 
-        Route::get(RouteHelper::getAdminPrefix().'/tools', 'ToolsController@index')->name('admin.tools');
-        Route::post(RouteHelper::getAdminPrefix().'/tools/reset_index', 'ToolsController@resetIndex')->name('admin.tools.reset_index');
-        Route::post(RouteHelper::getAdminPrefix().'/tools/cache_clear', 'ToolsController@clearCache')->name('admin.tools.cache_clear');
-        Route::post(RouteHelper::getAdminPrefix().'/tools/download_archive', 'ToolsController@handleDownload')->name('admin.tools.download_archive');
-        Route::post(RouteHelper::getAdminPrefix().'/tools/enable_maintenance_mode', 'ToolsController@enableMaintenanceMode')->name('admin.tools.enable_maintenance_mode');
-        Route::post(RouteHelper::getAdminPrefix().'/tools/disable_maintenance_mode', 'ToolsController@disableMaintenanceMode')->name('admin.tools.disable_maintenance_mode');
-        Route::get(RouteHelper::getAdminPrefix().'/settings', 'SettingsController@index')->name('admin.settings');
-        Route::post(RouteHelper::getAdminPrefix().'/settings', 'SettingsController@store')->name('admin.settings');
+        Route::get(RouteHelper::getAdminPrefix().'/tools', 'ToolsController@index')->name('canvas.admin.tools');
+        Route::post(RouteHelper::getAdminPrefix().'/tools/reset_index', 'ToolsController@resetIndex')->name('canvas.admin.tools.reset_index');
+        Route::post(RouteHelper::getAdminPrefix().'/tools/cache_clear', 'ToolsController@clearCache')->name('canvas.admin.tools.cache_clear');
+        Route::post(RouteHelper::getAdminPrefix().'/tools/download_archive', 'ToolsController@handleDownload')->name('canvas.admin.tools.download_archive');
+        Route::post(RouteHelper::getAdminPrefix().'/tools/enable_maintenance_mode', 'ToolsController@enableMaintenanceMode')->name('canvas.admin.tools.enable_maintenance_mode');
+        Route::post(RouteHelper::getAdminPrefix().'/tools/disable_maintenance_mode', 'ToolsController@disableMaintenanceMode')->name('canvas.admin.tools.disable_maintenance_mode');
+        Route::get(RouteHelper::getAdminPrefix().'/settings', 'SettingsController@index')->name('canvas.admin.settings');
+        Route::post(RouteHelper::getAdminPrefix().'/settings', 'SettingsController@store')->name('canvas.admin.settings');
     });
 });

@@ -24,7 +24,7 @@ class PostUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        $slug = Post::where('id', $this->route('post'))->pluck('slug');
+        $slug = Post::where('id', $this->route()->post)->pluck('slug');
 
         return [
             'title' => 'required',
