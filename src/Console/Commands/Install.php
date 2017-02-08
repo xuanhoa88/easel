@@ -43,7 +43,7 @@ class Install extends CanvasCommand
     {
         if (file_exists(storage_path('canvas_installed.lock'))) {
             $date = file_get_contents(storage_path('canvas_installed.lock'));
-            $this->error('✘ Canvas has already been installed on '.date('F j, Y', $date).'.');
+            $this->line('<info>✔</info> Canvas has already been installed on '.date('F j, Y', $date).'.');
         } else {
             $config = ConfigHelper::getWriter();
 
