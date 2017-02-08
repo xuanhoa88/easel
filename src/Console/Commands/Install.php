@@ -43,7 +43,7 @@ class Install extends CanvasCommand
     {
         if (file_exists(storage_path('canvas_installed.lock'))) {
             $date = file_get_contents(storage_path('canvas_installed.lock'));
-            $this->line('<error>✘</error> Canvas has already been installed on ' . date('F j, Y', $date));
+            $this->line("<error>✘</error> Canvas has already been installed on " . date('F j, Y', $date) . ".");
         } else {
             $config = ConfigHelper::getWriter();
 
@@ -95,7 +95,7 @@ class Install extends CanvasCommand
                 $this->comment(PHP_EOL.'Please provide the following information. Don\'t worry, you can always change these settings later.');
 
                 // Create the admin user
-                $this->comment(PHP_EOL.'Step 1/6: Creating the admin user account');
+                $this->comment(PHP_EOL.'<info>Step 1/6: Creating the admin user account</info>');
                 $email = $this->ask('Email');
                 $password = $this->secret('Password');
                 $firstName = $this->ask('First name');
