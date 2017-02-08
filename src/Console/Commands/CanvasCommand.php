@@ -147,7 +147,7 @@ class CanvasCommand extends Command
         $user->save();
 
         $this->author($user->display_name);
-        $this->comment('Saving admin information...');
+        $this->comment('Saving admin user account...');
         $this->progress(1);
     }
 
