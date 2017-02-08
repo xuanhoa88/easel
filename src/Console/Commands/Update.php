@@ -53,7 +53,7 @@ class Update extends CanvasCommand
             && $this->confirm(PHP_EOL."You are running Canvas core: $currentVersion. The latest version available is: $latestVersion.".PHP_EOL.'Update Canvas core?')) {
             // Update dependencies
             $this->comment(PHP_EOL.'Composer update...');
-            $updateCore = shell_exec('cd '.base_path()."; composer update --quiet");
+            $updateCore = shell_exec('cd '.base_path().'; composer update --quiet');
             $this->progress(5);
             $this->line(PHP_EOL.'<info>✔</info> Success! Canvas dependencies been updated.');
         }
