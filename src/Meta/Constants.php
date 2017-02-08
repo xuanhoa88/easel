@@ -40,7 +40,7 @@ class Constants
     /**
      * @constant(DEFAULT_THEME_VERSION)
      */
-    const DEFAULT_THEME_VERSION = '1.0.3';
+    const DEFAULT_THEME_VERSION = 'v1.0.3';
 
     /**
      * @constant(REQUIRED_TABLES)
