@@ -43,7 +43,7 @@ class Install extends CanvasCommand
     {
         if (file_exists(storage_path('canvas_installed.lock'))) {
             $date = file_get_contents(storage_path('canvas_installed.lock'));
-            $this->line('<error>✘</error> Canvas has already been installed on '.date('F j, Y', $date).'.');
+            $this->error('✘ Canvas has already been installed on '.date('F j, Y', $date).'.');
         } else {
             $config = ConfigHelper::getWriter();
 
@@ -166,7 +166,7 @@ class Install extends CanvasCommand
                 // Artisan::call('migrate:rollback');
                 // Display message
                 $this->line(PHP_EOL.'<error>An unexpected error occurred. Installation could not continue.</error>');
-                $this->line("<error>✘</error> {$e->getMessage()}");
+                $this->error("✘ {$e->getMessage()}");
                 $this->comment(PHP_EOL.'Migrations were rolled back. Please run the installer again.');
                 $this->line(PHP_EOL.'If this error persists please consult https://github.com/cnvs/easel/issues.'.PHP_EOL);
             }
