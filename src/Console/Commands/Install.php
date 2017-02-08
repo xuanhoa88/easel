@@ -42,7 +42,9 @@ class Install extends CanvasCommand
     public function handle()
     {
         if (file_exists(storage_path('canvas_installed.lock'))) {
-            $this->comment(PHP_EOL.'Canvas has already been installed on this system.');
+            $date = file_get_contents(storage_path('canvas_installed.lock'));
+            $this->line('Installed on ' . date('F j, Y', $date));
+            $this->comment('Canvas has already been installed on this system.');
         } else {
             $config = ConfigHelper::getWriter();
 
