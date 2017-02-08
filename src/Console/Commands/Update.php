@@ -43,7 +43,6 @@ class Update extends CanvasCommand
         $update = true;
 
         // Grab version info
-        $packageName = $this->packageName();
         $currentVersion = $oldVersion = $this->canvasVersion();
         $latestVersion = $this->latestVersion();
 
@@ -52,11 +51,11 @@ class Update extends CanvasCommand
 
         if ($currentVersion != $latestVersion
             && $this->confirm(PHP_EOL."You are running Canvas core: $currentVersion. The latest version available is: $latestVersion.".PHP_EOL.'Update Canvas core?')) {
-            // Update core (Easel) package via composer
+            // Update dependencies
             $this->comment(PHP_EOL.'Composer update...');
-            $updateCore = shell_exec('cd '.base_path()."; composer update $packageName --quiet");
+            $updateCore = shell_exec('cd '.base_path()."; composer update --quiet");
             $this->progress(5);
-            $this->line(PHP_EOL.'<info>✔</info> Success! Canvas core has been updated.');
+            $this->line(PHP_EOL.'<info>✔</info> Success! Canvas dependencies been updated.');
         }
 
         // Update core assets
