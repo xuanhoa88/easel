@@ -41,7 +41,7 @@ class Post extends Model
         'content_raw',
         'page_image',
         'meta_description',
-        'is_draft',
+        'is_published',
         'layout',
         'published_at',
     ];
@@ -163,7 +163,7 @@ class Post extends Model
         $query =
         static::where('published_at', '>', $this->published_at)
             ->where('published_at', '<=', Carbon::now())
-            ->where('is_draft', 0)
+            ->where('is_published', 1)
             ->orderBy('published_at', 'asc');
         if ($tag) {
             $query = $query->whereHas('tags', function ($q) use ($tag) {
@@ -184,7 +184,7 @@ class Post extends Model
     {
         $query =
         static::where('published_at', '<', $this->published_at)
-            ->where('is_draft', 0)
+            ->where('is_published', 1)
             ->orderBy('published_at', 'desc');
         if ($tag) {
             $query = $query->whereHas('tags', function ($q) use ($tag) {

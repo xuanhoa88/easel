@@ -57,7 +57,7 @@
                                         <td>{{ $post->id }}</td>
                                         <td>{{ $post->title }}</td>
                                         <td>{{ $post->getAuthor($post->user_id) }}</td>
-                                        <td>{{ $post->is_draft == 1 ? '<span class="label label-primary">Draft</span>' : '<span class="label label-success">Published</span>' }}</td>
+                                        <td>{{ $post->is_published == 1 ? '<span class="label label-primary">Published</span>' : '<span class="label label-default">Draft</span>' }}</td>
                                         <td>{{ $post->slug }}</td>
                                         @if($post->updated_at != $post->created_at)
                                             <td>{{ $post->updated_at->format('Y/m/d') . "<br/>" }} Last updated</td>
