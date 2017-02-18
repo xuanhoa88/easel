@@ -2,7 +2,7 @@
     <div class="profile-menu">
         <a href="">
             <div class="profile-pic">
-                <img src="http://www.gravatar.com/avatar/{!! md5(Auth::guard('canvas')->user()->email) !!}?d=identicon">
+                <img src="https://www.gravatar.com/avatar/{!! md5(Auth::guard('canvas')->user()->email) !!}?d=identicon">
             </div>
             <div class="profile-info">
                 {{ Auth::guard('canvas')->user()->display_name }}
