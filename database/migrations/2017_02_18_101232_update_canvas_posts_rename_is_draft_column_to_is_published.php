@@ -14,7 +14,7 @@ class UpdateCanvasPostsRenameIsDraftColumnToIsPublished extends Migration
     {
         $posts = Post::all();
         foreach ($posts as $post) {
-            if($post->is_draft === 0) {
+            if ($post->is_draft === 0) {
                 $post->is_draft = 1;
                 $post->save();
             } elseif ($post->is_draft === 1) {
@@ -36,7 +36,7 @@ class UpdateCanvasPostsRenameIsDraftColumnToIsPublished extends Migration
     {
         $posts = Post::all();
         foreach ($posts as $post) {
-            if($post->is_published === 1) {
+            if ($post->is_published === 1) {
                 $post->is_published = 0;
                 $post->save();
             } elseif ($post->is_published === 0) {
