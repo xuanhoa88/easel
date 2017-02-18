@@ -65,7 +65,7 @@
                     <li><i class="zmdi zmdi-collection-pdf"></i> <a href="{{ url($data['resume_cv']) }}" target="_blank">{{ basename(urldecode($data['resume_cv'])) }}</a></li>
                 @endif
                 @if(isset($data['url']) && strlen($data['url']))
-                    <li><i class="zmdi zmdi-globe"></i> <a href="http://www.{{ $data['url'] }}" target="_blank">{{ $data['url'] }}</a></li>
+                    <li><i class="zmdi zmdi-globe"></i> <a href="{{ $data['url'] }}" target="_blank">{{ $data['url'] }}</a></li>
                 @endif
             </ul>
         </div>
