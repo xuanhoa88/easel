@@ -43,7 +43,7 @@ class PostCreateRequest extends FormRequest
             'page_image' => $this->page_image,
             'content_raw' => $this->get('content'),
             'meta_description' => $this->meta_description,
-            'is_draft' => (bool) $this->is_draft,
+            'is_published' => (bool) $this->is_published,
             'published_at' => $this->published_at,
             'layout' => config('blog.post_layout'),
         ];

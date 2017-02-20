@@ -2,7 +2,7 @@
     <div class="pmo-pic">
         <div class="p-relative">
             <a href="http://gravatar.com" target="_blank">
-                <img class="img-responsive" src="http://www.gravatar.com/avatar/{{ md5($data['email']) }}?d=identicon&s=500">
+                <img class="img-responsive" src="https://www.gravatar.com/avatar/{{ md5($data['email']) }}?d=identicon&s=500">
             </a>
             <div class="dropdown pmop-message">
                 <a href="mailto:{{ $data['email'] }}" target="_blank" class="btn bgm-white btn-float z-depth-1">
@@ -50,22 +50,22 @@
             <h2>Social Networks</h2>
             <ul>
                 @if(isset($data['twitter']) && strlen($data['twitter']))
-                    <li><i class="zmdi zmdi-twitter-box"></i> <a href="http://twitter.com/{{ $data['twitter'] }}" target="_blank">{{'@'.$data['twitter'] }}</a></li>
+                    <li><i class="zmdi zmdi-twitter-box"></i> <a href="https://twitter.com/{{ $data['twitter'] }}" target="_blank">{{'@'.$data['twitter'] }}</a></li>
                 @endif
                 @if(isset($data['facebook']) && strlen($data['facebook']))
-                    <li><i class="zmdi zmdi-facebook-box"></i> <a href="http://facebook.com/{{ $data['facebook'] }}" target="_blank">{{ $data['facebook'] }}</a></li>
+                    <li><i class="zmdi zmdi-facebook-box"></i> <a href="https://facebook.com/{{ $data['facebook'] }}" target="_blank">{{ $data['facebook'] }}</a></li>
                 @endif
                 @if(isset($data['github']) && strlen($data['github']))
-                    <li><i class="zmdi zmdi-github-box"></i> <a href="http://github.com/{{ $data['github'] }}" target="_blank">{{ $data['github'] }}</a></li>
+                    <li><i class="zmdi zmdi-github-box"></i> <a href="https://github.com/{{ $data['github'] }}" target="_blank">{{ $data['github'] }}</a></li>
                 @endif
                 @if(isset($data['linkedin']) && strlen($data['linkedin']))
-                    <li><i class="zmdi zmdi-linkedin-box"></i> <a href="http://linkedin.com/in/{{ $data['linkedin'] }}" target="_blank">{{ $data['linkedin'] }}</a></li>
+                    <li><i class="zmdi zmdi-linkedin-box"></i> <a href="https://linkedin.com/in/{{ $data['linkedin'] }}" target="_blank">{{ $data['linkedin'] }}</a></li>
                 @endif
                 @if(isset($data['resume_cv']) && strlen($data['resume_cv']))
                     <li><i class="zmdi zmdi-collection-pdf"></i> <a href="{{ url($data['resume_cv']) }}" target="_blank">{{ basename(urldecode($data['resume_cv'])) }}</a></li>
                 @endif
                 @if(isset($data['url']) && strlen($data['url']))
-                    <li><i class="zmdi zmdi-globe"></i> <a href="http://www.{{ $data['url'] }}" target="_blank">{{ $data['url'] }}</a></li>
+                    <li><i class="zmdi zmdi-globe"></i> <a href="{{ $data['url'] }}" target="_blank">{{ $data['url'] }}</a></li>
                 @endif
             </ul>
         </div>

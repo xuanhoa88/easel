@@ -51,7 +51,7 @@ $factory->define(Canvas\Models\Post::class, function () {
         'content_raw' => view('canvas::frontend.blog.partials.welcome'),
         'published_at' => Carbon\Carbon::now(),
         'meta_description' => 'Let\'s get you up and running with Canvas!',
-        'is_draft' => false,
+        'is_published' => true,
         'layout' => config('blog.post_layout'),
     ];
 });

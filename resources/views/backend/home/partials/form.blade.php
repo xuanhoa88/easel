@@ -32,9 +32,9 @@
 
 <div class="checkbox m-b-15 hidden">
     <label>
-        <input type="checkbox" name="is_draft" checked>
+        <input type="checkbox" name="is_published">
         <i class="input-helper"></i>
-        Draft?
+        Published?
     </label>
 </div>
 

@@ -57,7 +57,7 @@ class BlogIndexData
             ->whereHas('tags', function ($q) use ($tag) {
                 $q->where('id', '=', $tag->id);
             })
-            ->where('is_draft', 0)
+            ->where('is_published', 1)
             ->orderBy('published_at', $reverse_direction ? 'asc' : 'desc')
             ->simplePaginate(config('blog.posts_per_page'));
 
@@ -86,7 +86,7 @@ class BlogIndexData
     {
         $posts = Post::with('tags')
             ->where('published_at', '<=', Carbon::now())
-            ->where('is_draft', 0)
+            ->where('is_published', 1)
             ->orderBy('published_at', 'desc')
             ->simplePaginate(config('blog.posts_per_page'));
 
