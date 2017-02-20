@@ -41,7 +41,7 @@ class PostFormFields
         'page_image' => '',
         'content' => '',
         'meta_description' => '',
-        'is_draft' => '0',
+        'is_published' => '1',
         'publish_date' => '',
         'publish_time' => '',
         'published_at' => '',
