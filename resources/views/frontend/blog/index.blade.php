@@ -1,6 +1,6 @@
 @extends('canvas::frontend.layout')
 
-@section('title', \Canvas\Models\Settings::blogTitle())
+@section('title', \Canvas\Models\Settings::blogTitle().' | Blog')
 @section('og-title', \Canvas\Models\Settings::blogTitle())
 @section('twitter-title', \Canvas\Models\Settings::blogTitle())
 @section('og-description', \Canvas\Models\Settings::blogDescription())
