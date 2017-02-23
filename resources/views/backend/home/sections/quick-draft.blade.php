@@ -6,9 +6,9 @@
 
         <br>
 
-        @include('canvas::shared.errors')
+        @include('canvas::backend.shared.partials.errors')
 
-        @include('canvas::shared.success')
+        @include('canvas::backend.shared.partials.success')
 
         <form class="keyboard-save" role="form" method="POST" id="postCreate" action="{{ route('canvas.admin.post.store') }}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">

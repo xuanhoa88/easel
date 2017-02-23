@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        @include('canvas::shared.meta')
+        @include('canvas::backend.shared.partials.meta')
         @yield('title')
-        @include('canvas::backend.partials.css')
+        @include('canvas::backend.shared.partials.css')
     </head>
     <body @if(Auth::guard('canvas')->check()) class="toggled sw-toggled" @endif>
         @if (Auth::guard('canvas')->guest())
             @yield('login')
         @else
-            @include('canvas::backend.partials.header')
+            @include('canvas::backend.shared.partials.header')
             @yield('content')
-            @include('canvas::shared.preloader')
-            @include('canvas::backend.partials.footer')
+            @include('canvas::backend.shared.components.preloader')
+            @include('canvas::backend.shared.partials.footer')
         @endif
-        @include('canvas::backend.partials.js')
-        @include('canvas::backend.partials.search')
+        @include('canvas::backend.shared.partials.js')
+        @include('canvas::backend.shared.partials.search')
         @yield('unique-js')
     </body>
 </html>

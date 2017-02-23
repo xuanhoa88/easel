@@ -60,7 +60,7 @@
     @include('canvas::backend.shared.components.profile-datetime-picker', ['format' => 'YYYY-MM-DD'])
 
     @if(Session::get('_profile'))
-        @include('canvas::backend.partials.notify', ['section' => '_profile'])
+        @include('canvas::backend.shared.notifications.notify', ['section' => '_profile'])
         {{ \Session::forget('_profile') }}
     @endif
 @stop

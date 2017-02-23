@@ -6,7 +6,7 @@
 
 @section('content')
     <section id="main">
-        @include('canvas::backend.partials.sidebar-navigation')
+        @include('canvas::backend.shared.partials.sidebar-navigation')
         <section id="content">
             <div class="container">
                 <div class="card">
@@ -16,8 +16,8 @@
                             <li><a href="{!! route('canvas.admin.tag.index') !!}">Tags</a></li>
                             <li class="active">Edit Tag</li>
                         </ol>
-                        @include('canvas::shared.errors')
-                        @include('canvas::shared.success')
+                        @include('canvas::backend.shared.partials.errors')
+                        @include('canvas::backend.shared.partials.success')
                         <h2>
                             Edit <em>{{ $data['title'] }}</em>
                             <small>
@@ -58,7 +58,7 @@
 @section('unique-js')
     {!! JsValidator::formRequest('Canvas\Http\Requests\TagUpdateRequest', '#tagUpdate') !!}
     @if(Session::get('_update-tag'))
-        @include('canvas::backend.partials.notify', ['section' => '_update-tag'])
+        @include('canvas::backend.shared.notifications.notify', ['section' => '_update-tag'])
         {{ \Session::forget('_update-tag') }}
     @endif
 @stop

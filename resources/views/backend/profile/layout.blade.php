@@ -6,7 +6,7 @@
 
 @section('content')
     <section id="main">
-        @include('canvas::backend.partials.sidebar-navigation')
+        @include('canvas::backend.shared.partials.sidebar-navigation')
         <section id="content">
             <div class="container container-alt">
                 <div class="block-header">
@@ -39,8 +39,8 @@
                             @if(Session::has('errors') || Session::has('success'))
                                 <div class="pmb-block">
                                     <div class="pmbb-header">
-                                        @include('canvas::shared.errors')
-                                        @include('canvas::shared.success')
+                                        @include('canvas::backend.shared.partials.errors')
+                                        @include('canvas::backend.shared.partials.success')
                                     </div>
                                 </div>
                             @endif

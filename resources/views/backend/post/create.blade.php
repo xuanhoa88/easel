@@ -6,7 +6,7 @@
 
 @section('content')
     <section id="main">
-        @include('canvas::backend.partials.sidebar-navigation')
+        @include('canvas::backend.shared.partials.sidebar-navigation')
         <section id="content">
             <div class="container">
                 @include('canvas::backend.post.partials.form')

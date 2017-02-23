@@ -6,7 +6,7 @@
 
 @section('content')
     <section id="main">
-        @include('canvas::backend.partials.sidebar-navigation')
+        @include('canvas::backend.shared.partials.sidebar-navigation')
         <section id="content">
             <div class="container">
                 <div class="card">
@@ -27,8 +27,8 @@
                                 </ul>
                             </li>
                         </ul>
-                        @include('canvas::shared.errors')
-                        @include('canvas::shared.success')
+                        @include('canvas::backend.shared.partials.errors')
+                        @include('canvas::backend.shared.partials.success')
                         <h2>Users&nbsp;
                             <a href="{!! route('canvas.admin.user.create') !!}" id="create-user"><i class="zmdi zmdi-plus-circle" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Create a new user"></i></a>
 
@@ -71,12 +71,12 @@
     @include('canvas::backend.user.partials.datatable')
 
     @if(Session::get('_new-user'))
-        @include('canvas::backend.partials.notify', ['section' => '_new-user'])
+        @include('canvas::backend.shared.notifications.notify', ['section' => '_new-user'])
         {{ \Session::forget('_new-user') }}
     @endif
 
     @if(Session::get('_delete-user'))
-        @include('canvas::backend.partials.notify', ['section' => '_delete-user'])
+        @include('canvas::backend.shared.notifications.notify', ['section' => '_delete-user'])
         {{ \Session::forget('_delete-user') }}
     @endif
 @stop

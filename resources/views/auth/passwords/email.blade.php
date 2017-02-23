@@ -6,7 +6,7 @@
 
 @section('login')
     <div class="login-container">
-        @include('canvas::shared.errors')
+        @include('canvas::backend.shared.partials.errors')
         @include('canvas::auth.passwords.partials.email-form')
     </div>
 @endsection
