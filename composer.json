@@ -1,6 +1,6 @@
 {
 	"name": "cnvs/easel",
-	"description": "Canvas framework",
+	"description": "Canvas Framework",
 	"keywords": ["canvas", "framework"],
 	"type": "canvas-framework",
 	"license": "MIT",
