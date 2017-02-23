@@ -1,6 +1,10 @@
 @extends('canvas::frontend.layout')
 
-@section('title', \Canvas\Models\Settings::blogTitle().' | '.$tag->title or 'Blog')
+@if (isset($tag->title))
+    @section('title', \Canvas\Models\Settings::blogTitle().' | '.$tag->title)
+@else
+    @section('title', \Canvas\Models\Settings::blogTitle().' | Blog')
+@endif
 @section('og-title', \Canvas\Models\Settings::blogTitle())
 @section('twitter-title', \Canvas\Models\Settings::blogTitle())
 @section('og-description', \Canvas\Models\Settings::blogDescription())
