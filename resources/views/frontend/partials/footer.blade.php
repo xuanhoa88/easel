@@ -1,11 +1,6 @@
 <div class="container">
     @if(!empty(Settings::disqus()))
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                @include('canvas::frontend.blog.partials.disqus')
-            </div>
-        </div>
-        <br>
+        @include('canvas::frontend.blog.partials.disqus')
     @endif
     <div style="text-align: center">
         <div class="row">
