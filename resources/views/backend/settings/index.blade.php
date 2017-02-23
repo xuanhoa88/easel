@@ -1,12 +1,12 @@
 @extends('canvas::backend.layout')
 
 @section('title')
-    <title>{{ Settings::blogTitle() }} | Settings</title>
+    <title>{{ \Canvas\Models\Settings::blogTitle() }} | Settings</title>
 @stop
 
 @section('content')
     <section id="main">
-        @include('canvas::backend.partials.sidebar-navigation')
+        @include('canvas::backend.shared.partials.sidebar-navigation')
         <section id="content">
             <div class="container">
                 <div class="block-header">
@@ -35,7 +35,7 @@
 @section('unique-js')
     {!! JsValidator::formRequest('Canvas\Http\Requests\SettingsUpdateRequest', '#settings') !!}
     @if(Session::get('_update-settings'))
-        @include('canvas::backend.partials.notify', ['section' => '_update-settings'])
+        @include('canvas::backend.shared.notifications.notify', ['section' => '_update-settings'])
         {{ \Session::forget('_update-settings') }}
     @endif
     <script async defer src="https://buttons.github.io/buttons.js"></script>

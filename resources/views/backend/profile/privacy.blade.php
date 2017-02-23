@@ -1,7 +1,7 @@
 @extends('canvas::backend.profile.layout')
 
 @section('title')
-    <title>{{ Settings::blogTitle() }} | Edit Privacy</title>
+    <title>{{ \Canvas\Models\Settings::blogTitle() }} | Edit Privacy</title>
 @stop
 
 @section('profile-content')
@@ -23,7 +23,7 @@
     @include('canvas::backend.shared.components.show-password', ['inputs' => 'input[name="password"], input[name="new_password"], input[name="new_password_confirmation"]'])
 
     @if(Session::get('_passwordUpdate'))
-        @include('canvas::backend.partials.notify', ['section' => '_passwordUpdate'])
+        @include('canvas::backend.shared.notifications.notify', ['section' => '_passwordUpdate'])
         {{ \Session::forget('_passwordUpdate') }}
     @endif
 @stop

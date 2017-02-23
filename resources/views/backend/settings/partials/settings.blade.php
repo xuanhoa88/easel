@@ -6,9 +6,9 @@
     </div>
     <div class="card-body card-padding">
 
-        @include('canvas::shared.errors')
+        @include('canvas::backend.shared.partials.errors')
 
-        @include('canvas::shared.success')
+        @include('canvas::backend.shared.partials.success')
 
         @include('canvas::backend.settings.partials.form.settings')
     </div>

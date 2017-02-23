@@ -11,8 +11,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    @include('canvas::shared.errors')
-                    @include('canvas::shared.success')
+                    @include('canvas::backend.shared.partials.errors')
+                    @include('canvas::backend.shared.partials.success')
 
                     @if(Route::is('canvas.admin.post.create'))
                         <ol class="breadcrumb">

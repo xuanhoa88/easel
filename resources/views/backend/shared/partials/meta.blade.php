@@ -1,5 +1,15 @@
 <meta charset="utf-8">
 
+<!-- SEO Tags -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="{{ \Canvas\Models\Settings::blogSeo() }}">
+<meta name="author" content="{{ \Canvas\Models\Settings::blogAuthor() }}">
+<meta name="description" content="{{ \Canvas\Models\Settings::blogDescription() }}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="{{ asset('vendor/canvas/assets/images/favicon.png') }}">
+
 <!-- Facebook Open Graph Tags -->
 @yield('og-title')
 @yield('og-image')
@@ -17,13 +27,3 @@
     <meta name="twitter:image" content="{{ url('vendor/canvas/assets/images/favicon.png') }}" />
     <meta name="twitter:description" content="{{ \Canvas\Models\Settings::blogDescription() }}" />
 @endif
-
-<!-- SEO Tags -->
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="keywords" content="{{ \Canvas\Models\Settings::blogSeo() }}">
-<meta name="author" content="{{ \Canvas\Models\Settings::blogAuthor() }}">
-<meta name="description" content="{{ \Canvas\Models\Settings::blogDescription() }}">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="{{ asset('vendor/canvas/assets/images/favicon.png') }}">

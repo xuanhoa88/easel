@@ -6,7 +6,7 @@
 
 @section('content')
     <section id="main">
-        @include('canvas::backend.partials.sidebar-navigation')
+        @include('canvas::backend.shared.partials.sidebar-navigation')
         <section id="content">
             <div class="container">
                 @if(\Canvas\Models\User::isAdmin(Auth::guard('canvas')->user()->role))
@@ -36,7 +36,7 @@
 
 @section('unique-js')
     @if(Session::get('_login'))
-        @include('canvas::backend.partials.notify', ['section' => '_login'])
+        @include('canvas::backend.shared.notifications.notify', ['section' => '_login'])
         {{ \Session::forget('_login') }}
     @endif
     @include('canvas::backend.shared.components.slugify')

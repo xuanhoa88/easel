@@ -1,12 +1,12 @@
 @extends('canvas::backend.layout')
 
 @section('title')
-    <title>{{ Settings::blogTitle() }} | Help</title>
+    <title>{{ \Canvas\Models\Settings::blogTitle() }} | Help</title>
 @stop
 
 @section('content')
     <section id="main">
-        @include('canvas::backend.partials.sidebar-navigation')
+        @include('canvas::backend.shared.partials.sidebar-navigation')
         <section id="content">
             <div class="container">
                 <div class="block-header">

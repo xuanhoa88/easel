@@ -1,12 +1,12 @@
 @extends('canvas::backend.layout')
 
 @section('title')
-    <title>{{ Settings::blogTitle() }} | Tools</title>
+    <title>{{ \Canvas\Models\Settings::blogTitle() }} | Tools</title>
 @stop
 
 @section('content')
     <section id="main">
-        @include('canvas::backend.partials.sidebar-navigation')
+        @include('canvas::backend.shared.partials.sidebar-navigation')
         <section id="content">
             <div class="container">
                 <div class="block-header">
@@ -46,15 +46,15 @@
 
 @section('unique-js')
     @if(Session::get('_cache-clear'))
-        @include('canvas::backend.partials.notify', ['section' => '_cache-clear'])
+        @include('canvas::backend.shared.notifications.notify', ['section' => '_cache-clear'])
         {{ \Session::forget('_cache-clear') }}
     @endif
     @if(Session::get('_enable-maintenance-mode'))
-        @include('canvas::backend.partials.notify', ['section' => '_enable-maintenance-mode'])
+        @include('canvas::backend.shared.notifications.notify', ['section' => '_enable-maintenance-mode'])
         {{ \Session::forget('_enable-maintenance-mode') }}
     @endif
     @if(Session::get('_disable-maintenance-mode'))
-        @include('canvas::backend.partials.notify', ['section' => '_disable-maintenance-mode'])
+        @include('canvas::backend.shared.notifications.notify', ['section' => '_disable-maintenance-mode'])
         {{ \Session::forget('_disable-maintenance-mode') }}
     @endif
 @stop
