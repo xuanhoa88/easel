@@ -1,8 +1,8 @@
 {
 	"name": "cnvs/easel",
 	"description": "Canvas framework",
-	"keywords": ["canvas", "framework"],
-	"type": "canvas-core",
+	"keywords": ["php", "laravel", "blog", "canvas"],
+	"type": "canvas-framework",
 	"license": "MIT",
 	"authors": [
 		{
