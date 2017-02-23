@@ -12,11 +12,7 @@
     @section('twitter-image', url( $post->page_image ))
 @endif
 
-@section('title', Settings::blogTitle())
-
-@section('unique-js')
-    <script src="{{ elixir('vendor/canvas/assets/js/frontend.js') }}" charset="utf-8"></script>
-@endsection
+@section('title', \Canvas\Models\Settings::blogTitle())
 
 @section('content')
     <article>
@@ -57,3 +53,7 @@
         </div>
     </div>
 @stop
+
+@section('unique-js')
+    <script src="{{ elixir('vendor/canvas/assets/js/frontend.js') }}" charset="utf-8"></script>
+@endsection

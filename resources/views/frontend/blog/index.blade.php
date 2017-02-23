@@ -1,22 +1,10 @@
 @extends('canvas::frontend.layout')
 
-@section('og-title', $post->title)
-@section('og-description', $post->meta_description)
-@if ($post->page_image)
-    @section('og-image', url( $post->page_image ))
-@endif
-
-@section('twitter-title', $post->title)
-@section('twitter-description', $post->meta_description)
-@if ($post->page_image)
-    @section('twitter-image', url( $post->page_image ))
-@endif
-
-@section('title', Settings::blogTitle())
-
-@section('unique-js')
-    <script src="{{ elixir('vendor/canvas/assets/js/frontend.js') }}" charset="utf-8"></script>
-@endsection
+@section('title', \Canvas\Models\Settings::blogTitle())
+@section('og-title', \Canvas\Models\Settings::blogTitle())
+@section('og-description', \Canvas\Models\Settings::blogDescription())
+@section('twitter-title', \Canvas\Models\Settings::blogTitle())
+@section('twitter-description', \Canvas\Models\Settings::blogDescription())
 
 @section('content')
     <div class="container">
@@ -29,3 +17,7 @@
         </div>
     </div>
 @stop
+
+@section('unique-js')
+    <script src="{{ elixir('vendor/canvas/assets/js/frontend.js') }}" charset="utf-8"></script>
+@endsection
