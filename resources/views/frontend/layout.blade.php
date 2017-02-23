@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        @include('canvas::shared.meta')
-        @yield('title')
-        <meta name="description" content="{{ $meta_description }}">
+        @include('canvas::frontend.partials.meta')
         @include('canvas::frontend.partials.css')
         @include('canvas::frontend.partials.user-generated-css')
     </head>
