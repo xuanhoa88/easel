@@ -46,8 +46,8 @@
 }
 
 #author-content {
-  overflow: hidden;
-  span {margin-top: 0}
+  overflow: hidden !important;
+  span {margin-top: 0 !important;}
   i.fa {font-size: 14px}
 }
 
