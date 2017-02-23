@@ -1,8 +1,22 @@
 @extends('canvas::frontend.layout')
 
-@section('title')
-    <title>{{ $tag->title or Settings::blogTitle() }} | Blog</title>
-@stop
+@section('og-title', $post->title)
+@section('og-description', $post->meta_description)
+@if ($post->page_image)
+    @section('og-image', url( $post->page_image ))
+@endif
+
+@section('twitter-title', $post->title)
+@section('twitter-description', $post->meta_description)
+@if ($post->page_image)
+    @section('twitter-image', url( $post->page_image ))
+@endif
+
+@section('title', Settings::blogTitle())
+
+@section('unique-js')
+    <script src="{{ elixir('vendor/canvas/assets/js/frontend.js') }}" charset="utf-8"></script>
+@endsection
 
 @section('content')
     <div class="container">
