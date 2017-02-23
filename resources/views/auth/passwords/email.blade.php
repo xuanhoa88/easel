@@ -1,7 +1,7 @@
 @extends('canvas::backend.layout')
 
 @section('title')
-    <title>{{ Settings::blogTitle() }} | Forgot Password</title>
+    <title>{{ \Canvas\Models\Settings::blogTitle() }} | Forgot Password</title>
 @stop
 
 @section('login')

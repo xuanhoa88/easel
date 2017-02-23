@@ -1,7 +1,7 @@
 @extends('canvas::backend.layout')
 
 @section('title')
-    <title>{{ Settings::blogTitle() }} | Edit User Privacy</title>
+    <title>{{ \Canvas\Models\Settings::blogTitle() }} | Edit User Privacy</title>
 @stop
 
 @section('content')

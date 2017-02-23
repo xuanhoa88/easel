@@ -1,5 +1,5 @@
 <div class="container">
-    @if(!empty(Settings::disqus()))
+    @if(!empty(\Canvas\Models\Settings::disqus()))
         @include('canvas::frontend.blog.partials.disqus')
     @endif
     <div style="text-align: center">
@@ -18,6 +18,6 @@
     <a id="scroll-to-top" href="#top">SCROLL TO TOP</a>
 </span>
 
-@if (!empty(Settings::gaId()))
+@if (!empty(\Canvas\Models\Settings::gaId()))
     @include('canvas::frontend.blog.partials.analytics')
 @endif

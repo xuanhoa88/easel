@@ -1,7 +1,7 @@
 @extends('canvas::backend.layout')
 
 @section('title')
-    <title>{{ \Settings::blogTitle() }} | Sign In</title>
+    <title>{{ \Canvas\Models\Settings::blogTitle() }} | Sign In</title>
 @stop
 
 @section('login')
