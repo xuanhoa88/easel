@@ -2,8 +2,8 @@
 
 @section('title', \Canvas\Models\Settings::blogTitle())
 @section('og-title', \Canvas\Models\Settings::blogTitle())
-@section('og-description', \Canvas\Models\Settings::blogDescription())
 @section('twitter-title', \Canvas\Models\Settings::blogTitle())
+@section('og-description', \Canvas\Models\Settings::blogDescription())
 @section('twitter-description', \Canvas\Models\Settings::blogDescription())
 
 @section('content')

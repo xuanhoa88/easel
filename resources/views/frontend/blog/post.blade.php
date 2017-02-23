@@ -1,18 +1,14 @@
 @extends('canvas::frontend.layout')
 
 @section('og-title', $post->title)
+@section('twitter-title', $post->title)
 @section('og-description', $post->meta_description)
+@section('twitter-description', $post->meta_description)
+@section('title', \Canvas\Models\Settings::blogTitle())
 @if ($post->page_image)
     @section('og-image', url( $post->page_image ))
-@endif
-
-@section('twitter-title', $post->title)
-@section('twitter-description', $post->meta_description)
-@if ($post->page_image)
     @section('twitter-image', url( $post->page_image ))
 @endif
-
-@section('title', \Canvas\Models\Settings::blogTitle())
 
 @section('content')
     <article>
@@ -35,7 +31,7 @@
 
                     {!! $post->content_html !!}
 
-                    <p style="text-align: center"><span style="padding: 10px">&#183;</span><span style="padding: 10px">&#183;</span><span style="padding: 10px">&#183;</span></p>
+                    <p class="dts"><span>&#183;</span><span>&#183;</span><span>&#183;</span></p>
 
                     @include('canvas::frontend.blog.partials.author')
 
