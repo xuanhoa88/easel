@@ -1,21 +1,13 @@
 {
 	"name": "cnvs/easel",
 	"description": "Canvas framework",
-	"keywords": ["php", "laravel", "blog", "canvas"],
+	"keywords": ["canvas", "framework"],
 	"type": "canvas-framework",
 	"license": "MIT",
 	"authors": [
 		{
 			"name": "Todd Austin",
 			"email": "austin.todd.j@gmail.com"
-		},
-		{
-			"name": "Patrick Reid",
-			"email": "reliq@reliqarts.com"
-		},
-		{
-			"name": "Talvinder Bansal",
-			"email": "talvbansal@hotmail.com"
 		}
 	],
 	"require": {

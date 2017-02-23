@@ -100,7 +100,7 @@ class CanvasHelper extends Constants
         $packageName = self::CORE_PACKAGE;
         $version = 'Unknown';
 
-        // Retrieve core (Easel) package info.
+        // Retrieve framework (Easel) package info.
         $core = $extMan->getExtension(str_replace('/', '-', self::CORE_PACKAGE), ['canvas-framework']);
         $version = $core->getVersion();
         $dist = $core->__get('dist');
