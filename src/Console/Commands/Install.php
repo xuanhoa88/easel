@@ -7,6 +7,7 @@ use Exception;
 use Canvas\Models\User;
 use Canvas\Helpers\SetupHelper;
 use Canvas\Helpers\ConfigHelper;
+use Canvas\Extensions\ThemeManager;
 
 class Install extends CanvasCommand
 {
@@ -154,9 +155,13 @@ class Install extends CanvasCommand
                 $this->line(PHP_EOL.'<info>✔</info> Canvas has been installed. Pretty easy huh?'.PHP_EOL);
 
                 // Display user login information
-                $headers = ['Login Email', 'Login Password'];
+                $headers = ['Login Email', 'Login Password', 'Version', 'Theme'];
                 $data = User::select('email', 'password')->get()->toArray();
+
+                $themeManager = new ThemeManager(resolve('app'), resolve('files'));
+                $activeTheme = $themeManager->getTheme($themeManager->getActiveTheme()) ?: $themeManager->getDefaultTheme();
                 $data[0]['password'] = 'Your chosen password.';
+                array_push($data[0], 'Canvas'.' '.$this->canvasVersion(), $activeTheme->getName().' '.$activeTheme->getVersion());
                 $this->table($headers, $data);
 
                 $config->save();
