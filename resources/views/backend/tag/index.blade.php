@@ -1,12 +1,12 @@
 @extends('canvas::backend.layout')
 
 @section('title')
-    <title>{{ Settings::blogTitle() }} | Tags</title>
+    <title>{{ \Canvas\Models\Settings::blogTitle() }} | Tags</title>
 @stop
 
 @section('content')
     <section id="main">
-        @include('canvas::backend.partials.sidebar-navigation')
+        @include('canvas::backend.shared.partials.sidebar-navigation')
         <section id="content">
             <div class="container">
                 <div class="card">
@@ -27,8 +27,8 @@
                                 </ul>
                             </li>
                         </ul>
-                        @include('canvas::shared.errors')
-                        @include('canvas::shared.success')
+                        @include('canvas::backend.shared.partials.errors')
+                        @include('canvas::backend.shared.partials.success')
                         <h2>Tags&nbsp;
                             <a href="{!! route('canvas.admin.tag.create') !!}" id="create-tag"><i class="zmdi zmdi-plus-circle" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Create a new tag"></i></a>
                             <small>This page provides a comprehensive overview of all your blog tags. Click the <span class="zmdi zmdi-edit text-primary"></span> icon next to each tag to update its contents.</small>
@@ -78,12 +78,12 @@
     @include('canvas::backend.tag.partials.datatable')
 
     @if(Session::get('_new-tag'))
-        @include('canvas::backend.partials.notify', ['section' => '_new-tag'])
+        @include('canvas::backend.shared.notifications.notify', ['section' => '_new-tag'])
         {!! \Session::forget('_new-tag') !!}
     @endif
 
     @if(Session::get('_delete-tag'))
-        @include('canvas::backend.partials.notify', ['section' => '_delete-tag'])
+        @include('canvas::backend.shared.notifications.notify', ['section' => '_delete-tag'])
         {!! \Session::forget('_delete-tag') !!}
     @endif
 @stop

@@ -1,12 +1,12 @@
 @extends('canvas::backend.layout')
 
 @section('title')
-    <title>{{ Settings::blogTitle() }} | Reset Password</title>
+    <title>{{ \Canvas\Models\Settings::blogTitle() }} | Reset Password</title>
 @stop
 
 @section('login')
     <div class="login-container">
-        @include('canvas::shared.errors')
+        @include('canvas::backend.shared.partials.errors')
         @include('canvas::auth.passwords.partials.reset-form')
     </div>
 @endsection

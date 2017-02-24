@@ -1,41 +1,14 @@
-@extends('canvas::frontend.layout', [
-  'title' => $post->title,
-  'meta_description' => $post->meta_description ?: Settings::blogDescription(),
-])
+@extends('canvas::frontend.layout')
 
-@section('og-title')
-    <meta property="og:title" content="{{ $post->title }}"/>
-@stop
-
+@section('og-title', $post->title)
+@section('twitter-title', $post->title)
+@section('og-description', $post->meta_description)
+@section('twitter-description', $post->meta_description)
+@section('title', \Canvas\Models\Settings::blogTitle().' | '.$post->title)
 @if ($post->page_image)
-    @section('og-image')
-        <meta property="og:image" content="{{ url( $post->page_image ) }}">
-    @stop
+    @section('og-image', url( $post->page_image ))
+    @section('twitter-image', url( $post->page_image ))
 @endif
-
-@section('og-description')
-    <meta property="og:description" content="{{ $post->meta_description }}"/>
-@stop
-
-@section('twitter-card')
-    @if ($post->title != '')
-        <meta name="twitter:title" content="{{ $post->title }}" />
-    @endif
-    @if ($post->meta_description != '')
-        <meta name="twitter:description" content="{{ $post->meta_description }}" />
-    @endif
-    @if ($post->page_image != '')
-        <meta name="twitter:image" content="{{ url('/uploads/' . $post->page_image) }}" />
-    @endif
-@stop
-
-@section('title')
-    <title>{{ $title or Settings::blogTitle() }}</title>
-@stop
-
-@section('unique-js')
-    <script src="{{ elixir('vendor/canvas/assets/js/frontend.js') }}" charset="utf-8"></script>
-@endsection
 
 @section('content')
     <article>
@@ -58,7 +31,7 @@
 
                     {!! $post->content_html !!}
 
-                    <p style="text-align: center"><span style="padding: 10px">&#183;</span><span style="padding: 10px">&#183;</span><span style="padding: 10px">&#183;</span></p>
+                    <p class="dts"><span>&#183;</span><span>&#183;</span><span>&#183;</span></p>
 
                     @include('canvas::frontend.blog.partials.author')
 
@@ -67,12 +40,9 @@
         </div>
     </article>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <br>
-                @include('canvas::frontend.blog.partials.post-pager')
-            </div>
-        </div>
-    </div>
+    @include('canvas::frontend.blog.partials.paginate-post')
 @stop
+
+@section('unique-js')
+    <script src="{{ elixir('vendor/canvas/assets/js/frontend.js') }}" charset="utf-8"></script>
+@endsection

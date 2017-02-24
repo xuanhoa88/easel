@@ -1,10 +1,6 @@
-.container img {
-  max-width: 100%;
-}
+.container img {max-width: 100%}
 
-.section-divider {
-  margin-top: 55px !important;
-}
+.section-divider {margin-top: 55px !important}
 
 .post-page-title {
   color: rgb(82, 82, 82);
@@ -21,14 +17,10 @@
   text-transform: uppercase;
   font-family: 'Source Sans Pro', sans-serif !important;
   margin-top: -7px !important;
-  a {
-    text-transform: lowercase;
-  }
+  a {text-transform: lowercase}
 }
 
-#auth-name {
-  margin-bottom: 2px !important;
-}
+#auth-name {margin-bottom: 2px !important}
 
 .author {
   border: 1px solid rgb(238, 238, 238);
@@ -44,13 +36,22 @@
   margin-top: 5px;
   color: rgb(197, 197, 197);
   text-decoration: none !important;
-  a:hover {
-    color: rgb(197, 197, 197) !important;
-  }
+  a:hover {color: rgb(197, 197, 197) !important}
 }
 
 .author-img {
   float: left;
-  margin: 12px 15px 0 0;
-  width: 75px;
+  width: 60px;
+}
+
+#author-content {
+  overflow: hidden !important;
+  margin-top: -10px !important;
+  span {margin-top: 0 !important;}
+  i.fa {font-size: 14px}
+}
+
+.dts {
+  text-align: center;
+  span {padding: 10px}
 }

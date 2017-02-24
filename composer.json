@@ -1,26 +1,13 @@
 {
 	"name": "cnvs/easel",
-	"description": "Core Laravel Package for Canvas",
-	"keywords": ["canvas", "core"],
-	"type": "canvas-core",
+	"description": "Canvas Framework",
+	"keywords": ["canvas", "framework"],
+	"type": "canvas-framework",
 	"license": "MIT",
-	"homepage": "https://canvas.toddaustin.io",
-	"support": {
-		"issues": "https://github.com/cnvs/easel/issues",
-		"source": "https://github.com/cnvs/easel"
-	},
 	"authors": [
 		{
 			"name": "Todd Austin",
 			"email": "austin.todd.j@gmail.com"
-		},
-		{
-			"name": "Patrick Reid",
-			"email": "reliq@reliqarts.com"
-		},
-		{
-			"name": "Talvinder Bansal",
-			"email": "talvbansal@hotmail.com"
 		}
 	],
 	"require": {
