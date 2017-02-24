@@ -50,7 +50,7 @@ class Update extends CanvasCommand
         $this->comment(PHP_EOL.'Welcome to the Canvas Update Wizard! You\'ll be back at it in no time...');
 
         if ($currentVersion != $latestVersion
-            && $this->confirm(PHP_EOL."You are running Canvas core: $currentVersion. The latest version available is: $latestVersion.".PHP_EOL.'Update Canvas core?')) {
+            && $this->confirm(PHP_EOL."You are running Canvas framework: $currentVersion. The latest version currently available is: $latestVersion.".PHP_EOL.'Continue the update?')) {
             // Update dependencies
             $this->comment(PHP_EOL.'Composer update...');
             $updateCore = shell_exec('cd '.base_path().'; composer update --quiet');
@@ -60,7 +60,7 @@ class Update extends CanvasCommand
 
         // Update core assets
         if ($update) {
-            $this->comment(PHP_EOL.'Publishing core package assets...');
+            $this->comment(PHP_EOL.'Publishing framework package assets...');
 
             // Don't link storage - assume storage is already linked
             // Don't publish config files - assume config has been set at install and modified afterwards
@@ -80,7 +80,7 @@ class Update extends CanvasCommand
                 ]);
             }
             $this->progress(5);
-            $this->line(PHP_EOL.'<info>✔</info> Success! Canvas core assets have been published.');
+            $this->line(PHP_EOL.'<info>✔</info> Success! Canvas framework assets have been published.');
         }
 
         $this->rebuildSearchIndexes();
