@@ -92,15 +92,12 @@ class Update extends CanvasCommand
         Artisan::call('cache:clear');
         Artisan::call('view:clear');
         Artisan::call('route:clear');
-
-        // Grab new version
-        $newVersion = $this->canvasVersion();
         $this->progress(5);
         $this->line(PHP_EOL.'<info>✔</info> Canvas has been updated.'.PHP_EOL);
 
         // Display results
         $headers = ['Previous Version', 'New Version'];
-        $data = [[$oldVersion, $newVersion]];
+        $data = [[$currentVersion, $latestVersion]];
         $this->table($headers, $data);
         $this->line(PHP_EOL);
     }
