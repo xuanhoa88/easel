@@ -25,7 +25,9 @@
                         {{ \Carbon\Carbon::parse($post->published_at)->diffForHumans() }} &#183; {{ $post->readingTime() }} MIN READ
                         @if ($post->tags->count())
                             <br>
-                            {!! join(' ', $post->tagLinks()) !!}
+                            @foreach( $post->tagLinks() as $url => $tag )
+                                <a href="{{ $url }}">{{ $tag }}</a>&nbsp;
+                            @endforeach
                         @endif
                     </p>
 
