@@ -2,7 +2,7 @@
 	"name": "cnvs/easel",
 	"description": "Canvas Framework",
 	"keywords": ["canvas", "framework"],
-	"type": "canvas-core",
+	"type": "canvas-framework",
 	"license": "MIT",
 	"authors": [
 		{
