@@ -23,7 +23,7 @@ class Install extends CanvasCommand
      *
      * @var string
      */
-    protected $description = 'Install and configure Canvas';
+    protected $description = 'Canvas install wizard';
 
     /**
      * Create a new command instance.
@@ -42,6 +42,8 @@ class Install extends CanvasCommand
      */
     public function handle()
     {
+        // Don't run the installer if the canvas_installed.lock
+        // file exists in the storage/ directory
         if (file_exists(storage_path('canvas_installed.lock'))) {
             $this->line('<info>✔</info> Canvas has already been installed.');
         } else {

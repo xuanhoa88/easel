@@ -20,7 +20,7 @@ class Index extends CanvasCommand
      *
      * @var string
      */
-    protected $description = 'Create the initial search index';
+    protected $description = 'Index blog content for searches';
 
     /**
      * Execute the console command.
