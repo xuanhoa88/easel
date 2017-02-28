@@ -45,19 +45,19 @@ class Index extends CanvasCommand
 
     public function createPostsIndex()
     {
-        $this->comment(PHP_EOL.'Indexing the posts table and saving it to /storage/posts.index...');
+        $this->comment(PHP_EOL.'Indexing the posts table and saving it to /storage/canvas_posts.index...');
         Artisan::call('scout:import', ['model' => 'Canvas\\Models\\Post']);
     }
 
     public function createTagsIndex()
     {
-        $this->comment(PHP_EOL.'Indexing the tags table and saving it to /storage/tags.index...');
+        $this->comment(PHP_EOL.'Indexing the tags table and saving it to /storage/canvas_tags.index...');
         Artisan::call('scout:import', ['model' => 'Canvas\\Models\\Tag']);
     }
 
     public function createUsersIndex()
     {
-        $this->comment(PHP_EOL.'Indexing the users table and saving it to /storage/users.index...');
+        $this->comment(PHP_EOL.'Indexing the users table and saving it to /storage/canvas_users.index...');
         Artisan::call('scout:import', ['model' => 'Canvas\\Models\\User']);
     }
 }
