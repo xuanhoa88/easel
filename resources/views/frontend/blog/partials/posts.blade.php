@@ -6,11 +6,9 @@
         <p class="post-meta">
             {{ $post->published_at->diffForHumans() }} &#183; {{ $post->readingTime() }} MIN READ
             <br>
-            @if ($post->tags->count())
-                @foreach( $post->tagLinks() as $url => $tag )
-                    <a href="{{ $url }}">{{ $tag }}</a>&nbsp;
-                @endforeach
-            @endif
+            @unless( $post->tags->isEmpty())
+                {!! implode(' ', $post->tagLinks()) !!}
+            @endunless
         </p>
         <p class="postSubtitle">
             {{ str_limit($post->subtitle, config('blog.frontend_trim_width')) }}
