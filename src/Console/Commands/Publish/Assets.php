@@ -38,7 +38,7 @@ class Assets extends CanvasCommand
      */
     public function handle()
     {
-        // gather arguments
+        // Gather arguments...
         $publish = $this->option('y') ?: false;
         $force = $this->option('force') ?: false;
 
@@ -46,7 +46,7 @@ class Assets extends CanvasCommand
             $publish = $this->confirm('Publish Canvas core public assets?');
         }
 
-        // publish
+        // Publish assets...
         if ($publish) {
             $exitCode = Artisan::call('vendor:publish', [
                 '--provider' => 'Canvas\CanvasServiceProvider',

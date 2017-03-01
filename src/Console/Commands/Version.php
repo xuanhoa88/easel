@@ -35,7 +35,6 @@ class Version extends CanvasCommand
      */
     public function handle()
     {
-        // Grab version info
         $this->comment($this->canvasVersion());
     }
 }

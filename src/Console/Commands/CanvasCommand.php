@@ -105,6 +105,14 @@ class CanvasCommand extends Command
         $settings->save();
     }
 
+    protected function socialHeaderIcons()
+    {
+        $settings = new Settings();
+        $settings->setting_name = 'social_header_icons_user_id';
+        $settings->setting_value = 1;
+        $settings->save();
+    }
+
     protected function installed()
     {
         $settings = new Settings();
@@ -116,17 +124,23 @@ class CanvasCommand extends Command
         File::put(storage_path(CanvasHelper::INSTALLED_FILE), $settings->setting_value);
     }
 
+    /**
+     * Save to Settings and return currently installed version
+     *
+     * @return string
+     */
     protected function canvasVersion()
     {
-        // Get and save installed version to settings
-        // for future reference
         return CanvasHelper::getCurrentVersion();
     }
 
+    /**
+     * Save to Settings and return latest available version on GitHub
+     *
+     * @return string
+     */
     protected function latestVersion()
     {
-        // Get and save latest release available to
-        // settings for future reference
         return CanvasHelper::getLatestVersion();
     }
 
@@ -161,10 +175,9 @@ class CanvasCommand extends Command
 
     protected function rebuildSearchIndexes()
     {
-        // Build the search index
         $this->comment(PHP_EOL.'Building the search index...');
-        // Attempt to remove existing index files
-        // This might throw an exception
+
+        // Remove existing index files, could possibly throw an exception
         try {
             if (file_exists(storage_path('canvas_posts.index'))) {
                 unlink(storage_path('canvas_posts.index'));
@@ -178,17 +191,10 @@ class CanvasCommand extends Command
         } catch (Exception $e) {
             $this->line(PHP_EOL.'<error>✘</error> '.$e->getMessage());
         }
-        // Build the new indexes
+
+        // Build the new indexes...
         $exitCode = Artisan::call('canvas:index');
         $this->progress(5);
         $this->line(PHP_EOL.'<info>✔</info> Success! The application search index has been built.');
-    }
-
-    protected function socialHeaderIcons()
-    {
-        $settings = new Settings();
-        $settings->setting_name = 'social_header_icons_user_id';
-        $settings->setting_value = 1;
-        $settings->save();
     }
 }
