@@ -54,7 +54,7 @@ class Update extends CanvasCommand
             $this->comment(PHP_EOL.'Composer update...');
             $updateCore = shell_exec('cd '.base_path().'; composer update --quiet');
             $this->progress(5);
-            $this->line(PHP_EOL.'<info>✔</info> Success! Framework dependencies been updated.');
+            $this->line(PHP_EOL.'<info>✔</info> Success! Framework dependencies have been updated.');
         }
 
         // Update core assets...
