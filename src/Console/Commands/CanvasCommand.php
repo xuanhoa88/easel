@@ -125,7 +125,7 @@ class CanvasCommand extends Command
     }
 
     /**
-     * Save to Settings and return currently installed version
+     * Save to Settings and return currently installed version.
      *
      * @return string
      */
@@ -135,7 +135,7 @@ class CanvasCommand extends Command
     }
 
     /**
-     * Save to Settings and return latest available version on GitHub
+     * Save to Settings and return latest available version on GitHub.
      *
      * @return string
      */
