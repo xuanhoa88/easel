@@ -23,7 +23,7 @@ class Install extends CanvasCommand
      *
      * @var string
      */
-    protected $description = 'Install and configure Canvas';
+    protected $description = 'Canvas install wizard';
 
     /**
      * Create a new command instance.
@@ -38,6 +38,9 @@ class Install extends CanvasCommand
     /**
      * Execute the console command.
      *
+     * If the canvas_installed.lock file is found in the storage/ directory
+     * the installer will not execute.
+     *
      * @return mixed
      */
     public function handle()
@@ -47,15 +50,14 @@ class Install extends CanvasCommand
         } else {
             $config = ConfigHelper::getWriter();
 
-            // Get the options passed into the command
+            // Gather the options...
             $force = $this->option('force') ?: false;
             $withViews = $this->option('views') ?: false;
 
-            // Display the welcome message
             $this->comment(PHP_EOL.'Welcome to the Canvas Install Wizard! You\'ll be up and running in no time...');
 
             // Attempt to link storage/app/public folder to public/storage;
-            // this won't work on an OS without symlink support (e.g. Windows)
+            // This won't work on an OS without symlink support (e.g. Windows)
             try {
                 Artisan::call('storage:link');
             } catch (Exception $e) {
@@ -64,17 +66,17 @@ class Install extends CanvasCommand
             }
 
             try {
-                // Publish config files
+                // Publish config files...
                 Artisan::call('canvas:publish:config', [
                     '--y' => true,
                     '--force' => true,
                 ]);
-                // Publish public assets
+                // Publish public assets...
                 Artisan::call('canvas:publish:assets', [
                     '--y' => true,
                     '--force' => true,
                 ]);
-                // Publish view files
+                // Publish view files...
                 if ($withViews) {
                     Artisan::call('canvas:publish:views', [
                         '--y' => true,
@@ -82,7 +84,7 @@ class Install extends CanvasCommand
                     ]);
                 }
 
-                // Set up the database
+                // Set up the database...
                 if (! (SetupHelper::requiredTablesExists())) {
                     $this->comment(PHP_EOL.'Setting up your database...');
                     $exitCode = Artisan::call('migrate', [
@@ -94,7 +96,7 @@ class Install extends CanvasCommand
 
                 $this->comment(PHP_EOL.'Please provide the following information. Don\'t worry, you can always change these settings later.');
 
-                // Create the admin user
+                // Admin user information...
                 $this->comment(PHP_EOL.'<info>Step 1/6: Creating the admin user account</info>');
                 $email = $this->ask('Email');
                 $password = $this->secret('Password');
@@ -103,41 +105,41 @@ class Install extends CanvasCommand
                 $this->createUser($email, $password, $firstName, $lastName);
                 $this->line(PHP_EOL.'<info>✔</info> Success! Your admin user account has been created.');
 
-                // Save the title of the blog
+                // Blog title...
                 $blogTitle = $this->ask('Step 2/6: Title of your blog');
                 $this->title($blogTitle);
                 $this->line(PHP_EOL.'<info>✔</info> Success! The title of the blog has been saved.');
 
-                // Save the subtitle of the blog
+                // Blog subtitle...
                 $blogSubtitle = $this->ask('Step 3/6: Subtitle of your blog');
                 $this->subtitle($blogSubtitle);
                 $this->line(PHP_EOL.'<info>✔</info> Success! The subtitle of the blog has been saved.');
 
-                // Save the description of the blog
+                // Blog description...
                 $blogDescription = $this->ask('Step 4/6: Description of your blog');
                 $this->description($blogDescription);
                 $this->line(PHP_EOL.'<info>✔</info> Success! The description of the blog has been saved.');
 
-                // Save the seo tags of the blog
+                // Blog SEO tags...
                 $blogSEO = $this->ask('Step 5/6: Blog SEO keywords (simple,powerful,blog,publishing,platform)');
                 $this->seo($blogSEO);
                 $this->line(PHP_EOL.'<info>✔</info> Success! The blog SEO keywords have been saved.');
 
-                // Save the number of posts displayed per page
+                // Blog posts per page...
                 $postsPerPage = $this->ask('Step 6/6: Number of posts to display per page');
                 $this->postsPerPage($postsPerPage, $config);
                 $this->line(PHP_EOL.'<info>✔</info> Success! The number of posts per page has been saved.');
 
-                // Build the search index
+                // Build the search index...
                 $this->rebuildSearchIndexes();
 
-                // Generate a unique application key
+                // Generate a unique application key...
                 $this->comment(PHP_EOL.'Creating a unique application key...');
                 $exitCode = Artisan::call('key:generate');
                 $this->progress(5);
                 $this->line(PHP_EOL.'<info>✔</info> Success! A unique application key has been generated.');
 
-                // Additional blog settings
+                // Additional blog settings...
                 $this->comment(PHP_EOL.'Finishing the installation...');
                 $this->disqus();
                 $this->googleAnalytics();
@@ -147,14 +149,14 @@ class Install extends CanvasCommand
                 $this->socialHeaderIcons();
                 $this->progress(5);
 
-                // Clear all the caches
+                // Clear the caches...
                 Artisan::call('cache:clear');
                 Artisan::call('view:clear');
                 Artisan::call('route:clear');
 
                 $this->line(PHP_EOL.'<info>✔</info> Canvas has been installed. Pretty easy huh?'.PHP_EOL);
 
-                // Display user login information
+                // Display installation info...
                 $headers = ['Login Email', 'Login Password', 'Version', 'Theme'];
                 $data = User::select('email', 'password')->get()->toArray();
 

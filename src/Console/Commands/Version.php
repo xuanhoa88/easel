@@ -16,7 +16,7 @@ class Version extends CanvasCommand
      *
      * @var string
      */
-    protected $description = 'Canvas version information';
+    protected $description = 'Currently installed version of Canvas';
 
     /**
      * Create a new command instance.
@@ -35,7 +35,6 @@ class Version extends CanvasCommand
      */
     public function handle()
     {
-        // Grab version info
         $this->comment($this->canvasVersion());
     }
 }
