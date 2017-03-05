@@ -124,6 +124,18 @@ class CanvasCommand extends Command
         File::put(storage_path(CanvasHelper::INSTALLED_FILE), $settings->setting_value);
     }
 
+    protected function uninstalled()
+    {
+        // Remove installed lock file.
+        try {
+            File::delete(storage_path(CanvasHelper::INSTALLED_FILE));
+        } catch (Exception $e) {
+            $this->line(PHP_EOL.'Could not delete install file. You may need to delete ' 
+                . storage_path(CanvasHelper::INSTALLED_FILE) . ' manually.');
+            $this->line("<error>✘</error> {$e->getMessage()}");
+        }
+    }
+
     /**
      * Save to Settings and return currently installed version.
      *
@@ -151,8 +163,7 @@ class CanvasCommand extends Command
 
     protected function createUser($email, $password, $firstName, $lastName)
     {
-        $user = new User();
-        $user->email = $email;
+        $user = User::firstOrCreate(['email' => $email]);
         $user->password = bcrypt($password);
         $user->first_name = $firstName;
         $user->last_name = $lastName;
