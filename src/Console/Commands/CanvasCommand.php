@@ -130,8 +130,8 @@ class CanvasCommand extends Command
         try {
             File::delete(storage_path(CanvasHelper::INSTALLED_FILE));
         } catch (Exception $e) {
-            $this->line(PHP_EOL.'Could not delete install file. You may need to delete ' 
-                . storage_path(CanvasHelper::INSTALLED_FILE) . ' manually.');
+            $this->line(PHP_EOL.'Could not delete install file. You may need to delete '
+                .storage_path(CanvasHelper::INSTALLED_FILE).' manually.');
             $this->line("<error>✘</error> {$e->getMessage()}");
         }
     }
