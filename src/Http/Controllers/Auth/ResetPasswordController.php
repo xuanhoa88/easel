@@ -2,7 +2,6 @@
 
 namespace Canvas\Http\Controllers\Auth;
 
-use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Password;
@@ -62,15 +61,5 @@ class ResetPasswordController extends Controller
     public function broker()
     {
         return Password::broker('canvas_users');
-    }
-
-    /**
-     * Get the guard to be used during password reset.
-     *
-     * @return \Illuminate\Contracts\Auth\StatefulGuard
-     */
-    protected function guard()
-    {
-        return Auth::guard('canvas');
     }
 }
