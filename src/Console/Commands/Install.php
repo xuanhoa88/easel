@@ -87,8 +87,8 @@ class Install extends CanvasCommand
                 // Set up the database...
                 if (! (SetupHelper::requiredTablesExists())) {
                     $this->comment(PHP_EOL.'Setting up your database...');
-                    $exitCode = Artisan::call('migrate', [
-                        '--seed' => true,
+                    $exitCode = Artisan::call('migrate', []) && Artisan::call('db:seed', [
+                        '--class' => 'Canvas\DatabaseSeeder',
                     ]);
                     $this->progress(5);
                     $this->line(PHP_EOL.'<info>✔</info> Success! Your database is set up and configured.');
@@ -171,10 +171,12 @@ class Install extends CanvasCommand
             } catch (Exception $e) {
                 // Rollback migrations
                 // Artisan::call('migrate:rollback');
+                // Remove install file
+                $this->uninstalled();
                 // Display message
                 $this->line(PHP_EOL.'<error>An unexpected error occurred. Installation could not continue.</error>');
                 $this->error("✘ {$e->getMessage()}");
-                $this->comment(PHP_EOL.'Migrations were rolled back. Please run the installer again.');
+                $this->comment(PHP_EOL.'Please run the installer again.');
                 $this->line(PHP_EOL.'If this error persists please consult https://github.com/cnvs/easel/issues.'.PHP_EOL);
             }
         }
