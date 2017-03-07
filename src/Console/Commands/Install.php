@@ -88,7 +88,7 @@ class Install extends CanvasCommand
                 if (! (SetupHelper::requiredTablesExists())) {
                     $this->comment(PHP_EOL.'Setting up your database...');
                     $exitCode = Artisan::call('migrate', []) && Artisan::call('db:seed', [
-                        '--class' => 'Canvas\DatabaseSeeder',
+                        '--class' => 'DatabaseSeeder',
                     ]);
                     $this->progress(5);
                     $this->line(PHP_EOL.'<info>✔</info> Success! Your database is set up and configured.');
