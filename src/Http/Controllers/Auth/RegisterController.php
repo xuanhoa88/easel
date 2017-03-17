@@ -2,10 +2,10 @@
 
 namespace Canvas\Http\Controllers\Auth;
 
-use Validator;
 use Canvas\Models\User;
 use Canvas\Helpers\CanvasHelper;
 use Canvas\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller

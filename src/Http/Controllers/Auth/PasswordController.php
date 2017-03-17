@@ -2,8 +2,8 @@
 
 namespace Canvas\Http\Controllers\Auth;
 
-use Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Canvas\Http\Controllers\Controller;
 
 class PasswordController extends Controller

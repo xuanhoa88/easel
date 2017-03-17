@@ -26,8 +26,8 @@ class CanvasHelper extends Constants
     /**
      * Actions to be taken when user is successfully authenticated.
      *
-     * @param Illuminate\Http\Request $request
-     * @param Canvas\Models\User $user
+     * @param Request $request
+     * @param User $user
      * @return void
      */
     public static function authenticated(Request $request, User $user)
