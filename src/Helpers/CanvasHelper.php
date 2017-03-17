@@ -2,12 +2,12 @@
 
 namespace Canvas\Helpers;
 
-use Session;
 use ErrorException;
 use Canvas\Models\User;
 use Canvas\Meta\Constants;
 use Canvas\Models\Settings;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Canvas\Extensions\ExtensionManager;
 
 class CanvasHelper extends Constants
