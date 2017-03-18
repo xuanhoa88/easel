@@ -3,8 +3,8 @@
 namespace Canvas\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 use Canvas\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class PasswordController extends Controller
 {
