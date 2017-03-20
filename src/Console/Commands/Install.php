@@ -53,9 +53,9 @@ class Install extends CanvasCommand
             }
         }
 
-        if (!empty($missingExtensions)) {
+        if (! empty($missingExtensions)) {
             $this->line(PHP_EOL.'<error>[✘]</error> Please install the following PHP extensions before continuing: '
-                . explode(', ', $missingExtensions));
+                .explode(', ', $missingExtensions));
             die();
         }
 
@@ -65,7 +65,6 @@ class Install extends CanvasCommand
         if (file_exists(storage_path(Constants::INSTALLED_FILE))) {
             $this->line('<info>✔</info> Canvas has already been installed.');
         } else {
-
             $config = ConfigHelper::getWriter();
 
             // Gather the options...
