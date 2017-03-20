@@ -108,4 +108,16 @@ class Constants
         'post_tag' => 'canvas_post_tag',
         'settings' => 'canvas_settings',
     ];
+
+    /**
+     * @constant(REQUIRED_EXTENSIONS)
+     */
+    const REQUIRED_EXTENSIONS = [
+        'PDO',
+        'sqlite3',
+        'openssl',
+        'mbstring',
+        'tokenizer',
+        'zip'
+    ];
 }

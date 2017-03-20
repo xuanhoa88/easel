@@ -2,8 +2,8 @@
 
 namespace Canvas\Helpers;
 
+use Schema;
 use Canvas\Models\Settings;
-use Doctrine\DBAL\Schema\Schema;
 use Illuminate\Support\Facades\File;
 
 class SetupHelper extends CanvasHelper
