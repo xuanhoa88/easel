@@ -118,6 +118,6 @@ class Constants
         'openssl',
         'mbstring',
         'tokenizer',
-        'zip'
+        'zip',
     ];
 }
