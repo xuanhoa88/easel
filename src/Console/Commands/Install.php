@@ -168,7 +168,7 @@ class Install extends CanvasCommand
                 $data[0]['password'] = 'Your chosen password.';
                 array_push($data[0], 'Canvas'.' '.$this->canvasVersion(), $activeTheme->getName().' '.$activeTheme->getVersion());
                 $this->table($headers, $data);
-                
+
                 $this->line(PHP_EOL.'For help, please visit cnvs.readme.io. Follow us on GitHub at github.com/cnvs.'
                     .PHP_EOL);
 
