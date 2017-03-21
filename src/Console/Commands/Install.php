@@ -46,7 +46,7 @@ class Install extends CanvasCommand
         // If the canvas_installed.lock file is found in the storage/ directory
         // then Canvas has already been installed.
         if (file_exists(storage_path(Constants::INSTALLED_FILE))) {
-            $this->line('<info>✔</info> Canvas has already been installed.');
+            $this->line('<info>[✔]</info> Canvas has already been installed.');
         } else {
             // Gather the options...
             $force = $this->option('force') ?: false;

@@ -35,6 +35,16 @@ class Version extends CanvasCommand
      */
     public function handle()
     {
-        $this->comment($this->canvasVersion());
+        // Grab version info...
+        $currentVersion = $oldVersion = $this->canvasVersion();
+        $latestVersion = $this->latestVersion();
+
+        // Display results
+        $this->line('');
+        $headers = ['Installed', 'Latest'];
+        $data = [['Canvas '.$currentVersion, 'Canvas '.$latestVersion]];
+        $this->table($headers, $data);
+        $this->line(PHP_EOL.'For more information on upgrading Canvas, please visit cnvs.readme.io/docs/upgrade-guide.'
+            .PHP_EOL);
     }
 }

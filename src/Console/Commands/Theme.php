@@ -45,9 +45,9 @@ class Theme extends CanvasCommand
             if ($newTheme = $themeManager->getTheme($newThemeId)) {
                 $themeManager->activateTheme($newThemeId);
                 $activeTheme = $newTheme;
-                $this->comment(PHP_EOL."<info>✔</info> Successfully activated theme {$newTheme->getName()}!");
+                $this->comment(PHP_EOL."<info>[✔]</info> Successfully activated theme {$newTheme->getName()}!");
             } else {
-                $this->line(PHP_EOL."<error>✘</error> Could not activate theme ($newThemeId). Theme not found!");
+                $this->line(PHP_EOL."<error>[✘]</error> Could not activate theme ($newThemeId). Theme not found!");
             }
         }
 
@@ -56,6 +56,7 @@ class Theme extends CanvasCommand
         $headers = ['Active Theme', 'Version'];
         $data = [[$activeTheme->getName(), $activeTheme->getVersion()]];
         $this->table($headers, $data);
-        $this->line(PHP_EOL);
+        $this->line(PHP_EOL.'For more information on theme development, please visit cnvs.readme.io/docs/theme-overview.'
+            .PHP_EOL);
     }
 }
