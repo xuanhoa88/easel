@@ -43,35 +43,31 @@ class Install extends CanvasCommand
      */
     public function handle()
     {
-        $missingExtensions = [];
-        $this->comment(PHP_EOL.'Checking server requirements...');
-        foreach (Constants::REQUIRED_EXTENSIONS as $extension) {
-            if (in_array($extension, get_loaded_extensions())) {
-                continue;
-            } else {
-                array_push($missingExtensions, $extension);
-            }
-        }
-
-        if (! empty($missingExtensions)) {
-            $this->line(PHP_EOL.'<error>[✘]</error> Please install the following PHP extensions before continuing: '
-                .explode(', ', $missingExtensions));
-            die();
-        }
-
         // If the canvas_installed.lock file is found in the storage/ directory
-        // then Canvas has already been installed and there is no need for
-        // the installer wizard to continue.
+        // then Canvas has already been installed.
         if (file_exists(storage_path(Constants::INSTALLED_FILE))) {
             $this->line('<info>✔</info> Canvas has already been installed.');
         } else {
-            $config = ConfigHelper::getWriter();
-
             // Gather the options...
             $force = $this->option('force') ?: false;
             $withViews = $this->option('views') ?: false;
+            $missingExtensions = [];
+            $config = ConfigHelper::getWriter();
 
-//            $this->comment(PHP_EOL.'Welcome to the Canvas Install Wizard! You\'ll be up and running in no time...');
+            $this->comment(PHP_EOL.'Verifying system requirements...');
+            foreach (Constants::REQUIRED_EXTENSIONS as $extension) {
+                if (in_array($extension, get_loaded_extensions())) {
+                    continue;
+                } else {
+                    array_push($missingExtensions, $extension);
+                }
+            }
+
+            if (! empty($missingExtensions)) {
+                $this->line(PHP_EOL.'<error>[✘]</error> Please install the following PHP extensions before continuing: '
+                    .explode(', ', $missingExtensions));
+                die();
+            }
 
             // Attempt to link storage/app/public folder to public/storage;
             // This won't work on an OS without symlink support (e.g. Windows)
@@ -139,6 +135,7 @@ class Install extends CanvasCommand
                 $this->postsPerPage(6, $config);
 
                 // Build the search index...
+                $this->comment(PHP_EOL.'Writing the search index...');
                 $this->rebuildSearchIndexes();
 
                 // Generate a unique application key...
@@ -160,7 +157,7 @@ class Install extends CanvasCommand
                 Artisan::call('view:clear');
                 Artisan::call('route:clear');
 
-                $this->line(PHP_EOL.'<info>[✔]</info> Canvas was installed successfully!'.PHP_EOL);
+                echo SetupHelper::installedBanner().PHP_EOL;
 
                 // Display installation info...
                 $headers = ['Login Email', 'Login Password', 'Version', 'Theme'];
@@ -171,6 +168,9 @@ class Install extends CanvasCommand
                 $data[0]['password'] = 'Your chosen password.';
                 array_push($data[0], 'Canvas'.' '.$this->canvasVersion(), $activeTheme->getName().' '.$activeTheme->getVersion());
                 $this->table($headers, $data);
+                
+                $this->line(PHP_EOL.'For help, please visit cnvs.readme.io. Follow us on GitHub at github.com/cnvs.'
+                    .PHP_EOL);
 
                 $config->save();
             } catch (Exception $e) {

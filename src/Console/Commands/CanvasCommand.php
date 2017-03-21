@@ -162,8 +162,6 @@ class CanvasCommand extends Command
 
     protected function rebuildSearchIndexes()
     {
-        $this->comment(PHP_EOL.'Building the search index...');
-
         // Remove existing index files, could possibly throw an exception
         try {
             if (file_exists(storage_path('canvas_posts.index'))) {
