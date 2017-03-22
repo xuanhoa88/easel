@@ -2,7 +2,6 @@
 
 namespace Canvas\Console\Commands;
 
-use Canvas\Helpers\CanvasHelper;
 use Exception;
 use Canvas\Models\User;
 use Canvas\Meta\Constants;
