@@ -2,6 +2,7 @@
 
 namespace Canvas\Console\Commands;
 
+use Canvas\Helpers\CanvasHelper;
 use Exception;
 use Canvas\Models\User;
 use Canvas\Meta\Constants;
@@ -43,9 +44,7 @@ class Install extends CanvasCommand
      */
     public function handle()
     {
-        // If the canvas_installed.lock file is found in the storage/ directory
-        // then Canvas has already been installed.
-        if (file_exists(storage_path(Constants::INSTALLED_FILE))) {
+        if (SetupHelper::isInstalled()) {
             $this->line('<info>[✔]</info> Canvas has already been installed.');
         } else {
             // Gather the options...

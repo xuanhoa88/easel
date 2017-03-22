@@ -3,6 +3,7 @@
 namespace Canvas\Console\Commands;
 
 use Artisan;
+use Canvas\Helpers\SetupHelper;
 
 class Update extends CanvasCommand
 {
@@ -37,6 +38,12 @@ class Update extends CanvasCommand
      */
     public function handle()
     {
+        if (! SetupHelper::isInstalled()) {
+            $this->line('<error>[✘]</error> Canvas has not been installed yet.');
+            $this->line(PHP_EOL.'For installation instructions, please visit cnvs.readme.io.'.PHP_EOL);
+            die();
+        }
+
         // Gather the options...
         $force = $this->option('force') ?: false;
         $withViews = $this->option('views') ?: false;

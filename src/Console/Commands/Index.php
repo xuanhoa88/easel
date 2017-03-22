@@ -4,6 +4,7 @@ namespace Canvas\Console\Commands;
 
 use Artisan;
 use Exception;
+use Canvas\Helpers\SetupHelper;
 
 class Index extends CanvasCommand
 {
@@ -29,6 +30,11 @@ class Index extends CanvasCommand
      */
     public function handle()
     {
+        if (! SetupHelper::isInstalled()) {
+            $this->line('<error>[✘]</error> Canvas has not been installed yet.');
+            $this->line(PHP_EOL.'For installation instructions, please visit cnvs.readme.io.'.PHP_EOL);
+            die();
+        }
         try {
             $this->createPostsIndex();
             $this->line('<info>✔</info> Success! The posts index has been created.');

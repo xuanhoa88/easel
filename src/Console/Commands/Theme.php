@@ -2,6 +2,7 @@
 
 namespace Canvas\Console\Commands;
 
+use Canvas\Helpers\SetupHelper;
 use Canvas\Extensions\ThemeManager;
 
 class Theme extends CanvasCommand
@@ -37,6 +38,12 @@ class Theme extends CanvasCommand
      */
     public function handle()
     {
+        if (! SetupHelper::isInstalled()) {
+            $this->line('<error>[✘]</error> Canvas has not been installed yet.');
+            $this->line(PHP_EOL.'For installation instructions, please visit cnvs.readme.io.'.PHP_EOL);
+            die();
+        }
+
         $themeManager = new ThemeManager(resolve('app'), resolve('files'));
         $activeTheme = $themeManager->getTheme($themeManager->getActiveTheme()) ?: $themeManager->getDefaultTheme();
         $newThemeId = $this->argument('theme');
