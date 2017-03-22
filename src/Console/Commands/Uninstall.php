@@ -89,7 +89,9 @@ class Uninstall extends CanvasCommand
     protected function removeUploads()
     {
         foreach (scandir(storage_path('app/public/')) as $file) {
-            if ($file == '.' || $file == '..' || $file == '.gitignore') continue;
+            if ($file == '.' || $file == '..' || $file == '.gitignore') {
+                continue;
+            }
             unlink(storage_path('app/public/'.$file));
         }
     }

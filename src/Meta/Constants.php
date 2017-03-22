@@ -103,7 +103,7 @@ class Constants
     const INDEXES = [
         'posts' => 'canvas_posts.index',
         'tags' => 'canvas_tags.index',
-        'users' => 'canvas_users.index'
+        'users' => 'canvas_users.index',
     ];
 
     /**
@@ -115,7 +115,7 @@ class Constants
         'roles' => 'canvas_roles',
         'tags' => 'canvas_tags',
         'post_tag' => 'canvas_post_tag',
-        'settings' => 'canvas_settings'
+        'settings' => 'canvas_settings',
     ];
 
     /**
@@ -127,6 +127,6 @@ class Constants
         'openssl',
         'mbstring',
         'tokenizer',
-        'zip'
+        'zip',
     ];
 }
