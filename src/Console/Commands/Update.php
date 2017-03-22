@@ -95,7 +95,7 @@ class Update extends CanvasCommand
         Artisan::call('route:clear');
 
         // Disable maintenance mode...
-        $this->comment('Disabling maintenance mode...');
+        $this->comment('Disabling maintenance mode...'.PHP_EOL);
         Artisan::call('up');
 
         // Grab new version...
@@ -105,14 +105,13 @@ class Update extends CanvasCommand
         $time_end = microtime(true);
         $result = $time_end - $time_start;
 
-        $this->line(PHP_EOL.'<info>[✔]</info> The update completed in '.round($result, 2).' '.str_plural('seconds.').PHP_EOL);
-
         // Display results...
         $headers = ['Previous Version', 'New Version'];
         $data = [[$oldVersion, $newVersion]];
         $this->table($headers, $data);
 
-        $this->line(PHP_EOL.'To view all the upgrade changes, please visit github.com/cnvs/easel/releases.'
-            .PHP_EOL);
+        $this->line(PHP_EOL.'<info>[✔]</info> The update completed in '.round($result, 2).' '.str_plural('second').'.'.PHP_EOL);
+
+        $this->line('To view all the upgrade changes, please visit github.com/cnvs/easel/releases.'.PHP_EOL);
     }
 }

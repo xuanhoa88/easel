@@ -49,8 +49,8 @@ class Version extends CanvasCommand
 
         // Display results
         $this->line('');
-        $headers = ['Installed', 'Latest'];
-        $data = [['Canvas '.$currentVersion, 'Canvas '.$latestVersion]];
+        $headers = ['Installed Version', 'Latest Version'];
+        $data = [[$currentVersion, $latestVersion]];
         $this->table($headers, $data);
         $this->line(PHP_EOL.'For more information on upgrading Canvas, please visit cnvs.readme.io/docs/upgrade-guide.'
             .PHP_EOL);

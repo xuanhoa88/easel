@@ -164,14 +164,14 @@ class CanvasCommand extends Command
     {
         // Remove existing index files, could possibly throw an exception
         try {
-            if (file_exists(storage_path('canvas_posts.index'))) {
-                unlink(storage_path('canvas_posts.index'));
+            if (file_exists(storage_path(CanvasHelper::INDEXES['posts']))) {
+                unlink(storage_path(CanvasHelper::INDEXES['posts']));
             }
-            if (file_exists(storage_path('canvas_users.index'))) {
-                unlink(storage_path('canvas_users.index'));
+            if (file_exists(storage_path(CanvasHelper::INDEXES['users']))) {
+                unlink(storage_path(CanvasHelper::INDEXES['users']));
             }
-            if (file_exists(storage_path('canvas_tags.index'))) {
-                unlink(storage_path('canvas_tags.index'));
+            if (file_exists(storage_path(CanvasHelper::INDEXES['tags']))) {
+                unlink(storage_path(CanvasHelper::INDEXES['tags']));
             }
         } catch (Exception $e) {
             $this->line(PHP_EOL.'<error>[✘]</error> '.$e->getMessage());
