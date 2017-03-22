@@ -65,16 +65,16 @@ class Install extends CanvasCommand
 
             if (! empty($missingExtensions)) {
                 $this->line(PHP_EOL.'<error>Your server does not meet the minimum system requirements.</error>'.PHP_EOL);
-                    foreach ($missingExtensions as $extension) {
-                        $this->line('<error>[✘]</error> '.strtoupper($extension).' PHP extension is required');
-                    }
-                $this->line(PHP_EOL.'For details on system requirements or installation support, please visit cnvs.readme.io.' .PHP_EOL);
+                foreach ($missingExtensions as $extension) {
+                    $this->line('<error>[✘]</error> '.strtoupper($extension).' PHP extension is required');
+                }
+                $this->line(PHP_EOL.'For details on system requirements or installation support, please visit cnvs.readme.io.'.PHP_EOL);
                 die();
             }
 
             $this->comment('Checking directory permissions...');
             if (! is_writable(storage_path()) || ! is_writable(public_path())) {
-                $this->line(PHP_EOL.'<error>The following directory permissions need to be updated:</error>' .PHP_EOL);
+                $this->line(PHP_EOL.'<error>The following directory permissions need to be updated:</error>'.PHP_EOL);
 
                 if (! is_writable(storage_path())) {
                     $this->line('<error>[✘]</error> '.storage_path());
@@ -83,7 +83,7 @@ class Install extends CanvasCommand
                 if (! is_writable(public_path())) {
                     $this->line('<error>[✘]</error> '.public_path());
                     $this->line('Fix this by running \'chmod -R 755 public/\'.');
-                    $this->line(PHP_EOL.'For installation support and troubleshooting tips, please visit cnvs.readme.io.' .PHP_EOL);
+                    $this->line(PHP_EOL.'For installation support and troubleshooting tips, please visit cnvs.readme.io.'.PHP_EOL);
                 }
                 die();
             }
