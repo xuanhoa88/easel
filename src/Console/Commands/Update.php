@@ -105,7 +105,7 @@ class Update extends CanvasCommand
         $time_end = microtime(true);
         $result = $time_end - $time_start;
 
-        $this->line(PHP_EOL.'<info>[✔]</info> The update completed in '.round($result, 2).' '.str_plural('seconds.') .PHP_EOL);
+        $this->line(PHP_EOL.'<info>[✔]</info> The update completed in '.round($result, 2).' '.str_plural('seconds.').PHP_EOL);
 
         // Display results...
         $headers = ['Previous Version', 'New Version'];
