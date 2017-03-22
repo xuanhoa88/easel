@@ -24,7 +24,7 @@ class Install extends CanvasCommand
      *
      * @var string
      */
-    protected $description = 'Canvas install wizard';
+    protected $description = 'Install the Canvas application';
 
     /**
      * Create a new command instance.
@@ -51,10 +51,10 @@ class Install extends CanvasCommand
             // Gather the options...
             $force = $this->option('force') ?: false;
             $withViews = $this->option('views') ?: false;
-            $missingExtensions = [];
             $config = ConfigHelper::getWriter();
 
             $this->comment(PHP_EOL.'Verifying system requirements...');
+            $missingExtensions = [];
             foreach (Constants::REQUIRED_EXTENSIONS as $extension) {
                 if (in_array($extension, get_loaded_extensions())) {
                     continue;
@@ -64,10 +64,31 @@ class Install extends CanvasCommand
             }
 
             if (! empty($missingExtensions)) {
-                $this->line(PHP_EOL.'<error>[✘]</error> Please install the following PHP extensions before continuing: '
-                    .explode(', ', $missingExtensions));
+                $this->line(PHP_EOL.'<error>Your server does not meet the minimum system requirements.</error>'.PHP_EOL);
+                    foreach ($missingExtensions as $extension) {
+                        $this->line('<error>[✘]</error> '.strtoupper($extension).' PHP extension is required');
+                    }
+                $this->line(PHP_EOL.'For details on system requirements or installation support, please visit cnvs.readme.io.' .PHP_EOL);
                 die();
             }
+
+            $this->comment('Checking directory permissions...');
+            if (! is_writable(storage_path()) || ! is_writable(public_path())) {
+                $this->line(PHP_EOL.'<error>The following directory permissions need to be updated:</error>' .PHP_EOL);
+
+                if (! is_writable(storage_path())) {
+                    $this->line('<error>[✘]</error> '.storage_path());
+                    $this->line('Fix this by running \'chmod -R 755 storage/\'.'.PHP_EOL);
+                }
+                if (! is_writable(public_path())) {
+                    $this->line('<error>[✘]</error> '.public_path());
+                    $this->line('Fix this by running \'chmod -R 755 public/\'.');
+                    $this->line(PHP_EOL.'For installation support and troubleshooting tips, please visit cnvs.readme.io.' .PHP_EOL);
+                }
+                die();
+            }
+
+            dd('hey');
 
             // Attempt to link storage/app/public folder to public/storage;
             // This won't work on an OS without symlink support (e.g. Windows)
