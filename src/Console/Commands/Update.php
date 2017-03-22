@@ -19,7 +19,7 @@ class Update extends CanvasCommand
      *
      * @var string
      */
-    protected $description = 'Canvas update wizard';
+    protected $description = 'Upgrade Canvas to latest version';
 
     /**
      * Create a new command instance.
@@ -43,6 +43,9 @@ class Update extends CanvasCommand
             $this->line(PHP_EOL.'For installation instructions, please visit cnvs.readme.io.'.PHP_EOL);
             die();
         }
+
+        // Start the timer
+        $time_start = microtime(true);
 
         // Gather the options...
         $force = $this->option('force') ?: false;
@@ -97,7 +100,12 @@ class Update extends CanvasCommand
 
         // Grab new version...
         $newVersion = $this->canvasVersion();
-        $this->line(PHP_EOL.'<info>[✔]</info> Your installation of Canvas has been updated.'.PHP_EOL);
+
+        // Stop the timer
+        $time_end = microtime(true);
+        $result = $time_end - $time_start;
+
+        $this->line(PHP_EOL.'<info>[✔]</info> The update completed in '.round($result, 2).' '.str_plural('seconds.') .PHP_EOL);
 
         // Display results...
         $headers = ['Previous Version', 'New Version'];

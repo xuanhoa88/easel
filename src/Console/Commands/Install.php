@@ -24,7 +24,7 @@ class Install extends CanvasCommand
      *
      * @var string
      */
-    protected $description = 'Install the Canvas application';
+    protected $description = 'Install and setup Canvas';
 
     /**
      * Create a new command instance.
@@ -51,7 +51,7 @@ class Install extends CanvasCommand
             $withViews = $this->option('views') ?: false;
             $config = ConfigHelper::getWriter();
 
-            $this->comment(PHP_EOL.'Verifying system requirements...');
+            $this->comment(PHP_EOL.'Verifying the system requirements...');
             $missingExtensions = [];
             foreach (Constants::REQUIRED_EXTENSIONS as $extension) {
                 if (in_array($extension, get_loaded_extensions())) {
@@ -85,8 +85,6 @@ class Install extends CanvasCommand
                 }
                 die();
             }
-
-            dd('hey');
 
             // Attempt to link storage/app/public folder to public/storage;
             // This won't work on an OS without symlink support (e.g. Windows)
