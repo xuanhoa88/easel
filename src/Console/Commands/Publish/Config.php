@@ -53,7 +53,7 @@ class Config extends CanvasCommand
                 '--tag' => 'config',
                 '--force' => $force,
             ]);
-            $this->line('<info>[✔]</info> Success! Canvas core config files have been published.');
+            $this->line('<info>[✔]</info> Success! Canvas core config files have been published.'.PHP_EOL);
         }
     }
 }

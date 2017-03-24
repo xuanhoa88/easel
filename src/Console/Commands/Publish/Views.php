@@ -53,7 +53,7 @@ class Views extends CanvasCommand
                 '--tag' => 'views',
                 '--force' => $force,
             ]);
-            $this->line('<info>[✔]</info> Success! Canvas core view files have been published.');
+            $this->line('<info>[✔]</info> Success! Canvas core view files have been published.'.PHP_EOL);
         }
     }
 }
