@@ -39,7 +39,6 @@ class Uninstall extends CanvasCommand
             die();
         }
 
-//        TODO:Are you sure??????????????????????????
         $this->warn('**************************************'.PHP_EOL.'*              Warning!              *'.PHP_EOL.'**************************************');
         if ($this->confirm('Are you sure you want to completely uninstall Canvas?')) {
             try {
