@@ -7,6 +7,7 @@ use Artisan;
 use Exception;
 use Canvas\Helpers\SetupHelper;
 use Canvas\Helpers\CanvasHelper;
+use Illuminate\Support\Facades\DB;
 
 class Uninstall extends CanvasCommand
 {
@@ -75,8 +76,7 @@ class Uninstall extends CanvasCommand
         Schema::dropIfExists(CanvasHelper::TABLES['settings']);
         Schema::dropIfExists(CanvasHelper::TABLES['tags']);
         Schema::dropIfExists(CanvasHelper::TABLES['users']);
-        Schema::dropIfExists('migrations');
-        Schema::dropIfExists('password_resets');
+        DB::table('migrations')->where('migration', 'like', '%canvas%')->delete();
     }
 
     protected function removeUploadsSymlink()
