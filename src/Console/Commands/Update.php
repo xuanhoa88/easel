@@ -39,7 +39,7 @@ class Update extends CanvasCommand
     public function handle()
     {
         if (! SetupHelper::isInstalled()) {
-            $this->line('<error>[✘]</error> Canvas has not been installed yet.');
+            $this->line(PHP_EOL.'<error>[✘]</error> Canvas has not been installed yet.');
             $this->line(PHP_EOL.'For installation instructions, please visit cnvs.readme.io.'.PHP_EOL);
             die();
         }

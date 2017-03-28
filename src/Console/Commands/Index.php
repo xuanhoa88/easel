@@ -43,7 +43,7 @@ class Index extends CanvasCommand
             $result = $time_end - $time_start;
             $this->line(PHP_EOL.'<info>[✔]</info> The index completed in '.round($result, 2).' '.str_plural('second').'.'.PHP_EOL);
         } catch (Exception $e) {
-            $this->line(PHP_EOL.'<error>[✘]</error> '.$e->getMessage());
+            $this->line(PHP_EOL.'<error>[✘]</error> '.$e->getMessage().PHP_EOL);
         }
     }
 

@@ -44,7 +44,7 @@ class Install extends CanvasCommand
     public function handle()
     {
         if (SetupHelper::isInstalled()) {
-            $this->line('<info>[✔]</info> Canvas has already been installed.');
+            $this->line(PHP_EOL.'<info>[✔]</info> Canvas has already been installed.'.PHP_EOL);
         } else {
             // Gather the options...
             $force = $this->option('force') ?: false;

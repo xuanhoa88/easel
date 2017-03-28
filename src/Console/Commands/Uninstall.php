@@ -34,12 +34,12 @@ class Uninstall extends CanvasCommand
     public function handle()
     {
         if (! SetupHelper::isInstalled()) {
-            $this->line('<error>[✘]</error> Canvas has not been installed yet.');
+            $this->line(PHP_EOL.'<error>[✘]</error> Canvas has not been installed yet.');
             $this->line(PHP_EOL.'For installation instructions, please visit cnvs.readme.io.'.PHP_EOL);
             die();
         }
 
-        $this->warn('**************************************'.PHP_EOL.'*              Warning!              *'.PHP_EOL.'**************************************');
+        $this->warn(PHP_EOL.'**************************************'.PHP_EOL.'*              Warning!              *'.PHP_EOL.'**************************************');
         if ($this->confirm('Are you sure you want to completely uninstall Canvas?')) {
             try {
                 // Start the timer
