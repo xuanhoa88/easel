@@ -40,7 +40,7 @@ class Theme extends CanvasCommand
     {
         if (! SetupHelper::isInstalled()) {
             $this->line(PHP_EOL.'<error>[✘]</error> Canvas has not been installed yet.');
-            $this->line(PHP_EOL.'&nbsp;&nbsp;&nbsp;&nbsp;Run \'php artisan canvas:install\' to begin.');
+            $this->line(PHP_EOL."\t".'Run \'php artisan canvas:install\' to begin.');
             $this->line(PHP_EOL.'For installation instructions, please visit cnvs.readme.io.'.PHP_EOL);
             die();
         }
