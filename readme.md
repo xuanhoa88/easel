@@ -24,7 +24,7 @@
 
 ## Canvas Sponsors
 
-Canvas is an MIT-licensed open source project. Its ongoing development is made possible thanks to the support by these awesome [backers](https://github.com/cnvs/canvas/blob/develop/backers.md). If you are interested in becoming a sponsor, please visit the [Canvas Patreon page](https://www.patreon.com/canvas):
+Canvas is an MIT-licensed open source project. Its ongoing development is made possible thanks to the support by these awesome [backers](https://github.com/cnvs/canvas/blob/develop/backers.md). If you are interested in becoming a sponsor, please visit the [Canvas Patreon page](https://www.patreon.com/canvas).
 
 ## Contributing
 
