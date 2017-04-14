@@ -1,21 +1,21 @@
 {
-	"name": "cnvs/easel",
-	"description": "Canvas Framework",
-	"keywords": ["canvas", "framework"],
-	"type": "canvas-framework",
+	"name": "llama-laravel/canvas",
+	"description": "Simple, Powerful Blog Publishing Platform",
+	"keywords": ["llama", "laravel", "blog"],
 	"license": "MIT",
 	"authors": [
 		{
-			"name": "Todd Austin",
-			"email": "austin.todd.j@gmail.com"
+			"name": "XuaNguyen",
+			"email": "xuan.0211@gmail.com"
 		}
 	],
 	"require": {
 		"php": ">=5.6.4",
-		"illuminate/support": "5.*",
-        "doctrine/dbal": "^2.5",
-		"talvbansal/media-manager": "^2.0",
+		"laravel/framework" : "5.*",
+		"laravelcollective/html" : "5.*",
 		"laravel/scout": "2.*",
+                "doctrine/dbal": "^2.5",
+		"talvbansal/media-manager": "^2.0",
 		"teamtnt/laravel-scout-tntsearch-driver": "2.*",
 		"erusev/parsedown": "^1.6",
 		"proengsoft/laravel-jsvalidation": "1.5.*",
@@ -28,13 +28,7 @@
 		"symfony/dom-crawler": "~3.0",
 		"symfony/css-selector": "~3.0"
 	},
-	"suggest": {
-		"cnvs/paper-dark": "Official dark theme for Canvas."
-	},
 	"autoload": {
-		"classmap": [
-			"database"
-		],
 		"psr-4": {
 			"Canvas\\": "src/"
 		}
